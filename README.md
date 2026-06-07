@@ -77,6 +77,18 @@ Escolhe a matéria → faz a missão (1 questão por vez, feedback na hora)
 
 ---
 
+## 🐧 Rotina, trilha e limites (escola antes do Tux)
+
+Para a criança **não pular direto pro Tux** (Quest Linux):
+
+- 🔒 **Trilha obrigatória:** o Tux fica **bloqueado** até concluir **1 missão em cada matéria**
+  (Matemática, Português e Ciências). Os módulos **avisam** o que falta.
+- 🌙 **Limite diário:** no máximo **2 atividades de leitura por dia** — depois, "volte amanhã".
+- ⏳ **Tempo de tela:** com o Tux liberado, **1 hora por dia** (janela a partir da 1ª abertura);
+  esgotou, só no dia seguinte.
+
+Configurável: `TRILHA_MATERIAS`, `ATIVIDADES_POR_DIA`, `TUX_MINUTOS`.
+
 ## 🧱 Arquitetura
 
 ```

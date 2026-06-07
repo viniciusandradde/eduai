@@ -23,6 +23,10 @@ PAI_SENHA   = os.environ.get('PAI_SENHA', os.environ.get('PORTAL_SENHA', 'pai'))
 TERMINAL_URL = os.environ.get('TERMINAL_URL', 'https://vgtux.vsanexus.com')
 FOTOS_DIR   = Path('/data/fotos')
 MAX_FOTO    = 10 * 1024 * 1024
+# Gate do Tux + limites diários
+TRILHA_MATERIAS   = [m.strip() for m in os.environ.get('TRILHA_MATERIAS', 'matematica,portugues,ciencias').split(',') if m.strip()]
+ATIVIDADES_POR_DIA = int(os.environ.get('ATIVIDADES_POR_DIA', '2'))
+TUX_MINUTOS        = int(os.environ.get('TUX_MINUTOS', '60'))
 
 app = FastAPI(title="VSA EduAI")
 db.init_db()
@@ -142,11 +146,39 @@ def api_conteudo(senha: str = ''):
     return JSONResponse({"materias": _sanitizar(CONTEUDO_FULL),
                          "config": {"terminal_url": TERMINAL_URL}})
 
+def _calcular_gate(e):
+    """Monta o estado da trilha obrigatória + cap diário + tempo do Tux."""
+    prog = e.get("progresso", [])
+    concluidas = {(p["materia"], p["missao"]) for p in prog if p.get("concluida")}
+    faltam, pendentes = [], []
+    for mid in TRILHA_MATERIAS:
+        m = next((x for x in CONTEUDO_FULL if x["id"] == mid), None)
+        if not m:
+            continue
+        reais = [mi for mi in m.get("missoes", []) if not mi.get("link")]
+        feita = any((mid, mi["id"]) in concluidas for mi in reais)
+        if not feita:
+            faltam.append({"materia": mid, "nome": m["nome"]})
+            prox = next((mi for mi in reais if (mid, mi["id"]) not in concluidas), None)
+            if prox:
+                pendentes.append({"materia": mid, "nome": m["nome"], "missao": prox["id"], "titulo": prox["titulo"]})
+    destravado = len(faltam) == 0
+    restante = db.tux_restante(TUX_MINUTOS)
+    return {
+        "atividades_hoje": e.get("atividades_hoje", 0),
+        "limite": ATIVIDADES_POR_DIA,
+        "atingiu_limite": e.get("atividades_hoje", 0) >= ATIVIDADES_POR_DIA,
+        "trilha": {"destravado": destravado, "faltam": faltam, "pendentes": pendentes},
+        "tux": {"destravado": destravado, "minutos": TUX_MINUTOS,
+                "restante_seg": restante, "esgotado": (restante is not None and restante <= 0)},
+    }
+
 @app.get('/api/estado')
 def api_estado(senha: str = ''):
     checar(senha, ALUNO_SENHA)
     e = db.estado()
     e["config"] = {"terminal_url": TERMINAL_URL}
+    e["gate"] = _calcular_gate(e)
     return JSONResponse(e)
 
 class CorrigirIn(BaseModel):
@@ -206,9 +238,16 @@ class LeituraIn(BaseModel):
     titulo:  str = ''
     resumo:  str = ''
 
+def _cap_atingido(materia, missao):
+    """True se já bateu o limite diário e esta missão não foi concluída ainda."""
+    return db.atividades_hoje() >= ATIVIDADES_POR_DIA and not db.missao_concluida(materia, missao)
+
 @app.post('/api/leitura')
 def api_leitura(payload: LeituraIn, senha: str = ''):
     checar(senha, ALUNO_SENHA)
+    if _cap_atingido(payload.materia, payload.missao):
+        return JSONResponse(status_code=422, content={"ok": False, "limite": True,
+            "erro": "Você já fez suas 2 atividades de hoje. Volte amanhã! 🌙"})
     if len(payload.resumo.strip()) < 50:
         return JSONResponse(status_code=422,
                             content={"ok": False, "erro": "Escreva um resumo maior (mín. 50 caracteres) ou envie a foto."})
@@ -220,6 +259,9 @@ async def api_leitura_foto(materia: str = Form(...), missao: str = Form(...),
                            titulo: str = Form(''), foto: UploadFile = File(...),
                            senha: str = ''):
     checar(senha, ALUNO_SENHA)
+    if _cap_atingido(materia, missao):
+        return JSONResponse(status_code=422, content={"ok": False, "limite": True,
+            "erro": "Você já fez suas 2 atividades de hoje. Volte amanhã! 🌙"})
     if not (foto.content_type or '').lower().startswith('image/'):
         return JSONResponse(status_code=422, content={"ok": False, "erro": "Envie uma imagem."})
     data = await foto.read(MAX_FOTO + 1)
@@ -234,6 +276,18 @@ async def api_leitura_foto(materia: str = Form(...), missao: str = Form(...),
 
 class CompraIn(BaseModel):
     item: str
+
+@app.post('/api/tux/abrir')
+def api_tux_abrir(senha: str = ''):
+    checar(senha, ALUNO_SENHA)
+    g = _calcular_gate(db.estado())
+    if not g["trilha"]["destravado"]:
+        return JSONResponse(status_code=423, content={"ok": False, "motivo": "trilha",
+            "faltam": g["trilha"]["faltam"], "pendentes": g["trilha"]["pendentes"]})
+    restante = db.tux_abrir(TUX_MINUTOS)
+    if restante <= 0:
+        return JSONResponse(status_code=423, content={"ok": False, "motivo": "tempo", "restante_seg": 0})
+    return {"ok": True, "url": TERMINAL_URL, "restante_seg": restante}
 
 @app.post('/api/loja/comprar')
 def api_comprar(payload: CompraIn, senha: str = ''):

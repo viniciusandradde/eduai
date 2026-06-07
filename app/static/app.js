@@ -125,8 +125,24 @@ function navHTML(){
     `<button class="bnav${tab===id?' on':''}" onclick="setTab('${id}')"><span class="ic">${ic}</span><span class="lb">${lb}</span></button>`).join('')}</div>`;
 }
 
+function mmss(seg){ const m=Math.floor(seg/60), s=seg%60; return m+':'+String(s).padStart(2,'0'); }
+function bannerHTML(){
+  const g = EST.gate; if (!g) return '';
+  let h = '';
+  if (g.trilha.destravado){
+    const tux = g.tux;
+    if (tux.esgotado) h += `<div class="banner b-warn">🐧 Tux liberado • ⏳ tempo de tela de hoje esgotado — volte amanhã 🌙</div>`;
+    else h += `<div class="banner b-ok">🐧 Tux liberado!${tux.restante_seg!=null?' ⏳ '+mmss(tux.restante_seg)+' restantes hoje':' (1h por dia)'}</div>`;
+  } else {
+    const faltam = g.trilha.faltam.map(f=>f.nome).join(', ');
+    h += `<div class="banner b-lock">🔒 Tux bloqueado — conclua 1 missão de: <b>${esc(faltam)}</b></div>`;
+  }
+  h += `<div class="banner b-info">🎯 Hoje: <b>${g.atividades_hoje}/${g.limite}</b> atividades${g.atingiu_limite?' • limite atingido, volte amanhã 🌙':''}</div>`;
+  return h;
+}
+
 function materiasHTML(){
-  let h = `<div class="pad fade-in"><div class="sec first">Suas matérias</div><div class="grid">`;
+  let h = `<div class="pad fade-in">${bannerHTML()}<div class="sec first">Suas matérias</div><div class="grid">`;
   CONT.forEach(s=>{
     const st=subjStats(s); const pc=Math.round(st.pct*100);
     h += `<button class="mat" style="--mc:${s.cor}" onclick="abrirMateria('${s.id}')">
@@ -143,17 +159,30 @@ function missoesHTML(s){
   const st=subjStats(s); let prevDone=true;
   let h=`<div class="pad fade-in"><div class="subhead"><span class="big">${s.icone}</span>
     <div><h2>${esc(s.nome)}</h2><div class="meta">${st.conc} de ${st.tot} missões concluídas</div></div></div>`;
+  const g = EST.gate || {trilha:{destravado:true,faltam:[]},atingiu_limite:false};
   s.missoes.forEach((mi,i)=>{
     if (mi.link){
-      h += `<div class="missao"><div class="num" style="background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.5);color:var(--rox2)">▶</div>
-        <div class="info"><div class="tt">${esc(mi.titulo)} <span class="linktag">EXTRA</span></div><div class="ds">${esc(mi.descricao)}</div></div>
-        <button class="btn" style="width:auto;padding:10px 14px;font-size:14px" onclick="abrirTerminal()">Abrir</button></div>`;
+      const destr = g.trilha.destravado;
+      if (destr){
+        h += `<div class="missao"><div class="num" style="background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.5);color:var(--rox2)">🐧</div>
+          <div class="info"><div class="tt">${esc(mi.titulo)} <span class="linktag">LIBERADO</span></div><div class="ds">${esc(mi.descricao)}</div></div>
+          <button class="btn" style="width:auto;padding:10px 14px;font-size:14px" onclick="abrirTux()">Abrir</button></div>`;
+      } else {
+        const faltam = g.trilha.faltam.map(f=>f.nome).join(', ');
+        h += `<div class="missao locked"><div class="num">🔒</div>
+          <div class="info"><div class="tt">${esc(mi.titulo)}</div>
+          <div class="ds">Conclua 1 missão de: <b>${esc(faltam)}</b> para liberar o Tux 🐧</div></div></div>`;
+      }
       return;
     }
-    const p=progOf(s.id,mi.id); const done=!!(p&&p.concluida); const locked=!prevDone&&!done; const est=p?p.melhor_estrela:0;
-    h += `<button class="missao${done?' ok':''}${locked?' locked':''}" ${locked?'disabled':`onclick="abrirMissao('${s.id}','${mi.id}')"`}>
+    const p=progOf(s.id,mi.id); const done=!!(p&&p.concluida);
+    const capLock = g.atingiu_limite && !done;
+    const locked=(!prevDone&&!done)||capLock; const est=p?p.melhor_estrela:0;
+    const onclick = locked?'':`onclick="abrirMissao('${s.id}','${mi.id}')"`;
+    h += `<button class="missao${done?' ok':''}${locked?' locked':''}" ${locked?'disabled':onclick}>
       <div class="num">${done?'✔':locked?'🔒':(i+1)}</div>
-      <div class="info"><div class="tt">${esc(mi.titulo)}</div><div class="ds">${esc(mi.descricao)}</div></div>
+      <div class="info"><div class="tt">${esc(mi.titulo)}</div>
+      <div class="ds">${capLock?'Volte amanhã • '+g.atividades_hoje+'/'+g.limite+' atividades hoje':esc(mi.descricao)}</div></div>
       ${done?`<div class="est">${stars(est)}</div>`:locked?'':'<div class="go">›</div>'}</button>`;
     prevDone=done;
   });
@@ -332,7 +361,20 @@ function abrirMissao(matId,misId){ const s=subj(matId); const mi=s.missoes.find(
   exIdx=0; exResp=undefined; exReveal=false; exAcertos=0; exRespostas={}; mi.exercicios.forEach(e=>{delete e._ok;delete e._exp;delete e._cor;});
   flow={view:'exercicio',subject:s,missao:mi}; render(); }
 function irLeitura(){ flow={view:'leitura',subject:flow.subject,missao:flow.missao}; render(); }
-function abrirTerminal(){ window.open(CFG.terminal_url||'#','_blank'); }
+async function abrirTux(){
+  const r = await api('/api/tux/abrir', { method:'POST' });
+  if (r.data && r.data.ok){
+    window.open(r.data.url || CFG.terminal_url || '#', '_blank');
+    await recarregar(); render();
+    alert('🐧 Tux liberado! Tempo de hoje: ~' + Math.round((r.data.restante_seg||0)/60) + ' min. Bom estudo!');
+  } else if (r.data && r.data.motivo === 'trilha'){
+    alert('🔒 Falta a trilha! Conclua 1 missão de: ' + (r.data.faltam||[]).map(f=>f.nome).join(', '));
+  } else if (r.data && r.data.motivo === 'tempo'){
+    alert('⏳ O tempo de tela do Tux acabou por hoje. Volte amanhã! 🌙'); await recarregar(); render();
+  } else {
+    alert('Não foi possível abrir o Tux agora.');
+  }
+}
 function voltar(target){
   if(target==='hub'){ flow=null; }
   else if(target==='missoes'){ flow={view:'missoes',subject:flow.subject}; }

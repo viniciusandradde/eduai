@@ -17,7 +17,8 @@ SCHEMA = """
 CREATE TABLE IF NOT EXISTS aluno (
   id INTEGER PRIMARY KEY, nome TEXT, avatar TEXT,
   xp INTEGER DEFAULT 0, nivel INTEGER DEFAULT 1,
-  moedas INTEGER DEFAULT 0, streak INTEGER DEFAULT 0, ultimo_dia TEXT DEFAULT ''
+  moedas INTEGER DEFAULT 0, streak INTEGER DEFAULT 0, ultimo_dia TEXT DEFAULT '',
+  tux_dia TEXT DEFAULT '', tux_inicio TEXT DEFAULT ''
 );
 CREATE TABLE IF NOT EXISTS tentativa (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,6 +36,10 @@ CREATE TABLE IF NOT EXISTS medalha (
 CREATE TABLE IF NOT EXISTS compra (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   item TEXT, nome TEXT, tipo TEXT, custo INTEGER, status TEXT, ts TEXT
+);
+CREATE TABLE IF NOT EXISTS leitura_log (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  dia TEXT, materia TEXT, missao TEXT, ts TEXT
 );
 """
 
@@ -71,6 +76,12 @@ def conn():
 def init_db():
     with conn() as c:
         c.executescript(SCHEMA)
+        # migração: adiciona colunas tux em bancos antigos
+        for col in ("tux_dia", "tux_inicio"):
+            try:
+                c.execute(f"ALTER TABLE aluno ADD COLUMN {col} TEXT DEFAULT ''")
+            except Exception:
+                pass
         c.execute(
             "INSERT OR IGNORE INTO aluno(id,nome,avatar,xp,nivel,moedas,streak,ultimo_dia)"
             " VALUES(1,?,?,0,1,0,0,'')", (ALUNO_NOME, "🧑‍🚀"))
@@ -157,11 +168,56 @@ def concluir_leitura(materia, missao, bonus_xp=20, moedas=10):
         else:
             c.execute("UPDATE progresso SET leitura_ok=1, concluida=1, ultima_ts=?"
                       " WHERE materia=? AND missao=?", (agora, materia, missao))
+        # registra a atividade de leitura do dia (para o cap diário)
+        c.execute("INSERT INTO leitura_log(dia,materia,missao,ts) VALUES(?,?,?,?)",
+                  (str(date.today()), materia, missao, agora))
         c.execute("UPDATE aluno SET xp=xp+?, moedas=moedas+? WHERE id=1", (bonus_xp, moedas))
         xp = c.execute("SELECT xp FROM aluno WHERE id=1").fetchone()["xp"]
         c.execute("UPDATE aluno SET nivel=? WHERE id=1", (nivel_de(xp),))
         c.commit()
     return verificar_medalhas()
+
+
+def atividades_hoje():
+    with conn() as c:
+        return c.execute("SELECT COUNT(*) n FROM leitura_log WHERE dia=?",
+                         (str(date.today()),)).fetchone()["n"]
+
+def missao_concluida(materia, missao):
+    with conn() as c:
+        r = c.execute("SELECT concluida FROM progresso WHERE materia=? AND missao=?",
+                      (materia, missao)).fetchone()
+        return bool(r and r["concluida"])
+
+def tux_abrir(minutos):
+    """Marca/lê a janela de tempo do Tux do dia. Retorna segundos restantes."""
+    hoje = str(date.today()); agora = datetime.now()
+    with conn() as c:
+        r = c.execute("SELECT tux_dia, tux_inicio FROM aluno WHERE id=1").fetchone()
+        dia, inicio = (r["tux_dia"] or ''), (r["tux_inicio"] or '')
+        if dia != hoje or not inicio:
+            c.execute("UPDATE aluno SET tux_dia=?, tux_inicio=? WHERE id=1",
+                      (hoje, agora.isoformat()))
+            c.commit()
+            return minutos * 60
+        try:
+            decorrido = (agora - datetime.fromisoformat(inicio)).total_seconds()
+        except Exception:
+            decorrido = 0
+        return int(max(0, minutos * 60 - decorrido))
+
+def tux_restante(minutos):
+    """Segundos restantes hoje SEM iniciar a janela (None se ainda não abriu)."""
+    hoje = str(date.today())
+    with conn() as c:
+        r = c.execute("SELECT tux_dia, tux_inicio FROM aluno WHERE id=1").fetchone()
+    if (r["tux_dia"] or '') != hoje or not (r["tux_inicio"] or ''):
+        return None
+    try:
+        decorrido = (datetime.now() - datetime.fromisoformat(r["tux_inicio"])).total_seconds()
+    except Exception:
+        return minutos * 60
+    return int(max(0, minutos * 60 - decorrido))
 
 
 def comprar(codigo):
@@ -201,8 +257,12 @@ def estado():
             "SELECT DISTINCT item FROM compra WHERE tipo='avatar' AND status IN ('ativo','aprovado')").fetchall()]
         pendentes = [r["item"] for r in c.execute(
             "SELECT DISTINCT item FROM compra WHERE tipo='recompensa' AND status='pendente'").fetchall()]
+        ativ = c.execute("SELECT COUNT(*) n FROM leitura_log WHERE dia=?",
+                         (str(date.today()),)).fetchone()["n"]
     catalogo = [{"codigo": cod, "nome": nm, "emoji": em, "dica": dc, "tem": bool(cond(s))}
                 for (cod, nm, em, dc, cond) in MEDALHAS]
     return {"aluno": aluno, "progresso": prog, "medalhas": meds,
             "medalhas_catalogo": catalogo, "compras": compras, "ultimas": ult,
-            "loja": LOJA, "comprados": comprados, "pendentes": pendentes}
+            "loja": LOJA, "comprados": comprados, "pendentes": pendentes,
+            "atividades_hoje": ativ,
+            "tux": {"dia": aluno.get("tux_dia", ""), "inicio": aluno.get("tux_inicio", "")}}
