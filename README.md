@@ -4,8 +4,8 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/lema-leitura%20📖-7c3aed?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/gamificado-XP%20•%20medalhas%20•%20streak-f5b301?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/PWA-instal%C3%A1vel%20no%20Android-2563eb?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/gamificado-XP•medalhas•streak•loja-f5b301?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/PWA-responsivo%20•%20instalável-2563eb?style=for-the-badge" />
   <img src="https://img.shields.io/badge/feito%20com-❤️%20de%20pai-ef4444?style=for-the-badge" />
 </p>
 
@@ -23,62 +23,57 @@
 
 ## 🌟 A ideia
 
-A **VSA EduAI** transforma o estudo das matérias da escola em uma **aventura gamificada**.
-O aluno cumpre **missões**, ganha **XP, níveis, medalhas, moedas e streak** e troca recompensas
-na **loja** (itens de avatar + tempo de Minecraft).
-
-Mas a **regra de ouro nunca muda**:
+A **VSA EduAI** transforma o estudo das matérias da escola em uma **aventura gamificada**:
+o aluno cumpre **missões**, ganha **XP, níveis, medalhas, moedas e streak**, e troca recompensas
+na **loja** (itens de avatar + tempo de Minecraft). Mas a **regra de ouro nunca muda**:
 
 > 🔑 **Nenhuma missão se conclui sem a LEITURA.**
 > Depois dos exercícios, o aluno precisa **ler e registrar** (resumo escrito **ou** foto do
 > resumo no papel) antes de avançar. A leitura é o coração do projeto.
 
-Não é app de "passar o tempo": é um **convite ao crescimento** disfarçado de jogo — feito por
-um pai que acredita que quem aprende e lê todos os dias nunca para de evoluir.
+🔗 **Demo:** `https://escola.vsanexus.com` · 👨‍👩‍👦 Pais: `https://escola.vsanexus.com/pais`
 
 ---
 
-## 🧩 Módulos (Fase 1)
+## ✨ Destaques
 
-| | Módulo | O que tem |
+- 🎨 **Design hi-fi** (estilo "Lovable"): gradiente roxo, cards largos, fonte *Plus Jakarta Sans*,
+  avatar com **anel de nível**, animações e *game-feel*.
+- 📱 **PWA responsivo** (mobile-first, safe-area p/ notch) — **instalável** no Android.
+- 🧠 **Motor de exercícios próprio**, **uma questão por vez**, com correção e explicação na hora.
+  O **gabarito fica no servidor** (`/api/corrigir`) — sem "ver a resposta no código".
+- 🏆 **Gamificação completa:** XP · níveis · streak 🔥 · medalhas 🏅 · moedas 🪙 · loja 🛒.
+- 👨‍👩‍👦 **Painel dos Pais:** progresso por matéria, leituras, medalhas, últimas atividades e
+  **aprovação dos pedidos de recompensa**.
+
+---
+
+## 🧩 Módulos & conteúdo
+
+| | Módulo | Missões (exemplos) |
 |:--:|:--|:--|
-| 🔢 | **Matemática** | Frações, porcentagem, equações do 1º grau |
-| 📖 | **Português** | Interpretação de texto, ortografia, classes de palavras |
-| 🔬 | **Ciências** | Corpo humano, ecossistemas, matéria e energia |
-| 💻 | **Programação** | Lógica/algoritmos + abre a **Quest Linux** (terminal) |
-| 👨‍👩‍👦 | **Painel dos Pais** | Acompanha progresso, XP, streak, leituras, medalhas e **aprova recompensas** |
+| 🔢 | **Matemática** | Frações, porcentagem, equações · **5º ano:** decimais, geometria/perímetro, dinheiro e medidas |
+| 📖 | **Português** | Interpretação, ortografia, classes · **5º ano:** acentuação, pontuação, sentido das palavras |
+| 🔬 | **Ciências** | Corpo humano, ecossistemas, matéria · **5º ano:** nutrição/digestão, ciclo da água, materiais |
+| 💻 | **Programação** | Lógica e algoritmos + abre a **Quest Linux** (terminal) |
 
-Nível inicial: **Fundamental II (6º–9º ano)**.
+Conteúdo **autoral em JSON**, alinhado à **BNCC** (5º ano: EF05MA / EF05LP / EF05CI).
+Hoje: **~95 exercícios** (tipos: múltipla escolha, V/F, numérica, completar lacuna).
 
 ---
 
-## 🎮 Como funciona (o loop)
+## 🎮 O loop
 
 ```
-Escolhe a matéria  →  faz a missão (exercícios, correção na hora)
-        ↓
-   ganha ⭐ estrelas + XP
-        ↓
+Escolhe a matéria → faz a missão (1 questão por vez, feedback na hora)
+        ↓ ganha ⭐ estrelas + XP
    📖 LEITURA obrigatória (resumo ou foto)  ←  só aqui a missão CONCLUI
-        ↓
-   sobe de nível • ganha medalhas • moedas → loja 🛒
+        ↓ sobe de nível • ganha medalhas • moedas → loja 🛒
 ```
 
-- **Correção no servidor:** o gabarito **nunca** é enviado ao navegador (sem "ver o código").
-- **Estrelas:** 1⭐ (≥40%), 2⭐ (≥70%), 3⭐ (≥90%). Precisa de pelo menos 1⭐ para ir à leitura.
-- **Streak:** sequência de dias estudando. **Medalhas:** primeiros passos, nota máxima, leitor,
-  sequência de 3 dias, nível 5, e mais.
-
----
-
-## 🏆 Gamificação
-
-- **XP & Níveis** — cada exercício e cada leitura dá XP; sobe de nível automaticamente.
-- **Medalhas (badges)** — conquistas por marcos.
-- **Streak 🔥** — dias seguidos de estudo.
-- **Moedas 🪙 & Loja 🛒** — itens de avatar (cosméticos) e **tempo de Minecraft**
-  (vira um *pedido* que o pai aprova no painel).
-- **Avatar** — identidade do explorador (evolui na Fase 2).
+- **Estrelas:** 1⭐ (≥40%) · 2⭐ (≥70%) · 3⭐ (≥90%). Precisa de 1⭐ para ir à leitura.
+- **Medalhas:** primeiros passos, trio, nota máxima 💯, leitor 📚, streak 🔥, nível 5, e mais.
+- **Loja:** itens de avatar (cosméticos) + **tempo de Minecraft** (vira pedido → o pai aprova).
 
 ---
 
@@ -93,28 +88,28 @@ eduai/
    ├─ app.py                 # FastAPI: páginas + API (correção, gamificação, gate de leitura)
    ├─ db.py                  # SQLite (aluno, tentativa, progresso, medalha, compra)
    ├─ conteudo/*.json        # conteúdo autoral por matéria (com gabarito, server-side)
-   ├─ Dockerfile
-   ├─ requirements.txt
-   └─ static/                # hub do aluno + painel dos pais (PWA)
-      ├─ index.html / app.js     # hub + motor de exercícios + loja
+   ├─ Dockerfile / requirements.txt
+   └─ static/                # frontend (vanilla JS, sem build)
+      ├─ index.html / app.js     # hub do aluno + motor de exercícios + loja
       ├─ pais.html / pais.js     # painel dos pais
-      ├─ style.css
+      ├─ style.css               # design system
       └─ manifest.webmanifest / sw.js / icon-*.png
 ```
 
-- **Backend:** FastAPI (Python 3.11). **Dados:** SQLite (WAL) em `/data/escola.db`.
-- **Frontend:** HTML/CSS/JS puro (sem frameworks), **mobile-first** e **PWA** (instalável).
-- **Conteúdo:** orientado a dados (JSON) — o motor renderiza/corrige; fácil de expandir.
-- **Deploy:** Docker Compose atrás do **Traefik** (Let's Encrypt), pronto para **Dokploy**.
+**Stack:** FastAPI (Python 3.11) · SQLite (WAL) em `/data/escola.db` · frontend HTML/CSS/JS puro
+(PWA) · Docker Compose atrás do **Traefik** (Let's Encrypt), pronto para **Dokploy**.
 
-### O contrato de dados (SQLite `/data/escola.db`)
-| Tabela | Para quê |
-|---|---|
-| `aluno` | nome, avatar, XP, nível, moedas, streak |
-| `tentativa` | cada resolução de missão (acertos, estrelas, XP, tempo) |
-| `progresso` | por missão: melhor estrela, concluída, **leitura_ok** |
-| `medalha` | medalhas conquistadas |
-| `compra` | itens/recompensas da loja (status `pendente`/`aprovado`) |
+### Principais endpoints
+| Método | Rota | Para quê |
+|---|---|---|
+| GET | `/` · `/pais` | hub do aluno · painel dos pais |
+| GET | `/api/conteudo` | matérias/missões **sem gabarito** |
+| GET | `/api/estado` | XP, nível, streak, progresso, medalhas, loja |
+| POST | `/api/corrigir` | corrige **1 questão** (gabarito no servidor) |
+| POST | `/api/tentativa` | pontua a missão (XP/estrelas) |
+| POST | `/api/leitura` · `/api/leitura-foto` | **gate de leitura** (resumo ou foto) |
+| POST | `/api/loja/comprar` | compra item/recompensa |
+| GET/POST | `/api/pais/estado` · `/api/pais/aprovar` | painel + aprovar recompensa |
 
 ---
 
@@ -127,50 +122,33 @@ cp .env.example .env        # ajuste senhas e domínio
 docker compose up -d --build
 ```
 
-| Acesso | URL |
-|---|---|
-| 🧒 Aluno | `https://ESCOLA_DOMAIN/` |
-| 👨‍👩‍👦 Pais | `https://ESCOLA_DOMAIN/pais` |
-
-> Local (sem Traefik): exponha a porta do serviço e acesse `http://localhost:8080`.
-
-### Variáveis (`.env`)
 | Variável | Padrão | Descrição |
 |---|---|---|
 | `ESCOLA_DOMAIN` | `escola.vsanexus.com` | Domínio (Traefik/HTTPS) |
 | `ALUNO_NOME` | `Explorador` | Nome do aluno |
-| `ALUNO_SENHA` | — | Senha do hub do aluno |
-| `PAI_SENHA` | — | Senha do painel dos pais |
-| `TERMINAL_URL` | `https://vgtux.vsanexus.com` | Link da Quest Linux (módulo Programação) |
-| `XP_POR_NIVEL` | `200` | XP necessário por nível |
+| `ALUNO_SENHA` / `PAI_SENHA` | — | Senhas do hub / do painel |
+| `TERMINAL_URL` | `https://vgtux.vsanexus.com` | Link da Quest Linux |
+| `XP_POR_NIVEL` | `200` | XP por nível |
 
----
-
-## 📲 Instalar no celular (Android)
-
-No Chrome: abra a URL → menu **⋮** → **Instalar app**. Abre em tela cheia, com ícone próprio.
+📲 **Instalar no Android:** abra a URL no Chrome → menu **⋮** → **Instalar app**.
 
 ---
 
 ## 🗺️ Roadmap
 
-- **Fase 1 — MVP ✅** matérias + gamificação + **gate de leitura** + painel dos pais + PWA.
+- **Fase 1 — MVP ✅** matérias + gamificação + **gate de leitura** + painel dos pais + PWA responsivo + design hi-fi.
 - **Fase 2 — IA (Claude):** 🤖 Tutor IA (explica o erro), ✍️ Português com IA (comenta o resumo),
-  🧭 trilhas adaptativas, geração assistida de exercícios; avatar/loja avançados; missões diárias;
-  novos tipos de exercício (arrastar, associar, ordenar).
-- **Fase 3 — Escola:** História Imersiva, Física Visual, **Painel Escolar** e **multi-aluno**
-  (SaaS, migração SQLite → Postgres, login de usuários).
+  🧭 trilhas adaptativas, geração assistida de exercícios; missões diárias; novos tipos de exercício.
+- **Fase 3 — Escola:** História e Física, **Painel Escolar**, **multi-aluno** (SaaS, Postgres, login).
 - **Integração:** unir a recompensa com a **Quest Linux/Minecraft** (projeto VGTUX) via volume comum.
 
 ---
 
 ## 🔒 Segurança & privacidade
 
-- Acesso por senha (aluno e pai separados); gabarito corrigido no servidor.
+- Acesso por senha (aluno e pai separados); **gabarito corrigido no servidor**.
 - Fotos do resumo ficam no volume privado; servidas só ao pai (senha + nome sanitizado).
 - Projeto single-aluno (uso familiar). Multi-aluno/escola só na Fase 3.
-
----
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:2563eb,100:7c3aed&height=120&section=footer&text=Bora%20aprender!&fontSize=24&fontColor=ffffff" alt="footer" />
