@@ -149,6 +149,26 @@ def api_estado(senha: str = ''):
     e["config"] = {"terminal_url": TERMINAL_URL}
     return JSONResponse(e)
 
+class CorrigirIn(BaseModel):
+    materia: str
+    missao:  str
+    exercicio: str
+    resposta: object = None
+
+@app.post('/api/corrigir')
+def api_corrigir(payload: CorrigirIn, senha: str = ''):
+    """Corrige UM exercício (feedback imediato) sem gravar nada — gabarito fica no servidor."""
+    checar(senha, ALUNO_SENHA)
+    mi = _missao(payload.materia, payload.missao)
+    if not mi:
+        raise HTTPException(404, "Missão não encontrada")
+    ex = next((e for e in mi.get('exercicios', []) if e['id'] == payload.exercicio), None)
+    if not ex:
+        raise HTTPException(404, "Exercício não encontrado")
+    ok = _acerto(ex, payload.resposta)
+    return {"correto": ok, "explicacao": ex.get('explicacao', ''),
+            "resposta": ex.get('correta', ex.get('resposta'))}
+
 class TentativaIn(BaseModel):
     materia: str
     missao:  str

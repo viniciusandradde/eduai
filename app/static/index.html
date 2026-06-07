@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>VSA EduAI ⚔</title>
+<title>VSA EduAI — hub do aluno</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#7c3aed">
 <meta name="mobile-web-app-capable" content="yes">
@@ -14,44 +17,7 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-
-<!-- Login -->
-<div id="login">
-  <div class="logo">📚</div>
-  <h1>VSA EduAI</h1>
-  <p style="color:var(--dim)">Leia. Aprenda. Evolua.</p>
-  <input id="senha" type="password" placeholder="Sua senha" autocomplete="current-password" />
-  <button class="btn" style="max-width:280px" onclick="entrar()">Entrar</button>
-  <div id="login-msg" class="msg err"></div>
-</div>
-
-<!-- App -->
-<div id="app" class="wrap hidden">
-  <header>
-    <div class="avatar" id="h-avatar">🧑‍🚀</div>
-    <div class="hstats">
-      <div class="nome" id="h-nome">Explorador</div>
-      <div class="xpbar"><i id="h-xp"></i></div>
-      <div class="hmeta">
-        <span>🔥 <b id="h-streak">0</b> dias</span>
-        <span>🪙 <b id="h-moedas">0</b></span>
-        <span>⭐ <b id="h-xpnum">0</b> XP</span>
-      </div>
-    </div>
-    <div class="nivel">Nv <span id="h-nivel">1</span></div>
-  </header>
-
-  <div class="tabs">
-    <button data-tab="materias" class="on" onclick="aba('materias')">📘 Matérias</button>
-    <button data-tab="medalhas" onclick="aba('medalhas')">🏅 Medalhas</button>
-    <button data-tab="loja" onclick="aba('loja')">🛒 Loja</button>
-  </div>
-
-  <div id="view"></div>
-
-  <div class="foot">VSA EduAI • <a href="/pais">painel dos pais</a></div>
-</div>
-
+<div id="root"></div>
 <script src="/app.js"></script>
 </body>
 </html>

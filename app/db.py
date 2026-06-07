@@ -40,23 +40,23 @@ CREATE TABLE IF NOT EXISTS compra (
 
 # Loja (itens de avatar + recompensas reais aprovadas pelo pai)
 LOJA = [
-    {"codigo": "av_capa",    "nome": "Capa de herói 🦸", "tipo": "avatar",     "custo": 30},
-    {"codigo": "av_coroa",   "nome": "Coroa 👑",         "tipo": "avatar",     "custo": 60},
-    {"codigo": "av_oculos",  "nome": "Óculos legais 🕶️", "tipo": "avatar",     "custo": 40},
-    {"codigo": "mc_15",      "nome": "15 min de Minecraft ⛏️", "tipo": "recompensa", "custo": 50},
-    {"codigo": "mc_30",      "nome": "30 min de Minecraft ⛏️", "tipo": "recompensa", "custo": 90},
+    {"codigo": "av_capa",    "nome": "Capa de herói",      "emoji": "🦸", "tipo": "avatar",     "custo": 30},
+    {"codigo": "av_oculos",  "nome": "Óculos legais",      "emoji": "🕶️", "tipo": "avatar",     "custo": 40},
+    {"codigo": "av_coroa",   "nome": "Coroa",              "emoji": "👑", "tipo": "avatar",     "custo": 60},
+    {"codigo": "mc_15",      "nome": "15 min de Minecraft", "emoji": "⛏️", "tipo": "recompensa", "custo": 50},
+    {"codigo": "mc_30",      "nome": "30 min de Minecraft", "emoji": "⛏️", "tipo": "recompensa", "custo": 90},
 ]
 
-# Medalhas: (codigo, nome, emoji, condição(stats)->bool)
+# Medalhas: (codigo, nome, emoji, dica, condição(stats)->bool)
 MEDALHAS = [
-    ("primeira",  "Primeiros passos",   "🥉", lambda s: s["missoes_concluidas"] >= 1),
-    ("trio",      "Trio de missões",    "🥈", lambda s: s["missoes_concluidas"] >= 3),
-    ("mestre",    "Mestre dedicado",    "🥇", lambda s: s["missoes_concluidas"] >= 10),
-    ("estrelado", "Caçador de estrelas","🌟", lambda s: s["estrelas_totais"] >= 15),
-    ("perfeito",  "Nota máxima",        "💯", lambda s: s["tres_estrelas"] >= 1),
-    ("leitor",    "Leitor de verdade",  "📚", lambda s: s["leituras"] >= 3),
-    ("fogo3",     "Sequência de 3 dias","🔥", lambda s: s["streak"] >= 3),
-    ("nivel5",    "Nível 5",            "⭐", lambda s: s["nivel"] >= 5),
+    ("primeira",  "Primeiros passos",   "🥉", "Conclua 1 missão",        lambda s: s["missoes_concluidas"] >= 1),
+    ("trio",      "Trio de missões",    "🥈", "Conclua 3 missões",       lambda s: s["missoes_concluidas"] >= 3),
+    ("mestre",    "Mestre dedicado",    "🥇", "Conclua 10 missões",      lambda s: s["missoes_concluidas"] >= 10),
+    ("estrelado", "Caçador de estrelas","🌟", "Junte 15 estrelas",       lambda s: s["estrelas_totais"] >= 15),
+    ("perfeito",  "Nota máxima",        "💯", "Tire 3⭐ numa missão",     lambda s: s["tres_estrelas"] >= 1),
+    ("leitor",    "Leitor de verdade",  "📚", "Faça 3 leituras",         lambda s: s["leituras"] >= 3),
+    ("fogo3",     "Sequência de 3 dias","🔥", "Estude 3 dias seguidos",  lambda s: s["streak"] >= 3),
+    ("nivel5",    "Nível 5",            "⭐", "Chegue ao nível 5",        lambda s: s["nivel"] >= 5),
 ]
 
 
@@ -101,7 +101,7 @@ def verificar_medalhas():
     with conn() as c:
         s = _stats(c)
         ja = {r["codigo"] for r in c.execute("SELECT codigo FROM medalha").fetchall()}
-        for codigo, nome, emoji, cond in MEDALHAS:
+        for codigo, nome, emoji, dica, cond in MEDALHAS:
             if codigo not in ja and cond(s):
                 c.execute("INSERT INTO medalha(codigo,nome,emoji,ts) VALUES(?,?,?,?)",
                           (codigo, nome, emoji, datetime.now().isoformat()))
@@ -196,5 +196,13 @@ def estado():
         meds = [dict(r) for r in c.execute("SELECT * FROM medalha ORDER BY ts").fetchall()]
         compras = [dict(r) for r in c.execute("SELECT * FROM compra ORDER BY ts DESC LIMIT 30").fetchall()]
         ult = [dict(r) for r in c.execute("SELECT * FROM tentativa ORDER BY id DESC LIMIT 20").fetchall()]
+        s = _stats(c)
+        comprados = [r["item"] for r in c.execute(
+            "SELECT DISTINCT item FROM compra WHERE tipo='avatar' AND status IN ('ativo','aprovado')").fetchall()]
+        pendentes = [r["item"] for r in c.execute(
+            "SELECT DISTINCT item FROM compra WHERE tipo='recompensa' AND status='pendente'").fetchall()]
+    catalogo = [{"codigo": cod, "nome": nm, "emoji": em, "dica": dc, "tem": bool(cond(s))}
+                for (cod, nm, em, dc, cond) in MEDALHAS]
     return {"aluno": aluno, "progresso": prog, "medalhas": meds,
-            "compras": compras, "ultimas": ult, "loja": LOJA}
+            "medalhas_catalogo": catalogo, "compras": compras, "ultimas": ult,
+            "loja": LOJA, "comprados": comprados, "pendentes": pendentes}
