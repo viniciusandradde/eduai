@@ -1,21 +1,37 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Gera os ícones PWA do VSA EduAI (pixel-art, só stdlib): livro branco em fundo roxo."""
+"""Gera os ícones PWA do VSA EduAI (pixel-art, só stdlib):
+pilha de livros coloridos em fundo roxo — combinando com a página inicial (📚)."""
 import zlib, struct, os
 
 GRID = 16
-ROXO = (124, 58, 237)
-BRANCO = (245, 247, 250)
+PAL = {
+    '.': (124, 58, 237),   # roxo (fundo, tema)
+    'B': (59, 130, 246),   # livro azul
+    'R': (239, 68, 68),    # livro vermelho
+    'G': (34, 197, 94),    # livro verde
+    'W': (245, 247, 250),  # páginas (branco)
+    'K': (15, 17, 23),     # lombada/sombra (escuro)
+}
 
-LIVRO = [  # 8x8 — livro aberto
-    "........",
-    ".XXXXXX.",
-    ".X.XX.X.",
-    ".X.XX.X.",
-    ".X.XX.X.",
-    ".X.XX.X.",
-    ".XXXXXX.",
-    "........",
+# Pilha de 3 livros (16x16): lombada (K) à esquerda, páginas (W) à direita.
+ART = [
+    "................",
+    "................",
+    "................",
+    "..KBBBBBBBBBBW..",
+    "..KBBBBBBBBBBW..",
+    "..KKKKKKKKKKKK..",
+    "..KRRRRRRRRRRW..",
+    "..KRRRRRRRRRRW..",
+    "..KKKKKKKKKKKK..",
+    "..KGGGGGGGGGGW..",
+    "..KGGGGGGGGGGW..",
+    "..KKKKKKKKKKKK..",
+    "................",
+    "................",
+    "................",
+    "................",
 ]
 
 def png(pixels, w):
@@ -31,18 +47,13 @@ def png(pixels, w):
             + ch(b'IDAT', zlib.compress(bytes(raw), 9)) + ch(b'IEND', b''))
 
 def render(scale):
-    grid = [[ROXO] * GRID for _ in range(GRID)]
-    for y, linha in enumerate(LIVRO):
-        for x, c in enumerate(linha):
-            if c == 'X':
-                grid[y + 4][x + 4] = BRANCO
     out = []
-    for row in grid:
-        rp = []
-        for px in row:
-            rp += [px] * scale
+    for linha in ART:
+        rowpix = []
+        for ch in linha:
+            rowpix += [PAL.get(ch, PAL['.'])] * scale
         for _ in range(scale):
-            out.append(list(rp))
+            out.append(list(rowpix))
     return png(out, GRID * scale)
 
 dest = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'app', 'static')
