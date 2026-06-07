@@ -1,0 +1,64 @@
+{
+  "id": "matematica",
+  "nome": "Matemática",
+  "icone": "🔢",
+  "cor": "#2563eb",
+  "ordem": 1,
+  "missoes": [
+    {
+      "id": "fracoes",
+      "titulo": "Frações",
+      "descricao": "Somar, comparar e simplificar frações.",
+      "exercicios": [
+        {"id": "f1", "tipo": "multipla", "enunciado": "Quanto é 1/2 + 1/4?",
+         "opcoes": ["1/6", "2/6", "3/4", "1/3"], "correta": 2,
+         "explicacao": "1/2 = 2/4, então 2/4 + 1/4 = 3/4."},
+        {"id": "f2", "tipo": "numerica", "enunciado": "Quanto é 3/4 de 20?",
+         "resposta": 15, "explicacao": "20 ÷ 4 = 5; 5 × 3 = 15."},
+        {"id": "f3", "tipo": "vf", "enunciado": "A fração 2/4 é igual a 1/2.",
+         "resposta": true, "explicacao": "Dividindo em cima e embaixo por 2: 2/4 = 1/2."},
+        {"id": "f4", "tipo": "multipla", "enunciado": "Qual é maior?",
+         "opcoes": ["2/3", "3/5", "São iguais"], "correta": 0,
+         "explicacao": "2/3 ≈ 0,67 e 3/5 = 0,6. Logo 2/3 é maior."},
+        {"id": "f5", "tipo": "lacuna", "enunciado": "A fração 5/10 simplificada é 1/___",
+         "resposta": "2", "explicacao": "5/10 dividido por 5 = 1/2."}
+      ]
+    },
+    {
+      "id": "porcentagem",
+      "titulo": "Porcentagem",
+      "descricao": "Calcular porcentagens e descontos.",
+      "exercicios": [
+        {"id": "p1", "tipo": "numerica", "enunciado": "Quanto é 10% de 200?",
+         "resposta": 20, "explicacao": "10% = 0,10; 0,10 × 200 = 20."},
+        {"id": "p2", "tipo": "numerica", "enunciado": "Quanto é 25% de 80?",
+         "resposta": 20, "explicacao": "25% é 1/4; 80 ÷ 4 = 20."},
+        {"id": "p3", "tipo": "multipla", "enunciado": "Um produto de R$ 50 com 20% de desconto custa:",
+         "opcoes": ["R$ 30", "R$ 40", "R$ 45", "R$ 10"], "correta": 1,
+         "explicacao": "20% de 50 = 10; 50 − 10 = 40."},
+        {"id": "p4", "tipo": "vf", "enunciado": "50% é o mesmo que a metade.",
+         "resposta": true, "explicacao": "50% = 50/100 = 1/2 = metade."},
+        {"id": "p5", "tipo": "numerica", "enunciado": "Se 30 vale 100%, quanto vale 50%?",
+         "resposta": 15, "explicacao": "Metade de 30 é 15."}
+      ]
+    },
+    {
+      "id": "equacoes",
+      "titulo": "Equações do 1º grau",
+      "descricao": "Descobrir o valor de x.",
+      "exercicios": [
+        {"id": "e1", "tipo": "numerica", "enunciado": "x + 5 = 12. Qual o valor de x?",
+         "resposta": 7, "explicacao": "x = 12 − 5 = 7."},
+        {"id": "e2", "tipo": "numerica", "enunciado": "2x = 10. Qual o valor de x?",
+         "resposta": 5, "explicacao": "x = 10 ÷ 2 = 5."},
+        {"id": "e3", "tipo": "numerica", "enunciado": "3x − 6 = 9. Qual o valor de x?",
+         "resposta": 5, "explicacao": "3x = 15, então x = 5."},
+        {"id": "e4", "tipo": "multipla", "enunciado": "x ÷ 2 = 4. Qual o valor de x?",
+         "opcoes": ["2", "6", "8", "16"], "correta": 2,
+         "explicacao": "x = 4 × 2 = 8."},
+        {"id": "e5", "tipo": "vf", "enunciado": "Na equação x + 3 = 3, o valor de x é 0.",
+         "resposta": true, "explicacao": "x = 3 − 3 = 0."}
+      ]
+    }
+  ]
+}

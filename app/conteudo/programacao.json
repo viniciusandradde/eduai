@@ -1,0 +1,37 @@
+{
+  "id": "programacao",
+  "nome": "Programação e Informática",
+  "icone": "💻",
+  "cor": "#7c3aed",
+  "ordem": 4,
+  "missoes": [
+    {
+      "id": "quest_linux",
+      "titulo": "Quest Linux (terminal)",
+      "descricao": "Sua aventura no terminal: 20 etapas de Linux + Minecraft no final.",
+      "link": true,
+      "exercicios": []
+    },
+    {
+      "id": "logica",
+      "titulo": "Lógica e algoritmos",
+      "descricao": "Sequências, padrões e como o computador pensa.",
+      "exercicios": [
+        {"id": "l1", "tipo": "multipla", "enunciado": "Complete a sequência: 2, 4, 6, 8, ___",
+         "opcoes": ["9", "10", "12"], "correta": 1,
+         "explicacao": "Soma 2 a cada passo: 8 + 2 = 10."},
+        {"id": "l2", "tipo": "multipla", "enunciado": "Complete a sequência: 1, 2, 4, 8, ___",
+         "opcoes": ["10", "12", "16"], "correta": 2,
+         "explicacao": "Dobra a cada passo: 8 × 2 = 16."},
+        {"id": "l3", "tipo": "multipla", "enunciado": "O que é um algoritmo?",
+         "opcoes": ["Um passo a passo para resolver algo", "Um tipo de computador", "Um jogo"],
+         "correta": 0, "explicacao": "Algoritmo é uma sequência de passos para resolver um problema."},
+        {"id": "l4", "tipo": "vf", "enunciado": "Repetir comandos em programação chama-se laço (loop).",
+         "resposta": true, "explicacao": "O laço (loop) repete instruções."},
+        {"id": "l5", "tipo": "multipla", "enunciado": "Qual comando toma uma decisão (escolhe um caminho)?",
+         "opcoes": ["se / if", "loop", "print"], "correta": 0,
+         "explicacao": "O 'se' (if) decide entre caminhos conforme uma condição."}
+      ]
+    }
+  ]
+}

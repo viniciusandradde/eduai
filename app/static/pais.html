@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>VSA EduAI — Painel dos Pais</title>
+<meta name="theme-color" content="#1f6feb">
+<link rel="icon" type="image/png" href="/icon-192.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div id="login">
+  <div class="logo">📊</div>
+  <h1>Painel dos Pais</h1>
+  <p style="color:var(--dim)">VSA EduAI</p>
+  <input id="senha" type="password" placeholder="Senha do pai" autocomplete="current-password" />
+  <button class="btn" style="max-width:280px" onclick="entrar()">Entrar</button>
+  <div id="login-msg" class="msg err"></div>
+</div>
+
+<div id="app" class="wrap hidden">
+  <header>
+    <div class="avatar" id="h-avatar">🧑‍🚀</div>
+    <div class="hstats">
+      <div class="nome" id="h-nome">—</div>
+      <div class="hmeta">
+        <span>Nível <b id="h-nivel">1</b></span>
+        <span>⭐ <b id="h-xp">0</b> XP</span>
+        <span>🔥 <b id="h-streak">0</b> dias</span>
+        <span>🪙 <b id="h-moedas">0</b></span>
+      </div>
+    </div>
+  </header>
+  <div id="view"></div>
+  <div class="foot">VSA EduAI • <a href="/">hub do aluno</a></div>
+</div>
+
+<script src="/pais.js"></script>
+</body>
+</html>

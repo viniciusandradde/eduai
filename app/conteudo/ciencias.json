@@ -1,0 +1,68 @@
+{
+  "id": "ciencias",
+  "nome": "Ciências",
+  "icone": "🔬",
+  "cor": "#16a34a",
+  "ordem": 3,
+  "missoes": [
+    {
+      "id": "corpo",
+      "titulo": "Corpo humano",
+      "descricao": "Órgãos e como o corpo funciona.",
+      "exercicios": [
+        {"id": "co1", "tipo": "multipla", "enunciado": "Qual órgão bombeia o sangue?",
+         "opcoes": ["Pulmão", "Coração", "Fígado", "Rim"], "correta": 1,
+         "explicacao": "O coração bombeia o sangue pelo corpo."},
+        {"id": "co2", "tipo": "multipla", "enunciado": "Quantos ossos tem o corpo humano adulto (aprox.)?",
+         "opcoes": ["106", "206", "306"], "correta": 1,
+         "explicacao": "O corpo adulto tem cerca de 206 ossos."},
+        {"id": "co3", "tipo": "vf", "enunciado": "O cérebro controla o corpo.",
+         "resposta": true, "explicacao": "O cérebro comanda movimentos, pensamentos e sentidos."},
+        {"id": "co4", "tipo": "multipla", "enunciado": "Onde acontece a maior parte da digestão?",
+         "opcoes": ["Estômago e intestino", "Pulmões", "Coração"], "correta": 0,
+         "explicacao": "A digestão ocorre principalmente no estômago e intestino."},
+        {"id": "co5", "tipo": "lacuna", "enunciado": "Respiramos o oxigênio com os ___",
+         "resposta": "pulmões", "explicacao": "Os pulmões fazem a troca gasosa."}
+      ]
+    },
+    {
+      "id": "ecossistemas",
+      "titulo": "Ecossistemas",
+      "descricao": "Seres vivos e cadeias alimentares.",
+      "exercicios": [
+        {"id": "ec1", "tipo": "multipla", "enunciado": "Quem produz o próprio alimento?",
+         "opcoes": ["As plantas", "O leão", "A cobra"], "correta": 0,
+         "explicacao": "As plantas fazem fotossíntese (produtores)."},
+        {"id": "ec2", "tipo": "vf", "enunciado": "O Sol é fonte de energia para a vida na Terra.",
+         "resposta": true, "explicacao": "A energia do Sol inicia as cadeias alimentares."},
+        {"id": "ec3", "tipo": "multipla", "enunciado": "Um animal herbívoro come:",
+         "opcoes": ["Carne", "Plantas", "Pedras"], "correta": 1,
+         "explicacao": "Herbívoros se alimentam de plantas."},
+        {"id": "ec4", "tipo": "multipla", "enunciado": "A cadeia alimentar começa pelos:",
+         "opcoes": ["Produtores", "Consumidores", "Decompositores"], "correta": 0,
+         "explicacao": "Começa pelos produtores (plantas/algas)."},
+        {"id": "ec5", "tipo": "lacuna", "enunciado": "Fungos e bactérias que decompõem são os decom___",
+         "resposta": "decompositores", "explicacao": "São os decompositores."}
+      ]
+    },
+    {
+      "id": "materia",
+      "titulo": "Matéria e energia",
+      "descricao": "Estados da matéria e temperatura.",
+      "exercicios": [
+        {"id": "m1", "tipo": "multipla", "enunciado": "Quais são os estados físicos da água?",
+         "opcoes": ["Sólido, líquido e gasoso", "Só líquido", "Só sólido"], "correta": 0,
+         "explicacao": "Sólido (gelo), líquido (água) e gasoso (vapor)."},
+        {"id": "m2", "tipo": "numerica", "enunciado": "A que temperatura a água ferve (°C, nível do mar)?",
+         "resposta": 100, "explicacao": "A água ferve a 100 °C ao nível do mar."},
+        {"id": "m3", "tipo": "numerica", "enunciado": "A que temperatura a água congela (°C)?",
+         "resposta": 0, "explicacao": "A água congela a 0 °C."},
+        {"id": "m4", "tipo": "vf", "enunciado": "A energia pode ser transformada de uma forma em outra.",
+         "resposta": true, "explicacao": "A energia se transforma (ex.: elétrica → luz)."},
+        {"id": "m5", "tipo": "multipla", "enunciado": "O gelo é a água no estado:",
+         "opcoes": ["Sólido", "Líquido", "Gasoso"], "correta": 0,
+         "explicacao": "Gelo = água sólida."}
+      ]
+    }
+  ]
+}

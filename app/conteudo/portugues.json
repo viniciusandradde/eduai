@@ -1,0 +1,70 @@
+{
+  "id": "portugues",
+  "nome": "Português",
+  "icone": "📖",
+  "cor": "#dc2626",
+  "ordem": 2,
+  "missoes": [
+    {
+      "id": "interpretacao",
+      "titulo": "Interpretação de texto",
+      "descricao": "Ler com atenção e entender o texto.",
+      "texto": "Joana acordou cedo, pegou a bicicleta e foi à padaria comprar pão. No caminho, encontrou seu amigo Pedro, que voltava da escola.",
+      "exercicios": [
+        {"id": "i1", "tipo": "multipla", "enunciado": "Como Joana foi à padaria?",
+         "opcoes": ["A pé", "De bicicleta", "De carro"], "correta": 1,
+         "explicacao": "O texto diz que ela 'pegou a bicicleta'."},
+        {"id": "i2", "tipo": "multipla", "enunciado": "O que Joana foi comprar?",
+         "opcoes": ["Leite", "Pão", "Bolo"], "correta": 1,
+         "explicacao": "Ela foi 'comprar pão'."},
+        {"id": "i3", "tipo": "multipla", "enunciado": "Quem ela encontrou no caminho?",
+         "opcoes": ["Pedro", "Maria", "Ninguém"], "correta": 0,
+         "explicacao": "Ela encontrou seu amigo Pedro."},
+        {"id": "i4", "tipo": "vf", "enunciado": "Joana acordou tarde.",
+         "resposta": false, "explicacao": "O texto diz que ela 'acordou cedo'."},
+        {"id": "i5", "tipo": "lacuna", "enunciado": "Joana foi à ___ comprar pão.",
+         "resposta": "padaria", "explicacao": "Ela foi à padaria."}
+      ]
+    },
+    {
+      "id": "ortografia",
+      "titulo": "Ortografia",
+      "descricao": "Escrever do jeito certo.",
+      "exercicios": [
+        {"id": "o1", "tipo": "multipla", "enunciado": "Qual está escrita corretamente?",
+         "opcoes": ["excessão", "exceção", "esceção"], "correta": 1,
+         "explicacao": "O certo é 'exceção'."},
+        {"id": "o2", "tipo": "multipla", "enunciado": "Qual está correta?",
+         "opcoes": ["concerteza", "com certeza", "comcerteza"], "correta": 1,
+         "explicacao": "São duas palavras: 'com certeza'."},
+        {"id": "o3", "tipo": "lacuna", "enunciado": "Eu vou ___ escola. (a / à)",
+         "resposta": "à", "explicacao": "Crase: vou à (a + a) escola."},
+        {"id": "o4", "tipo": "vf", "enunciado": "'A gente' e 'agente' significam a mesma coisa.",
+         "resposta": false, "explicacao": "'A gente' = nós; 'agente' = quem age (ex.: agente secreto)."},
+        {"id": "o5", "tipo": "multipla", "enunciado": "O plural de 'cidadão' é:",
+         "opcoes": ["cidadões", "cidadãos", "cidadães"], "correta": 1,
+         "explicacao": "O plural correto é 'cidadãos'."}
+      ]
+    },
+    {
+      "id": "classes",
+      "titulo": "Classes de palavras",
+      "descricao": "Substantivo, verbo, adjetivo e advérbio.",
+      "exercicios": [
+        {"id": "c1", "tipo": "multipla", "enunciado": "A palavra 'correr' é um:",
+         "opcoes": ["substantivo", "verbo", "adjetivo"], "correta": 1,
+         "explicacao": "'Correr' indica ação → verbo."},
+        {"id": "c2", "tipo": "multipla", "enunciado": "A palavra 'bonito' é um:",
+         "opcoes": ["adjetivo", "advérbio", "verbo"], "correta": 0,
+         "explicacao": "'Bonito' dá característica → adjetivo."},
+        {"id": "c3", "tipo": "multipla", "enunciado": "A palavra 'rapidamente' é um:",
+         "opcoes": ["adjetivo", "advérbio", "substantivo"], "correta": 1,
+         "explicacao": "Termina em -mente e indica modo → advérbio."},
+        {"id": "c4", "tipo": "vf", "enunciado": "'Casa' é um substantivo.",
+         "resposta": true, "explicacao": "Nomeia um ser/coisa → substantivo."},
+        {"id": "c5", "tipo": "lacuna", "enunciado": "A palavra que liga orações (e, mas, porque) é a con___",
+         "resposta": "conjunção", "explicacao": "São conjunções."}
+      ]
+    }
+  ]
+}

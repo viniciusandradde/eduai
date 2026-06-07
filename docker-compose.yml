@@ -1,0 +1,41 @@
+# =============================================================
+# VSA EduAI — docker-compose (Dokploy + Traefik)
+# =============================================================
+# Sobe um único serviço web (hub do aluno + painel dos pais).
+# Exposto pelo Traefik em ESCOLA_DOMAIN (HTTPS). Sem publicar
+# porta no host. Estado (SQLite + fotos) no volume eduai-data.
+# =============================================================
+
+services:
+  eduai:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: vsa-eduai
+    restart: unless-stopped
+    environment:
+      ALUNO_NOME:    ${ALUNO_NOME:-Explorador}
+      ALUNO_SENHA:   ${ALUNO_SENHA:-aluno}
+      PAI_SENHA:     ${PAI_SENHA:-pai}
+      TERMINAL_URL:  ${TERMINAL_URL:-https://vgtux.vsanexus.com}
+      XP_POR_NIVEL:  ${XP_POR_NIVEL:-200}
+    volumes:
+      - eduai-data:/data
+    networks:
+      - dokploy-network
+    mem_limit: 256m
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=dokploy-network"
+      - "traefik.http.routers.eduai.rule=Host(`${ESCOLA_DOMAIN:-escola.vsanexus.com}`)"
+      - "traefik.http.routers.eduai.entrypoints=websecure"
+      - "traefik.http.routers.eduai.tls.certresolver=letsencrypt"
+      - "traefik.http.services.eduai.loadbalancer.server.port=8080"
+
+volumes:
+  eduai-data:
+
+networks:
+  # Rede do Dokploy (Traefik). Criada pelo Dokploy como attachable.
+  dokploy-network:
+    external: true
