@@ -59,6 +59,61 @@
         {"id": "e5", "tipo": "vf", "enunciado": "Na equação x + 3 = 3, o valor de x é 0.",
          "resposta": true, "explicacao": "x = 3 − 3 = 0."}
       ]
+    },
+    {
+      "id": "decimais",
+      "titulo": "Números decimais (5º ano)",
+      "descricao": "Ler, comparar e somar números com vírgula.",
+      "exercicios": [
+        {"id": "d1", "tipo": "multipla", "enunciado": "Como se lê o número 0,5?",
+         "opcoes": ["cinco", "cinco décimos", "cinquenta"], "correta": 1,
+         "explicacao": "0,5 = cinco décimos = meio."},
+        {"id": "d2", "tipo": "numerica", "enunciado": "Quanto é 0,5 + 0,5?",
+         "resposta": 1, "explicacao": "Meio + meio = 1 inteiro."},
+        {"id": "d3", "tipo": "multipla", "enunciado": "Qual número é maior?",
+         "opcoes": ["0,7", "0,07", "São iguais"], "correta": 0,
+         "explicacao": "0,7 (sete décimos) é maior que 0,07 (sete centésimos)."},
+        {"id": "d4", "tipo": "vf", "enunciado": "0,25 é o mesmo que a fração 1/4.",
+         "resposta": true, "explicacao": "Um quarto = 0,25."},
+        {"id": "d5", "tipo": "numerica", "enunciado": "Quanto é 1,2 + 0,8?",
+         "resposta": 2, "explicacao": "1,2 + 0,8 = 2,0."}
+      ]
+    },
+    {
+      "id": "geometria",
+      "titulo": "Geometria e perímetro (5º ano)",
+      "descricao": "Formas, lados e perímetro de figuras.",
+      "exercicios": [
+        {"id": "g1", "tipo": "numerica", "enunciado": "Qual o perímetro de um quadrado de lado 5 cm? (em cm)",
+         "resposta": 20, "explicacao": "Perímetro = 4 × 5 = 20 cm."},
+        {"id": "g2", "tipo": "multipla", "enunciado": "Quantos lados tem um hexágono?",
+         "opcoes": ["5", "6", "8"], "correta": 1, "explicacao": "Hexágono tem 6 lados."},
+        {"id": "g3", "tipo": "numerica", "enunciado": "Perímetro de um retângulo de 4 cm por 6 cm? (em cm)",
+         "resposta": 20, "explicacao": "4 + 6 + 4 + 6 = 20 cm."},
+        {"id": "g4", "tipo": "vf", "enunciado": "Um quadrado tem 4 ângulos retos (de 90°).",
+         "resposta": true, "explicacao": "Todos os ângulos do quadrado são retos."},
+        {"id": "g5", "tipo": "multipla", "enunciado": "Qual figura tem 3 lados?",
+         "opcoes": ["Triângulo", "Quadrado", "Círculo"], "correta": 0,
+         "explicacao": "O triângulo tem 3 lados."}
+      ]
+    },
+    {
+      "id": "dinheiro_medidas",
+      "titulo": "Dinheiro e medidas (5º ano)",
+      "descricao": "Sistema monetário e unidades de medida.",
+      "exercicios": [
+        {"id": "dm1", "tipo": "numerica", "enunciado": "Quantos centavos há em 1 real?",
+         "resposta": 100, "explicacao": "R$ 1,00 = 100 centavos."},
+        {"id": "dm2", "tipo": "multipla", "enunciado": "Quanto é R$ 2,50 + R$ 1,50?",
+         "opcoes": ["R$ 3,00", "R$ 4,00", "R$ 4,50"], "correta": 1,
+         "explicacao": "2,50 + 1,50 = R$ 4,00."},
+        {"id": "dm3", "tipo": "numerica", "enunciado": "Quantos minutos tem 1 hora?",
+         "resposta": 60, "explicacao": "1 hora = 60 minutos."},
+        {"id": "dm4", "tipo": "numerica", "enunciado": "Quantos centímetros tem 1 metro?",
+         "resposta": 100, "explicacao": "1 m = 100 cm."},
+        {"id": "dm5", "tipo": "multipla", "enunciado": "Quantos metros tem 1 quilômetro?",
+         "opcoes": ["100", "1000", "10000"], "correta": 1, "explicacao": "1 km = 1000 m."}
+      ]
     }
   ]
 }

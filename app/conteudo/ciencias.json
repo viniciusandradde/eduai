@@ -63,6 +63,63 @@
          "opcoes": ["Sólido", "Líquido", "Gasoso"], "correta": 0,
          "explicacao": "Gelo = água sólida."}
       ]
+    },
+    {
+      "id": "nutricao",
+      "titulo": "Nutrição e digestão (5º ano)",
+      "descricao": "Como o corpo se alimenta e a importância da comida saudável.",
+      "exercicios": [
+        {"id": "n1", "tipo": "multipla", "enunciado": "Onde começa a digestão dos alimentos?",
+         "opcoes": ["Na boca", "No estômago", "No intestino"], "correta": 0,
+         "explicacao": "Começa na boca, com a mastigação e a saliva."},
+        {"id": "n2", "tipo": "vf", "enunciado": "Os sistemas digestório e respiratório trabalham juntos na nutrição do corpo.",
+         "resposta": true, "explicacao": "Sim — um traz nutrientes e o outro o oxigênio."},
+        {"id": "n3", "tipo": "multipla", "enunciado": "Qual fruta é rica em vitamina C?",
+         "opcoes": ["Laranja", "Pão", "Arroz"], "correta": 0, "explicacao": "A laranja é rica em vitamina C."},
+        {"id": "n4", "tipo": "multipla", "enunciado": "Comer fritura e doce todos os dias é um hábito:",
+         "opcoes": ["saudável", "não saudável"], "correta": 1,
+         "explicacao": "O ideal é uma alimentação equilibrada, com frutas e verduras."},
+        {"id": "n5", "tipo": "lacuna", "enunciado": "Para o corpo funcionar bem, devemos beber bastante ___",
+         "resposta": "água", "explicacao": "A água é essencial para o corpo."}
+      ]
+    },
+    {
+      "id": "ciclo_agua",
+      "titulo": "Ciclo da água (5º ano)",
+      "descricao": "Evaporação, condensação e chuva.",
+      "exercicios": [
+        {"id": "ca1", "tipo": "multipla", "enunciado": "Quando a água esquenta e vira vapor, chamamos de:",
+         "opcoes": ["evaporação", "condensação", "precipitação"], "correta": 0,
+         "explicacao": "O calor transforma a água líquida em vapor: evaporação."},
+        {"id": "ca2", "tipo": "multipla", "enunciado": "A chuva é a etapa chamada de:",
+         "opcoes": ["evaporação", "precipitação", "filtração"], "correta": 1,
+         "explicacao": "Quando a água cai das nuvens é a precipitação (chuva)."},
+        {"id": "ca3", "tipo": "vf", "enunciado": "As nuvens se formam pela condensação do vapor de água.",
+         "resposta": true, "explicacao": "O vapor sobe, esfria e se condensa formando nuvens."},
+        {"id": "ca4", "tipo": "multipla", "enunciado": "Por que o Sol é importante no ciclo da água?",
+         "opcoes": ["Esfria a água", "Aquece e evapora a água", "Não tem importância"], "correta": 1,
+         "explicacao": "O calor do Sol evapora a água e movimenta o ciclo."},
+        {"id": "ca5", "tipo": "lacuna", "enunciado": "Sólido, líquido e ___ são os estados da água. (gasoso)",
+         "resposta": "gasoso", "explicacao": "Os três estados: sólido, líquido e gasoso."}
+      ]
+    },
+    {
+      "id": "materiais",
+      "titulo": "Propriedades dos materiais (5º ano)",
+      "descricao": "Condução, ímã, solubilidade e dureza.",
+      "exercicios": [
+        {"id": "mt1", "tipo": "multipla", "enunciado": "Qual material conduz bem a eletricidade?",
+         "opcoes": ["Metal", "Plástico", "Madeira"], "correta": 0,
+         "explicacao": "Os metais são bons condutores de eletricidade."},
+        {"id": "mt2", "tipo": "multipla", "enunciado": "O que um ímã atrai?",
+         "opcoes": ["Ferro", "Papel", "Vidro"], "correta": 0, "explicacao": "O ímã atrai materiais com ferro."},
+        {"id": "mt3", "tipo": "vf", "enunciado": "O açúcar se dissolve na água (é solúvel).",
+         "resposta": true, "explicacao": "Sim, o açúcar é solúvel em água."},
+        {"id": "mt4", "tipo": "multipla", "enunciado": "Qual destes é mais duro?",
+         "opcoes": ["Borracha", "Pedra", "Algodão"], "correta": 1, "explicacao": "A pedra é o material mais duro."},
+        {"id": "mt5", "tipo": "vf", "enunciado": "O plástico é um bom isolante (não conduz bem a eletricidade).",
+         "resposta": true, "explicacao": "Por isso fios elétricos têm capa de plástico."}
+      ]
     }
   ]
 }

@@ -65,6 +65,58 @@
         {"id": "c5", "tipo": "lacuna", "enunciado": "A palavra que liga orações (e, mas, porque) é a con___",
          "resposta": "conjunção", "explicacao": "São conjunções."}
       ]
+    },
+    {
+      "id": "acentuacao",
+      "titulo": "Ortografia e acentuação (5º ano)",
+      "descricao": "Escrever certo e usar os acentos.",
+      "exercicios": [
+        {"id": "a1", "tipo": "multipla", "enunciado": "Qual palavra está acentuada corretamente?",
+         "opcoes": ["facil", "fácil", "facíl"], "correta": 1, "explicacao": "O certo é 'fácil' (paroxítona)."},
+        {"id": "a2", "tipo": "multipla", "enunciado": "Qual é a forma correta?",
+         "opcoes": ["pesquiza", "pesquisa", "pesquissa"], "correta": 1, "explicacao": "Escreve-se 'pesquisa' com s."},
+        {"id": "a3", "tipo": "lacuna", "enunciado": "O menino ___ feliz hoje. (esta / está)",
+         "resposta": "está", "explicacao": "Verbo estar leva acento: 'está'."},
+        {"id": "a4", "tipo": "multipla", "enunciado": "Qual é o plural de 'animal'?",
+         "opcoes": ["animais", "animales", "animal"], "correta": 0, "explicacao": "Plural: 'animais'."},
+        {"id": "a5", "tipo": "vf", "enunciado": "'Mas' e 'mais' significam a mesma coisa.",
+         "resposta": false, "explicacao": "'Mas' = porém; 'mais' = quantidade. São diferentes."}
+      ]
+    },
+    {
+      "id": "pontuacao",
+      "titulo": "Pontuação (5º ano)",
+      "descricao": "Vírgula, ponto, interrogação e exclamação.",
+      "exercicios": [
+        {"id": "pt1", "tipo": "multipla", "enunciado": "Qual sinal indica uma pergunta?",
+         "opcoes": ["!", "?", "."], "correta": 1, "explicacao": "O ponto de interrogação (?) indica pergunta."},
+        {"id": "pt2", "tipo": "multipla", "enunciado": "Qual sinal usamos para separar itens de uma lista?",
+         "opcoes": ["vírgula", "ponto final", "interrogação"], "correta": 0, "explicacao": "A vírgula separa itens."},
+        {"id": "pt3", "tipo": "vf", "enunciado": "O ponto de exclamação (!) mostra emoção ou surpresa.",
+         "resposta": true, "explicacao": "Sim, indica emoção, surpresa ou ênfase."},
+        {"id": "pt4", "tipo": "multipla", "enunciado": "No fim de uma frase afirmativa, usamos:",
+         "opcoes": ["ponto final", "dois-pontos", "vírgula"], "correta": 0, "explicacao": "Frase afirmativa termina com ponto final."},
+        {"id": "pt5", "tipo": "lacuna", "enunciado": "Complete com o sinal certo: Você gosta de ler___",
+         "resposta": "?", "explicacao": "É uma pergunta, então usa-se '?'."}
+      ]
+    },
+    {
+      "id": "sentido",
+      "titulo": "Sentido das palavras (5º ano)",
+      "descricao": "Sinônimos, antônimos e palavras com vários sentidos.",
+      "exercicios": [
+        {"id": "se1", "tipo": "multipla", "enunciado": "Qual é um sinônimo de 'alegre'?",
+         "opcoes": ["triste", "contente", "cansado"], "correta": 1, "explicacao": "'Contente' tem sentido parecido com 'alegre'."},
+        {"id": "se2", "tipo": "multipla", "enunciado": "Qual é o antônimo (contrário) de 'grande'?",
+         "opcoes": ["enorme", "pequeno", "alto"], "correta": 1, "explicacao": "O contrário de grande é pequeno."},
+        {"id": "se3", "tipo": "vf", "enunciado": "'Casa' e 'lar' podem ser usados como sinônimos.",
+         "resposta": true, "explicacao": "Ambas indicam o lugar onde se mora."},
+        {"id": "se4", "tipo": "multipla", "enunciado": "A palavra 'manga' pode ser uma fruta e parte da roupa. Isso é chamado de:",
+         "opcoes": ["polissemia (vários sentidos)", "sinônimo", "rima"], "correta": 0,
+         "explicacao": "Uma palavra com vários sentidos = polissemia."},
+        {"id": "se5", "tipo": "lacuna", "enunciado": "O contrário de 'dia' é ___",
+         "resposta": "noite", "explicacao": "O antônimo de dia é noite."}
+      ]
     }
   ]
 }
