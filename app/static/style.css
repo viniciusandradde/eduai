@@ -8,7 +8,7 @@
   --r:22px;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{height:auto;min-height:100%}
+html,body{height:auto;min-height:100%;overflow-x:hidden}
 body{
   font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
   color:var(--txt);
@@ -23,8 +23,9 @@ body{
 .hidden{display:none!important}
 
 .eduai{
-  max-width:780px;margin:0 auto;min-height:100vh;
-  padding:24px 22px 64px;
+  max-width:780px;margin:0 auto;min-height:100vh;width:100%;
+  padding:calc(20px + env(safe-area-inset-top)) calc(18px + env(safe-area-inset-right))
+          calc(40px + env(safe-area-inset-bottom)) calc(18px + env(safe-area-inset-left));
   display:flex;flex-direction:column;position:relative;
 }
 
@@ -261,9 +262,44 @@ button{font-family:inherit;cursor:pointer;border:0;border-radius:13px;font-size:
 .foot{text-align:center;color:var(--dim2);font-size:12.5px;margin:26px 0 4px;font-weight:600}
 .foot a{color:var(--rox2);font-weight:700;text-decoration:none}
 
+/* ── Responsivo ──────────────────────────────────────── */
+@media(max-width:640px){
+  .medgrid{grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:540px){
   .grid{grid-template-columns:1fr}
-  .medgrid{grid-template-columns:repeat(3,1fr)}
   .chipsrow{gap:8px}
-  .splash h1{font-size:34px}
+  .topbar{padding:18px 16px;gap:14px}
+  .hstats .nome{font-size:19px}
+  .chip .v{font-size:17px}
+  .bnav{padding:10px 15px}
+  .bnav .lb{font-size:13.5px}
+  .sec{margin:22px 2px 12px}
+  .mat{padding:18px 16px}
+  .missao{padding:16px 16px;gap:12px}
+  .missao .tt{font-size:16.5px}
+  .subhead h2{font-size:21px}.subhead .big{font-size:30px}
+  .ex{padding:20px 18px}
+  .ex .q{font-size:21px}
+  .opc{padding:14px 15px;font-size:16px}
+  .box{padding:26px 20px}
+  .box .emoji{font-size:58px}
+  .box h2{font-size:23px}
+  .estrelas{font-size:40px;letter-spacing:9px}
+  .splash{padding:28px;min-height:78vh}
+  .splash .logo{font-size:72px}
+  .splash h1{font-size:32px}
+  .item{padding:14px 14px;gap:12px}
+  .item .ic{width:46px;height:46px;font-size:24px}
+}
+@media(max-width:380px){
+  .medgrid{grid-template-columns:repeat(2,1fr)}
+  .chipsrow{grid-template-columns:repeat(3,1fr);gap:6px}
+  .chip{padding:11px 4px}
+  .chip .v{font-size:15px}
+  .chip .k{font-size:10px}
+  .bottomnav{gap:7px}
+  .bnav{padding:9px 12px}
+  .ex .q{font-size:19px}
+  .splash h1{font-size:28px}
 }
