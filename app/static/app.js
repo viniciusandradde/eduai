@@ -177,7 +177,7 @@ function headerHTML(){
 }
 
 function navHTML(){
-  const items=[['materias','📘','Matérias'],['medalhas','🏅','Medalhas'],['avatar','🤖','Avatar']];
+  const items=[['materias','📘','Matérias'],['medalhas','🏅','Conquistas'],['avatar','🤖','Avatar']];
   return `<div class="bottomnav">${items.map(([id,ic,lb])=>
     `<button class="bnav${tab===id?' on':''}" onclick="setTab('${id}')"><span class="ic">${ic}</span><span class="lb">${lb}</span></button>`).join('')}</div>`;
 }
@@ -400,12 +400,23 @@ function concluidoHTML(){
 
 // ── Medalhas ──────────────────────────────────────────
 function medalhasHTML(){
-  const cat=EST.medalhas_catalogo||[]; const got=cat.filter(m=>m.tem).length;
+  const cs=EST.conquistas||[];
+  const tot=cs.reduce((s,c)=>s+c.niveis.length,0), got=cs.reduce((s,c)=>s+c.tier,0);
   let h=`<div class="pad fade-in"><div class="med-banner"><span class="big">🏅</span>
-    <div><div class="t">${got} de ${cat.length} medalhas</div><div class="s">Conquiste todas estudando e lendo todo dia!</div></div></div>
-    <div class="sec">Coleção</div><div class="medgrid">`;
-  cat.forEach(m=>{ h+=`<div class="med ${m.tem?'got':'lock'}"><div class="e">${m.emoji}</div><div class="n">${esc(m.nome)}</div><div class="d">${m.tem?'Conquistada!':esc(m.dica||'')}</div></div>`; });
-  h+=`</div></div>`; return h;
+    <div><div class="t">${got} de ${tot} medalhas</div><div class="s">Suba de 🥉 Bronze → 🥈 Prata → 🥇 Ouro em cada conquista!</div></div></div>
+    <div class="sec">Conquistas</div>`;
+  cs.forEach(c=>{
+    const pct=Math.min(100,Math.round(c.progresso/c.meta*100));
+    const badge = c.tier>0
+      ? `<span class="cq-tier t${c.tier}">${c.tier_emoji} ${esc(c.tier_nome)}</span>`
+      : `<span class="cq-tier t0">🔒 Bloqueada</span>`;
+    const sub = c.maxed ? '🏆 Ouro conquistado!' : `${c.valor}/${c.meta} • próximo: ${esc(c.proximo_nome)}`;
+    h+=`<div class="cq${c.maxed?' max':''}"><div class="cq-ic">${c.emoji}</div>
+      <div class="cq-b"><div class="cq-top"><span class="cq-nm">${esc(c.nome)}</span>${badge}</div>
+        <div class="cq-pb"><i style="width:${pct}%"></i></div>
+        <div class="cq-sub">${sub}</div></div></div>`;
+  });
+  h+=`</div>`; return h;
 }
 
 // ── Avatar (arte DiceBear: base + cor + olhos) ────────

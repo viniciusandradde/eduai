@@ -107,17 +107,38 @@ def _acc_param(codigo):
     it = next((a for a in AVATAR_ACESSORIOS if a["codigo"] == codigo), None)
     return it["param"] if it else None
 
-# Medalhas: (codigo, nome, emoji, dica, condição(stats)->bool)
-MEDALHAS = [
-    ("primeira",  "Primeiros passos",   "🥉", "Conclua 1 missão",        lambda s: s["missoes_concluidas"] >= 1),
-    ("trio",      "Trio de missões",    "🥈", "Conclua 3 missões",       lambda s: s["missoes_concluidas"] >= 3),
-    ("mestre",    "Mestre dedicado",    "🥇", "Conclua 10 missões",      lambda s: s["missoes_concluidas"] >= 10),
-    ("estrelado", "Caçador de estrelas","🌟", "Junte 15 estrelas",       lambda s: s["estrelas_totais"] >= 15),
-    ("perfeito",  "Nota máxima",        "💯", "Tire 3⭐ numa missão",     lambda s: s["tres_estrelas"] >= 1),
-    ("leitor",    "Leitor de verdade",  "📚", "Faça 3 leituras",         lambda s: s["leituras"] >= 3),
-    ("fogo3",     "Sequência de 3 dias","🔥", "Estude 3 dias seguidos",  lambda s: s["streak"] >= 3),
-    ("nivel5",    "Nível 5",            "⭐", "Chegue ao nível 5",        lambda s: s["nivel"] >= 5),
+# Conquistas em níveis (Bronze → Prata → Ouro), com barra de progresso.
+# metrica casa com _stats; niveis = limiares dos 3 tiers.
+TIER_NOMES = ["Bronze", "Prata", "Ouro"]
+TIER_EMOJI = ["🥉", "🥈", "🥇"]
+CONQUISTAS = [
+    {"id": "missoes",  "nome": "Missões concluídas",  "emoji": "🎯", "metrica": "missoes_concluidas", "niveis": [1, 5, 10]},
+    {"id": "estrelas", "nome": "Caçador de estrelas",  "emoji": "⭐", "metrica": "estrelas_totais",    "niveis": [5, 15, 30]},
+    {"id": "perfeito", "nome": "Perfeccionista",       "emoji": "💯", "metrica": "tres_estrelas",      "niveis": [1, 5, 15]},
+    {"id": "leitor",   "nome": "Leitor de verdade",    "emoji": "📚", "metrica": "leituras",           "niveis": [3, 10, 25]},
+    {"id": "ofensiva", "nome": "Pegando fogo",         "emoji": "🔥", "metrica": "streak",             "niveis": [3, 7, 30]},
+    {"id": "nivel",    "nome": "Evoluindo",            "emoji": "🚀", "metrica": "nivel",              "niveis": [3, 5, 10]},
 ]
+
+
+def _conquista_tier(conq, stats):
+    """Quantos tiers (0..3) já foram atingidos."""
+    val = stats.get(conq["metrica"], 0)
+    return val, sum(1 for t in conq["niveis"] if val >= t)
+
+
+def _conquista_pub(conq, stats):
+    val, tier = _conquista_tier(conq, stats)
+    niveis = conq["niveis"]
+    maxed = tier >= len(niveis)
+    meta = niveis[-1] if maxed else niveis[tier]
+    progresso = meta if maxed else min(val, meta)
+    return {"id": conq["id"], "nome": conq["nome"], "emoji": conq["emoji"],
+            "valor": val, "tier": tier, "niveis": niveis, "maxed": maxed,
+            "tier_nome": TIER_NOMES[tier - 1] if tier > 0 else "",
+            "tier_emoji": TIER_EMOJI[tier - 1] if tier > 0 else "",
+            "proximo_nome": "" if maxed else TIER_NOMES[tier],
+            "meta": meta, "progresso": progresso}
 
 
 def conn():
@@ -174,15 +195,21 @@ def _stats(c):
 
 
 def verificar_medalhas():
+    """Registra tiers recém-conquistados (code = '<id>_<tier>') e retorna os novos."""
     novas = []
     with conn() as c:
         s = _stats(c)
         ja = {r["codigo"] for r in c.execute("SELECT codigo FROM medalha").fetchall()}
-        for codigo, nome, emoji, dica, cond in MEDALHAS:
-            if codigo not in ja and cond(s):
-                c.execute("INSERT INTO medalha(codigo,nome,emoji,ts) VALUES(?,?,?,?)",
-                          (codigo, nome, emoji, datetime.now().isoformat()))
-                novas.append({"codigo": codigo, "nome": nome, "emoji": emoji})
+        for conq in CONQUISTAS:
+            _, tier = _conquista_tier(conq, s)
+            for ti in range(1, tier + 1):
+                code = f'{conq["id"]}_{ti}'
+                if code not in ja:
+                    nome = f'{conq["nome"]} {TIER_NOMES[ti - 1]}'
+                    emoji = TIER_EMOJI[ti - 1]
+                    c.execute("INSERT INTO medalha(codigo,nome,emoji,ts) VALUES(?,?,?,?)",
+                              (code, nome, emoji, datetime.now().isoformat()))
+                    novas.append({"codigo": code, "nome": nome, "emoji": emoji})
         c.commit()
     return novas
 
@@ -406,15 +433,13 @@ def estado():
         aluno = dict(c.execute("SELECT * FROM aluno WHERE id=1").fetchone())
         aluno["xp_prox_nivel"] = aluno["nivel"] * XP_POR_NIVEL
         prog = [dict(r) for r in c.execute("SELECT * FROM progresso").fetchall()]
-        meds = [dict(r) for r in c.execute("SELECT * FROM medalha ORDER BY ts").fetchall()]
         ult = [dict(r) for r in c.execute("SELECT * FROM tentativa ORDER BY id DESC LIMIT 20").fetchall()]
         s = _stats(c)
         comprados = _comprados(c)
         ativ = c.execute("SELECT COUNT(*) n FROM leitura_log WHERE dia=?",
                          (str(date.today()),)).fetchone()["n"]
         md_metrics = _hoje_metrics(c)
-    catalogo = [{"codigo": cod, "nome": nm, "emoji": em, "dica": dc, "tem": bool(cond(s))}
-                for (cod, nm, em, dc, cond) in MEDALHAS]
+    conquistas = [_conquista_pub(conq, s) for conq in CONQUISTAS]
     equipado = {"base": aluno.get("av_base") or "base_bipe",
                 "cor": aluno.get("av_topo") or "",
                 "olhos": aluno.get("av_rosto") or ""}
@@ -432,7 +457,6 @@ def estado():
     completo = all(q["feito"] for q in quests)
     bau = "aberto" if (aluno.get("bau_dia") or '') == str(date.today()) else ("pronto" if completo else "bloqueado")
     missoes_dia = {"quests": quests, "completo": completo, "bau": bau}
-    return {"aluno": aluno, "progresso": prog, "medalhas": meds,
-            "medalhas_catalogo": catalogo, "ultimas": ult,
+    return {"aluno": aluno, "progresso": prog, "conquistas": conquistas, "ultimas": ult,
             "avatares": avatares, "missoes_dia": missoes_dia, "atividades_hoje": ativ,
             "tux": {"dia": aluno.get("tux_dia", ""), "inicio": aluno.get("tux_inicio", "")}}

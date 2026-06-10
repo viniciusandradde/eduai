@@ -95,11 +95,18 @@ function render(){
   });
   h += `</div>`;
 
-  // Medalhas
-  const catm = EST.medalhas_catalogo||[]; const got = catm.filter(m=>m.tem).length;
-  h += `<div class="sec">🏅 Medalhas <span class="count">${got}/${catm.length}</span></div><div class="card"><div class="medwrap">`;
-  catm.forEach(m=>{ h += `<div class="med ${m.tem?'got':'lock'}"><div class="e">${m.emoji}</div><div class="n">${esc(m.nome)}</div></div>`; });
-  h += `</div></div>`;
+  // Conquistas (níveis bronze/prata/ouro)
+  const cs = EST.conquistas||[];
+  const got = cs.reduce((s,c)=>s+c.tier,0), tot = cs.reduce((s,c)=>s+c.niveis.length,0);
+  h += `<div class="sec">🏅 Conquistas <span class="count">${got}/${tot}</span></div><div class="card">`;
+  cs.forEach(c=>{
+    const pct=Math.min(100,Math.round(c.progresso/c.meta*100));
+    h += `<div class="pcq"><div class="e">${c.tier>0?c.tier_emoji:c.emoji}</div>
+      <div class="pcb"><div class="pct">${esc(c.nome)}${c.tier>0?' • '+esc(c.tier_nome):''}</div>
+      <div class="pcpb"><i style="width:${pct}%"></i></div></div>
+      <div class="pcn">${c.maxed?'🏆':esc(c.valor+'/'+c.meta)}</div></div>`;
+  });
+  h += `</div>`;
 
   // Últimas atividades
   h += `<div class="sec">🕑 Últimas atividades</div><div class="card acts">`;
