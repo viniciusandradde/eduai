@@ -198,8 +198,40 @@ function bannerHTML(){
   return h;
 }
 
+function missoesDiaHTML(){
+  const md=EST.missoes_dia; if(!md) return '';
+  let chip;
+  if(md.bau==='pronto')      chip=`<button class="md-bau pronto" onclick="abrirBau()">🎁 Abrir o baú!</button>`;
+  else if(md.bau==='aberto') chip=`<div class="md-bau aberto">🎁 Baú de hoje resgatado ✓</div>`;
+  else                       chip=`<div class="md-bau lock">🎁 Complete as 3 missões</div>`;
+  const qs=md.quests.map(q=>{
+    const pct=Math.min(100,Math.round(q.progresso/q.meta*100));
+    return `<div class="md-q${q.feito?' done':''}">
+      <div class="md-ic">${q.feito?'✅':q.emoji}</div>
+      <div class="md-b"><div class="md-t">${esc(q.texto)}</div>
+        <div class="md-pb"><i style="width:${pct}%"></i></div></div>
+      <div class="md-n">${q.progresso}/${q.meta}</div></div>`;
+  }).join('');
+  return `<div class="md-card"><div class="md-head">🎯 Missões do dia</div>${qs}
+    <div class="md-foot">${chip}</div></div>`;
+}
+async function abrirBau(){
+  const r=await api('/api/bau/abrir',{method:'POST'});
+  await recarregar();
+  if(r.data&&r.data.ok){
+    const p=r.data.premio||{};
+    burstConfetti();
+    alert(`🎁 Você abriu o baú do dia!\n\n🪙 +${p.moedas} moedas`+(p.xp?`\n⭐ +${p.xp} XP`:'')+`\n\nVolte amanhã para um novo! 🌙`);
+  } else if(r.data&&r.data.motivo==='ja_aberto'){
+    alert('Você já abriu o baú de hoje! Volte amanhã 🌙');
+  } else {
+    alert('Complete as 3 missões do dia para abrir o baú! 🎯');
+  }
+  render();
+}
+
 function materiasHTML(){
-  let h = `<div class="pad fade-in">${bannerHTML()}<div class="sec first">Suas matérias</div><div class="grid">`;
+  let h = `<div class="pad fade-in">${bannerHTML()}${missoesDiaHTML()}<div class="sec first">Suas matérias</div><div class="grid">`;
   CONT.forEach(s=>{
     const st=subjStats(s); const pc=Math.round(st.pct*100);
     h += `<button class="mat" style="--mc:${s.cor}" onclick="abrirMateria('${s.id}')">

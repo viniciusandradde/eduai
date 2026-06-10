@@ -303,6 +303,11 @@ def api_avatar_equipar(payload: AvatarIn, senha: str = ''):
     checar(senha, ALUNO_SENHA)
     return db.avatar_equipar(payload.codigo)
 
+@app.post('/api/bau/abrir')
+def api_bau_abrir(senha: str = ''):
+    checar(senha, ALUNO_SENHA)
+    return db.bau_abrir()
+
 # ── Edu Help (chat de dúvidas, FAQ roteirizado) ───────────────
 def _eduhelp_cfg():
     """Valores reais das regras, injetados nas respostas do Edu."""

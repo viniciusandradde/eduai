@@ -1,4 +1,4 @@
-const CACHE = 'eduai-v5';
+const CACHE = 'eduai-v6';
 const SHELL = ['/', '/style.css', '/app.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png'];
 
 self.addEventListener('install', e => {

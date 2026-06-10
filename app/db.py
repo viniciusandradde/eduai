@@ -5,7 +5,7 @@ VSA EduAI — camada de dados (SQLite).
 Single-aluno (id=1). Guarda XP, nível, streak, moedas, tentativas,
 progresso por missão, medalhas e compras da loja.
 """
-import os, sqlite3
+import os, random, sqlite3
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
@@ -76,6 +76,17 @@ AVATAR_TODOS = AVATAR_BASES + AVATAR_ACESSORIOS
 # qual coluna do aluno guarda cada slot de acessório
 SLOT_COL = {"cor": "av_topo", "olhos": "av_rosto"}
 
+# Missões do dia (baú): 2 fixas + 1 que gira por dia. metrica casa com _hoje_metrics.
+MISSOES_FIXAS = [
+    {"id": "q_responder", "texto": "Responda 2 missões", "emoji": "📝", "metrica": "tentativas", "meta": 2},
+    {"id": "q_ler",       "texto": "Faça 2 leituras",    "emoji": "📖", "metrica": "leituras",   "meta": 2},
+]
+MISSOES_ROTATIVAS = [
+    {"id": "q_acertos", "texto": "Acerte 8 questões",    "emoji": "✅", "metrica": "acertos",  "meta": 8},
+    {"id": "q_xp",      "texto": "Ganhe 40 XP",          "emoji": "⭐", "metrica": "xp",       "meta": 40},
+    {"id": "q_estrela", "texto": "Tire 3⭐ numa missão",  "emoji": "🌟", "metrica": "estrelas", "meta": 3},
+]
+
 
 def _dice_url(seed, cor=None, olhos=None, size=120):
     from urllib.parse import urlencode
@@ -121,7 +132,7 @@ def init_db():
     with conn() as c:
         c.executescript(SCHEMA)
         # migração: adiciona colunas novas em bancos antigos (tux + avatar)
-        for col in ("tux_dia", "tux_inicio", "av_base", "av_topo", "av_rosto"):
+        for col in ("tux_dia", "tux_inicio", "av_base", "av_topo", "av_rosto", "bau_dia"):
             try:
                 c.execute(f"ALTER TABLE aluno ADD COLUMN {col} TEXT DEFAULT ''")
             except Exception:
@@ -237,6 +248,47 @@ def atividades_hoje():
     with conn() as c:
         return c.execute("SELECT COUNT(*) n FROM leitura_log WHERE dia=?",
                          (str(date.today()),)).fetchone()["n"]
+
+
+def _hoje_metrics(c):
+    """Métricas de HOJE para as missões do dia."""
+    hoje = str(date.today())
+    rows = c.execute("SELECT acertos, estrelas, xp_ganho FROM tentativa WHERE substr(ts,1,10)=?",
+                     (hoje,)).fetchall()
+    leituras = c.execute("SELECT COUNT(*) n FROM leitura_log WHERE dia=?", (hoje,)).fetchone()["n"]
+    return {"tentativas": len(rows),
+            "acertos": sum(r["acertos"] for r in rows),
+            "xp": sum(r["xp_ganho"] for r in rows),
+            "estrelas": max([r["estrelas"] for r in rows], default=0),
+            "leituras": leituras}
+
+
+def _quests_hoje(m):
+    rot = MISSOES_ROTATIVAS[date.today().toordinal() % len(MISSOES_ROTATIVAS)]
+    out = []
+    for q in MISSOES_FIXAS + [rot]:
+        prog = min(m.get(q["metrica"], 0), q["meta"])
+        out.append({"id": q["id"], "texto": q["texto"], "emoji": q["emoji"],
+                    "meta": q["meta"], "progresso": prog, "feito": prog >= q["meta"]})
+    return out
+
+
+def bau_abrir():
+    """Abre o baú do dia se as 3 missões foram feitas e ainda não abriu hoje."""
+    hoje = str(date.today())
+    with conn() as c:
+        quests = _quests_hoje(_hoje_metrics(c))
+        if not all(q["feito"] for q in quests):
+            return {"ok": False, "motivo": "incompleto"}
+        if (c.execute("SELECT bau_dia FROM aluno WHERE id=1").fetchone()["bau_dia"] or '') == hoje:
+            return {"ok": False, "motivo": "ja_aberto"}
+        moedas = random.randint(10, 30)
+        xp = random.choice([0, 0, 10, 20])
+        c.execute("UPDATE aluno SET moedas=moedas+?, xp=xp+?, bau_dia=? WHERE id=1", (moedas, xp, hoje))
+        novo_xp = c.execute("SELECT xp FROM aluno WHERE id=1").fetchone()["xp"]
+        c.execute("UPDATE aluno SET nivel=? WHERE id=1", (nivel_de(novo_xp),))
+        c.commit()
+    return {"ok": True, "premio": {"moedas": moedas, "xp": xp}}
 
 def missao_concluida(materia, missao):
     with conn() as c:
@@ -360,6 +412,7 @@ def estado():
         comprados = _comprados(c)
         ativ = c.execute("SELECT COUNT(*) n FROM leitura_log WHERE dia=?",
                          (str(date.today()),)).fetchone()["n"]
+        md_metrics = _hoje_metrics(c)
     catalogo = [{"codigo": cod, "nome": nm, "emoji": em, "dica": dc, "tem": bool(cond(s))}
                 for (cod, nm, em, dc, cond) in MEDALHAS]
     equipado = {"base": aluno.get("av_base") or "base_bipe",
@@ -375,7 +428,11 @@ def estado():
         "acessorios": [_avatar_pub(it, s, comprados, equipado[it["slot"]]) for it in AVATAR_ACESSORIOS],
         "equipado": equipado,
     }
+    quests = _quests_hoje(md_metrics)
+    completo = all(q["feito"] for q in quests)
+    bau = "aberto" if (aluno.get("bau_dia") or '') == str(date.today()) else ("pronto" if completo else "bloqueado")
+    missoes_dia = {"quests": quests, "completo": completo, "bau": bau}
     return {"aluno": aluno, "progresso": prog, "medalhas": meds,
             "medalhas_catalogo": catalogo, "ultimas": ult,
-            "avatares": avatares, "atividades_hoje": ativ,
+            "avatares": avatares, "missoes_dia": missoes_dia, "atividades_hoje": ativ,
             "tux": {"dia": aluno.get("tux_dia", ""), "inicio": aluno.get("tux_inicio", "")}}
