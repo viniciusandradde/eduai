@@ -230,8 +230,31 @@ async function abrirBau(){
   render();
 }
 
+function ofensivaHTML(){
+  const o=EST.ofensiva; if(!o) return '';
+  const a=EST.aluno;
+  const road=o.marcos.map(m=>`<div class="of-m${m.atingido?' on':''}"><span class="of-d">${m.atingido?'🔥':m.dias}</span><span class="of-l">${m.dias} dias</span></div>`).join('');
+  let esc;
+  if(o.escudos>=o.escudo_max) esc=`<span class="of-have">🛡️ ${o.escudos}/${o.escudo_max} escudos</span>`;
+  else esc=`<button class="of-buy" ${a.moedas>=o.escudo_custo?'':'disabled'} onclick="comprarEscudo()">🛡️ Comprar escudo · 🪙 ${o.escudo_custo}</button>`;
+  return `<div class="of-card">
+    <div class="of-top"><div class="of-fire">🔥 ${o.streak}</div>
+      <div class="of-tx"><div class="of-t">Ofensiva</div><div class="of-s">dias seguidos estudando</div></div>
+      <div class="of-shields" title="Escudos da Chama">🛡️ ${o.escudos}</div></div>
+    <div class="of-road">${road}</div>
+    <div class="of-foot"><span class="of-tip">O escudo protege 1 dia sem estudar</span>${esc}</div>
+  </div>`;
+}
+async function comprarEscudo(){
+  const r=await api('/api/escudo/comprar',{method:'POST'});
+  await recarregar();
+  if(r.data&&r.data.ok) alert('🛡️ Escudo da Chama comprado!\nEle protege sua ofensiva se você faltar 1 dia.');
+  else alert((r.data&&r.data.erro)||'Não foi possível comprar.');
+  render();
+}
+
 function materiasHTML(){
-  let h = `<div class="pad fade-in">${bannerHTML()}${missoesDiaHTML()}<div class="sec first">Suas matérias</div><div class="grid">`;
+  let h = `<div class="pad fade-in">${bannerHTML()}${missoesDiaHTML()}${ofensivaHTML()}<div class="sec first">Suas matérias</div><div class="grid">`;
   CONT.forEach(s=>{
     const st=subjStats(s); const pc=Math.round(st.pct*100);
     h += `<button class="mat" style="--mc:${s.cor}" onclick="abrirMateria('${s.id}')">

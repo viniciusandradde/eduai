@@ -432,3 +432,27 @@ button{font-family:inherit;cursor:pointer;border:0;border-radius:13px;font-size:
 .cq-pb>i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--rox),var(--rox2))}
 .cq.max .cq-pb>i{background:linear-gradient(90deg,#e0930a,#ffd54f)}
 .cq-sub{font-size:12px;color:var(--dim);font-weight:600}
+
+/* ── Ofensiva (streak: marcos + escudo) ─────────────── */
+.of-card{background:linear-gradient(180deg,#231427,#16101f);border:1px solid rgba(245,179,1,.22);
+  border-radius:18px;padding:15px 16px;margin-bottom:16px}
+.of-top{display:flex;align-items:center;gap:13px}
+.of-fire{font-size:26px;font-weight:800;color:var(--amar);white-space:nowrap}
+.of-tx{flex:1;min-width:0}
+.of-tx .of-t{font-size:15px;font-weight:800}
+.of-tx .of-s{font-size:12px;color:var(--dim);font-weight:600}
+.of-shields{font-size:15px;font-weight:800;color:#86efac;white-space:nowrap}
+.of-road{display:flex;gap:6px;margin:14px 0 12px}
+.of-m{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 4px;border-radius:12px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}
+.of-m.on{background:rgba(245,179,1,.14);border-color:rgba(245,179,1,.4)}
+.of-m .of-d{font-size:17px;font-weight:800;color:var(--dim)}
+.of-m.on .of-d{color:var(--amar)}
+.of-m .of-l{font-size:10.5px;font-weight:700;color:var(--dim2);text-transform:uppercase;letter-spacing:.4px}
+.of-m.on .of-l{color:var(--amar)}
+.of-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.of-tip{font-size:11.5px;color:var(--dim);font-weight:600}
+.of-have{font-size:13px;font-weight:800;color:#86efac}
+.of-buy{padding:9px 14px;border-radius:11px;font-size:13px;font-weight:800;color:#3a2600;
+  background:linear-gradient(180deg,#f5b301,#e0930a);border:0}
+.of-buy:disabled{filter:grayscale(.5) brightness(.8);opacity:.7}

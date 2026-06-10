@@ -308,6 +308,11 @@ def api_bau_abrir(senha: str = ''):
     checar(senha, ALUNO_SENHA)
     return db.bau_abrir()
 
+@app.post('/api/escudo/comprar')
+def api_escudo_comprar(senha: str = ''):
+    checar(senha, ALUNO_SENHA)
+    return db.escudo_comprar()
+
 # ── Edu Help (chat de dúvidas, FAQ roteirizado) ───────────────
 def _eduhelp_cfg():
     """Valores reais das regras, injetados nas respostas do Edu."""

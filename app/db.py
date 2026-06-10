@@ -87,6 +87,11 @@ MISSOES_ROTATIVAS = [
     {"id": "q_estrela", "texto": "Tire 3⭐ numa missão",  "emoji": "🌟", "metrica": "estrelas", "meta": 3},
 ]
 
+# Ofensiva (streak): marcos (dias -> bônus de moedas) + Escudo da Chama.
+MARCOS = [(3, 15), (7, 30), (14, 50), (30, 100)]
+ESCUDO_CUSTO = 50   # moedas
+ESCUDO_MAX = 2      # quantos escudos o aluno pode guardar
+
 
 def _dice_url(seed, cor=None, olhos=None, size=120):
     from urllib.parse import urlencode
@@ -158,6 +163,11 @@ def init_db():
                 c.execute(f"ALTER TABLE aluno ADD COLUMN {col} TEXT DEFAULT ''")
             except Exception:
                 pass
+        for col in ("escudos", "streak_marco"):
+            try:
+                c.execute(f"ALTER TABLE aluno ADD COLUMN {col} INTEGER DEFAULT 0")
+            except Exception:
+                pass
         c.execute(
             "INSERT OR IGNORE INTO aluno(id,nome,avatar,xp,nivel,moedas,streak,ultimo_dia,av_base)"
             " VALUES(1,?,?,0,1,0,0,'',?)", (ALUNO_NOME, "🤖", "base_bipe"))
@@ -215,13 +225,30 @@ def verificar_medalhas():
 
 
 def _bump_streak(c, hoje):
-    r = c.execute("SELECT streak,ultimo_dia FROM aluno WHERE id=1").fetchone()
+    r = c.execute("SELECT streak,ultimo_dia,escudos,streak_marco FROM aluno WHERE id=1").fetchone()
     streak, ult = r["streak"], r["ultimo_dia"]
+    escudos, marco = r["escudos"] or 0, r["streak_marco"] or 0
     if ult == hoje:
         return streak
-    ontem = str(date.fromisoformat(hoje) - timedelta(days=1))
-    streak = streak + 1 if ult == ontem else 1
-    c.execute("UPDATE aluno SET streak=?, ultimo_dia=? WHERE id=1", (streak, hoje))
+    gap = (date.fromisoformat(hoje) - date.fromisoformat(ult)).days if ult else 1
+    if gap == 1:
+        streak = streak + 1
+    else:
+        faltou = gap - 1            # dias perdidos entre a última atividade e hoje
+        if escudos >= faltou:       # Escudo da Chama cobre os dias perdidos
+            escudos -= faltou
+            streak = streak + 1
+        else:                       # quebrou a ofensiva
+            streak = 1
+            marco = 0               # marcos podem ser reconquistados na nova ofensiva
+    # marcos de ofensiva -> bônus de moedas (uma vez por marco)
+    bonus = 0
+    for dias, premio in MARCOS:
+        if streak >= dias and marco < dias:
+            bonus += premio
+            marco = dias
+    c.execute("UPDATE aluno SET streak=?, ultimo_dia=?, escudos=?, streak_marco=?, moedas=moedas+? WHERE id=1",
+              (streak, hoje, escudos, marco, bonus))
     return streak
 
 
@@ -428,6 +455,20 @@ def _avatar_pub(it, stats, comprados, equipado_code):
             "equipado": it["codigo"] == equipado_code}
 
 
+def escudo_comprar():
+    """Compra um Escudo da Chama (protege a ofensiva), com teto e custo fixos."""
+    with conn() as c:
+        r = c.execute("SELECT moedas, escudos FROM aluno WHERE id=1").fetchone()
+        escudos = r["escudos"] or 0
+        if escudos >= ESCUDO_MAX:
+            return {"ok": False, "erro": f"Você já tem o máximo de escudos ({ESCUDO_MAX})."}
+        if r["moedas"] < ESCUDO_CUSTO:
+            return {"ok": False, "erro": "Moedas insuficientes."}
+        c.execute("UPDATE aluno SET moedas=moedas-?, escudos=escudos+1 WHERE id=1", (ESCUDO_CUSTO,))
+        c.commit()
+    return {"ok": True, "escudos": escudos + 1}
+
+
 def estado():
     with conn() as c:
         aluno = dict(c.execute("SELECT * FROM aluno WHERE id=1").fetchone())
@@ -457,6 +498,15 @@ def estado():
     completo = all(q["feito"] for q in quests)
     bau = "aberto" if (aluno.get("bau_dia") or '') == str(date.today()) else ("pronto" if completo else "bloqueado")
     missoes_dia = {"quests": quests, "completo": completo, "bau": bau}
+    streak = aluno["streak"]
+    ofensiva = {
+        "streak": streak,
+        "escudos": aluno.get("escudos", 0) or 0,
+        "escudo_custo": ESCUDO_CUSTO, "escudo_max": ESCUDO_MAX,
+        "marcos": [{"dias": d, "bonus": b, "atingido": streak >= d} for (d, b) in MARCOS],
+        "proximo": next((d for (d, b) in MARCOS if streak < d), None),
+    }
     return {"aluno": aluno, "progresso": prog, "conquistas": conquistas, "ultimas": ult,
-            "avatares": avatares, "missoes_dia": missoes_dia, "atividades_hoje": ativ,
+            "avatares": avatares, "missoes_dia": missoes_dia, "ofensiva": ofensiva,
+            "atividades_hoje": ativ,
             "tux": {"dia": aluno.get("tux_dia", ""), "inicio": aluno.get("tux_inicio", "")}}
