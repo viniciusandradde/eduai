@@ -42,7 +42,7 @@ async function entrar(){
   senha = $('senha-inp').value.trim();
   if (!(await carregar())){ const m=$('login-msg'); if(m){m.textContent='Senha inválida 😕';} return; }
   localStorage.setItem('eduai_senha', senha);
-  logged = true; render();
+  logged = true; render(); novidadesCheck();
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
 }
 
@@ -263,7 +263,7 @@ function materiasHTML(){
       <div class="stat"><span>${st.conc}/${st.tot} missões</span>${st.conc===st.tot&&st.tot?'<span class="done">✔ 100%</span>':`<span>${pc}%</span>`}</div>
     </button>`;
   });
-  h += `</div><div class="foot">VSA EduAI • <a href="/pais">painel dos pais</a></div></div>`;
+  h += `</div><div class="foot">VSA EduAI • <a href="/pais">painel dos pais</a> • <a class="lk" onclick="abrirNovidades()">✨ novidades</a></div></div>`;
   return h;
 }
 
@@ -522,7 +522,54 @@ function voltar(target){
 }
 
 // ── auto-login ────────────────────────────────────────
+// ── Novidades / Tour ─────────────────────────────────
+// Para anunciar novas features: edite os slides e suba a `versao`. Quem ainda
+// não viu esta versão recebe o tour automaticamente ao abrir o app.
+const NOVIDADES = {
+  versao: '2026-06-10',
+  slides: [
+    {emoji:'🎉', titulo:'Novidades no VSA EduAI!', texto:'Chegou um monte de coisa nova pra deixar os estudos mais divertidos. Bora ver? 🚀'},
+    {emoji:'🎯', titulo:'Missões do dia + Baú', texto:'Complete os 3 desafios do dia e abra o baú 🎁 para ganhar moedas e XP de bônus!', tab:'materias'},
+    {emoji:'🔥', titulo:'Ofensiva e Escudo', texto:'Estude todo dia para aumentar sua ofensiva e ganhar marcos. Faltou um dia? O Escudo da Chama 🛡️ protege!', tab:'materias'},
+    {emoji:'🏅', titulo:'Conquistas em níveis', texto:'Cada conquista agora sobe de 🥉 Bronze → 🥈 Prata → 🥇 Ouro, com barra de progresso!', tab:'medalhas'},
+    {emoji:'🤖', titulo:'Monte seu avatar', texto:'Escolha seu robô e personalize a cor do corpo e os olhos na aba Avatar!', tab:'avatar'},
+    {emoji:'🐧', titulo:'Edu Help', texto:'Tem dúvida? Toque no pinguim flutuante para perguntar sobre as matérias e como o app funciona.'},
+    {emoji:'📖', titulo:'Não esqueça o lema', texto:'Nenhuma missão se conclui sem a leitura! Faça as questões e registre o que você leu. 💜'},
+  ],
+};
+let nvIdx = 0;
+function nvHost(){ return $('novidades'); }
+function novidadesCheck(){
+  if(!logged) return;
+  if(localStorage.getItem('eduai_novidades') === NOVIDADES.versao) return;
+  abrirNovidades();
+}
+function abrirNovidades(){ nvIdx = 0; nvRender(); }
+function nvRender(){
+  const host=nvHost(); if(!host) return;
+  const s=NOVIDADES.slides[nvIdx], n=NOVIDADES.slides.length, last=nvIdx===n-1;
+  const dots=NOVIDADES.slides.map((_,i)=>`<i class="${i===nvIdx?'on':''}"></i>`).join('');
+  const cta = s.tab ? `<button class="nv-ghost" onclick="nvIr('${s.tab}')">Ver agora</button>` : '';
+  host.innerHTML=`<div class="nv-back" onclick="nvFechar()"></div>
+    <div class="nv-card" role="dialog" aria-label="Novidades">
+      <button class="nv-skip" onclick="nvFechar()" aria-label="Pular">Pular</button>
+      <div class="nv-emoji">${s.emoji}</div>
+      <div class="nv-tt">${esc(s.titulo)}</div>
+      <div class="nv-tx">${esc(s.texto)}</div>
+      <div class="nv-dots">${dots}</div>
+      <div class="nv-actions">
+        ${nvIdx>0?`<button class="nv-prev" onclick="nvAnt()" aria-label="Anterior">‹</button>`:'<span class="nv-sp"></span>'}
+        ${cta}
+        <button class="nv-next" onclick="${last?'nvFechar()':'nvProx()'}">${last?'Vamos lá! 🚀':'Próximo →'}</button>
+      </div>
+    </div>`;
+}
+function nvProx(){ if(nvIdx<NOVIDADES.slides.length-1){ nvIdx++; nvRender(); } }
+function nvAnt(){ if(nvIdx>0){ nvIdx--; nvRender(); } }
+function nvIr(tab){ nvFechar(); setTab(tab); }
+function nvFechar(){ localStorage.setItem('eduai_novidades', NOVIDADES.versao); const h=nvHost(); if(h) h.innerHTML=''; }
+
 window.addEventListener('load', async ()=>{
-  if(senha && await carregar()){ logged=true; render(); if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
+  if(senha && await carregar()){ logged=true; render(); novidadesCheck(); if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
   else render();
 });
