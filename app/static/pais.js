@@ -63,29 +63,33 @@ function render(){
     <div class="stat med"><div class="v">📖 ${leituras}</div><div class="k">leituras</div></div>
   </div>`;
 
-  // Pedidos de recompensa
-  const rec = (EST.compras||[]).filter(c=>c.tipo==='recompensa');
-  const pend = rec.filter(r=>r.status==='pendente').length;
-  h += `<div class="sec">🎁 Pedidos de recompensa ${pend?`<span class="count">${pend} pendente${pend>1?'s':''}</span>`:''}</div>`;
-  if (!rec.length) h += `<div class="card" style="color:var(--dim);font-weight:600">Nenhum pedido ainda.</div>`;
-  rec.forEach(r=>{
-    h += `<div class="card req"><div class="ic">⛏️</div>
-      <div class="info"><div class="t">${esc(r.nome)}</div><div class="s">${fmtData(r.ts)}</div></div>
-      ${r.status==='pendente'?`<button class="aprovar" onclick="aprovar(${r.id})">Aprovar ✓</button>`:`<span class="done">✓ Aprovado</span>`}</div>`;
-  });
-
   // Progresso por matéria
   h += `<div class="sec">📚 Progresso por matéria</div>`;
   Object.keys(cat).forEach(mid=>{
     const c = cat[mid];
     const conc = (EST.progresso||[]).filter(p=>p.materia===mid && p.concluida).length;
+    const fezQ = (EST.progresso||[]).filter(p=>p.materia===mid && !p.concluida && (p.melhor_estrela||0)>0).length;
     const estrelas = (EST.progresso||[]).filter(p=>p.materia===mid).reduce((s,p)=>s+(p.melhor_estrela||0),0);
     const tot = c.total_missoes||0, pc = tot?Math.round(conc/tot*100):0;
     h += `<div class="card mat" style="--mc:${c.cor}"><div class="ic">${c.icone}</div>
       <div class="body"><div class="row1"><div class="nm">${esc(c.nome)}</div><div class="stars">${estrelas} ⭐</div></div>
       <div class="pb"><i style="width:${pc}%"></i></div>
-      <div class="meta"><span>${conc}/${tot} missões</span>${conc===tot&&tot?'<span class="ok">✓ Completo</span>':`<span>${pc}%</span>`}</div></div></div>`;
+      <div class="meta"><span>${conc}/${tot} missões${fezQ?` • <b style="color:var(--amar)">${fezQ} aguardando leitura 📖</b>`:''}</span>${conc===tot&&tot?'<span class="ok">✓ Completo</span>':`<span>${pc}%</span>`}</div></div></div>`;
   });
+
+  // Questões feitas — aguardando a leitura para concluir
+  const pendLeitura = (EST.progresso||[]).filter(p=>!p.concluida && (p.melhor_estrela||0)>0)
+    .sort((a,b)=>String(b.ultima_ts||'').localeCompare(String(a.ultima_ts||'')));
+  h += `<div class="sec">📝 Questões feitas ${pendLeitura.length?`<span class="count">${pendLeitura.length} aguardando leitura</span>`:''}</div><div class="card acts">`;
+  if (!pendLeitura.length) h += `<div style="color:var(--dim);font-weight:600;padding:6px">Nada pendente — todas as missões feitas já foram lidas. 🎉</div>`;
+  pendLeitura.forEach(p=>{
+    const c = cat[p.materia]||{}; const titulo=(c.missoes&&c.missoes[p.missao])||p.missao;
+    h += `<div class="act"><div class="ai">${c.icone||'📘'}</div>
+      <div class="ab"><div class="at">${esc(titulo)}</div>
+      <div class="ad"><span>${fmtData(p.ultima_ts)}</span><span style="color:var(--amar);font-weight:700">• 📖 falta a leitura</span></div></div>
+      <div class="ar"><div class="st">${estrelasStr(p.melhor_estrela||0)}</div></div></div>`;
+  });
+  h += `</div>`;
 
   // Medalhas
   const catm = EST.medalhas_catalogo||[]; const got = catm.filter(m=>m.tem).length;

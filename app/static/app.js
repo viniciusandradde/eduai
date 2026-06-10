@@ -331,8 +331,7 @@ function lojaHTML(){
       <div class="nm"><b>${esc(it.nome)}</b><span class="tag">${it.tipo==='avatar'?'Item de avatar':'Recompensa real • aprovação do pai'}</span></div>${btn}</div>`;
   };
   let h=`<div class="pad fade-in"><div class="coinbar"><div><div class="l">Seu saldo</div><div class="b">🪙 ${a.moedas}</div></div><div style="font-size:30px">🛒</div></div>`;
-  h+=`<div class="sec">Avatar</div>${loja.filter(i=>i.tipo==='avatar').map(row).join('')}`;
-  h+=`<div class="sec">Recompensas reais</div>${loja.filter(i=>i.tipo==='recompensa').map(row).join('')}</div>`;
+  h+=`<div class="sec">Avatar</div>${loja.filter(i=>i.tipo==='avatar').map(row).join('')}</div>`;
   return h;
 }
 async function comprar(cod){

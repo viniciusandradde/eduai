@@ -43,13 +43,11 @@ CREATE TABLE IF NOT EXISTS leitura_log (
 );
 """
 
-# Loja (itens de avatar + recompensas reais aprovadas pelo pai)
+# Loja (itens de avatar)
 LOJA = [
     {"codigo": "av_capa",    "nome": "Capa de herói",      "emoji": "🦸", "tipo": "avatar",     "custo": 30},
     {"codigo": "av_oculos",  "nome": "Óculos legais",      "emoji": "🕶️", "tipo": "avatar",     "custo": 40},
     {"codigo": "av_coroa",   "nome": "Coroa",              "emoji": "👑", "tipo": "avatar",     "custo": 60},
-    {"codigo": "mc_15",      "nome": "15 min de Minecraft", "emoji": "⛏️", "tipo": "recompensa", "custo": 50},
-    {"codigo": "mc_30",      "nome": "30 min de Minecraft", "emoji": "⛏️", "tipo": "recompensa", "custo": 90},
 ]
 
 # Medalhas: (codigo, nome, emoji, dica, condição(stats)->bool)
