@@ -4,6 +4,18 @@ let EST = null;
 const $ = id => document.getElementById(id);
 function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 function estrelasStr(n){ return '★'.repeat(n) + '☆'.repeat(3-n); }
+function avEmoji(code){
+  if(!code || !EST || !EST.avatares) return '';
+  const all=[...(EST.avatares.bases||[]), ...(EST.avatares.acessorios||[])];
+  const it=all.find(x=>x.codigo===code); return it?it.emoji:'';
+}
+function avatarFace(){
+  const a=EST.aluno, eq=(EST.avatares&&EST.avatares.equipado)||{};
+  const base=a.avatar||'🧑‍🚀', rosto=avEmoji(eq.rosto), topo=avEmoji(eq.topo);
+  return `<div class="face"><span class="av-base">${base}</span>`
+    + (rosto?`<span class="av-acc rosto">${rosto}</span>`:'')
+    + (topo?`<span class="av-acc topo">${topo}</span>`:'') + `</div>`;
+}
 
 async function api(path, opts){
   const sep = path.includes('?') ? '&' : '?';
@@ -45,7 +57,7 @@ function render(){
           stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C*(1-pct)).toFixed(1)}"/>
         <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
       </svg>
-      <div class="face">${a.avatar||'🧑‍🚀'}</div><div class="lv">Nv ${a.nivel}</div>
+      ${avatarFace()}<div class="lv">Nv ${a.nivel}</div>
     </div>
     <div class="who">
       <div class="nm">${esc(a.nome)}</div>
@@ -114,11 +126,6 @@ function render(){
   $('view').innerHTML = h;
 }
 
-async function aprovar(id){
-  await api('/api/pais/aprovar', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({id}) });
-  await recarregar();
-  showToast('✓ Recompensa liberada!');
-}
 function showToast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(window.__tt); window.__tt=setTimeout(()=>t.classList.remove('show'),2600); }
 
 window.addEventListener('load', async ()=>{

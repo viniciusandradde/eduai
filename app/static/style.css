@@ -361,3 +361,33 @@ button{font-family:inherit;cursor:pointer;border:0;border-radius:13px;font-size:
 @keyframes ehUp{from{transform:translate(-50%,100%)}to{transform:translate(-50%,0)}}
 @keyframes ehFade{from{opacity:0}to{opacity:1}}
 @keyframes ehBlink{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ── Avatar composto (base + acessórios) ─────────────── */
+.face{position:relative}
+.face .av-base{line-height:1}
+.face .av-acc{position:absolute;pointer-events:none;line-height:1}
+.face .av-acc.topo{top:-16%;left:50%;transform:translateX(-50%);font-size:.6em}
+.face .av-acc.rosto{top:46%;left:50%;transform:translate(-50%,-50%);font-size:.58em}
+
+/* ── Aba Avatar ──────────────────────────────────────── */
+.av-preview{display:flex;align-items:center;gap:18px;margin-top:4px;
+  background:linear-gradient(180deg,#16141f,#121020);border:1px solid var(--card-border);
+  border-radius:var(--r);padding:20px 22px}
+.av-preview .face{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-size:54px;flex-shrink:0;
+  background:radial-gradient(circle at 35% 30%,#2a2740,#16131f);box-shadow:inset 0 0 0 1px rgba(167,139,250,.25)}
+.av-pinfo .t{font-size:18px;font-weight:800}
+.av-pinfo .coins{font-size:15px;font-weight:800;color:var(--amar);margin-top:4px}
+.avgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.avcard{display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center;padding:14px 10px;
+  background:linear-gradient(180deg,#16141f,#121020);border:1px solid var(--card-border);border-radius:16px}
+.avcard.eq{border-color:rgba(124,58,237,.6);box-shadow:0 0 0 1px rgba(124,58,237,.4)}
+.avcard .ave{font-size:40px;line-height:1}
+.avcard.lock .ave{filter:grayscale(.7) brightness(.6)}
+.avcard .avn{font-size:13px;font-weight:700;line-height:1.15}
+.avbtn{width:100%;padding:9px 8px;border-radius:11px;font-size:13px;font-weight:800;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--txt)}
+.avbtn.on{background:rgba(124,58,237,.2);border-color:rgba(124,58,237,.5);color:var(--rox2)}
+.avbtn.buy{background:linear-gradient(180deg,#8b4ef2,var(--rox));color:#fff;border:0}
+.avbtn:disabled{opacity:.45}
+.avlock{font-size:11px;font-weight:700;color:var(--dim);line-height:1.3;min-height:30px;display:flex;align-items:center;justify-content:center}
+@media(max-width:360px){ .avgrid{grid-template-columns:repeat(2,1fr)} }

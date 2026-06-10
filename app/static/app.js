@@ -63,7 +63,7 @@ function render(){
     nav = navHTML();
     if (tab==='materias') body = materiasHTML();
     if (tab==='medalhas') body = medalhasHTML();
-    if (tab==='loja') body = lojaHTML();
+    if (tab==='avatar') body = avatarHTML();
   }
   $('root').innerHTML = `<div class="eduai">${flowBar}${header}<div class="scroll">${body}</div>${nav}</div>`;
   // listeners pós-render
@@ -160,7 +160,7 @@ function headerHTML(){
           stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/>
         <defs><linearGradient id="avg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
       </svg>
-      <div class="face">${a.avatar||'🧑‍🚀'}</div>
+      ${avatarFace()}
       <div class="lvbadge">Nv ${a.nivel}</div>
     </div>
     <div class="hstats">
@@ -177,7 +177,7 @@ function headerHTML(){
 }
 
 function navHTML(){
-  const items=[['materias','📘','Matérias'],['medalhas','🏅','Medalhas'],['loja','🛒','Loja']];
+  const items=[['materias','📘','Matérias'],['medalhas','🏅','Medalhas'],['avatar','🧑‍🚀','Avatar']];
   return `<div class="bottomnav">${items.map(([id,ic,lb])=>
     `<button class="bnav${tab===id?' on':''}" onclick="setTab('${id}')"><span class="ic">${ic}</span><span class="lb">${lb}</span></button>`).join('')}</div>`;
 }
@@ -376,27 +376,52 @@ function medalhasHTML(){
   h+=`</div></div>`; return h;
 }
 
-// ── Loja ──────────────────────────────────────────────
-function lojaHTML(){
-  const a=EST.aluno, loja=EST.loja||[], comp=EST.comprados||[], pend=EST.pendentes||[];
-  const row=it=>{
-    const owned=comp.includes(it.codigo), pe=pend.includes(it.codigo), pode=a.moedas>=it.custo;
-    let btn = owned?'<button class="buy owned" disabled>✓ Tem</button>'
-      : pe?'<button class="buy pend" disabled>⏳ Pai</button>'
-      : `<button class="btn buy" ${pode?'':'disabled'} onclick="comprar('${it.codigo}')">🪙 ${it.custo}</button>`;
-    return `<div class="item"><div class="ic">${it.emoji||'🎁'}</div>
-      <div class="nm"><b>${esc(it.nome)}</b><span class="tag">${it.tipo==='avatar'?'Item de avatar':'Recompensa real • aprovação do pai'}</span></div>${btn}</div>`;
-  };
-  let h=`<div class="pad fade-in"><div class="coinbar"><div><div class="l">Seu saldo</div><div class="b">🪙 ${a.moedas}</div></div><div style="font-size:30px">🛒</div></div>`;
-  h+=`<div class="sec">Avatar</div>${loja.filter(i=>i.tipo==='avatar').map(row).join('')}</div>`;
+// ── Avatar (composição base + acessórios) ─────────────
+function avEmoji(code){
+  if(!code || !EST || !EST.avatares) return '';
+  const all=[...(EST.avatares.bases||[]), ...(EST.avatares.acessorios||[])];
+  const it=all.find(x=>x.codigo===code); return it?it.emoji:'';
+}
+function avatarFace(extra){
+  const a=EST.aluno, eq=(EST.avatares&&EST.avatares.equipado)||{};
+  const base=a.avatar||'🧑‍🚀', rosto=avEmoji(eq.rosto), topo=avEmoji(eq.topo);
+  return `<div class="face${extra?' '+extra:''}"><span class="av-base">${base}</span>`
+    + (rosto?`<span class="av-acc rosto">${rosto}</span>`:'')
+    + (topo?`<span class="av-acc topo">${topo}</span>`:'') + `</div>`;
+}
+
+// ── Aba Avatar ────────────────────────────────────────
+function avCard(it){
+  const a=EST.aluno, pode=a.moedas>=it.custo;
+  let acao;
+  if(it.equipado)      acao=`<button class="avbtn on" onclick="avEquipar('${it.codigo}')">✓ Equipado</button>`;
+  else if(it.tem)      acao=`<button class="avbtn" onclick="avEquipar('${it.codigo}')">Equipar</button>`;
+  else if(it.custo>0)  acao=`<button class="avbtn buy" ${pode?'':'disabled'} onclick="avComprar('${it.codigo}')">🪙 ${it.custo}</button>`;
+  else                 acao=`<div class="avlock">🔒 ${esc(it.dica||'Bloqueado')}</div>`;
+  return `<div class="avcard${it.equipado?' eq':''}${it.tem?'':' lock'}">
+    <div class="ave">${it.emoji}</div><div class="avn">${esc(it.nome)}</div>${acao}</div>`;
+}
+function avatarHTML(){
+  const a=EST.aluno, av=EST.avatares||{bases:[],acessorios:[],equipado:{}};
+  const topo=(av.acessorios||[]).filter(x=>x.slot==='topo');
+  const rosto=(av.acessorios||[]).filter(x=>x.slot==='rosto');
+  let h=`<div class="pad fade-in">
+    <div class="av-preview">${avatarFace('big')}
+      <div class="av-pinfo"><div class="t">Seu avatar</div><div class="coins">🪙 ${a.moedas} moedas</div></div></div>`;
+  h+=`<div class="sec first">Personagens</div><div class="avgrid">${av.bases.map(avCard).join('')}</div>`;
+  h+=`<div class="sec">Chapéus & coroas</div><div class="avgrid">${topo.map(avCard).join('')}</div>`;
+  h+=`<div class="sec">Óculos</div><div class="avgrid">${rosto.map(avCard).join('')}</div>`;
+  h+=`<div class="foot">Ganhe moedas concluindo missões • desbloqueie por conquistas 🏅</div></div>`;
   return h;
 }
-async function comprar(cod){
-  const r=await api('/api/loja/comprar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({item:cod})});
-  await recarregar();
-  if(!(r.data&&r.data.ok)) alert((r.data&&r.data.erro)||'Não foi possível.');
-  else if(r.data.status==='pendente') alert('Pedido enviado ao seu pai! 🎁');
-  render();
+async function avComprar(cod){
+  const r=await api('/api/avatar/comprar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({codigo:cod})});
+  if(r.data&&r.data.ok){ await avEquipar(cod); }   // comprou já equipa
+  else { await recarregar(); alert((r.data&&r.data.erro)||'Não foi possível comprar.'); render(); }
+}
+async function avEquipar(cod){
+  await api('/api/avatar/equipar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({codigo:cod})});
+  await recarregar(); render();
 }
 
 // ── Confetti ──────────────────────────────────────────

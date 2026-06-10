@@ -278,9 +278,6 @@ async def api_leitura_foto(materia: str = Form(...), missao: str = Form(...),
     novas = db.concluir_leitura(materia, missao)
     return {"ok": True, "foto": nome, "novas_medalhas": novas}
 
-class CompraIn(BaseModel):
-    item: str
-
 @app.post('/api/tux/abrir')
 def api_tux_abrir(senha: str = ''):
     checar(senha, ALUNO_SENHA)
@@ -293,10 +290,18 @@ def api_tux_abrir(senha: str = ''):
         return JSONResponse(status_code=423, content={"ok": False, "motivo": "tempo", "restante_seg": 0})
     return {"ok": True, "url": TERMINAL_URL, "restante_seg": restante}
 
-@app.post('/api/loja/comprar')
-def api_comprar(payload: CompraIn, senha: str = ''):
+class AvatarIn(BaseModel):
+    codigo: str
+
+@app.post('/api/avatar/comprar')
+def api_avatar_comprar(payload: AvatarIn, senha: str = ''):
     checar(senha, ALUNO_SENHA)
-    return db.comprar(payload.item)
+    return db.avatar_comprar(payload.codigo)
+
+@app.post('/api/avatar/equipar')
+def api_avatar_equipar(payload: AvatarIn, senha: str = ''):
+    checar(senha, ALUNO_SENHA)
+    return db.avatar_equipar(payload.codigo)
 
 # ── Edu Help (chat de dúvidas, FAQ roteirizado) ───────────────
 def _eduhelp_cfg():
@@ -330,14 +335,6 @@ def api_pais_estado(senha: str = ''):
                           "total_missoes": len([x for x in m.get('missoes', []) if not x.get('link')])}
     e["catalogo"] = nomes
     return JSONResponse(e)
-
-class AprovarIn(BaseModel):
-    id: int
-
-@app.post('/api/pais/aprovar')
-def api_pais_aprovar(payload: AprovarIn, senha: str = ''):
-    checar(senha, PAI_SENHA)
-    return db.aprovar_compra(payload.id)
 
 @app.get('/api/foto/{nome}')
 def api_foto(nome: str, senha: str = ''):
