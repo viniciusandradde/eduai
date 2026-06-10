@@ -83,7 +83,7 @@ function ehSyncFab(){
 }
 function ehRender(){
   const host=ehHost(); if(!host) return;
-  const fab=`<button class="eh-fab" onclick="ehAbrir()" aria-label="Abrir Edu Help"><span class="e">🐧</span><span class="t">Edu Help</span></button>`;
+  const fab=`<button class="eh-fab" onclick="ehAbrir()" aria-label="Abrir Edu Help" title="Edu Help">🐧</button>`;
   if(!ehOpen){ host.innerHTML=fab; return; }
   let msgs='';
   ehMsgs.forEach(m=>{
