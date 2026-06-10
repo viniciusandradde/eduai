@@ -14,6 +14,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 import db
+import eduhelp
 
 BASE        = Path(__file__).parent
 STATIC      = BASE / 'static'
@@ -36,9 +37,12 @@ def _carregar_conteudo():
     mats = []
     for f in sorted(CONTEUDO.glob('*.json')):
         try:
-            mats.append(json.loads(f.read_text(encoding='utf-8')))
+            data = json.loads(f.read_text(encoding='utf-8'))
         except Exception:
-            pass
+            continue
+        # só aceita arquivos de matéria (evita carregar JSONs de outro formato)
+        if isinstance(data, dict) and 'id' in data and 'missoes' in data:
+            mats.append(data)
     mats.sort(key=lambda m: m.get('ordem', 99))
     return mats
 
@@ -293,6 +297,25 @@ def api_tux_abrir(senha: str = ''):
 def api_comprar(payload: CompraIn, senha: str = ''):
     checar(senha, ALUNO_SENHA)
     return db.comprar(payload.item)
+
+# ── Edu Help (chat de dúvidas, FAQ roteirizado) ───────────────
+def _eduhelp_cfg():
+    """Valores reais das regras, injetados nas respostas do Edu."""
+    return {"limite": ATIVIDADES_POR_DIA, "tux_min": TUX_MINUTOS,
+            "xp_nivel": db.XP_POR_NIVEL, "est1": 40, "est2": 70, "est3": 90}
+
+class EduHelpIn(BaseModel):
+    pergunta: str = ''
+
+@app.get('/api/eduhelp/sugestoes')
+def api_eduhelp_sugestoes(senha: str = ''):
+    checar(senha, ALUNO_SENHA)
+    return JSONResponse(eduhelp.sugestoes(_eduhelp_cfg()))
+
+@app.post('/api/eduhelp')
+def api_eduhelp(payload: EduHelpIn, senha: str = ''):
+    checar(senha, ALUNO_SENHA)
+    return JSONResponse(eduhelp.responder(payload.pergunta, _eduhelp_cfg()))
 
 # ── API do pai ────────────────────────────────────────────────
 @app.get('/api/pais/estado')

@@ -1,0 +1,232 @@
+{
+  "saudacao": "Oi! Eu sou o Edu 🐧 Posso explicar como o app funciona, tirar dúvidas das matérias e dar dicas de estudo. Toque numa sugestão ou escreva sua pergunta!",
+  "fallback": "Hmm, não entendi essa 🤔. Tenta uma destas perguntas:",
+  "entradas": [
+    {
+      "id": "regra_leitura",
+      "grupo": "Como funciona",
+      "chip": "Por que preciso ler depois das questões?",
+      "palavras": ["leitura", "ler", "leio", "por que ler", "resumo", "obrigatoria", "obrigatorio", "livro"],
+      "resposta": "Porque o lema aqui é: nenhuma missão se conclui sem ler! 📖 Você faz as questões, ganha estrelas, e depois registra uma leitura (um resumo com pelo menos 50 letras, com suas palavras, ou uma foto do resumo no papel). Só aí a missão fica concluída de verdade e você ganha +20 XP e 🪙 +10 moedas."
+    },
+    {
+      "id": "concluir_missao",
+      "grupo": "Como funciona",
+      "chip": "Como concluo uma missão?",
+      "palavras": ["concluir", "concluo", "concluida", "terminar", "completar", "finalizar", "missao", "etapas"],
+      "resposta": "São 2 etapas: 1) Responda as questões e tire pelo menos 1 estrela ({est1}% de acerto). 2) Faça a LEITURA da missão (resumo de 50+ letras ou foto). Quando as duas etapas estão prontas, a missão ganha o ✔ e conta no painel dos seus pais."
+    },
+    {
+      "id": "limite_diario",
+      "grupo": "Como funciona",
+      "chip": "Quantas atividades posso fazer por dia?",
+      "palavras": ["quantas", "limite", "por dia", "dia", "atividades", "amanha", "quantos"],
+      "resposta": "Você pode concluir até {limite} atividades por dia (escola antes da diversão 😉). Quando bate o limite, as novas missões esperam até amanhã — mas você ainda pode treinar as questões à vontade! Missões que você já começou e leu continuam liberadas."
+    },
+    {
+      "id": "estrelas",
+      "grupo": "Como funciona",
+      "chip": "Como ganho estrelas?",
+      "palavras": ["estrela", "estrelas", "ganho estrela", "acerto", "acertar", "nota"],
+      "resposta": "As estrelas vêm do seu acerto nas questões: ⭐ a partir de {est1}%, ⭐⭐ a partir de {est2}% e ⭐⭐⭐ a partir de {est3}% de acerto. Quanto mais estrelas, mais XP você ganha. Pode refazer a missão para melhorar suas estrelas!"
+    },
+    {
+      "id": "moedas",
+      "grupo": "Como funciona",
+      "chip": "Como ganho moedas?",
+      "palavras": ["moeda", "moedas", "dinheiro", "comprar", "loja", "coin"],
+      "resposta": "Você ganha 🪙 +10 moedas cada vez que conclui uma missão (com a leitura!). Use as moedas na Loja 🛒 para deixar seu avatar mais legal — capa de herói, óculos, coroa e mais."
+    },
+    {
+      "id": "tux_liberar",
+      "grupo": "Como funciona",
+      "chip": "Como libero o Tux 🐧?",
+      "palavras": ["tux", "pinguim", "liberar", "destravar", "terminal", "linux", "jogo", "bloqueado", "cadeado"],
+      "resposta": "O Tux 🐧 libera quando você conclui pelo menos 1 missão em CADA matéria da trilha: Matemática, Português e Ciências. Concluir = questões + leitura. Assim você estuda tudo antes de se divertir!"
+    },
+    {
+      "id": "tux_tempo",
+      "grupo": "Como funciona",
+      "chip": "Quanto tempo de Tux por dia?",
+      "palavras": ["tempo", "minutos", "quanto tempo", "tempo de tux", "tela", "duracao", "tux", "pinguim"],
+      "resposta": "Depois de liberar, o Tux 🐧 fica disponível por {tux_min} minutos por dia. Quando o tempo de hoje acaba, é só voltar amanhã 🌙."
+    },
+    {
+      "id": "niveis",
+      "grupo": "Como funciona",
+      "chip": "Como subo de nível?",
+      "palavras": ["nivel", "niveis", "xp", "subir", "experiencia", "level", "evoluir"],
+      "resposta": "Você ganha XP fazendo questões e leituras. A cada {xp_nivel} XP você sobe de nível ⭐. Acompanhe a barrinha roxa lá no topo: ela mostra quanto falta para o próximo nível!"
+    },
+    {
+      "id": "senha",
+      "grupo": "Como funciona",
+      "chip": "Esqueci minha senha",
+      "palavras": ["senha", "esqueci", "entrar", "login", "nao consigo entrar"],
+      "resposta": "Sem problema! Eu não consigo ver senhas. Peça ajuda para o seu pai ou sua mãe — eles têm o painel dos pais e podem te ajudar a entrar. 💜"
+    },
+
+    {
+      "id": "tema_fracoes",
+      "grupo": "Matérias",
+      "chip": "O que é fração?",
+      "palavras": ["fracao", "fracoes", "fraçao", "numerador", "denominador", "meio", "metade"],
+      "resposta": "Fração é um pedaço de um todo, escrito como a/b. O número de baixo (denominador) diz em quantas partes iguais dividimos, e o de cima (numerador) diz quantas partes pegamos. Ex.: numa pizza cortada em 4, comer 1 pedaço é 1/4. 🍕"
+    },
+    {
+      "id": "tema_porcentagem",
+      "grupo": "Matérias",
+      "chip": "O que é porcentagem?",
+      "palavras": ["porcentagem", "porcento", "%", "desconto", "cento"],
+      "resposta": "Porcentagem é uma fração de 100. 50% significa 50 a cada 100, ou seja, a metade. Para achar 10% de um número, é só dividir por 10. Ex.: 10% de 200 = 20."
+    },
+    {
+      "id": "tema_equacoes",
+      "grupo": "Matérias",
+      "chip": "O que é uma equação?",
+      "palavras": ["equacao", "equacoes", "incognita", "x", "1 grau", "primeiro grau"],
+      "resposta": "Equação é uma igualdade com um número desconhecido (a incógnita, geralmente o x). Resolver é descobrir o valor de x que deixa os dois lados iguais. Ex.: em x + 3 = 7, o x vale 4, porque 4 + 3 = 7."
+    },
+    {
+      "id": "tema_decimais",
+      "grupo": "Matérias",
+      "chip": "O que são números decimais?",
+      "palavras": ["decimal", "decimais", "virgula", "vírgula", "centavos"],
+      "resposta": "Números decimais têm uma vírgula que separa a parte inteira da parte quebrada. Ex.: 3,5 é três inteiros e meio. O primeiro número depois da vírgula é o décimo, o segundo é o centésimo. Aparece muito em dinheiro: R$ 2,50."
+    },
+    {
+      "id": "tema_geometria",
+      "grupo": "Matérias",
+      "chip": "O que é perímetro?",
+      "palavras": ["geometria", "perimetro", "perímetro", "area", "área", "lado", "figura", "quadrado", "retangulo"],
+      "resposta": "Perímetro é a soma de todos os lados de uma figura (o contorno). Área é o espaço de dentro. Ex.: um quadrado de lado 5 tem perímetro 5+5+5+5 = 20 e área 5×5 = 25. 📐"
+    },
+    {
+      "id": "tema_dinheiro_medidas",
+      "grupo": "Matérias",
+      "chip": "Como funcionam dinheiro e medidas?",
+      "palavras": ["dinheiro", "medidas", "real", "reais", "metro", "litro", "quilo", "grama", "centimetro", "troco"],
+      "resposta": "Medidas usam unidades: comprimento em metros (m), massa em gramas/quilos (g, kg) e líquidos em litros (L). Dinheiro no Brasil é em reais e centavos (R$ 1,00 = 100 centavos). Trocar de unidade é multiplicar ou dividir por 10, 100 ou 1000. Ex.: 1 m = 100 cm."
+    },
+    {
+      "id": "tema_corpo",
+      "grupo": "Matérias",
+      "chip": "Como funciona o corpo humano?",
+      "palavras": ["corpo", "humano", "orgao", "orgãos", "coracao", "pulmao", "ossos", "musculo", "sistema"],
+      "resposta": "Nosso corpo tem sistemas que trabalham juntos: o coração bombeia sangue, os pulmões pegam o ar, o estômago e intestino digerem a comida, e os ossos e músculos nos sustentam e movem. Cada órgão tem sua função! ❤️"
+    },
+    {
+      "id": "tema_ecossistemas",
+      "grupo": "Matérias",
+      "chip": "O que é um ecossistema?",
+      "palavras": ["ecossistema", "ecossistemas", "cadeia alimentar", "natureza", "ambiente", "animais", "plantas", "habitat"],
+      "resposta": "Ecossistema é o conjunto dos seres vivos (plantas, animais) e do ambiente (água, solo, ar) de um lugar, todos se relacionando. Na cadeia alimentar, plantas produzem comida, animais comem plantas, e outros animais comem esses. Tudo conectado! 🌳"
+    },
+    {
+      "id": "tema_materia",
+      "grupo": "Matérias",
+      "chip": "O que é matéria e energia?",
+      "palavras": ["materia", "energia", "estados", "solido", "sólido", "liquido", "líquido", "gasoso", "gas"],
+      "resposta": "Matéria é tudo que tem massa e ocupa lugar — pode ser sólida, líquida ou gasosa. Energia é o que faz as coisas acontecerem e mudarem (luz, calor, movimento). Ex.: o gelo (sólido) vira água (líquido) com a energia do calor."
+    },
+    {
+      "id": "tema_nutricao",
+      "grupo": "Matérias",
+      "chip": "Como funciona a digestão?",
+      "palavras": ["nutricao", "nutrição", "digestao", "digestão", "comida", "alimento", "estomago", "intestino", "nutrientes"],
+      "resposta": "Digestão é o caminho que a comida faz no corpo: começa na boca (mastigar), passa pelo estômago e intestino, onde os nutrientes são absorvidos para nos dar energia. Comer frutas, legumes e beber água ajuda muito! 🍎"
+    },
+    {
+      "id": "tema_ciclo_agua",
+      "grupo": "Matérias",
+      "chip": "O que é o ciclo da água?",
+      "palavras": ["ciclo da agua", "ciclo", "agua", "água", "chuva", "evaporacao", "evaporação", "nuvem", "condensacao"],
+      "resposta": "É o caminho que a água faz na natureza, sem parar: o Sol esquenta a água dos rios e mares e ela evapora (vira vapor), sobe e forma nuvens (condensação), e depois cai como chuva (precipitação). E recomeça! ☔"
+    },
+    {
+      "id": "tema_materiais",
+      "grupo": "Matérias",
+      "chip": "Quais as propriedades dos materiais?",
+      "palavras": ["materiais", "propriedades", "duro", "flexivel", "transparente", "metal", "plastico", "madeira", "vidro"],
+      "resposta": "Os materiais têm propriedades que ajudam a escolher para que servem: podem ser duros ou flexíveis, transparentes ou opacos, leves ou pesados, condutores ou isolantes. Ex.: o vidro é transparente, o metal conduz calor, a borracha é flexível."
+    },
+    {
+      "id": "tema_interpretacao",
+      "grupo": "Matérias",
+      "chip": "Como interpretar um texto?",
+      "palavras": ["interpretacao", "interpretação", "interpretar", "texto", "ideia principal", "entender texto"],
+      "resposta": "Interpretar é entender o que o texto quer dizer. Dicas: leia com calma, descubra qual é a ideia principal, repare nos detalhes e procure o sentido das palavras pelo contexto. Reler o trecho antes de responder ajuda demais! 🔎"
+    },
+    {
+      "id": "tema_ortografia",
+      "grupo": "Matérias",
+      "chip": "O que é ortografia?",
+      "palavras": ["ortografia", "escrever certo", "escrita", "erro de escrita", "como escreve", "letra"],
+      "resposta": "Ortografia é a forma correta de escrever as palavras. Algumas confundem, como 'mais' (quantidade) e 'mas' (porém), ou quando usar S, Z, X. Na dúvida, ler bastante e consultar ajuda a memorizar a escrita certa. ✍️"
+    },
+    {
+      "id": "tema_classes",
+      "grupo": "Matérias",
+      "chip": "O que são classes de palavras?",
+      "palavras": ["classes", "substantivo", "adjetivo", "verbo", "artigo", "palavras", "gramatica", "gramática"],
+      "resposta": "Cada palavra tem uma função na frase. Substantivo nomeia (gato, casa), adjetivo dá característica (bonito, grande), verbo indica ação (correr, ser) e artigo acompanha o substantivo (o, a, um). Ex.: em 'O gato preto corre', gato=substantivo, preto=adjetivo, corre=verbo."
+    },
+    {
+      "id": "tema_acentuacao",
+      "grupo": "Matérias",
+      "chip": "Quando usar acento?",
+      "palavras": ["acentuacao", "acentuação", "acento", "til", "crase", "agudo", "circunflexo"],
+      "resposta": "O acento mostra a sílaba mais forte e às vezes muda o som ou o sentido da palavra. Ex.: 'avó' e 'avô' têm acentos diferentes. O til (~) nasaliza, como em 'pão' e 'mão'. Ler em voz alta ajuda a perceber a sílaba forte. 🗣️"
+    },
+    {
+      "id": "tema_pontuacao",
+      "grupo": "Matérias",
+      "chip": "Para que serve a pontuação?",
+      "palavras": ["pontuacao", "pontuação", "virgula", "ponto", "exclamacao", "interrogacao", "ponto final"],
+      "resposta": "A pontuação organiza o texto e dá ritmo. A vírgula faz uma pausa curta, o ponto final encerra a frase, o '?' faz pergunta e o '!' mostra emoção. Ex.: 'Vamos comer, vovó!' é bem diferente de 'Vamos comer vovó!' 😅"
+    },
+    {
+      "id": "tema_sentido",
+      "grupo": "Matérias",
+      "chip": "O que é sentido das palavras?",
+      "palavras": ["sentido", "sinonimo", "sinônimo", "antonimo", "antônimo", "significado", "palavras parecidas"],
+      "resposta": "É o significado das palavras. Sinônimos têm sentido parecido (alegre = feliz) e antônimos têm sentido contrário (alto × baixo). Uma mesma palavra pode mudar de sentido pelo contexto. Ex.: 'manga' pode ser fruta ou parte da camisa. 🥭"
+    },
+    {
+      "id": "tema_logica",
+      "grupo": "Matérias",
+      "chip": "O que é lógica e algoritmo?",
+      "palavras": ["logica", "lógica", "algoritmo", "algoritmos", "programacao", "programação", "passo a passo", "sequencia", "codigo"],
+      "resposta": "Algoritmo é uma sequência de passos para resolver algo, igual a uma receita de bolo 🍰. Lógica é pensar na ordem certa dos passos. Em programação, a gente dá instruções claras, uma de cada vez, para o computador seguir."
+    },
+
+    {
+      "id": "dica_resumo",
+      "grupo": "Dicas",
+      "chip": "Como faço um bom resumo de leitura?",
+      "palavras": ["dica resumo", "bom resumo", "como resumir", "resumir", "escrever resumo"],
+      "resposta": "Escreva com SUAS palavras o que você entendeu: do que falava, o que aconteceu e o que você aprendeu. Precisa ter pelo menos 50 letras. Não vale copiar do livro — o legal é mostrar que você entendeu! Se preferir, dá para enviar uma foto do resumo no papel. 📸"
+    },
+    {
+      "id": "dica_3estrelas",
+      "grupo": "Dicas",
+      "chip": "Como tirar 3 estrelas?",
+      "palavras": ["dica estrela", "3 estrelas", "tres estrelas", "nota maxima", "acertar tudo", "melhorar"],
+      "resposta": "Para tirar ⭐⭐⭐ você precisa de {est3}% de acerto. Leia cada questão com calma, confira a explicação quando errar e refaça a missão depois para fixar. Repetir é o segredo dos campeões! 💪"
+    },
+    {
+      "id": "dica_streak",
+      "grupo": "Dicas",
+      "chip": "Como manter a sequência de dias?",
+      "palavras": ["streak", "sequencia", "sequência", "dias seguidos", "fogo", "ofensiva", "todo dia"],
+      "resposta": "Sua sequência 🔥 aumenta quando você estuda um pouquinho TODO dia. Se faltar um dia, ela recomeça do 1. Tenta fazer pelo menos uma atividade por dia — pouquinho por dia vale mais que muito de uma vez só!"
+    },
+    {
+      "id": "dica_ler",
+      "grupo": "Dicas",
+      "chip": "Por que ler todo dia é importante?",
+      "palavras": ["dica leitura", "ler todo dia", "importancia da leitura", "ler mais", "habito de ler"],
+      "resposta": "Ler todo dia deixa você craque em tudo: melhora a escrita, aumenta o vocabulário e ajuda a entender as outras matérias. Pode ser um livro, gibi ou revista — o importante é o hábito. Aqui no app, ler é o que conclui cada missão! 📚"
+    }
+  ]
+}

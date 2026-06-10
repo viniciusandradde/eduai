@@ -69,6 +69,63 @@ function render(){
   // listeners pós-render
   const lt = $('lt-resumo'); if (lt) lt.addEventListener('input', ()=>{ const n=lt.value.trim().length; const c=$('lt-cc'); if(c){c.textContent=n+'/50 letras '+(n>=50?'✓':''); c.className='charcount'+(n>=50?' ok':'');} });
   const fi = $('lt-foto'); if (fi) fi.addEventListener('change', e=>{ const f=e.target.files[0]; const d=$('lt-drop'); if(f&&d){ d.classList.add('has'); d.querySelector('.dl').textContent=f.name+' selecionada'; d.querySelector('.ic').textContent='📸'; } });
+  ehSyncFab();
+}
+
+// ── Edu Help (chat de dúvidas, FAQ roteirizado) ───────
+let ehOpen=false, ehMsgs=[], ehLoaded=false, ehBusy=false;
+function ehHost(){ return $('eduhelp'); }
+function ehVisivel(){ return logged && !(flow && (flow.view==='exercicio' || flow.view==='leitura')); }
+function ehSyncFab(){
+  const host=ehHost(); if(!host) return;
+  if(!ehVisivel()){ ehOpen=false; host.innerHTML=''; return; }
+  ehRender();
+}
+function ehRender(){
+  const host=ehHost(); if(!host) return;
+  const fab=`<button class="eh-fab" onclick="ehAbrir()" aria-label="Abrir Edu Help"><span class="e">🐧</span><span class="t">Edu Help</span></button>`;
+  if(!ehOpen){ host.innerHTML=fab; return; }
+  let msgs='';
+  ehMsgs.forEach(m=>{
+    if(m.quem==='bot') msgs+=`<div class="eh-row bot"><div class="eh-av">🐧</div><div class="eh-bubble">${m.texto}</div></div>`;
+    else msgs+=`<div class="eh-row eu"><div class="eh-bubble">${esc(m.texto)}</div></div>`;
+    if(m.chips&&m.chips.length) msgs+=`<div class="eh-chips">`+m.chips.map(c=>`<button class="eh-chip" onclick="ehChip('${c.id}',this)">${esc(c.texto)}</button>`).join('')+`</div>`;
+  });
+  if(ehBusy) msgs+=`<div class="eh-row bot"><div class="eh-av">🐧</div><div class="eh-bubble eh-typing"><i></i><i></i><i></i></div></div>`;
+  host.innerHTML=`<div class="eh-backdrop" onclick="ehFechar()"></div>
+    <div class="eh-panel" role="dialog" aria-label="Edu Help">
+      <div class="eh-head"><div class="eh-title"><span class="e">🐧</span> Edu Help</div><button class="eh-x" onclick="ehFechar()" aria-label="Fechar">✕</button></div>
+      <div class="eh-body" id="eh-body">${msgs}</div>
+      <div class="eh-foot"><input id="eh-in" placeholder="Escreva sua dúvida..." autocomplete="off" onkeydown="if(event.key==='Enter')ehEnviar()">
+        <button class="eh-send" onclick="ehEnviar()" aria-label="Enviar">➤</button></div>
+    </div>`;
+  const b=$('eh-body'); if(b) b.scrollTop=b.scrollHeight;
+}
+async function ehAbrir(){
+  ehOpen=true;
+  if(!ehLoaded){
+    ehLoaded=true;
+    const r=await api('/api/eduhelp/sugestoes'); const d=(r&&r.data)||{};
+    const chips=[]; (d.grupos||[]).forEach(g=>(g.chips||[]).forEach(c=>chips.push(c)));
+    ehMsgs.push({quem:'bot', texto:esc(d.saudacao||'Oi! Eu sou o Edu 🐧'), chips});
+  }
+  ehRender(); const i=$('eh-in'); if(i) i.focus();
+}
+function ehFechar(){ ehOpen=false; ehRender(); }
+async function ehChip(id, btn){ await ehPerguntar(id, btn?btn.textContent:id); }
+async function ehEnviar(){
+  const i=$('eh-in'); if(!i) return;
+  const t=i.value.trim(); if(!t||ehBusy) return;
+  i.value=''; await ehPerguntar(t, t);
+}
+async function ehPerguntar(pergunta, display){
+  ehMsgs.forEach(m=>{ m.chips=[]; });          // só o último bot mostra chips
+  ehMsgs.push({quem:'eu', texto:display});
+  ehBusy=true; ehRender();
+  const r=await api('/api/eduhelp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pergunta})});
+  ehBusy=false; const d=(r&&r.data)||{};
+  ehMsgs.push({quem:'bot', texto:esc(d.resposta||'Ops, tive um probleminha aqui. Tenta de novo? 🐧'), chips:d.sugestoes||[]});
+  ehRender(); const i=$('eh-in'); if(i) i.focus();
 }
 
 function flowNav(title, backCall){
