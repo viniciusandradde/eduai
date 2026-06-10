@@ -75,8 +75,12 @@ AVATAR_BASES = [
     {"codigo": "sup_amy",       "nome": "Amy",         "img": "/avatars/sonic_amy.png",      "custo": 0, "regra": None, "categoria": "Sonic", "supremo": True},
     {"codigo": "sup_boom",      "nome": "Sonic Boom",  "img": "/avatars/sonic_boom.png",     "custo": 0, "regra": None, "categoria": "Sonic", "supremo": True},
     {"codigo": "sup_werehog",   "nome": "Werehog",     "img": "/avatars/sonic_werehog.png",  "custo": 0, "regra": None, "categoria": "Sonic", "supremo": True},
-    {"codigo": "sup_samus",    "nome": "Samus",     "img": "/avatars/metroid_samus.png", "custo": 0, "regra": None, "categoria": "Super Metroid",  "supremo": True},
-    {"codigo": "sup_ridley",   "nome": "Ridley",    "img": "/avatars/metroid_ridley.png","custo": 0, "regra": None, "categoria": "Super Metroid",  "supremo": True},
+    {"codigo": "sup_samus",     "nome": "Varia Suit", "img": "/avatars/metroid_samus.png",     "custo": 0, "regra": None, "categoria": "Super Metroid", "supremo": True},
+    {"codigo": "sup_gravity",   "nome": "Gravity Suit","img": "/avatars/metroid_gravity.png",   "custo": 0, "regra": None, "categoria": "Super Metroid", "supremo": True},
+    {"codigo": "sup_darksuit",  "nome": "Dark Suit",  "img": "/avatars/metroid_dark.png",       "custo": 0, "regra": None, "categoria": "Super Metroid", "supremo": True},
+    {"codigo": "sup_darksamus", "nome": "Dark Samus", "img": "/avatars/metroid_darksamus.png",  "custo": 0, "regra": None, "categoria": "Super Metroid", "supremo": True},
+    {"codigo": "sup_dread",     "nome": "Samus Dread","img": "/avatars/metroid_dread.png",      "custo": 0, "regra": None, "categoria": "Super Metroid", "supremo": True},
+    {"codigo": "sup_ridley",    "nome": "Ridley",     "img": "/avatars/metroid_ridley.png",     "custo": 0, "regra": None, "categoria": "Super Metroid", "supremo": True},
 ]
 SUPREMO_PCT = 0.5  # progresso de missões necessário para liberar os supremos
 AVATAR_ACESSORIOS = [
