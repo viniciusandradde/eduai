@@ -47,6 +47,13 @@ def _carregar_conteudo():
     return mats
 
 CONTEUDO_FULL = _carregar_conteudo()
+# total de missões reais (não-link) — usado p/ liberar os avatares supremos (50%)
+TOTAL_MISSOES = sum(len([mi for mi in m.get('missoes', []) if not mi.get('link')])
+                    for m in CONTEUDO_FULL)
+
+# imagens dos avatares supremos (Pokémon/Sonic/Metroid), servidas same-origin
+(STATIC / 'avatars').mkdir(parents=True, exist_ok=True)
+app.mount('/avatars', StaticFiles(directory=str(STATIC / 'avatars')), name='avatars')
 
 def _missao(materia_id, missao_id):
     for m in CONTEUDO_FULL:
@@ -180,7 +187,7 @@ def _calcular_gate(e):
 @app.get('/api/estado')
 def api_estado(senha: str = ''):
     checar(senha, ALUNO_SENHA)
-    e = db.estado()
+    e = db.estado(TOTAL_MISSOES)
     e["config"] = {"terminal_url": TERMINAL_URL}
     e["gate"] = _calcular_gate(e)
     return JSONResponse(e)
@@ -281,7 +288,7 @@ async def api_leitura_foto(materia: str = Form(...), missao: str = Form(...),
 @app.post('/api/tux/abrir')
 def api_tux_abrir(senha: str = ''):
     checar(senha, ALUNO_SENHA)
-    g = _calcular_gate(db.estado())
+    g = _calcular_gate(db.estado(TOTAL_MISSOES))
     if not g["trilha"]["destravado"]:
         return JSONResponse(status_code=423, content={"ok": False, "motivo": "trilha",
             "faltam": g["trilha"]["faltam"], "pendentes": g["trilha"]["pendentes"]})
@@ -301,7 +308,7 @@ def api_avatar_comprar(payload: AvatarIn, senha: str = ''):
 @app.post('/api/avatar/equipar')
 def api_avatar_equipar(payload: AvatarIn, senha: str = ''):
     checar(senha, ALUNO_SENHA)
-    return db.avatar_equipar(payload.codigo)
+    return db.avatar_equipar(payload.codigo, TOTAL_MISSOES)
 
 @app.post('/api/bau/abrir')
 def api_bau_abrir(senha: str = ''):
@@ -336,7 +343,7 @@ def api_eduhelp(payload: EduHelpIn, senha: str = ''):
 @app.get('/api/pais/estado')
 def api_pais_estado(senha: str = ''):
     checar(senha, PAI_SENHA)
-    e = db.estado()
+    e = db.estado(TOTAL_MISSOES)
     # nomes das matérias/missões p/ exibição amigável
     nomes = {}
     for m in CONTEUDO_FULL:

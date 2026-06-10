@@ -5,8 +5,8 @@ const $ = id => document.getElementById(id);
 function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 function estrelasStr(n){ return '★'.repeat(n) + '☆'.repeat(3-n); }
 function avatarFace(){
-  const url=(EST.avatares&&EST.avatares.url)||'';
-  return `<div class="face">${url?`<img class="av-img" src="${url}" alt="avatar">`:'🤖'}</div>`;
+  const av=EST.avatares||{}; const url=av.url||'';
+  return `<div class="face">${url?`<img class="av-img${av.url_contain?' con':''}" src="${url}" alt="avatar">`:'🤖'}</div>`;
 }
 
 async function api(path, opts){

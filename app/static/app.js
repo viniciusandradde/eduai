@@ -442,35 +442,52 @@ function medalhasHTML(){
   h+=`</div>`; return h;
 }
 
-// ── Avatar (arte DiceBear: base + cor + olhos) ────────
+// ── Avatar (DiceBear robôs + supremos: Pokémon/Sonic/Metroid) ────
 function avatarFace(extra){
-  const url=(EST.avatares&&EST.avatares.url)||'';
-  return `<div class="face${extra?' '+extra:''}">${url?`<img class="av-img" src="${url}" alt="avatar" loading="lazy">`:'🤖'}</div>`;
+  const av=EST.avatares||{}; const url=av.url||'';
+  return `<div class="face${extra?' '+extra:''}">${url?`<img class="av-img${av.url_contain?' con':''}" src="${url}" alt="avatar" loading="lazy">`:'🤖'}</div>`;
 }
 
 // ── Aba Avatar ────────────────────────────────────────
 function avCard(it){
   const a=EST.aluno, pode=a.moedas>=it.custo;
+  if(it.oculto){   // supremo ainda bloqueado: card-mistério
+    return `<div class="avcard lock sup"><div class="ave myst">❓</div>
+      <div class="avn">? ? ?</div><div class="avlock">🔒 Supremo</div></div>`;
+  }
   let acao;
   if(it.equipado)      acao=`<button class="avbtn on" onclick="avEquipar('${it.codigo}')">✓ Equipado</button>`;
   else if(it.tem)      acao=`<button class="avbtn" onclick="avEquipar('${it.codigo}')">Equipar</button>`;
   else if(it.custo>0)  acao=`<button class="avbtn buy" ${pode?'':'disabled'} onclick="avComprar('${it.codigo}')">🪙 ${it.custo}</button>`;
   else                 acao=`<div class="avlock">🔒 ${esc(it.dica||'Bloqueado')}</div>`;
-  return `<div class="avcard${it.equipado?' eq':''}${it.tem?'':' lock'}">
-    <div class="ave"><img src="${it.img}" alt="${esc(it.nome)}" loading="lazy"></div>
+  const con = (it.slot==='base' && it.supremo) ? ' con' : '';
+  return `<div class="avcard${it.equipado?' eq':''}${it.tem?'':' lock'}${it.supremo?' sup':''}">
+    <div class="ave"><img class="${con.trim()}" src="${it.img}" alt="${esc(it.nome)}" loading="lazy"></div>
     <div class="avn">${esc(it.nome)}</div>${acao}</div>`;
 }
 function avatarHTML(){
   const a=EST.aluno, av=EST.avatares||{bases:[],acessorios:[],equipado:{}};
+  const robos=(av.bases||[]).filter(b=>!b.supremo);
+  const sup=(av.bases||[]).filter(b=>b.supremo);
   const cor=(av.acessorios||[]).filter(x=>x.slot==='cor');
   const olhos=(av.acessorios||[]).filter(x=>x.slot==='olhos');
   let h=`<div class="pad fade-in">
     <div class="av-preview">${avatarFace('big')}
-      <div class="av-pinfo"><div class="t">Seu robô 🤖</div><div class="coins">🪙 ${a.moedas} moedas</div></div></div>`;
-  h+=`<div class="sec first">Robôs</div><div class="avgrid">${av.bases.map(avCard).join('')}</div>`;
+      <div class="av-pinfo"><div class="t">Seu avatar</div><div class="coins">🪙 ${a.moedas} moedas</div></div></div>`;
+  h+=`<div class="sec first">Robôs</div><div class="avgrid">${robos.map(avCard).join('')}</div>`;
   h+=`<div class="sec">Cor do corpo</div><div class="avgrid">${cor.map(avCard).join('')}</div>`;
   h+=`<div class="sec">Olhos</div><div class="avgrid">${olhos.map(avCard).join('')}</div>`;
-  h+=`<div class="foot">Ganhe moedas concluindo missões • desbloqueie por conquistas 🏅</div></div>`;
+  if(sup.length){
+    const okp=av.supremo_ok, barra=Math.min(100, Math.round(av.progresso_pct/av.supremo_pct*100));
+    h+=`<div class="sup-banner${okp?' ok':''}">
+      <div class="sup-h"><span>⭐ Avatares Supremos</span><b>${av.progresso_pct}%</b></div>
+      <div class="sup-pb"><i style="width:${barra}%"></i></div>
+      <div class="sup-tip">${okp?'Desbloqueados! Você passou de '+av.supremo_pct+'% das missões 🎉':'Conclua '+av.supremo_pct+'% das missões para liberar os secretos 🔒'}</div></div>`;
+    [...new Set(sup.map(b=>b.categoria))].forEach(cat=>{
+      h+=`<div class="sec">${esc(cat)}</div><div class="avgrid">${sup.filter(b=>b.categoria===cat).map(avCard).join('')}</div>`;
+    });
+  }
+  h+=`<div class="foot">Ganhe moedas concluindo missões • supremos liberam aos ${av.supremo_pct||50}% 🏆</div></div>`;
   return h;
 }
 async function avComprar(cod){

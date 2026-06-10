@@ -50,15 +50,26 @@ CREATE TABLE IF NOT EXISTS leitura_log (
 DICEBEAR = "https://api.dicebear.com/9.x/bottts/svg"
 
 AVATAR_BASES = [
-    {"codigo": "base_bipe",   "nome": "Bipe",   "seed": "Bipe",    "custo": 0,  "regra": None},
-    {"codigo": "base_pixel",  "nome": "Pixel",  "seed": "Pixel77", "custo": 40, "regra": None},
-    {"codigo": "base_turbo",  "nome": "Turbo",  "seed": "TurboX",  "custo": 60, "regra": None},
-    {"codigo": "base_nina",   "nome": "Nina",   "seed": "Nina42",  "custo": 50, "regra": None},
-    {"codigo": "base_faisca", "nome": "Faísca", "seed": "Faisca",  "custo": 80, "regra": None},
-    {"codigo": "base_volt",   "nome": "Volt",   "seed": "VoltZ",   "custo": 0,  "regra": ("nivel", 5, "Chegue ao Nível 5")},
-    {"codigo": "base_mega",   "nome": "Mega",   "seed": "MegaBot", "custo": 0,  "regra": ("estrelas_totais", 15, "Junte 15 estrelas")},
-    {"codigo": "base_rex",    "nome": "Rex",    "seed": "RexBot9", "custo": 0,  "regra": ("streak", 7, "7 dias seguidos")},
+    {"codigo": "base_bipe",   "nome": "Bipe",   "seed": "Bipe",    "custo": 0,  "regra": None, "categoria": "Robôs"},
+    {"codigo": "base_pixel",  "nome": "Pixel",  "seed": "Pixel77", "custo": 40, "regra": None, "categoria": "Robôs"},
+    {"codigo": "base_turbo",  "nome": "Turbo",  "seed": "TurboX",  "custo": 60, "regra": None, "categoria": "Robôs"},
+    {"codigo": "base_nina",   "nome": "Nina",   "seed": "Nina42",  "custo": 50, "regra": None, "categoria": "Robôs"},
+    {"codigo": "base_faisca", "nome": "Faísca", "seed": "Faisca",  "custo": 80, "regra": None, "categoria": "Robôs"},
+    {"codigo": "base_volt",   "nome": "Volt",   "seed": "VoltZ",   "custo": 0,  "regra": ("nivel", 5, "Chegue ao Nível 5"), "categoria": "Robôs"},
+    {"codigo": "base_mega",   "nome": "Mega",   "seed": "MegaBot", "custo": 0,  "regra": ("estrelas_totais", 15, "Junte 15 estrelas"), "categoria": "Robôs"},
+    {"codigo": "base_rex",    "nome": "Rex",    "seed": "RexBot9", "custo": 0,  "regra": ("streak", 7, "7 dias seguidos"), "categoria": "Robôs"},
+    # ── Supremos (ocultos): liberam ao passar de 50% das missões. Imagem em alta. ──
+    {"codigo": "sup_pikachu",  "nome": "Pikachu",   "img": "/avatars/poke_pikachu.png",  "custo": 0, "regra": None, "categoria": "Pokémon",        "supremo": True},
+    {"codigo": "sup_charizard","nome": "Charizard", "img": "/avatars/poke_charizard.png","custo": 0, "regra": None, "categoria": "Pokémon",        "supremo": True},
+    {"codigo": "sup_mewtwo",   "nome": "Mewtwo",    "img": "/avatars/poke_mewtwo.png",   "custo": 0, "regra": None, "categoria": "Pokémon",        "supremo": True},
+    {"codigo": "sup_gengar",   "nome": "Gengar",    "img": "/avatars/poke_gengar.png",   "custo": 0, "regra": None, "categoria": "Pokémon",        "supremo": True},
+    {"codigo": "sup_lucario",  "nome": "Lucario",   "img": "/avatars/poke_lucario.png",  "custo": 0, "regra": None, "categoria": "Pokémon",        "supremo": True},
+    {"codigo": "sup_greninja", "nome": "Greninja",  "img": "/avatars/poke_greninja.png", "custo": 0, "regra": None, "categoria": "Pokémon",        "supremo": True},
+    {"codigo": "sup_sonic",    "nome": "Sonic",     "img": "/avatars/sonic.png",         "custo": 0, "regra": None, "categoria": "Sonic",          "supremo": True},
+    {"codigo": "sup_samus",    "nome": "Samus",     "img": "/avatars/metroid_samus.png", "custo": 0, "regra": None, "categoria": "Super Metroid",  "supremo": True},
+    {"codigo": "sup_ridley",   "nome": "Ridley",    "img": "/avatars/metroid_ridley.png","custo": 0, "regra": None, "categoria": "Super Metroid",  "supremo": True},
 ]
+SUPREMO_PCT = 0.5  # progresso de missões necessário para liberar os supremos
 AVATAR_ACESSORIOS = [
     # cor do corpo (DiceBear baseColor — hex sem '#')
     {"codigo": "cor_azul",    "nome": "Azul",     "slot": "cor",   "param": "29b6f6", "custo": 0,  "regra": None},
@@ -103,14 +114,24 @@ def _dice_url(seed, cor=None, olhos=None, size=120):
     return DICEBEAR + "?" + urlencode(q)
 
 
+def _base_item(codigo):
+    return next((b for b in AVATAR_BASES if b["codigo"] == codigo), AVATAR_BASES[0])
+
+
 def _base_seed(codigo):
-    it = next((b for b in AVATAR_BASES if b["codigo"] == codigo), AVATAR_BASES[0])
-    return it["seed"]
+    return _base_item(codigo).get("seed", "Bipe")
 
 
 def _acc_param(codigo):
     it = next((a for a in AVATAR_ACESSORIOS if a["codigo"] == codigo), None)
     return it["param"] if it else None
+
+
+def _supremo_ok(stats, total_missoes):
+    """True quando o aluno passou de SUPREMO_PCT das missões (libera os supremos)."""
+    if not total_missoes:
+        return False
+    return stats.get("missoes_concluidas", 0) / total_missoes >= SUPREMO_PCT
 
 # Conquistas em níveis (Bronze → Prata → Ouro), com barra de progresso.
 # metrica casa com _stats; niveis = limiares dos 3 tiers.
@@ -390,8 +411,10 @@ def _comprados(c):
         "SELECT DISTINCT item FROM compra WHERE status='ativo'").fetchall()}
 
 
-def _avatar_tem(it, stats, comprados):
-    """Item liberado? grátis, comprado ou desbloqueado por conquista."""
+def _avatar_tem(it, stats, comprados, supremo_ok=False):
+    """Item liberado? supremo->50%; senão grátis, comprado ou conquista."""
+    if it.get("supremo"):
+        return supremo_ok
     regra = it.get("regra")
     if it["custo"] == 0 and regra is None:
         return True
@@ -421,16 +444,17 @@ def avatar_comprar(codigo):
     return {"ok": True, "status": "ativo"}
 
 
-def avatar_equipar(codigo):
+def avatar_equipar(codigo, total_missoes=0):
     it = _avatar_item(codigo)
     if not it:
         return {"ok": False, "erro": "Item não existe."}
     with conn() as c:
-        if not _avatar_tem(it, _stats(c), _comprados(c)):
+        sup = _supremo_ok(_stats(c), total_missoes)
+        if not _avatar_tem(it, _stats(c), _comprados(c), sup):
             return {"ok": False, "erro": "Item ainda bloqueado."}
         slot = it.get("slot", "base")
         if slot == "base":
-            c.execute("UPDATE aluno SET av_base=?, avatar=? WHERE id=1", (codigo, it["seed"]))
+            c.execute("UPDATE aluno SET av_base=?, avatar=? WHERE id=1", (codigo, it.get("seed", "")))
         else:
             col = SLOT_COL[slot]
             atual = c.execute(f"SELECT {col} v FROM aluno WHERE id=1").fetchone()["v"]
@@ -440,19 +464,25 @@ def avatar_equipar(codigo):
     return {"ok": True}
 
 
-def _avatar_pub(it, stats, comprados, equipado_code):
+def _avatar_pub(it, stats, comprados, equipado_code, supremo_ok=False):
     slot = it.get("slot", "base")
-    if slot == "base":
+    tem = _avatar_tem(it, stats, comprados, supremo_ok)
+    oculto = bool(it.get("supremo")) and not tem
+    if it.get("img"):
+        img = it["img"]
+    elif slot == "base":
         img = _dice_url(it["seed"], size=120)
     elif slot == "cor":
         img = _dice_url("Bipe", cor=it["param"], size=120)
     else:
         img = _dice_url("Bipe", olhos=it["param"], size=120)
-    return {"codigo": it["codigo"], "nome": it["nome"], "img": img,
+    return {"codigo": it["codigo"], "nome": it["nome"],
+            "img": ("" if oculto else img),       # oculto não revela a imagem
             "slot": slot, "custo": it["custo"],
+            "categoria": it.get("categoria", "Robôs"),
+            "supremo": bool(it.get("supremo")), "oculto": oculto,
             "dica": (it["regra"][2] if it.get("regra") else ""),
-            "tem": _avatar_tem(it, stats, comprados),
-            "equipado": it["codigo"] == equipado_code}
+            "tem": tem, "equipado": it["codigo"] == equipado_code}
 
 
 def escudo_comprar():
@@ -469,7 +499,7 @@ def escudo_comprar():
     return {"ok": True, "escudos": escudos + 1}
 
 
-def estado():
+def estado(total_missoes=0):
     with conn() as c:
         aluno = dict(c.execute("SELECT * FROM aluno WHERE id=1").fetchone())
         aluno["xp_prox_nivel"] = aluno["nivel"] * XP_POR_NIVEL
@@ -481,17 +511,25 @@ def estado():
                          (str(date.today()),)).fetchone()["n"]
         md_metrics = _hoje_metrics(c)
     conquistas = [_conquista_pub(conq, s) for conq in CONQUISTAS]
+    supremo_ok = _supremo_ok(s, total_missoes)
+    progresso_pct = int(round(100 * s["missoes_concluidas"] / total_missoes)) if total_missoes else 0
     equipado = {"base": aluno.get("av_base") or "base_bipe",
                 "cor": aluno.get("av_topo") or "",
                 "olhos": aluno.get("av_rosto") or ""}
-    url = _dice_url(_base_seed(equipado["base"]),
-                    cor=_acc_param(equipado["cor"]) if equipado["cor"] else None,
-                    olhos=_acc_param(equipado["olhos"]) if equipado["olhos"] else None,
-                    size=160)
+    base_eq = _base_item(equipado["base"])
+    if base_eq.get("img"):                 # supremo equipado = a própria imagem
+        url, url_contain = base_eq["img"], True
+    else:
+        url = _dice_url(_base_seed(equipado["base"]),
+                        cor=_acc_param(equipado["cor"]) if equipado["cor"] else None,
+                        olhos=_acc_param(equipado["olhos"]) if equipado["olhos"] else None,
+                        size=160)
+        url_contain = False
     avatares = {
-        "url": url,
-        "bases": [_avatar_pub(it, s, comprados, equipado["base"]) for it in AVATAR_BASES],
-        "acessorios": [_avatar_pub(it, s, comprados, equipado[it["slot"]]) for it in AVATAR_ACESSORIOS],
+        "url": url, "url_contain": url_contain,
+        "supremo_ok": supremo_ok, "supremo_pct": int(SUPREMO_PCT * 100), "progresso_pct": progresso_pct,
+        "bases": [_avatar_pub(it, s, comprados, equipado["base"], supremo_ok) for it in AVATAR_BASES],
+        "acessorios": [_avatar_pub(it, s, comprados, equipado[it["slot"]], supremo_ok) for it in AVATAR_ACESSORIOS],
         "equipado": equipado,
     }
     quests = _quests_hoje(md_metrics)
