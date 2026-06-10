@@ -177,7 +177,7 @@ function headerHTML(){
 }
 
 function navHTML(){
-  const items=[['materias','📘','Matérias'],['medalhas','🏅','Medalhas'],['avatar','🧑‍🚀','Avatar']];
+  const items=[['materias','📘','Matérias'],['medalhas','🏅','Medalhas'],['avatar','🤖','Avatar']];
   return `<div class="bottomnav">${items.map(([id,ic,lb])=>
     `<button class="bnav${tab===id?' on':''}" onclick="setTab('${id}')"><span class="ic">${ic}</span><span class="lb">${lb}</span></button>`).join('')}</div>`;
 }
@@ -376,18 +376,10 @@ function medalhasHTML(){
   h+=`</div></div>`; return h;
 }
 
-// ── Avatar (composição base + acessórios) ─────────────
-function avEmoji(code){
-  if(!code || !EST || !EST.avatares) return '';
-  const all=[...(EST.avatares.bases||[]), ...(EST.avatares.acessorios||[])];
-  const it=all.find(x=>x.codigo===code); return it?it.emoji:'';
-}
+// ── Avatar (arte DiceBear: base + cor + olhos) ────────
 function avatarFace(extra){
-  const a=EST.aluno, eq=(EST.avatares&&EST.avatares.equipado)||{};
-  const base=a.avatar||'🧑‍🚀', rosto=avEmoji(eq.rosto), topo=avEmoji(eq.topo);
-  return `<div class="face${extra?' '+extra:''}"><span class="av-base">${base}</span>`
-    + (rosto?`<span class="av-acc rosto">${rosto}</span>`:'')
-    + (topo?`<span class="av-acc topo">${topo}</span>`:'') + `</div>`;
+  const url=(EST.avatares&&EST.avatares.url)||'';
+  return `<div class="face${extra?' '+extra:''}">${url?`<img class="av-img" src="${url}" alt="avatar" loading="lazy">`:'🤖'}</div>`;
 }
 
 // ── Aba Avatar ────────────────────────────────────────
@@ -399,18 +391,19 @@ function avCard(it){
   else if(it.custo>0)  acao=`<button class="avbtn buy" ${pode?'':'disabled'} onclick="avComprar('${it.codigo}')">🪙 ${it.custo}</button>`;
   else                 acao=`<div class="avlock">🔒 ${esc(it.dica||'Bloqueado')}</div>`;
   return `<div class="avcard${it.equipado?' eq':''}${it.tem?'':' lock'}">
-    <div class="ave">${it.emoji}</div><div class="avn">${esc(it.nome)}</div>${acao}</div>`;
+    <div class="ave"><img src="${it.img}" alt="${esc(it.nome)}" loading="lazy"></div>
+    <div class="avn">${esc(it.nome)}</div>${acao}</div>`;
 }
 function avatarHTML(){
   const a=EST.aluno, av=EST.avatares||{bases:[],acessorios:[],equipado:{}};
-  const topo=(av.acessorios||[]).filter(x=>x.slot==='topo');
-  const rosto=(av.acessorios||[]).filter(x=>x.slot==='rosto');
+  const cor=(av.acessorios||[]).filter(x=>x.slot==='cor');
+  const olhos=(av.acessorios||[]).filter(x=>x.slot==='olhos');
   let h=`<div class="pad fade-in">
     <div class="av-preview">${avatarFace('big')}
-      <div class="av-pinfo"><div class="t">Seu avatar</div><div class="coins">🪙 ${a.moedas} moedas</div></div></div>`;
-  h+=`<div class="sec first">Personagens</div><div class="avgrid">${av.bases.map(avCard).join('')}</div>`;
-  h+=`<div class="sec">Chapéus & coroas</div><div class="avgrid">${topo.map(avCard).join('')}</div>`;
-  h+=`<div class="sec">Óculos</div><div class="avgrid">${rosto.map(avCard).join('')}</div>`;
+      <div class="av-pinfo"><div class="t">Seu robô 🤖</div><div class="coins">🪙 ${a.moedas} moedas</div></div></div>`;
+  h+=`<div class="sec first">Robôs</div><div class="avgrid">${av.bases.map(avCard).join('')}</div>`;
+  h+=`<div class="sec">Cor do corpo</div><div class="avgrid">${cor.map(avCard).join('')}</div>`;
+  h+=`<div class="sec">Olhos</div><div class="avgrid">${olhos.map(avCard).join('')}</div>`;
   h+=`<div class="foot">Ganhe moedas concluindo missões • desbloqueie por conquistas 🏅</div></div>`;
   return h;
 }

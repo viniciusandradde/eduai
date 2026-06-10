@@ -362,12 +362,8 @@ button{font-family:inherit;cursor:pointer;border:0;border-radius:13px;font-size:
 @keyframes ehFade{from{opacity:0}to{opacity:1}}
 @keyframes ehBlink{0%,100%{opacity:.3}50%{opacity:1}}
 
-/* ── Avatar composto (base + acessórios) ─────────────── */
-.face{position:relative}
-.face .av-base{line-height:1}
-.face .av-acc{position:absolute;pointer-events:none;line-height:1}
-.face .av-acc.topo{top:-16%;left:50%;transform:translateX(-50%);font-size:.6em}
-.face .av-acc.rosto{top:46%;left:50%;transform:translate(-50%,-50%);font-size:.58em}
+/* ── Avatar (imagem DiceBear) ────────────────────────── */
+.face .av-img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
 
 /* ── Aba Avatar ──────────────────────────────────────── */
 .av-preview{display:flex;align-items:center;gap:18px;margin-top:4px;
@@ -381,7 +377,9 @@ button{font-family:inherit;cursor:pointer;border:0;border-radius:13px;font-size:
 .avcard{display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center;padding:14px 10px;
   background:linear-gradient(180deg,#16141f,#121020);border:1px solid var(--card-border);border-radius:16px}
 .avcard.eq{border-color:rgba(124,58,237,.6);box-shadow:0 0 0 1px rgba(124,58,237,.4)}
-.avcard .ave{font-size:40px;line-height:1}
+.avcard .ave{width:60px;height:60px;border-radius:50%;overflow:hidden;
+  background:radial-gradient(circle at 35% 30%,#2a2740,#16131f);box-shadow:inset 0 0 0 1px rgba(167,139,250,.2)}
+.avcard .ave img{width:100%;height:100%;object-fit:cover;display:block}
 .avcard.lock .ave{filter:grayscale(.7) brightness(.6)}
 .avcard .avn{font-size:13px;font-weight:700;line-height:1.15}
 .avbtn{width:100%;padding:9px 8px;border-radius:11px;font-size:13px;font-weight:800;

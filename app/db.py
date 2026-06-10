@@ -43,27 +43,58 @@ CREATE TABLE IF NOT EXISTS leitura_log (
 );
 """
 
-# Avatar — personagens-base e acessórios (estilo Duolingo).
+# Avatar — robôs ilustrados (DiceBear "bottts", grátis, sem chave) + customização.
+# base = robô (seed); acessórios mudam a COR do corpo (baseColor) ou os OLHOS (eyes).
 # regra = (stat, valor, dica) desbloqueia por conquista; custo>0 compra com moedas;
 # custo=0 e regra=None é grátis (já vem liberado).
+DICEBEAR = "https://api.dicebear.com/9.x/bottts/svg"
+
 AVATAR_BASES = [
-    {"codigo": "base_astro",    "nome": "Astronauta", "emoji": "🧑‍🚀", "custo": 0,  "regra": None},
-    {"codigo": "base_heroi",    "nome": "Herói",      "emoji": "🦸",   "custo": 40, "regra": None},
-    {"codigo": "base_cientista","nome": "Cientista",  "emoji": "🧑‍🔬", "custo": 60, "regra": None},
-    {"codigo": "base_raposa",   "nome": "Raposa",     "emoji": "🦊",   "custo": 50, "regra": None},
-    {"codigo": "base_ninja",    "nome": "Ninja",      "emoji": "🥷",   "custo": 80, "regra": None},
-    {"codigo": "base_mago",     "nome": "Mago",       "emoji": "🧙",   "custo": 0,  "regra": ("nivel", 5, "Chegue ao Nível 5")},
-    {"codigo": "base_robo",     "nome": "Robô",       "emoji": "🤖",   "custo": 0,  "regra": ("estrelas_totais", 15, "Junte 15 estrelas")},
-    {"codigo": "base_dragao",   "nome": "Dragão",     "emoji": "🐲",   "custo": 0,  "regra": ("streak", 7, "7 dias seguidos")},
+    {"codigo": "base_bipe",   "nome": "Bipe",   "seed": "Bipe",    "custo": 0,  "regra": None},
+    {"codigo": "base_pixel",  "nome": "Pixel",  "seed": "Pixel77", "custo": 40, "regra": None},
+    {"codigo": "base_turbo",  "nome": "Turbo",  "seed": "TurboX",  "custo": 60, "regra": None},
+    {"codigo": "base_nina",   "nome": "Nina",   "seed": "Nina42",  "custo": 50, "regra": None},
+    {"codigo": "base_faisca", "nome": "Faísca", "seed": "Faisca",  "custo": 80, "regra": None},
+    {"codigo": "base_volt",   "nome": "Volt",   "seed": "VoltZ",   "custo": 0,  "regra": ("nivel", 5, "Chegue ao Nível 5")},
+    {"codigo": "base_mega",   "nome": "Mega",   "seed": "MegaBot", "custo": 0,  "regra": ("estrelas_totais", 15, "Junte 15 estrelas")},
+    {"codigo": "base_rex",    "nome": "Rex",    "seed": "RexBot9", "custo": 0,  "regra": ("streak", 7, "7 dias seguidos")},
 ]
 AVATAR_ACESSORIOS = [
-    {"codigo": "topo_bone",    "nome": "Boné",        "emoji": "🧢", "slot": "topo",  "custo": 25, "regra": None},
-    {"codigo": "topo_cartola", "nome": "Cartola",     "emoji": "🎩", "slot": "topo",  "custo": 40, "regra": None},
-    {"codigo": "topo_coroa",   "nome": "Coroa",       "emoji": "👑", "slot": "topo",  "custo": 0,  "regra": ("tres_estrelas", 5, "Tire 3⭐ em 5 missões")},
-    {"codigo": "rosto_oculos", "nome": "Óculos",      "emoji": "🕶️", "slot": "rosto", "custo": 30, "regra": None},
-    {"codigo": "rosto_nerd",   "nome": "Óculos nerd", "emoji": "🤓", "slot": "rosto", "custo": 20, "regra": None},
+    # cor do corpo (DiceBear baseColor — hex sem '#')
+    {"codigo": "cor_azul",    "nome": "Azul",     "slot": "cor",   "param": "29b6f6", "custo": 0,  "regra": None},
+    {"codigo": "cor_verde",   "nome": "Verde",    "slot": "cor",   "param": "66bb6a", "custo": 20, "regra": None},
+    {"codigo": "cor_roxo",    "nome": "Roxo",     "slot": "cor",   "param": "ab47bc", "custo": 30, "regra": None},
+    {"codigo": "cor_laranja", "nome": "Laranja",  "slot": "cor",   "param": "ffa726", "custo": 30, "regra": None},
+    {"codigo": "cor_dourado", "nome": "Dourado",  "slot": "cor",   "param": "ffd54f", "custo": 0,  "regra": ("tres_estrelas", 5, "Tire 3⭐ em 5 missões")},
+    # estilo dos olhos (DiceBear eyes)
+    {"codigo": "olhos_happy",   "nome": "Felizes",  "slot": "olhos", "param": "happy",   "custo": 20, "regra": None},
+    {"codigo": "olhos_glow",    "nome": "Brilho",   "slot": "olhos", "param": "glow",    "custo": 30, "regra": None},
+    {"codigo": "olhos_hearts",  "nome": "Corações", "slot": "olhos", "param": "hearts",  "custo": 40, "regra": None},
+    {"codigo": "olhos_robocop", "nome": "Robocop",  "slot": "olhos", "param": "robocop", "custo": 0,  "regra": ("missoes_concluidas", 10, "Conclua 10 missões")},
 ]
 AVATAR_TODOS = AVATAR_BASES + AVATAR_ACESSORIOS
+# qual coluna do aluno guarda cada slot de acessório
+SLOT_COL = {"cor": "av_topo", "olhos": "av_rosto"}
+
+
+def _dice_url(seed, cor=None, olhos=None, size=120):
+    from urllib.parse import urlencode
+    q = [("seed", seed), ("size", str(size))]
+    if cor:
+        q.append(("baseColor", cor))
+    if olhos:
+        q.append(("eyes", olhos))
+    return DICEBEAR + "?" + urlencode(q)
+
+
+def _base_seed(codigo):
+    it = next((b for b in AVATAR_BASES if b["codigo"] == codigo), AVATAR_BASES[0])
+    return it["seed"]
+
+
+def _acc_param(codigo):
+    it = next((a for a in AVATAR_ACESSORIOS if a["codigo"] == codigo), None)
+    return it["param"] if it else None
 
 # Medalhas: (codigo, nome, emoji, dica, condição(stats)->bool)
 MEDALHAS = [
@@ -97,9 +128,18 @@ def init_db():
                 pass
         c.execute(
             "INSERT OR IGNORE INTO aluno(id,nome,avatar,xp,nivel,moedas,streak,ultimo_dia,av_base)"
-            " VALUES(1,?,?,0,1,0,0,'',?)", (ALUNO_NOME, "🧑‍🚀", "base_astro"))
-        # base padrão para alunos já existentes
-        c.execute("UPDATE aluno SET av_base='base_astro' WHERE id=1 AND (av_base IS NULL OR av_base='')")
+            " VALUES(1,?,?,0,1,0,0,'',?)", (ALUNO_NOME, "🤖", "base_bipe"))
+        # normaliza equip do avatar contra o catálogo atual (limpa códigos antigos)
+        valid_b = {b["codigo"] for b in AVATAR_BASES}
+        valid_a = {a["codigo"] for a in AVATAR_ACESSORIOS}
+        row = c.execute("SELECT av_base, av_topo, av_rosto FROM aluno WHERE id=1").fetchone()
+        if row:
+            if (row["av_base"] or '') not in valid_b:
+                c.execute("UPDATE aluno SET av_base=? WHERE id=1", (AVATAR_BASES[0]["codigo"],))
+            if (row["av_topo"] or '') not in valid_a:
+                c.execute("UPDATE aluno SET av_topo='' WHERE id=1")
+            if (row["av_rosto"] or '') not in valid_a:
+                c.execute("UPDATE aluno SET av_rosto='' WHERE id=1")
         c.commit()
 
 
@@ -284,9 +324,9 @@ def avatar_equipar(codigo):
             return {"ok": False, "erro": "Item ainda bloqueado."}
         slot = it.get("slot", "base")
         if slot == "base":
-            c.execute("UPDATE aluno SET av_base=?, avatar=? WHERE id=1", (codigo, it["emoji"]))
+            c.execute("UPDATE aluno SET av_base=?, avatar=? WHERE id=1", (codigo, it["seed"]))
         else:
-            col = "av_topo" if slot == "topo" else "av_rosto"
+            col = SLOT_COL[slot]
             atual = c.execute(f"SELECT {col} v FROM aluno WHERE id=1").fetchone()["v"]
             novo = "" if atual == codigo else codigo   # tocar de novo = tirar
             c.execute(f"UPDATE aluno SET {col}=? WHERE id=1", (novo,))
@@ -295,8 +335,15 @@ def avatar_equipar(codigo):
 
 
 def _avatar_pub(it, stats, comprados, equipado_code):
-    return {"codigo": it["codigo"], "nome": it["nome"], "emoji": it["emoji"],
-            "slot": it.get("slot", "base"), "custo": it["custo"],
+    slot = it.get("slot", "base")
+    if slot == "base":
+        img = _dice_url(it["seed"], size=120)
+    elif slot == "cor":
+        img = _dice_url("Bipe", cor=it["param"], size=120)
+    else:
+        img = _dice_url("Bipe", olhos=it["param"], size=120)
+    return {"codigo": it["codigo"], "nome": it["nome"], "img": img,
+            "slot": slot, "custo": it["custo"],
             "dica": (it["regra"][2] if it.get("regra") else ""),
             "tem": _avatar_tem(it, stats, comprados),
             "equipado": it["codigo"] == equipado_code}
@@ -315,10 +362,15 @@ def estado():
                          (str(date.today()),)).fetchone()["n"]
     catalogo = [{"codigo": cod, "nome": nm, "emoji": em, "dica": dc, "tem": bool(cond(s))}
                 for (cod, nm, em, dc, cond) in MEDALHAS]
-    equipado = {"base": aluno.get("av_base") or "base_astro",
-                "topo": aluno.get("av_topo") or "",
-                "rosto": aluno.get("av_rosto") or ""}
+    equipado = {"base": aluno.get("av_base") or "base_bipe",
+                "cor": aluno.get("av_topo") or "",
+                "olhos": aluno.get("av_rosto") or ""}
+    url = _dice_url(_base_seed(equipado["base"]),
+                    cor=_acc_param(equipado["cor"]) if equipado["cor"] else None,
+                    olhos=_acc_param(equipado["olhos"]) if equipado["olhos"] else None,
+                    size=160)
     avatares = {
+        "url": url,
         "bases": [_avatar_pub(it, s, comprados, equipado["base"]) for it in AVATAR_BASES],
         "acessorios": [_avatar_pub(it, s, comprados, equipado[it["slot"]]) for it in AVATAR_ACESSORIOS],
         "equipado": equipado,

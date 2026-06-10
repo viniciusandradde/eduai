@@ -4,17 +4,9 @@ let EST = null;
 const $ = id => document.getElementById(id);
 function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 function estrelasStr(n){ return '★'.repeat(n) + '☆'.repeat(3-n); }
-function avEmoji(code){
-  if(!code || !EST || !EST.avatares) return '';
-  const all=[...(EST.avatares.bases||[]), ...(EST.avatares.acessorios||[])];
-  const it=all.find(x=>x.codigo===code); return it?it.emoji:'';
-}
 function avatarFace(){
-  const a=EST.aluno, eq=(EST.avatares&&EST.avatares.equipado)||{};
-  const base=a.avatar||'🧑‍🚀', rosto=avEmoji(eq.rosto), topo=avEmoji(eq.topo);
-  return `<div class="face"><span class="av-base">${base}</span>`
-    + (rosto?`<span class="av-acc rosto">${rosto}</span>`:'')
-    + (topo?`<span class="av-acc topo">${topo}</span>`:'') + `</div>`;
+  const url=(EST.avatares&&EST.avatares.url)||'';
+  return `<div class="face">${url?`<img class="av-img" src="${url}" alt="avatar">`:'🤖'}</div>`;
 }
 
 async function api(path, opts){
