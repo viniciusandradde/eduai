@@ -67,6 +67,26 @@ function render(){
     <div class="stat med"><div class="v">📖 ${leituras}</div><div class="k">leituras</div></div>
   </div>`;
 
+  // Leituras para avaliar (foto do resumo no papel + estrelas)
+  const lts = EST.leituras||[];
+  const aAvaliar = lts.filter(l=>!l.nota).length;
+  h += `<div class="sec">📖 Leituras ${aAvaliar?`<span class="count">${aAvaliar} para avaliar</span>`:''}</div>`;
+  if (!lts.length) h += `<div class="card" style="color:var(--dim);font-weight:600">Nenhuma leitura ainda. Quando o explorador concluir uma missão, a foto do resumo aparece aqui.</div>`;
+  lts.forEach(l=>{
+    const c = cat[l.materia]||{}; const titMis=(c.missoes&&c.missoes[l.missao])||l.missao;
+    const fotoUrl = l.foto ? `/api/foto/${encodeURIComponent(l.foto)}?senha=${encodeURIComponent(senha)}` : '';
+    let estrelas=''; for(let i=1;i<=5;i++) estrelas+=`<button class="lv-star${i<=l.nota?' on':''}" onclick="avaliarLeitura('${l.materia}','${l.missao}',${i})">★</button>`;
+    h += `<div class="card leit">
+      <div class="lt-h"><div class="lt-ic">${c.icone||'📘'}</div>
+        <div class="lt-info"><div class="lt-t">${esc(l.titulo||'(sem título)')}</div>
+        <div class="lt-s">${esc(c.nome||l.materia)} • ${esc(titMis)} • ${fmtData(l.ts)}</div></div></div>
+      ${fotoUrl?`<a href="${fotoUrl}" target="_blank" class="lt-foto"><img src="${fotoUrl}" alt="resumo" loading="lazy"></a>`:'<div class="lt-nofoto">sem foto</div>'}
+      <div class="lt-rate"><span class="lt-lb">${l.nota?'Sua nota:':'Avalie:'}</span><div class="lt-stars">${estrelas}</div></div>
+      <div class="lt-cm"><input id="cm-${l.materia}-${l.missao}" type="text" maxlength="200" placeholder="Comentário (opcional)" value="${esc(l.comentario||'')}">
+        <button class="lt-save" onclick="salvarComentario('${l.materia}','${l.missao}')">Salvar</button></div>
+    </div>`;
+  });
+
   // Progresso por matéria
   h += `<div class="sec">📚 Progresso por matéria</div>`;
   Object.keys(cat).forEach(mid=>{
@@ -132,6 +152,25 @@ function render(){
   h += `</div>`;
 
   $('view').innerHTML = h;
+}
+
+function _leit(materia,missao){ return (EST.leituras||[]).find(l=>l.materia===materia&&l.missao===missao)||{}; }
+async function avaliarLeitura(materia, missao, nota){
+  const cm=$('cm-'+materia+'-'+missao);
+  const comentario = cm ? cm.value : (_leit(materia,missao).comentario||'');
+  const r=await api('/api/pais/avaliar',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({materia,missao,nota,comentario})});
+  if(r.status===200 && r.data && r.data.ok){ await recarregar(); showToast('⭐ Avaliação salva!'); }
+  else alert((r.data&&r.data.erro)||'Não foi possível avaliar.');
+}
+async function salvarComentario(materia, missao){
+  const l=_leit(materia,missao);
+  if(!l.nota){ alert('Dê as estrelas primeiro ⭐'); return; }
+  const cm=$('cm-'+materia+'-'+missao);
+  const r=await api('/api/pais/avaliar',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({materia,missao,nota:l.nota,comentario:cm?cm.value:''})});
+  if(r.status===200 && r.data && r.data.ok){ await recarregar(); showToast('💬 Comentário salvo!'); }
+  else alert((r.data&&r.data.erro)||'Não foi possível salvar.');
 }
 
 function showToast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(window.__tt); window.__tt=setTimeout(()=>t.classList.remove('show'),2600); }

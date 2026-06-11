@@ -67,8 +67,7 @@ function render(){
   }
   $('root').innerHTML = `<div class="eduai">${flowBar}${header}<div class="scroll">${body}</div>${nav}</div>`;
   // listeners pós-render
-  const lt = $('lt-resumo'); if (lt) lt.addEventListener('input', ()=>{ const n=lt.value.trim().length; const c=$('lt-cc'); if(c){c.textContent=n+'/50 letras '+(n>=50?'✓':''); c.className='charcount'+(n>=50?' ok':'');} });
-  const fi = $('lt-foto'); if (fi) fi.addEventListener('change', e=>{ const f=e.target.files[0]; const d=$('lt-drop'); if(f&&d){ d.classList.add('has'); d.querySelector('.dl').textContent=f.name+' selecionada'; d.querySelector('.ic').textContent='📸'; } });
+  const fi = $('lt-foto'); if (fi) fi.addEventListener('change', e=>{ const f=e.target.files[0]; const d=$('lt-drop'); if(f&&d){ d.classList.add('has'); d.querySelector('.dl').textContent=f.name+' selecionada ✓'; d.querySelector('.ic').textContent='📸'; } });
   ehSyncFab();
 }
 
@@ -312,6 +311,23 @@ async function comprarEscudo(){
   render();
 }
 
+function avaliacoesHTML(){
+  const ls=EST.leituras||[];
+  const avaliadas=ls.filter(l=>l.nota>0), pendentes=ls.filter(l=>!l.nota).length;
+  if(!ls.length) return '';
+  let h=`<div class="sec">📬 Avaliação dos pais</div>`;
+  if(!avaliadas.length){
+    h+=`<div class="card" style="color:var(--dim);font-weight:600">⏳ Suas leituras estão esperando a avaliação dos seus pais. Capricha nos resumos! 💜</div>`;
+    return h;
+  }
+  avaliadas.forEach(l=>{
+    h+=`<div class="card aval"><div class="av-top"><b>${esc(l.titulo||l.missao)}</b><span class="av-st">${stars(l.nota)}</span></div>
+      ${l.comentario?`<div class="av-cm">💬 ${esc(l.comentario)}</div>`:''}</div>`;
+  });
+  if(pendentes) h+=`<div class="card" style="color:var(--dim);font-weight:600">⏳ ${pendentes} leitura(s) ainda aguardando avaliação.</div>`;
+  return h;
+}
+
 function materiasHTML(){
   let h = `<div class="pad fade-in">${bannerHTML()}${feedbackDiaHTML()}${missoesDiaHTML()}${ofensivaHTML()}<div class="sec first">Suas matérias</div><div class="grid">`;
   CONT.forEach(s=>{
@@ -322,7 +338,7 @@ function materiasHTML(){
       <div class="stat"><span>${st.conc}/${st.tot} missões</span>${st.conc===st.tot&&st.tot?'<span class="done">✔ 100%</span>':`<span>${pc}%</span>`}</div>
     </button>`;
   });
-  h += `</div><div class="foot">VSA EduAI • <a href="/pais">painel dos pais</a> • <a class="lk" onclick="abrirNovidades()">✨ novidades</a></div></div>`;
+  h += `</div>${avaliacoesHTML()}<div class="foot">VSA EduAI • <a href="/pais">painel dos pais</a> • <a class="lk" onclick="abrirNovidades()">✨ novidades</a></div></div>`;
   return h;
 }
 
@@ -442,30 +458,20 @@ function resultadoHTML(){
 function leituraHTML(){
   return `<div class="pad fade-in" style="padding-top:18px"><div class="box gate leitura">
     <div style="text-align:center"><div class="emoji">📖</div><h2>Hora de ler!</h2>
-      <p style="text-align:center">Leia um livro ou capítulo e registre. Só assim a missão conclui de verdade. 💜</p></div>
+      <p style="text-align:center">Leia um livro ou capítulo, escreva o resumo <b>no papel</b> e tire uma <b>foto</b>. Seus pais vão ver e avaliar! 💜</p></div>
     <label>📕 Título do que você leu</label><input id="lt-titulo" type="text" placeholder="Ex.: O Pequeno Príncipe">
-    <label>✍️ Seu resumo (com suas palavras)</label>
-    <textarea id="lt-resumo" placeholder="O que você aprendeu na leitura de hoje..."></textarea>
-    <div class="charcount" id="lt-cc">0/50 letras</div>
-    <button class="btn" style="margin-top:12px" onclick="enviarLeitura()">Enviar resumo ✅</button>
-    <div class="divider">ou</div>
+    <label style="margin-top:12px">📸 Foto do seu resumo no papel</label>
     <div class="photo-drop" id="lt-drop" onclick="document.getElementById('lt-foto').click()">
-      <div class="ic">🖼️</div><div class="dl" style="margin-top:6px;font-weight:700">Enviar FOTO do resumo no papel</div></div>
+      <div class="ic">🖼️</div><div class="dl" style="margin-top:6px;font-weight:700">Tirar / escolher a FOTO do resumo</div></div>
     <input id="lt-foto" type="file" accept="image/*" capture="environment" style="display:none">
-    <button class="btn-sec" style="margin-top:10px" onclick="enviarLeituraFoto()">Enviar foto 📸</button>
+    <button class="btn" style="margin-top:14px" onclick="enviarLeituraFoto()">Enviar resumo 📸✅</button>
     <div class="msg" id="lt-msg"></div></div></div>`;
 }
-async function enviarLeitura(){
-  const msg=$('lt-msg'), resumo=$('lt-resumo').value, titulo=$('lt-titulo').value;
-  if(resumo.trim().length<50){ msg.className='msg err'; msg.textContent='Escreva um resumo maior (mín. 50 letras) ou envie a foto.'; return; }
-  const r=await api('/api/leitura',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({materia:flow.subject.id,missao:flow.missao.id,titulo,resumo})});
-  if(r.status===200&&r.data.ok) await concluir(r.data); else { msg.className='msg err'; msg.textContent=(r.data&&r.data.erro)||'Erro.'; }
-}
 async function enviarLeituraFoto(){
-  const msg=$('lt-msg'), f=$('lt-foto').files[0];
-  if(!f){ msg.className='msg err'; msg.textContent='Escolha ou tire a foto do resumo.'; return; }
-  const fd=new FormData(); fd.append('materia',flow.subject.id); fd.append('missao',flow.missao.id); fd.append('titulo',$('lt-titulo').value); fd.append('foto',f);
+  const msg=$('lt-msg'), f=$('lt-foto').files[0], titulo=($('lt-titulo').value||'').trim();
+  if(!titulo){ msg.className='msg err'; msg.textContent='Escreva o título do que você leu.'; return; }
+  if(!f){ msg.className='msg err'; msg.textContent='Tire a foto do seu resumo no papel. 📸'; return; }
+  const fd=new FormData(); fd.append('materia',flow.subject.id); fd.append('missao',flow.missao.id); fd.append('titulo',titulo); fd.append('foto',f);
   const r=await api('/api/leitura-foto',{method:'POST',body:fd});
   if(r.status===200&&r.data.ok) await concluir(r.data); else { msg.className='msg err'; msg.textContent=(r.data&&r.data.erro)||'Erro.'; }
 }

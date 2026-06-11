@@ -512,3 +512,10 @@ button{font-family:inherit;cursor:pointer;border:0;border-radius:13px;font-size:
 .fb-ok{font-size:13px;font-weight:700;margin-top:10px;min-height:18px}
 .fb-ok.done{color:#86efac}
 .fb-ok.err{color:#fca5a5}
+
+/* ── Avaliação dos pais (hub do aluno) ──────────────── */
+.card{background:linear-gradient(180deg,#16141f,#121020);border:1px solid var(--card-border);border-radius:16px;padding:14px 16px;margin-bottom:12px}
+.aval .av-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.aval .av-top b{font-size:15px}
+.aval .av-st{color:var(--amar);font-size:16px;letter-spacing:1px;white-space:nowrap}
+.aval .av-cm{font-size:13px;color:var(--dim);font-weight:600;margin-top:6px}

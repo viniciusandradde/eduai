@@ -44,6 +44,11 @@ CREATE TABLE IF NOT EXISTS leitura_log (
 CREATE TABLE IF NOT EXISTS feedback (
   id INTEGER PRIMARY KEY AUTOINCREMENT, texto TEXT, ts TEXT
 );
+CREATE TABLE IF NOT EXISTS leitura (
+  materia TEXT, missao TEXT, titulo TEXT, foto TEXT, ts TEXT,
+  nota INTEGER DEFAULT 0, comentario TEXT DEFAULT '', nota_ts TEXT,
+  PRIMARY KEY (materia, missao)
+);
 """
 
 # Avatar — robôs ilustrados (DiceBear "bottts", grátis, sem chave) + customização.
@@ -312,7 +317,7 @@ def registrar_tentativa(materia, missao, acertos, total, estrelas, xp_ganho, seg
     return verificar_medalhas()
 
 
-def concluir_leitura(materia, missao, bonus_xp=20, moedas=10):
+def concluir_leitura(materia, missao, titulo='', foto='', bonus_xp=20, moedas=10):
     agora = datetime.now().isoformat()
     with conn() as c:
         row = c.execute("SELECT leitura_ok FROM progresso WHERE materia=? AND missao=?",
@@ -325,6 +330,11 @@ def concluir_leitura(materia, missao, bonus_xp=20, moedas=10):
         else:
             c.execute("UPDATE progresso SET leitura_ok=1, concluida=1, ultima_ts=?"
                       " WHERE materia=? AND missao=?", (agora, materia, missao))
+        # guarda o conteúdo da leitura (título + foto do resumo) p/ o pai avaliar
+        c.execute("INSERT INTO leitura(materia,missao,titulo,foto,ts) VALUES(?,?,?,?,?)"
+                  " ON CONFLICT(materia,missao) DO UPDATE SET titulo=excluded.titulo,"
+                  " foto=excluded.foto, ts=excluded.ts",
+                  (materia, missao, titulo, foto, agora))
         # registra a atividade de leitura do dia (para o cap diário)
         c.execute("INSERT INTO leitura_log(dia,materia,missao,ts) VALUES(?,?,?,?)",
                   (str(date.today()), materia, missao, agora))
@@ -522,6 +532,18 @@ def salvar_feedback(texto):
     return {"ok": True}
 
 
+def avaliar_leitura(materia, missao, nota, comentario=''):
+    nota = max(1, min(5, int(nota)))
+    with conn() as c:
+        r = c.execute("SELECT 1 FROM leitura WHERE materia=? AND missao=?", (materia, missao)).fetchone()
+        if not r:
+            return {"ok": False, "erro": "Leitura não encontrada."}
+        c.execute("UPDATE leitura SET nota=?, comentario=?, nota_ts=? WHERE materia=? AND missao=?",
+                  (nota, comentario or '', datetime.now().isoformat(), materia, missao))
+        c.commit()
+    return {"ok": True, "nota": nota}
+
+
 def estado(total_missoes=0):
     with conn() as c:
         aluno = dict(c.execute("SELECT * FROM aluno WHERE id=1").fetchone())
@@ -535,6 +557,9 @@ def estado(total_missoes=0):
         md_metrics = _hoje_metrics(c)
         feedbacks = [dict(r) for r in c.execute(
             "SELECT texto, ts FROM feedback ORDER BY id DESC LIMIT 20").fetchall()]
+        leituras = [dict(r) for r in c.execute(
+            "SELECT materia, missao, titulo, foto, ts, nota, comentario, nota_ts"
+            " FROM leitura ORDER BY ts DESC").fetchall()]
     conquistas = [_conquista_pub(conq, s) for conq in CONQUISTAS]
     supremo_ok = _supremo_ok(s, total_missoes)
     progresso_pct = int(round(100 * s["missoes_concluidas"] / total_missoes)) if total_missoes else 0
@@ -571,5 +596,5 @@ def estado(total_missoes=0):
     }
     return {"aluno": aluno, "progresso": prog, "conquistas": conquistas, "ultimas": ult,
             "avatares": avatares, "missoes_dia": missoes_dia, "ofensiva": ofensiva,
-            "feedbacks": feedbacks, "atividades_hoje": ativ,
+            "feedbacks": feedbacks, "leituras": leituras, "atividades_hoje": ativ,
             "tux": {"dia": aluno.get("tux_dia", ""), "inicio": aluno.get("tux_inicio", "")}}

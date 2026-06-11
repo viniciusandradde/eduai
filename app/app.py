@@ -255,15 +255,10 @@ def _cap_atingido(materia, missao):
 
 @app.post('/api/leitura')
 def api_leitura(payload: LeituraIn, senha: str = ''):
+    """Texto não conclui mais — agora a foto do resumo no papel é obrigatória."""
     checar(senha, ALUNO_SENHA)
-    if _cap_atingido(payload.materia, payload.missao):
-        return JSONResponse(status_code=422, content={"ok": False, "limite": True,
-            "erro": "Você já fez suas 2 atividades de hoje. Volte amanhã! 🌙"})
-    if len(payload.resumo.strip()) < 50:
-        return JSONResponse(status_code=422,
-                            content={"ok": False, "erro": "Escreva um resumo maior (mín. 50 caracteres) ou envie a foto."})
-    novas = db.concluir_leitura(payload.materia, payload.missao)
-    return {"ok": True, "novas_medalhas": novas}
+    return JSONResponse(status_code=422, content={"ok": False,
+        "erro": "Agora é preciso enviar a FOTO do seu resumo feito no papel. 📸"})
 
 @app.post('/api/leitura-foto')
 async def api_leitura_foto(materia: str = Form(...), missao: str = Form(...),
@@ -273,6 +268,8 @@ async def api_leitura_foto(materia: str = Form(...), missao: str = Form(...),
     if _cap_atingido(materia, missao):
         return JSONResponse(status_code=422, content={"ok": False, "limite": True,
             "erro": "Você já fez suas 2 atividades de hoje. Volte amanhã! 🌙"})
+    if not (titulo or '').strip():
+        return JSONResponse(status_code=422, content={"ok": False, "erro": "Escreva o título do que você leu."})
     if not (foto.content_type or '').lower().startswith('image/'):
         return JSONResponse(status_code=422, content={"ok": False, "erro": "Envie uma imagem."})
     data = await foto.read(MAX_FOTO + 1)
@@ -282,7 +279,7 @@ async def api_leitura_foto(materia: str = Form(...), missao: str = Form(...),
     ext = 'png' if 'png' in (foto.content_type or '') else 'jpg'
     nome = f"escola-{materia}-{missao}.{ext}"
     (FOTOS_DIR / nome).write_bytes(data)
-    novas = db.concluir_leitura(materia, missao)
+    novas = db.concluir_leitura(materia, missao, titulo.strip(), nome)
     return {"ok": True, "foto": nome, "novas_medalhas": novas}
 
 @app.post('/api/tux/abrir')
@@ -363,6 +360,17 @@ def api_pais_estado(senha: str = ''):
                           "total_missoes": len([x for x in m.get('missoes', []) if not x.get('link')])}
     e["catalogo"] = nomes
     return JSONResponse(e)
+
+class AvaliarIn(BaseModel):
+    materia: str
+    missao:  str
+    nota:    int
+    comentario: str = ''
+
+@app.post('/api/pais/avaliar')
+def api_pais_avaliar(payload: AvaliarIn, senha: str = ''):
+    checar(senha, PAI_SENHA)
+    return db.avaliar_leitura(payload.materia, payload.missao, payload.nota, payload.comentario)
 
 @app.get('/api/foto/{nome}')
 def api_foto(nome: str, senha: str = ''):
