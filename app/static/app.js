@@ -73,7 +73,8 @@ function render(){
 }
 
 // ── Edu Help (chat de dúvidas, FAQ roteirizado) ───────
-let ehOpen=false, ehMsgs=[], ehLoaded=false, ehBusy=false;
+let ehOpen=false, ehMsgs=[], ehLoaded=false, ehBusy=false, ehIdeaMode=false;
+const EH_IDEIA={id:'__ideia__', texto:'💡 Mandar uma ideia'};
 function ehHost(){ return $('eduhelp'); }
 function ehVisivel(){ return logged && !(flow && (flow.view==='exercicio' || flow.view==='leitura')); }
 function ehSyncFab(){
@@ -106,17 +107,21 @@ async function ehAbrir(){
   if(!ehLoaded){
     ehLoaded=true;
     const r=await api('/api/eduhelp/sugestoes'); const d=(r&&r.data)||{};
-    const chips=[]; (d.grupos||[]).forEach(g=>(g.chips||[]).forEach(c=>chips.push(c)));
+    const chips=[EH_IDEIA]; (d.grupos||[]).forEach(g=>(g.chips||[]).forEach(c=>chips.push(c)));
     ehMsgs.push({quem:'bot', texto:esc(d.saudacao||'Oi! Eu sou o Edu 🐧'), chips});
   }
   ehRender(); const i=$('eh-in'); if(i) i.focus();
 }
-function ehFechar(){ ehOpen=false; ehRender(); }
-async function ehChip(id, btn){ await ehPerguntar(id, btn?btn.textContent:id); }
+function ehFechar(){ ehOpen=false; ehIdeaMode=false; ehRender(); }
+async function ehChip(id, btn){
+  if(id==='__ideia__'){ ehIdeaStart(); return; }
+  await ehPerguntar(id, btn?btn.textContent:id);
+}
 async function ehEnviar(){
   const i=$('eh-in'); if(!i) return;
   const t=i.value.trim(); if(!t||ehBusy) return;
-  i.value=''; await ehPerguntar(t, t);
+  i.value='';
+  if(ehIdeaMode) await ehEnviarIdeia(t); else await ehPerguntar(t, t);
 }
 async function ehPerguntar(pergunta, display){
   ehMsgs.forEach(m=>{ m.chips=[]; });          // só o último bot mostra chips
@@ -124,8 +129,30 @@ async function ehPerguntar(pergunta, display){
   ehBusy=true; ehRender();
   const r=await api('/api/eduhelp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pergunta})});
   ehBusy=false; const d=(r&&r.data)||{};
-  ehMsgs.push({quem:'bot', texto:esc(d.resposta||'Ops, tive um probleminha aqui. Tenta de novo? 🐧'), chips:d.sugestoes||[]});
+  ehMsgs.push({quem:'bot', texto:esc(d.resposta||'Ops, tive um probleminha aqui. Tenta de novo? 🐧'), chips:[...(d.sugestoes||[]), EH_IDEIA]});
   ehRender(); const i=$('eh-in'); if(i) i.focus();
+}
+function ehIdeaStart(){
+  ehMsgs.forEach(m=>{ m.chips=[]; });
+  ehMsgs.push({quem:'eu', texto:EH_IDEIA.texto});
+  ehMsgs.push({quem:'bot', texto:'Adoro ideias! ✍️ Escreve aqui o que você queria que tivesse no app que eu mando pros seus pais. 💜', chips:[]});
+  ehIdeaMode=true; ehRender(); const i=$('eh-in'); if(i){ i.placeholder='Escreva sua ideia...'; i.focus(); }
+}
+async function ehEnviarIdeia(texto){
+  if(texto.length<3){
+    ehMsgs.push({quem:'bot', texto:'Escreve um pouquinho mais sobre a sua ideia 🙂', chips:[]}); ehRender(); return;
+  }
+  ehMsgs.forEach(m=>{ m.chips=[]; });
+  ehMsgs.push({quem:'eu', texto:texto});
+  ehBusy=true; ehRender();
+  const r=await api('/api/feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({texto})});
+  ehBusy=false; ehIdeaMode=false;
+  const ok=r.status===200 && r.data && r.data.ok;
+  ehMsgs.push({quem:'bot',
+    texto: ok ? 'Recebi! 💜 Sua ideia foi enviada pros seus pais. Quer mandar outra ou tirar uma dúvida?'
+              : ((r.data&&r.data.erro)||'Não consegui enviar agora. Tenta de novo? 🐧'),
+    chips:[EH_IDEIA]});
+  ehRender(); const i=$('eh-in'); if(i){ i.placeholder='Escreva sua dúvida...'; i.focus(); }
 }
 
 function flowNav(title, backCall){
