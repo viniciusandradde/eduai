@@ -265,6 +265,10 @@ async def api_leitura_foto(materia: str = Form(...), missao: str = Form(...),
                            titulo: str = Form(''), foto: UploadFile = File(...),
                            senha: str = ''):
     checar(senha, ALUNO_SENHA)
+    # Imutável: leitura já registrada NÃO pode ser apagada/sobrescrita.
+    if db.missao_concluida(materia, missao):
+        return {"ok": True, "ja_registrado": True, "novas_medalhas": [],
+                "msg": "Esse resumo já foi registrado e fica guardado. 💜"}
     if _cap_atingido(materia, missao):
         return JSONResponse(status_code=422, content={"ok": False, "limite": True,
             "erro": "Você já fez suas 2 atividades de hoje. Volte amanhã! 🌙"})
