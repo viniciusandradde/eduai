@@ -28,6 +28,9 @@ MAX_FOTO    = 10 * 1024 * 1024
 TRILHA_MATERIAS   = [m.strip() for m in os.environ.get('TRILHA_MATERIAS', 'matematica,portugues,ciencias').split(',') if m.strip()]
 ATIVIDADES_POR_DIA = int(os.environ.get('ATIVIDADES_POR_DIA', '2'))
 TUX_MINUTOS        = int(os.environ.get('TUX_MINUTOS', '60'))
+# Foto do resumo no papel só vira OBRIGATÓRIA a partir deste % de progresso
+# (antes disso o resumo pode ser digitado — não desanima o filho no começo).
+FOTO_A_PARTIR_PCT  = int(os.environ.get('FOTO_A_PARTIR_PCT', '50'))
 
 app = FastAPI(title="VSA EduAI")
 db.init_db()
@@ -175,14 +178,22 @@ def _calcular_gate(e):
                 pendentes.append({"materia": mid, "nome": m["nome"], "missao": prox["id"], "titulo": prox["titulo"]})
     destravado = len(faltam) == 0
     restante = db.tux_restante(TUX_MINUTOS)
+    conc = len([p for p in e.get("progresso", []) if p.get("concluida")])
     return {
         "atividades_hoje": e.get("atividades_hoje", 0),
         "limite": ATIVIDADES_POR_DIA,
         "atingiu_limite": e.get("atividades_hoje", 0) >= ATIVIDADES_POR_DIA,
+        "foto_obrigatoria": _foto_obrigatoria_pct(conc),
+        "foto_pct": FOTO_A_PARTIR_PCT,
         "trilha": {"destravado": destravado, "faltam": faltam, "pendentes": pendentes},
         "tux": {"destravado": destravado, "minutos": TUX_MINUTOS,
                 "restante_seg": restante, "esgotado": (restante is not None and restante <= 0)},
     }
+
+
+def _foto_obrigatoria_pct(conc):
+    """A foto vira obrigatória quando o progresso atinge FOTO_A_PARTIR_PCT."""
+    return bool(TOTAL_MISSOES) and (100 * conc / TOTAL_MISSOES) >= FOTO_A_PARTIR_PCT
 
 @app.get('/api/estado')
 def api_estado(senha: str = ''):
@@ -255,10 +266,23 @@ def _cap_atingido(materia, missao):
 
 @app.post('/api/leitura')
 def api_leitura(payload: LeituraIn, senha: str = ''):
-    """Texto não conclui mais — agora a foto do resumo no papel é obrigatória."""
+    """Resumo digitado — permitido só ANTES de FOTO_A_PARTIR_PCT% de progresso."""
     checar(senha, ALUNO_SENHA)
-    return JSONResponse(status_code=422, content={"ok": False,
-        "erro": "Agora é preciso enviar a FOTO do seu resumo feito no papel. 📸"})
+    if db.missao_concluida(payload.materia, payload.missao):   # imutável
+        return {"ok": True, "ja_registrado": True, "novas_medalhas": []}
+    if _foto_obrigatoria_pct(db.total_concluidas()):
+        return JSONResponse(status_code=422, content={"ok": False, "so_foto": True,
+            "erro": "Agora você já é avançado! Faça o resumo no papel e envie a FOTO. 📸"})
+    if _cap_atingido(payload.materia, payload.missao):
+        return JSONResponse(status_code=422, content={"ok": False, "limite": True,
+            "erro": "Você já fez suas 2 atividades de hoje. Volte amanhã! 🌙"})
+    if not (payload.titulo or '').strip():
+        return JSONResponse(status_code=422, content={"ok": False, "erro": "Escreva o título do que você leu."})
+    if len(payload.resumo.strip()) < 50:
+        return JSONResponse(status_code=422, content={"ok": False, "erro": "Escreva um resumo maior (mín. 50 letras)."})
+    novas = db.concluir_leitura(payload.materia, payload.missao,
+                                payload.titulo.strip(), '', payload.resumo.strip())
+    return {"ok": True, "novas_medalhas": novas}
 
 @app.post('/api/leitura-foto')
 async def api_leitura_foto(materia: str = Form(...), missao: str = Form(...),

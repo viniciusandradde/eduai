@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS feedback (
   id INTEGER PRIMARY KEY AUTOINCREMENT, texto TEXT, ts TEXT
 );
 CREATE TABLE IF NOT EXISTS leitura (
-  materia TEXT, missao TEXT, titulo TEXT, foto TEXT, ts TEXT,
+  materia TEXT, missao TEXT, titulo TEXT, resumo TEXT, foto TEXT, ts TEXT,
   nota INTEGER DEFAULT 0, comentario TEXT DEFAULT '', nota_ts TEXT,
   PRIMARY KEY (materia, missao)
 );
@@ -210,6 +210,10 @@ def init_db():
                 c.execute(f"ALTER TABLE aluno ADD COLUMN {col} INTEGER DEFAULT 0")
             except Exception:
                 pass
+        try:  # migração: resumo de texto na leitura (bancos do v17)
+            c.execute("ALTER TABLE leitura ADD COLUMN resumo TEXT DEFAULT ''")
+        except Exception:
+            pass
         c.execute(
             "INSERT OR IGNORE INTO aluno(id,nome,avatar,xp,nivel,moedas,streak,ultimo_dia,av_base)"
             " VALUES(1,?,?,0,1,0,0,'',?)", (ALUNO_NOME, "🤖", "base_bipe"))
@@ -317,7 +321,7 @@ def registrar_tentativa(materia, missao, acertos, total, estrelas, xp_ganho, seg
     return verificar_medalhas()
 
 
-def concluir_leitura(materia, missao, titulo='', foto='', bonus_xp=20, moedas=10):
+def concluir_leitura(materia, missao, titulo='', foto='', resumo='', bonus_xp=20, moedas=10):
     agora = datetime.now().isoformat()
     with conn() as c:
         row = c.execute("SELECT leitura_ok FROM progresso WHERE materia=? AND missao=?",
@@ -326,15 +330,15 @@ def concluir_leitura(materia, missao, titulo='', foto='', bonus_xp=20, moedas=10
             c.execute("INSERT INTO progresso(materia,missao,leitura_ok,concluida,ultima_ts)"
                       " VALUES(?,?,1,1,?)", (materia, missao, agora))
         elif row["leitura_ok"]:
-            c.commit(); return verificar_medalhas()  # já contou
+            c.commit(); return verificar_medalhas()  # já contou (imutável)
         else:
             c.execute("UPDATE progresso SET leitura_ok=1, concluida=1, ultima_ts=?"
                       " WHERE materia=? AND missao=?", (agora, materia, missao))
-        # guarda o conteúdo da leitura (título + foto do resumo) p/ o pai avaliar
-        c.execute("INSERT INTO leitura(materia,missao,titulo,foto,ts) VALUES(?,?,?,?,?)"
+        # guarda o conteúdo da leitura (título + resumo de texto e/ou foto) p/ o pai avaliar
+        c.execute("INSERT INTO leitura(materia,missao,titulo,resumo,foto,ts) VALUES(?,?,?,?,?,?)"
                   " ON CONFLICT(materia,missao) DO UPDATE SET titulo=excluded.titulo,"
-                  " foto=excluded.foto, ts=excluded.ts",
-                  (materia, missao, titulo, foto, agora))
+                  " resumo=excluded.resumo, foto=excluded.foto, ts=excluded.ts",
+                  (materia, missao, titulo, resumo, foto, agora))
         # registra a atividade de leitura do dia (para o cap diário)
         c.execute("INSERT INTO leitura_log(dia,materia,missao,ts) VALUES(?,?,?,?)",
                   (str(date.today()), materia, missao, agora))
@@ -349,6 +353,10 @@ def atividades_hoje():
     with conn() as c:
         return c.execute("SELECT COUNT(*) n FROM leitura_log WHERE dia=?",
                          (str(date.today()),)).fetchone()["n"]
+
+def total_concluidas():
+    with conn() as c:
+        return c.execute("SELECT COUNT(*) n FROM progresso WHERE concluida=1").fetchone()["n"]
 
 
 def _hoje_metrics(c):
@@ -558,7 +566,7 @@ def estado(total_missoes=0):
         feedbacks = [dict(r) for r in c.execute(
             "SELECT texto, ts FROM feedback ORDER BY id DESC LIMIT 20").fetchall()]
         leituras = [dict(r) for r in c.execute(
-            "SELECT materia, missao, titulo, foto, ts, nota, comentario, nota_ts"
+            "SELECT materia, missao, titulo, resumo, foto, ts, nota, comentario, nota_ts"
             " FROM leitura ORDER BY ts DESC").fetchall()]
     conquistas = [_conquista_pub(conq, s) for conq in CONQUISTAS]
     supremo_ok = _supremo_ok(s, total_missoes)

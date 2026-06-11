@@ -67,6 +67,7 @@ function render(){
   }
   $('root').innerHTML = `<div class="eduai">${flowBar}${header}<div class="scroll">${body}</div>${nav}</div>`;
   // listeners pós-render
+  const lt = $('lt-resumo'); if (lt) lt.addEventListener('input', ()=>{ const n=lt.value.trim().length; const c=$('lt-cc'); if(c){c.textContent=n+'/50 letras '+(n>=50?'✓':''); c.className='charcount'+(n>=50?' ok':'');} });
   const fi = $('lt-foto'); if (fi) fi.addEventListener('change', e=>{ const f=e.target.files[0]; const d=$('lt-drop'); if(f&&d){ d.classList.add('has'); d.querySelector('.dl').textContent=f.name+' selecionada ✓'; d.querySelector('.ic').textContent='📸'; } });
   ehSyncFab();
 }
@@ -456,16 +457,42 @@ function resultadoHTML(){
 
 // ── Leitura (gate) ────────────────────────────────────
 function leituraHTML(){
+  const obrig = !!(EST.gate && EST.gate.foto_obrigatoria);
+  const cab = `<div style="text-align:center"><div class="emoji">📖</div><h2>Hora de ler!</h2>
+    <p style="text-align:center">${obrig
+      ? 'Você já é avançado! 🎓 Leia, escreva o resumo <b>no papel</b> e tire uma <b>foto</b>. Seus pais vão ver e avaliar! 💜'
+      : 'Leia um livro ou capítulo e conte, com suas palavras, o que você aprendeu. 💜'}</p></div>`;
+  let corpo;
+  if(obrig){
+    corpo = `<label style="margin-top:4px">📸 Foto do seu resumo no papel</label>
+      <div class="photo-drop" id="lt-drop" onclick="document.getElementById('lt-foto').click()">
+        <div class="ic">🖼️</div><div class="dl" style="margin-top:6px;font-weight:700">Tirar / escolher a FOTO do resumo</div></div>
+      <input id="lt-foto" type="file" accept="image/*" capture="environment" style="display:none">
+      <button class="btn" style="margin-top:14px" onclick="enviarLeituraFoto()">Enviar resumo 📸✅</button>`;
+  } else {
+    corpo = `<label>✍️ Seu resumo (com suas palavras)</label>
+      <textarea id="lt-resumo" placeholder="O que você aprendeu na leitura de hoje..."></textarea>
+      <div class="charcount" id="lt-cc">0/50 letras</div>
+      <button class="btn" style="margin-top:12px" onclick="enviarLeitura()">Enviar resumo ✅</button>
+      <div class="divider">ou, se quiser</div>
+      <div class="photo-drop" id="lt-drop" onclick="document.getElementById('lt-foto').click()">
+        <div class="ic">🖼️</div><div class="dl" style="margin-top:6px;font-weight:700">Enviar FOTO do resumo no papel</div></div>
+      <input id="lt-foto" type="file" accept="image/*" capture="environment" style="display:none">
+      <button class="btn-sec" style="margin-top:10px" onclick="enviarLeituraFoto()">Enviar foto 📸</button>`;
+  }
   return `<div class="pad fade-in" style="padding-top:18px"><div class="box gate leitura">
-    <div style="text-align:center"><div class="emoji">📖</div><h2>Hora de ler!</h2>
-      <p style="text-align:center">Leia um livro ou capítulo, escreva o resumo <b>no papel</b> e tire uma <b>foto</b>. Seus pais vão ver e avaliar! 💜</p></div>
+    ${cab}
     <label>📕 Título do que você leu</label><input id="lt-titulo" type="text" placeholder="Ex.: O Pequeno Príncipe">
-    <label style="margin-top:12px">📸 Foto do seu resumo no papel</label>
-    <div class="photo-drop" id="lt-drop" onclick="document.getElementById('lt-foto').click()">
-      <div class="ic">🖼️</div><div class="dl" style="margin-top:6px;font-weight:700">Tirar / escolher a FOTO do resumo</div></div>
-    <input id="lt-foto" type="file" accept="image/*" capture="environment" style="display:none">
-    <button class="btn" style="margin-top:14px" onclick="enviarLeituraFoto()">Enviar resumo 📸✅</button>
+    ${corpo}
     <div class="msg" id="lt-msg"></div></div></div>`;
+}
+async function enviarLeitura(){
+  const msg=$('lt-msg'), resumo=($('lt-resumo')?$('lt-resumo').value:''), titulo=($('lt-titulo').value||'').trim();
+  if(!titulo){ msg.className='msg err'; msg.textContent='Escreva o título do que você leu.'; return; }
+  if(resumo.trim().length<50){ msg.className='msg err'; msg.textContent='Escreva um resumo maior (mín. 50 letras) ou envie a foto.'; return; }
+  const r=await api('/api/leitura',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({materia:flow.subject.id,missao:flow.missao.id,titulo,resumo})});
+  if(r.status===200&&r.data.ok) await concluir(r.data); else { msg.className='msg err'; msg.textContent=(r.data&&r.data.erro)||'Erro.'; }
 }
 async function enviarLeituraFoto(){
   const msg=$('lt-msg'), f=$('lt-foto').files[0], titulo=($('lt-titulo').value||'').trim();

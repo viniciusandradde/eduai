@@ -80,7 +80,9 @@ function render(){
       <div class="lt-h"><div class="lt-ic">${c.icone||'📘'}</div>
         <div class="lt-info"><div class="lt-t">${esc(l.titulo||'(sem título)')}</div>
         <div class="lt-s">${esc(c.nome||l.materia)} • ${esc(titMis)} • ${fmtData(l.ts)}</div></div></div>
-      ${fotoUrl?`<a href="${fotoUrl}" target="_blank" class="lt-foto"><img src="${fotoUrl}" alt="resumo" loading="lazy"></a>`:'<div class="lt-nofoto">sem foto</div>'}
+      ${fotoUrl
+        ? `<a href="${fotoUrl}" target="_blank" class="lt-foto"><img src="${fotoUrl}" alt="resumo" loading="lazy"></a>`
+        : (l.resumo ? `<div class="lt-txt">“${esc(l.resumo)}”</div>` : '<div class="lt-nofoto">sem resumo</div>')}
       <div class="lt-rate"><span class="lt-lb">${l.nota?'Sua nota:':'Avalie:'}</span><div class="lt-stars">${estrelas}</div></div>
       <div class="lt-cm"><input id="cm-${l.materia}-${l.missao}" type="text" maxlength="200" placeholder="Comentário (opcional)" value="${esc(l.comentario||'')}">
         <button class="lt-save" onclick="salvarComentario('${l.materia}','${l.missao}')">Salvar</button></div>
