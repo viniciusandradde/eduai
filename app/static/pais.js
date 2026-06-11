@@ -108,6 +108,15 @@ function render(){
   });
   h += `</div>`;
 
+  // Ideias do explorador (feedback do aluno)
+  const ideias = EST.feedbacks||[];
+  h += `<div class="sec">💡 Ideias do explorador ${ideias.length?`<span class="count">${ideias.length}</span>`:''}</div><div class="card">`;
+  if (!ideias.length) h += `<div style="color:var(--dim);font-weight:600;padding:6px">Nenhuma ideia ainda. Quando o explorador terminar o dia, ele pode sugerir o que quer no app. 💜</div>`;
+  ideias.forEach(f=>{
+    h += `<div class="idea"><div class="ie">💡</div><div class="ib"><div class="it">${esc(f.texto)}</div><div class="id8">${fmtData(f.ts)}</div></div></div>`;
+  });
+  h += `</div>`;
+
   // Últimas atividades
   h += `<div class="sec">🕑 Últimas atividades</div><div class="card acts">`;
   const ult = EST.ultimas||[];

@@ -320,6 +320,17 @@ def api_escudo_comprar(senha: str = ''):
     checar(senha, ALUNO_SENHA)
     return db.escudo_comprar()
 
+class FeedbackIn(BaseModel):
+    texto: str = ''
+
+@app.post('/api/feedback')
+def api_feedback(payload: FeedbackIn, senha: str = ''):
+    checar(senha, ALUNO_SENHA)
+    t = (payload.texto or '').strip()
+    if not (3 <= len(t) <= 500):
+        return JSONResponse(status_code=422, content={"ok": False, "erro": "Escreva sua ideia (3 a 500 letras)."})
+    return db.salvar_feedback(t)
+
 # ── Edu Help (chat de dúvidas, FAQ roteirizado) ───────────────
 def _eduhelp_cfg():
     """Valores reais das regras, injetados nas respostas do Edu."""

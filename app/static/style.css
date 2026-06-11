@@ -497,3 +497,18 @@ button{font-family:inherit;cursor:pointer;border:0;border-radius:13px;font-size:
 .sup-pb{height:8px;background:#0c0a14;border-radius:999px;overflow:hidden;margin:10px 0 8px;border:1px solid rgba(255,255,255,.06)}
 .sup-pb>i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#e0930a,#ffd54f)}
 .sup-tip{font-size:12px;color:var(--dim);font-weight:600}
+
+/* ── Feedback do fim do dia ─────────────────────────── */
+.fb-card{margin-bottom:16px;padding:18px 16px;border-radius:18px;text-align:center;
+  background:linear-gradient(180deg,#241a32,#171022);border:1px solid rgba(245,179,1,.3);
+  box-shadow:0 12px 30px -18px rgba(124,58,237,.6)}
+.fb-emoji{font-size:40px;line-height:1}
+.fb-msg{font-size:15px;font-weight:800;margin:8px 0 14px;line-height:1.4}
+.fb-lb{display:block;text-align:left;font-size:13px;font-weight:700;color:var(--dim);margin-bottom:7px}
+.fb-card textarea{width:100%;min-height:74px;resize:vertical;background:#100e1a;border:1.5px solid rgba(255,255,255,.12);
+  color:var(--txt);border-radius:13px;padding:12px 14px;font-size:15px;font-family:inherit;margin-bottom:10px}
+.fb-card textarea:focus{outline:none;border-color:rgba(167,139,250,.6)}
+.fb-card textarea:disabled{opacity:.6}
+.fb-ok{font-size:13px;font-weight:700;margin-top:10px;min-height:18px}
+.fb-ok.done{color:#86efac}
+.fb-ok.err{color:#fca5a5}

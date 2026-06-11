@@ -41,6 +41,9 @@ CREATE TABLE IF NOT EXISTS leitura_log (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   dia TEXT, materia TEXT, missao TEXT, ts TEXT
 );
+CREATE TABLE IF NOT EXISTS feedback (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, texto TEXT, ts TEXT
+);
 """
 
 # Avatar — robôs ilustrados (DiceBear "bottts", grátis, sem chave) + customização.
@@ -512,6 +515,13 @@ def escudo_comprar():
     return {"ok": True, "escudos": escudos + 1}
 
 
+def salvar_feedback(texto):
+    with conn() as c:
+        c.execute("INSERT INTO feedback(texto,ts) VALUES(?,?)", (texto, datetime.now().isoformat()))
+        c.commit()
+    return {"ok": True}
+
+
 def estado(total_missoes=0):
     with conn() as c:
         aluno = dict(c.execute("SELECT * FROM aluno WHERE id=1").fetchone())
@@ -523,6 +533,8 @@ def estado(total_missoes=0):
         ativ = c.execute("SELECT COUNT(*) n FROM leitura_log WHERE dia=?",
                          (str(date.today()),)).fetchone()["n"]
         md_metrics = _hoje_metrics(c)
+        feedbacks = [dict(r) for r in c.execute(
+            "SELECT texto, ts FROM feedback ORDER BY id DESC LIMIT 20").fetchall()]
     conquistas = [_conquista_pub(conq, s) for conq in CONQUISTAS]
     supremo_ok = _supremo_ok(s, total_missoes)
     progresso_pct = int(round(100 * s["missoes_concluidas"] / total_missoes)) if total_missoes else 0
@@ -559,5 +571,5 @@ def estado(total_missoes=0):
     }
     return {"aluno": aluno, "progresso": prog, "conquistas": conquistas, "ultimas": ult,
             "avatares": avatares, "missoes_dia": missoes_dia, "ofensiva": ofensiva,
-            "atividades_hoje": ativ,
+            "feedbacks": feedbacks, "atividades_hoje": ativ,
             "tux": {"dia": aluno.get("tux_dia", ""), "inicio": aluno.get("tux_inicio", "")}}

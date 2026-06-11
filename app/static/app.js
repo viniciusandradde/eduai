@@ -198,6 +198,38 @@ function bannerHTML(){
   return h;
 }
 
+// ── Fim do dia: motivação + caixa de ideias ───────────
+const MOTIVA = [
+  "Você arrasou hoje! Cada dia de estudo te deixa mais forte. 💪",
+  "Missão do dia cumprida! Tenho muito orgulho de você. 🌟",
+  "Que dedicação! Continue assim e nada te para. 🚀",
+  "Você foi incrível hoje! Descanse e volte amanhã com tudo. 🌙",
+  "Mais um dia de campeão! Seu cérebro agradece. 🧠✨",
+  "Leu, aprendeu e evoluiu. Você é demais! 💜",
+];
+function feedbackDiaHTML(){
+  const g = EST.gate; if (!g || !g.atingiu_limite) return '';
+  const msg = MOTIVA[Math.floor(Date.now()/864e5) % MOTIVA.length];
+  return `<div class="fb-card">
+    <div class="fb-emoji">🎉</div>
+    <div class="fb-msg">${esc(msg)}</div>
+    <label class="fb-lb">✍️ O que você gostaria que tivesse no app?</label>
+    <textarea id="fb-txt" maxlength="500" placeholder="Sua ideia para deixar o app ainda melhor..."></textarea>
+    <button class="btn" onclick="enviarFeedback()">Enviar ideia 💡</button>
+    <div class="fb-ok" id="fb-ok"></div>
+  </div>`;
+}
+async function enviarFeedback(){
+  const t=$('fb-txt'), ok=$('fb-ok'); if(!t) return;
+  const texto=t.value.trim();
+  if(texto.length<3){ if(ok){ok.className='fb-ok err';ok.textContent='Escreva um pouquinho mais 🙂';} return; }
+  const r=await api('/api/feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({texto})});
+  if(r.status===200&&r.data&&r.data.ok){
+    t.value=''; t.disabled=true;
+    if(ok){ ok.className='fb-ok done'; ok.textContent='Valeu! Sua ideia foi enviada para os seus pais 💜'; }
+  } else if(ok){ ok.className='fb-ok err'; ok.textContent=(r.data&&r.data.erro)||'Não consegui enviar. Tenta de novo?'; }
+}
+
 function missoesDiaHTML(){
   const md=EST.missoes_dia; if(!md) return '';
   let chip;
@@ -254,7 +286,7 @@ async function comprarEscudo(){
 }
 
 function materiasHTML(){
-  let h = `<div class="pad fade-in">${bannerHTML()}${missoesDiaHTML()}${ofensivaHTML()}<div class="sec first">Suas matérias</div><div class="grid">`;
+  let h = `<div class="pad fade-in">${bannerHTML()}${feedbackDiaHTML()}${missoesDiaHTML()}${ofensivaHTML()}<div class="sec first">Suas matérias</div><div class="grid">`;
   CONT.forEach(s=>{
     const st=subjStats(s); const pc=Math.round(st.pct*100);
     h += `<button class="mat" style="--mc:${s.cor}" onclick="abrirMateria('${s.id}')">
@@ -414,11 +446,13 @@ async function concluir(d){ await recarregar(); flow={view:'concluido',subject:f
 
 function concluidoHTML(){
   const nm=flow.novasMedalhas||[];
+  const fimDoDia = EST.gate && EST.gate.atingiu_limite;
   return `<div class="pad fade-in" style="padding-top:18px"><div class="box">
     <div class="emoji pop">🏆</div><h2>Missão concluída!</h2>
     <p>Leitura registrada. Você ganhou <b style="color:var(--rox2)">+20 XP</b> e <b style="color:var(--amar)">🪙 +10</b> moedas!</p>
     ${nm.length?`<div class="medal-toast">🏅 Nova medalha: ${nm.map(m=>m.emoji+' '+esc(m.nome)).join(', ')}</div>`:''}
-    <button class="btn" style="margin-top:18px" onclick="voltar('missoes')">Continuar 🚀</button></div></div>`;
+    <button class="btn" style="margin-top:18px" onclick="voltar('missoes')">Continuar 🚀</button></div>
+    ${fimDoDia?feedbackDiaHTML():''}</div>`;
 }
 
 // ── Medalhas ──────────────────────────────────────────
