@@ -473,6 +473,7 @@ function leituraHTML(){
     corpo = `<label>✍️ Seu resumo (com suas palavras)</label>
       <textarea id="lt-resumo" placeholder="O que você aprendeu na leitura de hoje..."></textarea>
       <div class="charcount" id="lt-cc">0/50 letras</div>
+      <div style="font-size:12.5px;color:var(--dim);font-weight:600;margin-top:8px;line-height:1.45">💡 Quando você passar da metade da jornada (${(EST.gate&&EST.gate.foto_pct)||50}%), o resumo vai ser no papel + foto 📸. Vai ficar craque!</div>
       <button class="btn" style="margin-top:12px" onclick="enviarLeitura()">Enviar resumo ✅</button>
       <div class="divider">ou, se quiser</div>
       <div class="photo-drop" id="lt-drop" onclick="document.getElementById('lt-foto').click()">
