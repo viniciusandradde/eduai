@@ -389,6 +389,22 @@ def api_pais_estado(senha: str = ''):
     e["catalogo"] = nomes
     return JSONResponse(e)
 
+class MensagemIn(BaseModel):
+    texto: str = ''
+
+@app.post('/api/pais/mensagem')
+def api_pais_mensagem(payload: MensagemIn, senha: str = ''):
+    checar(senha, PAI_SENHA)
+    t = (payload.texto or '').strip()
+    if not (2 <= len(t) <= 300):
+        return JSONResponse(status_code=422, content={"ok": False, "erro": "Escreva a mensagem (2 a 300 letras)."})
+    return db.enviar_mensagem(t)
+
+@app.post('/api/mensagens/vistas')
+def api_mensagens_vistas(senha: str = ''):
+    checar(senha, ALUNO_SENHA)
+    return db.marcar_mensagens_vistas()
+
 class AvaliarIn(BaseModel):
     materia: str
     missao:  str

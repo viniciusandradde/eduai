@@ -49,6 +49,9 @@ CREATE TABLE IF NOT EXISTS leitura (
   nota INTEGER DEFAULT 0, comentario TEXT DEFAULT '', nota_ts TEXT,
   PRIMARY KEY (materia, missao)
 );
+CREATE TABLE IF NOT EXISTS mensagem (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, texto TEXT, ts TEXT, vista INTEGER DEFAULT 0
+);
 """
 
 # Avatar — robôs ilustrados (DiceBear "bottts", grátis, sem chave) + customização.
@@ -540,6 +543,20 @@ def salvar_feedback(texto):
     return {"ok": True}
 
 
+def enviar_mensagem(texto):
+    with conn() as c:
+        c.execute("INSERT INTO mensagem(texto,ts,vista) VALUES(?,?,0)", (texto, datetime.now().isoformat()))
+        c.commit()
+    return {"ok": True}
+
+
+def marcar_mensagens_vistas():
+    with conn() as c:
+        c.execute("UPDATE mensagem SET vista=1 WHERE vista=0")
+        c.commit()
+    return {"ok": True}
+
+
 def avaliar_leitura(materia, missao, nota, comentario=''):
     nota = max(1, min(5, int(nota)))
     with conn() as c:
@@ -568,6 +585,8 @@ def estado(total_missoes=0):
         leituras = [dict(r) for r in c.execute(
             "SELECT materia, missao, titulo, resumo, foto, ts, nota, comentario, nota_ts"
             " FROM leitura ORDER BY ts DESC").fetchall()]
+        mensagens = [dict(r) for r in c.execute(
+            "SELECT id, texto, ts, vista FROM mensagem ORDER BY id DESC LIMIT 20").fetchall()]
     conquistas = [_conquista_pub(conq, s) for conq in CONQUISTAS]
     supremo_ok = _supremo_ok(s, total_missoes)
     progresso_pct = int(round(100 * s["missoes_concluidas"] / total_missoes)) if total_missoes else 0
@@ -604,5 +623,6 @@ def estado(total_missoes=0):
     }
     return {"aluno": aluno, "progresso": prog, "conquistas": conquistas, "ultimas": ult,
             "avatares": avatares, "missoes_dia": missoes_dia, "ofensiva": ofensiva,
-            "feedbacks": feedbacks, "leituras": leituras, "atividades_hoje": ativ,
+            "feedbacks": feedbacks, "leituras": leituras, "mensagens": mensagens,
+            "atividades_hoje": ativ,
             "tux": {"dia": aluno.get("tux_dia", ""), "inicio": aluno.get("tux_inicio", "")}}

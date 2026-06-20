@@ -67,6 +67,20 @@ function render(){
     <div class="stat med"><div class="v">📖 ${leituras}</div><div class="k">leituras</div></div>
   </div>`;
 
+  // Mensagem de incentivo para o explorador (prontas + livre)
+  h += `<div class="sec">💌 Mensagem de incentivo</div><div class="card msgbox">`;
+  h += `<div class="msg-presets">${MSG_PRESETS.map((p,i)=>`<button class="msg-chip" onclick="setMsg(${i})">${esc(p)}</button>`).join('')}</div>`;
+  h += `<textarea id="msg-inp" maxlength="300" placeholder="Escreva uma mensagem ou toque numa pronta acima..."></textarea>`;
+  h += `<button class="msg-send" onclick="enviarMensagem()">Enviar para o explorador 💌</button>`;
+  h += `<div class="msg-ok" id="msg-ok"></div>`;
+  const hist = EST.mensagens||[];
+  if(hist.length){
+    h += `<div class="msg-hist">`;
+    hist.forEach(m=>{ h += `<div class="msg-hi"><span>${esc(m.texto)}</span><b class="${m.vista?'v':''}">${m.vista?'✓ lida':'• enviada'}</b></div>`; });
+    h += `</div>`;
+  }
+  h += `</div>`;
+
   // Leituras para avaliar (foto do resumo no papel + estrelas)
   const lts = EST.leituras||[];
   const aAvaliar = lts.filter(l=>!l.nota).length;
@@ -173,6 +187,26 @@ async function salvarComentario(materia, missao){
     body:JSON.stringify({materia,missao,nota:l.nota,comentario:cm?cm.value:''})});
   if(r.status===200 && r.data && r.data.ok){ await recarregar(); showToast('💬 Comentário salvo!'); }
   else alert((r.data&&r.data.erro)||'Não foi possível salvar.');
+}
+
+const MSG_PRESETS=[
+  "Tô muito orgulhoso(a) de você! 💪",
+  "Bora manter a ofensiva hoje? 🔥",
+  "Que tal 1 missão antes do jantar? 🚀",
+  "Caprichou no resumo! Continua assim 📚",
+  "Você é capaz de tudo! 💜",
+  "Mais uma estrelinha hoje? ⭐",
+  "Tô aqui torcendo por você! 🏆",
+  "Saudade de te ver estudando 😄 bora?",
+];
+function setMsg(i){ const inp=$('msg-inp'); if(inp){ inp.value=MSG_PRESETS[i]; inp.focus(); } }
+async function enviarMensagem(){
+  const inp=$('msg-inp'), ok=$('msg-ok'); if(!inp) return;
+  const t=inp.value.trim();
+  if(t.length<2){ if(ok){ok.className='msg-ok err';ok.textContent='Escreva a mensagem 🙂';} return; }
+  const r=await api('/api/pais/mensagem',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({texto:t})});
+  if(r.status===200&&r.data&&r.data.ok){ await recarregar(); showToast('💌 Mensagem enviada!'); }
+  else { if(ok){ok.className='msg-ok err';ok.textContent=(r.data&&r.data.erro)||'Não foi possível enviar.';} }
 }
 
 function showToast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(window.__tt); window.__tt=setTimeout(()=>t.classList.remove('show'),2600); }

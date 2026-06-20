@@ -519,3 +519,10 @@ button{font-family:inherit;cursor:pointer;border:0;border-radius:13px;font-size:
 .aval .av-top b{font-size:15px}
 .aval .av-st{color:var(--amar);font-size:16px;letter-spacing:1px;white-space:nowrap}
 .aval .av-cm{font-size:13px;color:var(--dim);font-weight:600;margin-top:6px}
+
+/* ── Mensagem dos pais (hub do aluno) ───────────────── */
+.msg-card{background:linear-gradient(180deg,#2a1633,#1a1022);border:1px solid rgba(236,72,153,.4);
+  border-radius:18px;padding:16px 18px;margin-bottom:16px;box-shadow:0 12px 30px -18px rgba(236,72,153,.5)}
+.msg-card .msg-h{font-size:13.5px;font-weight:800;color:#f9a8d4;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.msg-card .msg-t{font-size:16px;font-weight:700;line-height:1.45}
+.msg-card .msg-t + .msg-t{margin-top:6px}

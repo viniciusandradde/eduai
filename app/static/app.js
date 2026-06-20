@@ -225,6 +225,17 @@ function bannerHTML(){
   return h;
 }
 
+// ── Mensagem de incentivo dos pais ────────────────────
+function mensagensHTML(){
+  const novas=(EST.mensagens||[]).filter(m=>!m.vista);
+  if(!novas.length) return '';
+  let h=`<div class="msg-card"><div class="msg-h">💌 Mensagem para você</div>`;
+  novas.forEach(m=>{ h+=`<div class="msg-t">${esc(m.texto)}</div>`; });
+  h+=`<button class="btn" style="margin-top:12px" onclick="verMensagens()">Valeu! 💜</button></div>`;
+  return h;
+}
+async function verMensagens(){ await api('/api/mensagens/vistas',{method:'POST'}); await recarregar(); render(); }
+
 // ── Fim do dia: motivação + caixa de ideias ───────────
 const MOTIVA = [
   "Você arrasou hoje! Cada dia de estudo te deixa mais forte. 💪",
@@ -330,7 +341,7 @@ function avaliacoesHTML(){
 }
 
 function materiasHTML(){
-  let h = `<div class="pad fade-in">${bannerHTML()}${feedbackDiaHTML()}${missoesDiaHTML()}${ofensivaHTML()}<div class="sec first">Suas matérias</div><div class="grid">`;
+  let h = `<div class="pad fade-in">${mensagensHTML()}${bannerHTML()}${feedbackDiaHTML()}${missoesDiaHTML()}${ofensivaHTML()}<div class="sec first">Suas matérias</div><div class="grid">`;
   CONT.forEach(s=>{
     const st=subjStats(s); const pc=Math.round(st.pct*100);
     h += `<button class="mat" style="--mc:${s.cor}" onclick="abrirMateria('${s.id}')">
