@@ -1,6 +1,6 @@
-// VSA EduAI — Painel dos Pais (dados reais via API)
-let senha = localStorage.getItem('eduai_pai_senha') || '';
-let EST = null;
+// VSA EduAI — Painel dos Pais/Admin (multiusuário)
+let senha = localStorage.getItem('eduai_pai_token') || '';
+let EST = null, PAI = null, alunoSel = 0, adminView = false, ADMIN = [];
 const $ = id => document.getElementById(id);
 function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 function estrelasStr(n){ return '★'.repeat(n) + '☆'.repeat(3-n); }
@@ -20,13 +20,48 @@ async function api(path, opts){
 $('senha-inp').addEventListener('keydown', e => { if (e.key==='Enter') entrar(); });
 
 async function entrar(){
-  senha = $('senha-inp').value.trim();
-  const r = await api('/api/pais/estado');
-  if (r.status !== 200){ $('login-msg').textContent='Senha inválida 😕'; return; }
-  localStorage.setItem('eduai_pai_senha', senha);
-  EST = r.data; $('login').classList.add('hidden'); $('app').classList.remove('hidden'); render();
+  const u = ($('user-inp') ? $('user-inp').value.trim() : '');
+  const p = $('senha-inp').value;
+  let r; try { r = await fetch('/api/login', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({login:u, senha:p})}); } catch(e){ r=null; }
+  const d = r ? await r.json().catch(()=>null) : null;
+  if (!r || !r.ok || !d || !d.ok){ $('login-msg').textContent='Login inválido 😕'; return; }
+  if (d.tipo !== 'pai'){ $('login-msg').textContent='Esse é o acesso do filho — abra o hub do aluno.'; return; }
+  senha = d.token; localStorage.setItem('eduai_pai_token', senha); PAI = d; await boot();
 }
-async function recarregar(){ const r = await api('/api/pais/estado'); if (r.status===200){ EST=r.data; render(); } }
+
+async function boot(){
+  $('login').classList.add('hidden'); $('app').classList.remove('hidden');
+  const f = await api('/api/pais/filhos');
+  if (f.status !== 200){ logout(); return; }
+  PAI = Object.assign({}, PAI || {}, f.data);
+  if (!PAI.bem_vindo) abrirBoasVindas();
+  if (!(PAI.filhos || []).length){ renderOnboarding(); return; }
+  alunoSel = PAI.filhos[0].id;
+  await recarregar();
+}
+
+async function recarregar(){
+  adminView = false;
+  const r = await api('/api/pais/estado?aluno=' + alunoSel);
+  if (r.status === 200){ EST = r.data; render(); }
+  else if (r.status === 401 || r.status === 403){ logout(); }
+}
+
+async function logout(){ try{ await api('/api/logout', {method:'POST'}); }catch(e){} localStorage.removeItem('eduai_pai_token'); location.reload(); }
+function trocarFilho(id){ alunoSel = parseInt(id); recarregar(); }
+
+function barraHTML(){
+  const fs = (PAI && PAI.filhos) || [];
+  let sel = '';
+  if (fs.length > 1) sel = `<select class="pai-sel" onchange="trocarFilho(this.value)">` +
+      fs.map(f=>`<option value="${f.id}" ${f.id===alunoSel?'selected':''}>${esc(f.nome)}</option>`).join('') + `</select>`;
+  else if (fs.length === 1) sel = `<span class="pai-sel1">👦 ${esc(fs[0].nome)}</span>`;
+  return `<div class="pai-bar"><div class="pai-who">👋 ${esc((PAI&&PAI.nome)||'')}</div>
+    <div class="pai-acts">${sel}
+      <button class="pai-add" onclick="renderOnboarding()" title="Adicionar filho">＋</button>
+      ${PAI&&PAI.is_admin?`<button class="pai-admin" onclick="abrirAdmin()" title="Gerenciar pais">👑</button>`:''}
+      <button class="pai-sair" onclick="logout()">sair</button></div></div>`;
+}
 
 function fmtData(ts){ return (ts||'').slice(0,16).replace('T',' '); }
 
@@ -39,7 +74,7 @@ function render(){
   const leituras = (EST.progresso||[]).filter(p=>p.leitura_ok).length;
   const R=30, C=2*Math.PI*R;
 
-  let h = '';
+  let h = barraHTML();
   // Hero
   h += `<div class="card hero">
     <div class="avc">
@@ -175,7 +210,7 @@ async function avaliarLeitura(materia, missao, nota){
   const cm=$('cm-'+materia+'-'+missao);
   const comentario = cm ? cm.value : (_leit(materia,missao).comentario||'');
   const r=await api('/api/pais/avaliar',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({materia,missao,nota,comentario})});
+    body:JSON.stringify({materia,missao,nota,comentario,aluno:alunoSel})});
   if(r.status===200 && r.data && r.data.ok){ await recarregar(); showToast('⭐ Avaliação salva!'); }
   else alert((r.data&&r.data.erro)||'Não foi possível avaliar.');
 }
@@ -184,7 +219,7 @@ async function salvarComentario(materia, missao){
   if(!l.nota){ alert('Dê as estrelas primeiro ⭐'); return; }
   const cm=$('cm-'+materia+'-'+missao);
   const r=await api('/api/pais/avaliar',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({materia,missao,nota:l.nota,comentario:cm?cm.value:''})});
+    body:JSON.stringify({materia,missao,nota:l.nota,comentario:cm?cm.value:'',aluno:alunoSel})});
   if(r.status===200 && r.data && r.data.ok){ await recarregar(); showToast('💬 Comentário salvo!'); }
   else alert((r.data&&r.data.erro)||'Não foi possível salvar.');
 }
@@ -204,15 +239,85 @@ async function enviarMensagem(){
   const inp=$('msg-inp'), ok=$('msg-ok'); if(!inp) return;
   const t=inp.value.trim();
   if(t.length<2){ if(ok){ok.className='msg-ok err';ok.textContent='Escreva a mensagem 🙂';} return; }
-  const r=await api('/api/pais/mensagem',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({texto:t})});
+  const r=await api('/api/pais/mensagem',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({texto:t,aluno:alunoSel})});
   if(r.status===200&&r.data&&r.data.ok){ await recarregar(); showToast('💌 Mensagem enviada!'); }
   else { if(ok){ok.className='msg-ok err';ok.textContent=(r.data&&r.data.erro)||'Não foi possível enviar.';} }
 }
 
 function showToast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(window.__tt); window.__tt=setTimeout(()=>t.classList.remove('show'),2600); }
 
-window.addEventListener('load', async ()=>{
-  if (!senha) return;
-  const r = await api('/api/pais/estado');
-  if (r.status===200){ EST=r.data; $('login').classList.add('hidden'); $('app').classList.remove('hidden'); render(); }
-});
+// ── Onboarding: cadastrar filho ───────────────────────
+function renderOnboarding(){
+  adminView=false;
+  $('view').innerHTML = barraHTML() + `<div class="card ob">
+    <div class="ob-h">👶 Cadastrar filho</div>
+    <p class="ob-p">Crie o acesso do seu filho. O conteúdo das aulas é montado a partir da idade.</p>
+    <label>Nome</label><input id="ob-nome" type="text" placeholder="Nome do filho">
+    <label>Idade</label><input id="ob-idade" type="number" min="3" max="18" placeholder="Ex.: 10">
+    <label>Usuário (para ele entrar no app)</label><input id="ob-login" type="text" placeholder="ex.: joaozinho">
+    <label>Senha do filho</label><input id="ob-senha" type="text" placeholder="senha simples (mín. 4)">
+    <button class="msg-send" onclick="criarFilho()">Criar acesso do filho ✅</button>
+    <div class="msg-ok" id="ob-msg"></div></div>`;
+}
+async function criarFilho(){
+  const nome=$('ob-nome').value.trim(), idade=parseInt($('ob-idade').value||'0'),
+        login=$('ob-login').value.trim(), s=$('ob-senha').value;
+  const r=await api('/api/pais/criar-filho',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({nome,idade,login,senha:s})});
+  if(r.status===200&&r.data&&r.data.ok){
+    const f=await api('/api/pais/filhos'); PAI=Object.assign({},PAI,f.data);
+    alunoSel=(PAI.filhos[PAI.filhos.length-1]||{}).id; await recarregar(); showToast('✅ Filho cadastrado!');
+  } else { $('ob-msg').className='msg-ok err'; $('ob-msg').textContent=(r.data&&r.data.erro)||'Não foi possível.'; }
+}
+
+// ── Admin: gerenciar pais ─────────────────────────────
+async function abrirAdmin(){ const r=await api('/api/admin/pais'); ADMIN=(r.data&&r.data.pais)||[]; adminView=true; renderAdmin(); }
+function renderAdmin(){
+  let h = barraHTML() + `<div class="sec">👑 Gerenciar pais</div>
+    <div class="card ob"><div class="ob-h">Criar novo pai</div>
+      <label>Nome</label><input id="ap-nome" type="text" placeholder="Nome do responsável">
+      <label>Login</label><input id="ap-login" type="text" placeholder="ex.: maria">
+      <label>Senha</label><input id="ap-senha" type="text" placeholder="senha (mín. 4)">
+      <button class="msg-send" onclick="criarPai()">Criar pai ✅</button>
+      <div class="msg-ok" id="ap-msg"></div></div>
+    <div class="sec">Pais cadastrados (${ADMIN.length})</div>`;
+  ADMIN.forEach(p=>{ h += `<div class="card" style="padding:14px 16px">
+    <b>${esc(p.nome)}</b> <span style="color:var(--dim)">@${esc(p.login)}</span> ${p.is_admin?'👑':''}
+    <div style="color:var(--dim);font-size:13px;margin-top:4px">Filhos: ${p.filhos.map(f=>esc(f.nome)+' (@'+esc(f.login)+')').join(', ')||'—'}</div></div>`; });
+  h += `<div style="margin-top:14px"><button class="voltar" onclick="recarregar()">← Voltar ao painel</button></div>`;
+  $('view').innerHTML = h;
+}
+async function criarPai(){
+  const nome=$('ap-nome').value.trim(), login=$('ap-login').value.trim(), s=$('ap-senha').value;
+  const r=await api('/api/admin/criar-pai',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({nome,login,senha:s})});
+  if(r.status===200&&r.data&&r.data.ok){ await abrirAdmin(); showToast('✅ Pai criado!'); }
+  else { $('ap-msg').className='msg-ok err'; $('ap-msg').textContent=(r.data&&r.data.erro)||'Não foi possível.'; }
+}
+
+// ── Mensagem exclusiva de boas-vindas (Andreia) ───────
+function MSG_ANDREIA(){
+  return `<div class="bv-emoji">💜</div><h2 class="bv-h">Para a Andreia</h2>
+  <div class="bv-tx">
+   <p>Amor, este app nasceu de um sonho nosso: ver o <b>Vittor</b> (e nossos filhos) <b>amando aprender</b> — sem briga pra estudar, com aquele brilho no olho de quem está jogando.</p>
+   <p><b>A origem.</b> Eu quis transformar o estudo em uma aventura, no estilo Duolingo: cada matéria vira uma jornada de missões curtas, com feedback na hora e muita comemoração a cada passo.</p>
+   <p><b>A missão.</b> Criar o hábito de estudar todo dia e, acima de tudo, o <b>amor pela leitura</b> — porque ler é a chave de todas as outras matérias.</p>
+   <p><b>Como o conteúdo é feito.</b> Missões alinhadas à BNCC (hoje 5º ano), com questões que dão feedback e explicação. A ideia é o conteúdo se adaptar à <b>idade</b> de cada filho.</p>
+   <p><b>As recompensas.</b> XP e níveis, moedas, ofensiva (dias seguidos 🔥), baú diário 🎁, conquistas e avatares — até os <b>supremos secretos</b> (Pokémon, Sonic, Metroid) que liberam com esforço. E o Tux/Minecraft como prêmio de quem cumpre a jornada.</p>
+   <p><b>O coração de tudo: o resumo de leitura.</b> Nenhuma missão se conclui sem ler. A criança lê <i>qualquer</i> livro e escreve um resumo — no começo digitado, depois no papel com foto — e <b>você avalia com estrelas</b> e deixa um recadinho. É isso que constrói leitores de verdade.</p>
+   <p>Agora você também é guardiã dessa jornada: <b>cadastre os filhos</b>, acompanhe o progresso, avalie as leituras e mande mensagens de incentivo. Bora criar essa memória linda com eles? 💜</p>
+  </div>`;
+}
+function abrirBoasVindas(){
+  const ehAndreia = ((PAI.nome||'').trim().toLowerCase()==='andreia');
+  const html = ehAndreia ? MSG_ANDREIA()
+    : `<div class="bv-emoji">👋</div><h2 class="bv-h">Bem-vindo(a), ${esc(PAI.nome||'')}!</h2>
+       <div class="bv-tx"><p>Aqui você cadastra seus filhos, acompanha a jornada de estudos deles, avalia as leituras e manda incentivos. 💜</p></div>`;
+  const o=document.createElement('div'); o.className='bv-wrap';
+  o.innerHTML=`<div class="bv-back" onclick="fecharBoasVindas()"></div><div class="bv-card">${html}
+    <button class="btn" onclick="fecharBoasVindas()">Começar 💜</button></div>`;
+  document.body.appendChild(o); window.__bv=o;
+}
+async function fecharBoasVindas(){ if(window.__bv){ window.__bv.remove(); window.__bv=null; } try{ await api('/api/pais/bem-vindo-ok',{method:'POST'}); }catch(e){} if(PAI) PAI.bem_vindo=true; }
+
+window.addEventListener('load', async ()=>{ if (senha) await boot(); });

@@ -185,6 +185,30 @@ body{
   .stat .v{font-size:19px}
   .medwrap{gap:10px;justify-content:center}
 }
+/* barra do pai (seletor de filho / admin / sair) */
+.pai-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.pai-who{font-size:15px;font-weight:800}
+.pai-acts{display:flex;align-items:center;gap:8px}
+.pai-sel,.pai-sel1{background:#16141f;border:1px solid var(--card-border);color:var(--txt);font-weight:700;font-size:13.5px;padding:8px 12px;border-radius:11px;font-family:inherit}
+.pai-add,.pai-admin{width:36px;height:36px;border-radius:10px;border:1px solid var(--card-border);background:rgba(255,255,255,.05);color:var(--txt);font-size:16px;font-weight:800;cursor:pointer}
+.pai-sair{background:none;border:0;color:var(--dim);font-weight:700;font-size:13px;cursor:pointer;text-decoration:underline}
+.ob .ob-h{font-size:17px;font-weight:800;margin-bottom:6px}
+.ob .ob-p{color:var(--dim);font-size:13.5px;font-weight:600;margin-bottom:12px}
+.ob label{display:block;font-size:13px;font-weight:700;color:var(--dim);margin:10px 0 5px}
+.ob input{width:100%;background:#100e1a;border:1.5px solid rgba(255,255,255,.12);color:var(--txt);padding:11px 13px;border-radius:11px;font-size:15px;font-family:inherit}
+.ob input:focus{outline:none;border-color:rgba(167,139,250,.6)}
+.ob .msg-send{margin-top:14px}
+/* boas-vindas */
+.bv-wrap{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:18px}
+.bv-back{position:fixed;inset:0;background:rgba(8,6,14,.72);backdrop-filter:blur(3px)}
+.bv-card{position:relative;z-index:81;max-width:520px;width:100%;max-height:88vh;overflow:auto;
+  background:linear-gradient(180deg,#1b1530,#13101e);border:1px solid var(--card-border);border-radius:22px;
+  padding:26px 22px;box-shadow:0 30px 70px -20px rgba(0,0,0,.85)}
+.bv-emoji{font-size:48px;text-align:center}
+.bv-h{font-size:24px;font-weight:800;text-align:center;margin:6px 0 14px}
+.bv-tx p{font-size:14.5px;line-height:1.6;font-weight:500;color:#d8d3ea;margin-bottom:11px}
+.bv-tx b{color:var(--txt)}
+.bv-card .btn{margin-top:8px}
 </style>
 </head>
 <body>
@@ -193,7 +217,8 @@ body{
   <div class="lg">📊</div>
   <h1>Painel dos Pais</h1>
   <p style="color:var(--dim)">VSA EduAI</p>
-  <input id="senha-inp" type="password" placeholder="Senha do pai" autocomplete="current-password">
+  <input id="user-inp" type="text" placeholder="Seu usuário" autocomplete="username">
+  <input id="senha-inp" type="password" placeholder="Sua senha" autocomplete="current-password">
   <button onclick="entrar()">Entrar</button>
   <div class="err" id="login-msg"></div>
 </div>

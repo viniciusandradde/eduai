@@ -1,5 +1,5 @@
 // VSA EduAI — hub do aluno (vanilla, design "Lovable")
-let senha = localStorage.getItem('eduai_senha') || '';
+let senha = localStorage.getItem('eduai_token') || '';
 let CONT = [], CFG = {}, EST = null;
 let tab = 'materias';
 let flow = null;          // {view, subject, missao, result, novasMedalhas}
@@ -39,12 +39,18 @@ async function carregar(){
 async function recarregar(){ const e = await api('/api/estado'); EST = e.data; }
 
 async function entrar(){
-  senha = $('senha-inp').value.trim();
-  if (!(await carregar())){ const m=$('login-msg'); if(m){m.textContent='Senha inválida 😕';} return; }
-  localStorage.setItem('eduai_senha', senha);
+  const u=($('user-inp')?$('user-inp').value.trim():''), p=$('senha-inp').value;
+  let r; try { r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({login:u,senha:p})}); } catch(e){ r=null; }
+  const d = r ? await r.json().catch(()=>null) : null;
+  const m=$('login-msg');
+  if(!r||!r.ok||!d||!d.ok){ if(m) m.textContent='Usuário ou senha inválidos 😕'; return; }
+  if(d.tipo==='pai'){ window.location.href='/pais'; return; }
+  senha=d.token; localStorage.setItem('eduai_token', senha);
+  if(!(await carregar())){ if(m) m.textContent='Não consegui carregar 😕'; return; }
   logged = true; render(); novidadesCheck();
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
 }
+async function sair(){ try{ await api('/api/logout',{method:'POST'}); }catch(e){} localStorage.removeItem('eduai_token'); location.reload(); }
 
 // ── render principal ──────────────────────────────────
 function render(){
@@ -165,6 +171,7 @@ function splashHTML(){
     <h1>VSA EduAI</h1>
     <div class="tag">Leia · Aprenda · Evolua</div>
     <div class="sform">
+      <input id="user-inp" type="text" placeholder="Seu usuário" autocomplete="username">
       <input id="senha-inp" type="password" placeholder="Sua senha" autocomplete="current-password">
       <button class="btn" onclick="entrar()">Entrar</button>
     </div>
@@ -350,7 +357,7 @@ function materiasHTML(){
       <div class="stat"><span>${st.conc}/${st.tot} missões</span>${st.conc===st.tot&&st.tot?'<span class="done">✔ 100%</span>':`<span>${pc}%</span>`}</div>
     </button>`;
   });
-  h += `</div>${avaliacoesHTML()}<div class="foot">VSA EduAI • <a href="/pais">painel dos pais</a> • <a class="lk" onclick="abrirNovidades()">✨ novidades</a></div></div>`;
+  h += `</div>${avaliacoesHTML()}<div class="foot">VSA EduAI • <a href="/pais">painel dos pais</a> • <a class="lk" onclick="abrirNovidades()">✨ novidades</a> • <a class="lk" onclick="sair()">sair</a></div></div>`;
   return h;
 }
 
@@ -469,7 +476,7 @@ function resultadoHTML(){
 // ── Leitura (gate) ────────────────────────────────────
 function leituraHTML(){
   const obrig = !!(EST.gate && EST.gate.foto_obrigatoria);
-  const cab = `<div style="text-align:center"><div class="emoji">📖</div><h2>Hora de ler!</h2>
+  const cab = `<div style="text-align:center"><div class="emoji">📖</div><h2>Resumo de leitura</h2>
     <p style="text-align:center">${obrig
       ? 'Você já é avançado! 🎓 Leia, escreva o resumo <b>no papel</b> e tire uma <b>foto</b>. Seus pais vão ver e avaliar! 💜'
       : 'Leia um livro ou capítulo e conte, com suas palavras, o que você aprendeu. 💜'}</p></div>`;
@@ -694,5 +701,5 @@ function nvFechar(){ localStorage.setItem('eduai_novidades', NOVIDADES.versao); 
 
 window.addEventListener('load', async ()=>{
   if(senha && await carregar()){ logged=true; render(); novidadesCheck(); if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
-  else render();
+  else { senha=''; localStorage.removeItem('eduai_token'); render(); }
 });
