@@ -1,0 +1,53 @@
+{
+  "estrategias": [
+    {
+      "id": "desenhar",
+      "nome": "Desenhe o problema",
+      "emoji": "✏️",
+      "aula": "Quando o problema fala de coisas que você consegue imaginar — cangurus pulando, bolinhas numa fila, um bolo dividido — desenhe! Não precisa ser bonito: risquinhos, bolinhas e quadradinhos já resolvem. O desenho tira o problema da sua cabeça e coloca no papel, onde os olhos enxergam a resposta. Muitas questões de olimpíada parecem difíceis só porque estão escritas em palavras. Depois do desenho, elas viram um joguinho de contar e comparar. Dica de ouro: desenhe cada informação do enunciado, uma por uma, e marque o que a pergunta pede. Se o desenho ficar confuso, apague e comece maior. Quem desenha, enxerga — e quem enxerga, resolve!",
+      "eixos_sugeridos": ["geometria"]
+    },
+    {
+      "id": "regressiva",
+      "nome": "De trás pra frente",
+      "emoji": "⏪",
+      "aula": "Alguns problemas contam uma história inteira e só revelam o final: 'no fim, sobraram 5'. Nesses casos, ande de ré! Comece pelo resultado final e desfaça cada passo na ordem contrária: o que foi somado, você subtrai; o que foi dobrado, você divide pela metade. É como assistir a um vídeo de trás pra frente para descobrir como tudo começou. Escreva os passos da história em uma setinha (começo → meio → fim) e depois percorra as setas ao contrário, desfazendo uma operação de cada vez. Essa estratégia é campeã em problemas de 'quanto tinha no início?' — e evita a armadilha de sair chutando o número inicial.",
+      "eixos_sugeridos": ["numeros"]
+    },
+    {
+      "id": "testar_alternativas",
+      "nome": "Teste as alternativas",
+      "emoji": "🎯",
+      "aula": "Na prova, a resposta certa já está escrita na sua frente — ela é uma das 5 alternativas! Quando não souber montar a conta, experimente: pegue uma alternativa e coloque no lugar da incógnita do problema. Se tudo bater, achou! Se não bater, risque e teste outra. Truque profissional: comece pela alternativa do meio (em valor). Se o resultado ficar grande demais, teste uma menor; se ficar pequeno, teste uma maior. Assim você elimina várias de uma vez, como num jogo de 'quente ou frio'. Cuidado: teste com calma, refazendo a conta do enunciado direitinho — um teste apressado engana mais que ajuda.",
+      "eixos_sugeridos": ["numeros", "logica"]
+    },
+    {
+      "id": "casos_pequenos",
+      "nome": "Comece pequeno",
+      "emoji": "🐣",
+      "aula": "Problema com números gigantes ou muitas etapas? Encolha ele! Resolva primeiro uma versão mini: em vez de 100 degraus, tente com 3; em vez de 50 mesas, tente com 2. Nos casos pequenos você consegue contar nos dedos, desenhar e entender o que está acontecendo. Aí vem a mágica: observe a regra que apareceu nos casos pequenos e use a mesma regra no caso grande. Os matemáticos de verdade fazem exatamente isso! Monte uma tabelinha: caso 1, caso 2, caso 3... e veja como a resposta cresce. Quando a regra ficar clara, aplique no número do enunciado com confiança.",
+      "eixos_sugeridos": ["contagem"]
+    },
+    {
+      "id": "tabela_lista",
+      "nome": "Organize em lista ou tabela",
+      "emoji": "📋",
+      "aula": "Quando o problema tem várias possibilidades — combinações de roupas, ordens de chegada, formas de pagar — não tente guardar tudo na cabeça: escreva uma lista organizada! O segredo está na palavra 'organizada': escolha uma ordem (do menor pro maior, ou por letra) e siga sempre a mesma, para não esquecer nenhuma possibilidade nem contar a mesma duas vezes. Se houver duas informações cruzadas (tipo sabor e tamanho de sorvete), monte uma tabela com linhas e colunas. A tabela mostra os buraquinhos que faltam preencher e transforma bagunça em desenho arrumado. Lista completa + ordem certinha = resposta garantida.",
+      "eixos_sugeridos": ["contagem", "logica"]
+    },
+    {
+      "id": "padroes",
+      "nome": "Procure o padrão",
+      "emoji": "🔁",
+      "aula": "A matemática adora repetir as coisas: sequências de figuras, números que crescem sempre do mesmo jeito, desenhos que giram em círculo. Quando encontrar uma sequência, pergunte: 'o que se repete aqui? De quanto em quanto?'. Escreva os primeiros termos e a diferença entre eles — o padrão costuma aparecer rapidinho. Se a sequência anda em ciclos (tipo segunda, terça, quarta... e volta), use a divisão: dividir a posição pelo tamanho do ciclo e olhar o resto diz exatamente onde você cai. Com o padrão descoberto, você pula direto para o termo 50 ou 100 sem escrever tudo — é o atalho secreto das olimpíadas.",
+      "eixos_sugeridos": ["contagem", "numeros"]
+    },
+    {
+      "id": "eliminacao",
+      "nome": "Elimine o impossível",
+      "emoji": "🚫",
+      "aula": "Às vezes é mais fácil descobrir o que NÃO pode ser do que o que é. Leia cada pista do problema e risque tudo que ela proíbe: 'o número é par' — risque os ímpares; 'Ana não está na ponta' — risque a Ana das pontas. A cada pista, sobram menos suspeitos, como num jogo de detetive. Se no final sobrar um só, caso resolvido! Essa estratégia brilha em problemas de lógica com várias pessoas e afirmações. Dica: marque as certezas com ✔ e os impossíveis com ✘ numa tabelinha. E lembre-se da regra do detetive: quando todo o resto é impossível, o que sobra, por mais estranho que pareça, é a resposta.",
+      "eixos_sugeridos": ["logica", "geometria"]
+    }
+  ]
+}

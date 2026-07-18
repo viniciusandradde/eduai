@@ -1,6 +1,6 @@
 // VSA EduAI — Painel dos Pais/Admin (multiusuário)
 let senha = localStorage.getItem('eduai_pai_token') || '';
-let EST = null, PAI = null, alunoSel = 0, adminView = false, ADMIN = [];
+let EST = null, PAI = null, alunoSel = 0, adminView = false, ADMIN = [], OLI_PAIS = null;
 const $ = id => document.getElementById(id);
 function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 function estrelasStr(n){ return '★'.repeat(n) + '☆'.repeat(3-n); }
@@ -43,7 +43,12 @@ async function boot(){
 async function recarregar(){
   adminView = false;
   const r = await api('/api/pais/estado?aluno=' + alunoSel);
-  if (r.status === 200){ EST = r.data; render(); }
+  if (r.status === 200){
+    EST = r.data;
+    const o = await api('/api/pais/oli?aluno=' + alunoSel);
+    OLI_PAIS = (o.status === 200) ? o.data : null;
+    render();
+  }
   else if (r.status === 401 || r.status === 403){ logout(); }
 }
 
@@ -152,6 +157,9 @@ function render(){
       <div class="meta"><span>${conc}/${tot} missões${fezQ?` • <b style="color:var(--amar)">${fezQ} aguardando leitura 📖</b>`:''}</span>${conc===tot&&tot?'<span class="ok">✓ Completo</span>':`<span>${pc}%</span>`}</div></div></div>`;
   });
 
+  // Olimpíadas de Matemática (estilo Canguru)
+  h += oliPaisHTML();
+
   // Questões feitas — aguardando a leitura para concluir
   const pendLeitura = (EST.progresso||[]).filter(p=>!p.concluida && (p.melhor_estrela||0)>0)
     .sort((a,b)=>String(b.ultima_ts||'').localeCompare(String(a.ultima_ts||'')));
@@ -203,6 +211,59 @@ function render(){
   h += `</div>`;
 
   $('view').innerHTML = h;
+}
+
+// ── Olimpíadas de Matemática ──────────────────────────
+function oliPaisHTML(){
+  const d = OLI_PAIS;
+  let h = `<div class="sec">🏆 Olimpíadas de Matemática</div><div class="card">`;
+  if (!d || !d.perfil || !d.perfil.trilha){
+    h += `<div style="color:var(--dim);font-weight:600;padding:6px">Seu filho ainda não fez o
+      <b>nivelamento</b>. No hub dele, é só tocar em 🏆 Olimpíadas de Matemática e responder 12 desafios —
+      a trilha certa (P, E ou B) é sugerida automaticamente e você pode ajustar aqui.</div></div>`;
+    return h;
+  }
+  const p = d.perfil, trilhas = d.trilhas || {};
+  const selOpts = ['P','E','B'].map(t =>
+    `<option value="${t}" ${p.trilha===t?'selected':''}>${esc(trilhas[t]||('Trilha '+t))}</option>`).join('');
+  h += `<div class="oli-pais-top">
+    <div><b>Trilha atual:</b> ${esc(trilhas[p.trilha]||p.trilha)}<br>
+      <span style="color:var(--dim);font-size:12.5px">${p.origem==='pais'?'ajustada por você':'sugerida pelo nivelamento'}
+      • 🦘 ${p.saltos||0} saltos acumulados</span></div>
+    <select class="pai-sel" onchange="oliPaisTrilha(this.value)">${selOpts}</select></div>`;
+  if (d.nivelamento)
+    h += `<div style="color:var(--dim);font-size:13px;font-weight:600;margin-top:8px">🎯 Nivelamento:
+      acertou ${d.nivelamento.acertos} de ${d.nivelamento.total} • sugerido: trilha ${esc(d.nivelamento.sugerida||'')}</div>`;
+  (d.unidades||[]).forEach(u=>{
+    h += `<div class="pcq"><div class="e">${u.emoji}</div>
+      <div class="pcb"><div class="pct">${esc(u.nome)}</div>
+      <div class="pcpb"><i style="width:${u.pct}%"></i></div></div>
+      <div class="pcn">${u.feitas}/${u.total}</div></div>`;
+  });
+  const sims = d.simulados||[];
+  if (sims.length){
+    h += `<div style="font-weight:800;margin:12px 0 4px">⏱️ Simulados</div>`;
+    sims.forEach((s,i)=>{
+      const ant = i>0 ? sims[i-1].nota : null;
+      const delta = ant==null ? '' : (s.nota>ant?` <b style="color:var(--verde,#22c55e)">▲ +${Math.round((s.nota-ant)*100)/100}</b>`
+                                     :(s.nota<ant?` <b style="color:#fca5a5">▼ ${Math.round((s.nota-ant)*100)/100}</b>`:' ▬'));
+      h += `<div class="act"><div class="ai">⏱️</div>
+        <div class="ab"><div class="at">${esc(s.simulado_id)} ${s.auto?'<span style="color:var(--dim);font-size:11px">(tempo esgotado)</span>':''}</div>
+        <div class="ad"><span>${fmtData(s.enviado_ts)}</span></div></div>
+        <div class="ar"><div class="sc"><b>${s.nota}</b> pts${delta}</div></div></div>`;
+    });
+  } else {
+    h += `<div style="color:var(--dim);font-weight:600;font-size:13px;margin-top:10px">Nenhum simulado ainda.
+      O simulado segue as regras oficiais: 100 min, erro desconta 25% do valor, em branco vale 0.</div>`;
+  }
+  h += `</div>`;
+  return h;
+}
+async function oliPaisTrilha(t){
+  const r = await api('/api/pais/oli/trilha',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({aluno:alunoSel,trilha:t})});
+  if(r.status===200 && r.data && r.data.ok){ await recarregar(); showToast('🏆 Trilha ajustada para '+t+'!'); }
+  else alert((r.data&&r.data.erro)||'Não foi possível ajustar a trilha.');
 }
 
 function _leit(materia,missao){ return (EST.leituras||[]).find(l=>l.materia===materia&&l.missao===missao)||{}; }

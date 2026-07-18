@@ -56,6 +56,7 @@ na **loja** (itens de avatar + tempo de Minecraft). Mas a **regra de ouro nunca 
 | 📖 | **Português** | Interpretação, ortografia, classes · **5º ano:** acentuação, pontuação, sentido das palavras |
 | 🔬 | **Ciências** | Corpo humano, ecossistemas, matéria · **5º ano:** nutrição/digestão, ciclo da água, materiais |
 | 💻 | **Programação** | Lógica e algoritmos + abre a **Quest Linux** (terminal) |
+| 🏆 | **Olimpíadas de Matemática** | Preparatório **estilo Canguru**: trilhas **P** (3º/4º), **E** (5º/6º) e **B** (7º/8º), nivelamento, 7 estratégias, simulado oficial |
 
 Conteúdo **autoral em JSON**, alinhado à **BNCC** (5º ano: EF05MA / EF05LP / EF05CI).
 Hoje: **~95 exercícios** (tipos: múltipla escolha, V/F, numérica, completar lacuna).
@@ -76,6 +77,30 @@ Escolhe a matéria → faz a missão (1 questão por vez, feedback na hora)
 - **Loja:** itens de avatar (cosméticos) + **tempo de Minecraft** (vira pedido → o pai aprova).
 
 ---
+
+## 🏆 Olimpíadas de Matemática (estilo Canguru)
+
+Módulo de **formação e treinamento** para olimpíadas de matemática no estilo Canguru
+(8–13 anos), com banco **100% autoral** (162 questões — nada copiado de provas oficiais):
+
+- 🎯 **Nivelamento**: 12 desafios sugerem a trilha certa (**P**, **E** ou **B**); os pais podem ajustar.
+- 🥾 **Trilhas por eixo**: Números, Geometria, Lógica e Contagem — questões de 3→4→5 pts com
+  micro-aulas das **7 estratégias** (desenhar, de trás pra frente, testar alternativas, começar
+  pequeno, tabela/lista, padrões, eliminação).
+- 💡 **Feedback que ensina**: errou? O app explica *por que a alternativa parecia certa*
+  (distratores explicados) + solução passo a passo.
+- ⏱️ **Simulado fiel ao formato oficial**: 24 questões (P/E) ou 30 (B), 100 min com autoenvio,
+  **erro desconta 25%** do valor, em branco vale 0, ajuste +24/+30; navegação livre, marcar
+  para revisão, branco explícito e **retomada após queda de conexão** (estado no servidor).
+- 📊 **Relatório pós-simulado**: nota e evolução, acertos por eixo e por valor, chutes vs.
+  brancos, tempo médio por questão e revisão dos erros.
+- 🦘 **Gamificação integrada**: "saltos", XP, streak e medalhas olímpicas — prática livre,
+  **fora do limite diário** de leitura.
+- 👨‍👩‍👦 **Painel dos pais**: trilha, nivelamento, progresso por unidade e notas dos simulados.
+
+Conteúdo em `app/conteudo_olimpiadas/` (gabarito só no servidor), motor em `app/olimpiadas.py`,
+testes em `app/tests/` (`pytest`). *Fases futuras:* tutor IA socrático, estúdio de questões com
+IA + revisão humana, multi-tenant escolas, modo reta final de 12 semanas.
 
 ## 🐧 Rotina, trilha e limites (escola antes do Tux)
 

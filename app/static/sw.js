@@ -1,5 +1,5 @@
-const CACHE = 'eduai-v22';
-const SHELL = ['/', '/style.css', '/app.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png'];
+const CACHE = 'eduai-v23';
+const SHELL = ['/', '/style.css', '/app.js', '/oli.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));

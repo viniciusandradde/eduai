@@ -526,3 +526,107 @@ button{font-family:inherit;cursor:pointer;border:0;border-radius:13px;font-size:
 .msg-card .msg-h{font-size:13.5px;font-weight:800;color:#f9a8d4;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
 .msg-card .msg-t{font-size:16px;font-weight:700;line-height:1.45}
 .msg-card .msg-t + .msg-t{margin-top:6px}
+
+/* ── Olimpíadas de Matemática (estilo Canguru) ─────────────── */
+.oli-card{display:flex;align-items:center;gap:16px;width:100%;text-align:left;cursor:pointer;
+  background:linear-gradient(135deg,rgba(245,179,1,.14),rgba(124,58,237,.16)),linear-gradient(180deg,#16141f,#121020);
+  border:1px solid rgba(245,179,1,.35);border-radius:var(--r);padding:18px 22px;
+  transition:transform .12s,border-color .15s;box-shadow:0 18px 40px -28px rgba(0,0,0,.8);color:var(--txt)}
+.oli-card:hover{transform:translateY(-3px);border-color:rgba(245,179,1,.6)}
+.oli-card-ic{font-size:34px}
+.oli-card-t{font-weight:800;font-size:16.5px}
+.oli-card-s{color:var(--dim);font-size:12.5px;font-weight:600;margin-top:3px}
+.oli-hero{display:flex;align-items:center;gap:14px;margin-bottom:16px;
+  background:linear-gradient(135deg,rgba(245,179,1,.16),rgba(124,58,237,.18)),linear-gradient(180deg,#16141f,#121020);
+  border:1px solid rgba(245,179,1,.3);border-radius:var(--r);padding:18px 20px}
+.oli-hero-ic{font-size:38px}
+.oli-hero-t{font-weight:800;font-size:17px}
+.oli-hero-s{color:var(--dim);font-size:12.5px;font-weight:600}
+.oli-cta{text-align:center}
+.oli-trilha-card{display:flex;align-items:center;gap:14px;background:linear-gradient(180deg,#16141f,#121020);
+  border:1px solid var(--card-border);border-radius:var(--r);padding:16px 18px;margin-bottom:6px}
+.oli-tr-badge{width:52px;height:52px;flex-shrink:0;display:grid;place-items:center;font-size:24px;font-weight:900;
+  color:#fff;background:linear-gradient(180deg,#8b4ef2,var(--rox));border-radius:16px;
+  box-shadow:0 4px 0 0 var(--rox-d)}
+.oli-tr-info{flex:1;min-width:0}
+.oli-tr-nm{font-weight:800;font-size:15px}
+.oli-tr-sub{color:var(--dim);font-size:12px;font-weight:600;margin-top:2px}
+.oli-saltos{text-align:center}
+.oli-saltos .v{display:block;font-weight:800;font-size:17px;color:var(--amar)}
+.oli-saltos .k{font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.6px;font-weight:700}
+.oli-unidade{display:flex;align-items:center;gap:16px;width:100%;text-align:left;cursor:pointer;color:var(--txt);
+  background:linear-gradient(180deg,#16141f,#121020);border:1px solid var(--card-border);
+  border-radius:var(--r);padding:16px 20px;margin-bottom:12px;transition:transform .12s,border-color .15s}
+.oli-unidade:hover{transform:translateY(-2px);border-color:rgba(167,139,250,.3)}
+.oli-unidade.ok{border-color:rgba(34,197,94,.4)}
+.oli-u-ic{font-size:30px}
+.oli-u-b{flex:1;min-width:0}
+.oli-u-t{font-weight:800;font-size:15px}
+.oli-u-pb{height:8px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden;margin:7px 0 5px}
+.oli-u-pb i{display:block;height:100%;background:linear-gradient(90deg,var(--amar),var(--rox2));border-radius:99px}
+.oli-u-s{color:var(--dim);font-size:12px;font-weight:600;line-height:1.5}
+.oli-sim-card{display:flex;align-items:center;gap:14px;background:linear-gradient(180deg,#16141f,#121020);
+  border:1px solid var(--card-border);border-radius:var(--r);padding:16px 18px;margin-bottom:12px}
+.oli-sim-ic{font-size:28px}
+.oli-sim-b{flex:1;min-width:0}
+.oli-sim-btn{width:auto;padding:11px 16px;font-size:14px;flex-shrink:0}
+.oli-chip-val{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:800;
+  background:rgba(245,179,1,.15);color:var(--amar);border:1px solid rgba(245,179,1,.35)}
+.oli-aula{background:linear-gradient(180deg,#16141f,#121020);border:1px solid var(--card-border);
+  border-radius:16px;padding:0;margin-bottom:12px;overflow:hidden}
+.oli-aula summary{cursor:pointer;padding:15px 18px;font-size:14px;list-style:none;user-select:none}
+.oli-aula summary::-webkit-details-marker{display:none}
+.oli-aula-tip{color:var(--dim);font-size:11px;font-weight:700;float:right;margin-top:2px}
+.oli-aula-tx{padding:0 18px 16px;color:var(--txt);font-size:14px;line-height:1.65;font-weight:500}
+.oli-solucao{margin-top:12px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);
+  border-radius:16px;padding:14px 16px}
+.oli-sol-h{font-weight:800;font-size:12.5px;color:var(--rox2);text-transform:uppercase;letter-spacing:.6px}
+.oli-sol-tx{margin-top:7px;font-size:14px;line-height:1.65;font-weight:500;white-space:pre-line}
+.oli-chip-eixo{display:inline-block;margin-top:10px;padding:5px 12px;border-radius:99px;font-size:12px;font-weight:700;
+  background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.3);color:var(--rox2)}
+/* simulado imersivo */
+.oli-sim{padding-top:12px}
+.oli-sim-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.oli-sair{background:none;border:none;color:var(--dim);font-weight:700;font-size:14px;cursor:pointer;padding:8px 4px}
+.oli-timer{flex:1;text-align:center;font-weight:900;font-size:20px;font-variant-numeric:tabular-nums;
+  background:rgba(255,255,255,.05);border:1px solid var(--card-border);border-radius:13px;padding:8px 6px}
+.oli-timer.urg{color:#fca5a5;border-color:rgba(239,68,68,.45);animation:oliPulse 1s infinite}
+@keyframes oliPulse{0%,100%{background:rgba(239,68,68,.08)}50%{background:rgba(239,68,68,.2)}}
+.oli-entregar{width:auto;padding:10px 14px;font-size:13.5px;flex-shrink:0}
+.oli-navgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:6px;margin-bottom:14px}
+.oli-nav{height:38px;border-radius:11px;border:1px solid var(--card-border);background:rgba(255,255,255,.04);
+  color:var(--dim);font-weight:800;font-size:13px;cursor:pointer;position:relative}
+.oli-nav.resp{background:rgba(124,58,237,.25);border-color:rgba(124,58,237,.5);color:var(--txt)}
+.oli-nav.branco{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.25);color:var(--txt)}
+.oli-nav.cur{outline:2px solid var(--amar);outline-offset:1px}
+.oli-nav.marc::after{content:'🔖';position:absolute;top:-7px;right:-5px;font-size:11px}
+.oli-tag-branco{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:800;
+  background:rgba(255,255,255,.1);color:var(--txt)}
+.oli-tag-auto{display:inline-block;margin-bottom:10px;padding:5px 12px;border-radius:99px;font-size:12px;font-weight:700;
+  background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);color:#fca5a5}
+.oli-sim-acoes{display:flex;gap:10px;margin-top:12px}
+.oli-sim-acoes .btn-sec{padding:11px 10px;font-size:13px}
+.oli-sim-acoes .btn-sec.on{border-color:rgba(245,179,1,.5);background:rgba(245,179,1,.1)}
+.oli-sim-nav{display:flex;gap:10px;margin-top:10px}
+.oli-sim-nav .btn-sec{padding:11px 10px;font-size:13.5px}
+/* relatório */
+.oli-resumo{margin-bottom:4px}
+.oli-res-3{display:flex;gap:8px}
+.oli-res-c{flex:1;text-align:center;background:rgba(255,255,255,.04);border:1px solid var(--card-border);
+  border-radius:13px;padding:12px 6px}
+.oli-res-c b{display:block;font-size:17px}
+.oli-res-c span{font-size:11px;color:var(--dim);font-weight:700}
+.oli-bar-row{display:flex;align-items:center;gap:10px;margin:9px 0}
+.oli-bar-lb{width:44%;font-size:12.5px;font-weight:700;color:var(--txt)}
+.oli-bar{flex:1;height:9px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden}
+.oli-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--verde),var(--rox2));border-radius:99px}
+.oli-bar-n{font-size:12px;font-weight:800;color:var(--dim);min-width:34px;text-align:right}
+.oli-hist{padding:8px 18px}
+.oli-hist-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);cursor:pointer}
+.oli-hist-row:last-child{border-bottom:none}
+.oli-hist-d{color:var(--dim);font-size:12.5px;font-weight:600}
+.oli-hist-n{flex:1;text-align:right;font-size:14px}
+.oli-up{color:var(--verde);font-weight:800}
+.oli-down{color:#fca5a5;font-weight:800}
+.oli-rev{font-size:13.5px;font-weight:600;color:var(--dim)}
+.oli-rev.ok{color:var(--verde)}
