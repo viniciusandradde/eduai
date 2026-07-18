@@ -5,7 +5,7 @@ VSA EduAI — camada de dados (SQLite), MULTIUSUÁRIO.
 admin → pais → filhos (alunos). Cada aluno tem seu próprio progresso, avatar,
 leituras, etc. Auth por senha com hash (PBKDF2) + sessão por token.
 """
-import os, random, secrets, hashlib, sqlite3
+import os, json, random, secrets, hashlib, sqlite3
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
@@ -67,6 +67,21 @@ CREATE TABLE IF NOT EXISTS leitura (
 );
 CREATE TABLE IF NOT EXISTS mensagem (
   id INTEGER PRIMARY KEY AUTOINCREMENT, aluno_id INTEGER, texto TEXT, ts TEXT, vista INTEGER DEFAULT 0
+);
+CREATE TABLE IF NOT EXISTS oli_perfil (
+  aluno_id INTEGER PRIMARY KEY, trilha TEXT DEFAULT '', origem TEXT DEFAULT '',
+  nivelamento_json TEXT DEFAULT '', saltos INTEGER DEFAULT 0, ts TEXT
+);
+CREATE TABLE IF NOT EXISTS oli_progresso (
+  aluno_id INTEGER, questao_id TEXT, trilha TEXT, eixo TEXT,
+  acertou INTEGER DEFAULT 0, tentativas INTEGER DEFAULT 0, ultima_ts TEXT,
+  PRIMARY KEY (aluno_id, questao_id)
+);
+CREATE TABLE IF NOT EXISTS oli_simulado (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, aluno_id INTEGER, simulado_id TEXT, trilha TEXT,
+  iniciado_ts TEXT, duracao_seg INTEGER, respostas_json TEXT DEFAULT '{}',
+  marcadas_json TEXT DEFAULT '[]', enviado INTEGER DEFAULT 0, enviado_ts TEXT,
+  auto INTEGER DEFAULT 0, nota REAL, detalhe_json TEXT DEFAULT ''
 );
 """
 
@@ -798,3 +813,212 @@ def estado(aid, total_missoes=0):
             "feedbacks": feedbacks, "leituras": leituras, "mensagens": mensagens,
             "atividades_hoje": ativ,
             "tux": {"dia": aluno.get("tux_dia", ""), "inicio": aluno.get("tux_inicio", "")}}
+
+
+# ── Olimpíadas de Matemática (estilo Canguru) ─────────────────
+# Fora do gate de leitura e do limite diário por construção: nada aqui toca
+# leitura_log/progresso. Funções de simulado aceitam `agora` p/ testes de timer.
+OLI_TOLERANCIA_SEG = 30
+OLI_MOEDAS_SIMULADO = 30
+
+OLI_MEDALHAS = {
+    "oli_nivelado":  ("Canguru descoberto", "🦘"),
+    "oli_unidade1":  ("Primeira unidade olímpica", "🥾"),
+    "oli_trilha":    ("Trilha olímpica completa", "🏔️"),
+    "oli_simulado1": ("Primeiro simulado", "🏁"),
+    "oli_nota_top":  ("Nota olímpica de ouro", "🏆"),
+}
+
+
+def medalha_conceder(aid, codigo):
+    """Concede uma medalha avulsa (idempotente). Retorna a medalha se for nova."""
+    nome, emoji = OLI_MEDALHAS[codigo]
+    with conn() as c:
+        if c.execute("SELECT 1 FROM medalha WHERE aluno_id=? AND codigo=?", (aid, codigo)).fetchone():
+            return None
+        c.execute("INSERT INTO medalha(aluno_id,codigo,nome,emoji,ts) VALUES(?,?,?,?,?)",
+                  (aid, codigo, nome, emoji, datetime.now().isoformat()))
+        c.commit()
+    return {"codigo": codigo, "nome": nome, "emoji": emoji}
+
+
+def oli_perfil_get(aid):
+    with conn() as c:
+        r = c.execute("SELECT * FROM oli_perfil WHERE aluno_id=?", (aid,)).fetchone()
+    return dict(r) if r else None
+
+
+def oli_perfil_set_trilha(aid, trilha, origem, nivelamento_json=''):
+    with conn() as c:
+        c.execute("INSERT INTO oli_perfil(aluno_id,trilha,origem,nivelamento_json,ts) VALUES(?,?,?,?,?)"
+                  " ON CONFLICT(aluno_id) DO UPDATE SET trilha=excluded.trilha, origem=excluded.origem,"
+                  " nivelamento_json=CASE WHEN excluded.nivelamento_json<>'' THEN excluded.nivelamento_json"
+                  "                       ELSE oli_perfil.nivelamento_json END, ts=excluded.ts",
+                  (aid, trilha, origem, nivelamento_json or '', datetime.now().isoformat()))
+        c.commit()
+    return oli_perfil_get(aid)
+
+
+def oli_progresso_list(aid, trilha=None):
+    with conn() as c:
+        if trilha:
+            rows = c.execute("SELECT * FROM oli_progresso WHERE aluno_id=? AND trilha=?",
+                             (aid, trilha)).fetchall()
+        else:
+            rows = c.execute("SELECT * FROM oli_progresso WHERE aluno_id=?", (aid,)).fetchall()
+    return [dict(r) for r in rows]
+
+
+def oli_registrar_resposta(aid, questao_id, trilha, eixo, acertou, pontos):
+    """Prática de unidade: upsert de progresso; saltos/XP só na 1ª vez certa.
+    Conta streak (estudar olimpíada é estudar), mas não consome atividade diária."""
+    agora = datetime.now().isoformat()
+    hoje = str(date.today())
+    ganhou = False
+    with conn() as c:
+        row = c.execute("SELECT acertou FROM oli_progresso WHERE aluno_id=? AND questao_id=?",
+                        (aid, questao_id)).fetchone()
+        if row is None:
+            c.execute("INSERT INTO oli_progresso(aluno_id,questao_id,trilha,eixo,acertou,tentativas,ultima_ts)"
+                      " VALUES(?,?,?,?,?,1,?)", (aid, questao_id, trilha, eixo, 1 if acertou else 0, agora))
+            ganhou = bool(acertou)
+        else:
+            ja_acertou = bool(row["acertou"])
+            c.execute("UPDATE oli_progresso SET acertou=MAX(acertou,?), tentativas=tentativas+1, ultima_ts=?"
+                      " WHERE aluno_id=? AND questao_id=?", (1 if acertou else 0, agora, aid, questao_id))
+            ganhou = bool(acertou) and not ja_acertou
+        saltos = xp = 0
+        if ganhou:
+            saltos = pontos
+            xp = pontos * 2
+            c.execute("INSERT INTO oli_perfil(aluno_id,saltos,ts) VALUES(?,?,?)"
+                      " ON CONFLICT(aluno_id) DO UPDATE SET saltos=saltos+excluded.saltos",
+                      (aid, saltos, agora))
+            c.execute("UPDATE aluno SET xp=xp+? WHERE id=?", (xp, aid))
+            novo_xp = c.execute("SELECT xp FROM aluno WHERE id=?", (aid,)).fetchone()["xp"]
+            c.execute("UPDATE aluno SET nivel=? WHERE id=?", (nivel_de(novo_xp), aid))
+        _bump_streak(c, aid, hoje)
+        c.commit()
+    return {"primeira_vez_certa": ganhou, "saltos_ganhos": saltos, "xp_ganho": xp}
+
+
+def _oli_row(r):
+    d = dict(r)
+    d["respostas"] = json.loads(d.pop("respostas_json") or '{}')
+    d["marcadas"] = json.loads(d.pop("marcadas_json") or '[]')
+    d["detalhe"] = json.loads(d["detalhe_json"]) if d.get("detalhe_json") else None
+    d.pop("detalhe_json", None)
+    return d
+
+
+def oli_sim_restante(row, agora=None):
+    agora = agora or datetime.now()
+    try:
+        decorrido = (agora - datetime.fromisoformat(row["iniciado_ts"])).total_seconds()
+    except (TypeError, ValueError):
+        decorrido = 0
+    return int(max(0, row["duracao_seg"] - decorrido))
+
+
+def oli_sim_expirado(row, agora=None):
+    """Expirado de verdade (com tolerância de rede): não aceita mais saves."""
+    agora = agora or datetime.now()
+    try:
+        decorrido = (agora - datetime.fromisoformat(row["iniciado_ts"])).total_seconds()
+    except (TypeError, ValueError):
+        return False
+    return decorrido > row["duracao_seg"] + OLI_TOLERANCIA_SEG
+
+
+def oli_simulado_aberto(aid):
+    with conn() as c:
+        r = c.execute("SELECT * FROM oli_simulado WHERE aluno_id=? AND enviado=0"
+                      " ORDER BY id DESC LIMIT 1", (aid,)).fetchone()
+    return _oli_row(r) if r else None
+
+
+def oli_simulado_get(aid, sim_row_id):
+    with conn() as c:
+        r = c.execute("SELECT * FROM oli_simulado WHERE id=? AND aluno_id=?",
+                      (sim_row_id, aid)).fetchone()
+    return _oli_row(r) if r else None
+
+
+def oli_simulado_iniciar(aid, simulado_id, trilha, duracao_seg, agora=None):
+    """Um simulado aberto por vez; reabrir o mesmo retoma (idempotente)."""
+    agora = agora or datetime.now()
+    aberto = oli_simulado_aberto(aid)
+    if aberto:
+        if aberto["simulado_id"] == simulado_id:
+            return aberto
+        return {"erro": "outro_aberto", "aberto": aberto}
+    with conn() as c:
+        cur = c.execute("INSERT INTO oli_simulado(aluno_id,simulado_id,trilha,iniciado_ts,duracao_seg)"
+                        " VALUES(?,?,?,?,?)", (aid, simulado_id, trilha, agora.isoformat(), duracao_seg))
+        c.commit()
+        sid = cur.lastrowid
+    return oli_simulado_get(aid, sid)
+
+
+def oli_simulado_salvar(aid, sim_row_id, questao_id=None, resposta=None, branco=False,
+                        limpar=False, marcadas=None, agora=None):
+    """Autosave atômico. Branco é explícito e reversível; limpar remove a entrada.
+    Se o tempo (com tolerância) estourou, não salva e sinaliza expiração."""
+    agora = agora or datetime.now()
+    with conn() as c:
+        r = c.execute("SELECT * FROM oli_simulado WHERE id=? AND aluno_id=?",
+                      (sim_row_id, aid)).fetchone()
+        if not r:
+            return {"erro": "nao_encontrado"}
+        row = _oli_row(r)
+        if row["enviado"]:
+            return {"erro": "ja_enviado"}
+        if oli_sim_expirado(row, agora):
+            return {"expirado": True}
+        respostas = row["respostas"]
+        if questao_id:
+            if limpar:
+                respostas.pop(questao_id, None)
+            elif branco:
+                respostas[questao_id] = {"r": None, "branco": 1, "ts": agora.isoformat()}
+            elif resposta is not None:
+                respostas[questao_id] = {"r": int(resposta), "ts": agora.isoformat()}
+        novas_marcadas = row["marcadas"] if marcadas is None else list(marcadas)
+        c.execute("UPDATE oli_simulado SET respostas_json=?, marcadas_json=? WHERE id=?",
+                  (json.dumps(respostas), json.dumps(novas_marcadas), sim_row_id))
+        c.commit()
+    return {"ok": True, "restante_seg": oli_sim_restante(row, agora)}
+
+
+def oli_simulado_enviar(aid, sim_row_id, nota, detalhe_json, auto=0, agora=None):
+    """Grava nota/relatório e credita recompensas (uma única vez)."""
+    agora = agora or datetime.now()
+    with conn() as c:
+        r = c.execute("SELECT * FROM oli_simulado WHERE id=? AND aluno_id=?",
+                      (sim_row_id, aid)).fetchone()
+        if not r:
+            return {"erro": "nao_encontrado"}
+        if r["enviado"]:
+            return {"ja_enviado": True, "nota": r["nota"]}
+        c.execute("UPDATE oli_simulado SET enviado=1, enviado_ts=?, auto=?, nota=?, detalhe_json=? WHERE id=?",
+                  (agora.isoformat(), 1 if auto else 0, nota, detalhe_json, sim_row_id))
+        xp = max(0, int(round(nota)))
+        saltos = max(0, int(round(nota)))
+        c.execute("INSERT INTO oli_perfil(aluno_id,saltos,ts) VALUES(?,?,?)"
+                  " ON CONFLICT(aluno_id) DO UPDATE SET saltos=saltos+excluded.saltos",
+                  (aid, saltos, agora.isoformat()))
+        c.execute("UPDATE aluno SET xp=xp+?, moedas=moedas+? WHERE id=?",
+                  (xp, OLI_MOEDAS_SIMULADO, aid))
+        novo_xp = c.execute("SELECT xp FROM aluno WHERE id=?", (aid,)).fetchone()["xp"]
+        c.execute("UPDATE aluno SET nivel=? WHERE id=?", (nivel_de(novo_xp), aid))
+        _bump_streak(c, aid, str(date.today()))
+        c.commit()
+    return {"ok": True, "xp_ganho": xp, "saltos_ganhos": saltos, "moedas_ganhas": OLI_MOEDAS_SIMULADO}
+
+
+def oli_simulados_do_aluno(aid):
+    """Histórico de simulados enviados (mais antigo primeiro — evolução)."""
+    with conn() as c:
+        rows = c.execute("SELECT id, simulado_id, trilha, iniciado_ts, enviado_ts, auto, nota"
+                         " FROM oli_simulado WHERE aluno_id=? AND enviado=1 ORDER BY id", (aid,)).fetchall()
+    return [dict(r) for r in rows]
