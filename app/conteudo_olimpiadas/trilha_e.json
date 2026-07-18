@@ -1,0 +1,1306 @@
+{
+  "trilha": "E",
+  "nome": "Trilha E — 5º/6º ano",
+  "questoes": [
+    {
+      "id": "e-num-u01",
+      "trilha": "E",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "Dona Fri assou 47 pãezinhos de queijo e vai guardá-los em saquinhos com 6 pãezinhos cada um. Ela enche o maior número possível de saquinhos. Quantos pãezinhos ficam de fora?",
+      "alternativas": [
+        "1",
+        "2",
+        "5",
+        "6",
+        "7"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Desenhe grupinhos de 6 pãezinhos: cada grupinho é um saquinho. 2) 6 × 7 = 42, então 7 saquinhos usam 42 pãezinhos; 6 × 8 = 48 já passaria de 47. 3) Ficam de fora 47 − 42 = 5 pãezinhos.",
+      "distratores_explicados": {
+        "0": "Você provavelmente calculou quantos pãezinhos FALTAM para encher mais um saquinho (48 − 47 = 1). A pergunta pede quantos sobram de fora, que é o resto da divisão: 5.",
+        "1": "Você provavelmente usou 6 × 7 = 45 na tabuada. Refazendo com calma: 6 × 7 = 42, e sobram 47 − 42 = 5.",
+        "3": "Esse é o tamanho de cada saquinho, não o que sobra. Releia a pergunta e desenhe os grupinhos: sobram 5.",
+        "4": "Esse é o número de saquinhos completos (o quociente da divisão). A pergunta pede o resto, que é 5."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA08"
+    },
+    {
+      "id": "e-num-u02",
+      "trilha": "E",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "Bia ganhou uma barra de chocolate com 12 quadradinhos. Ela comeu 1/4 da barra e deu 1/3 da barra para Théo. Quantos quadradinhos ainda restam?",
+      "alternativas": [
+        "5",
+        "3",
+        "4",
+        "7",
+        "9"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe a barra como 12 quadradinhos em fila. 2) 1/4 de 12 = 3 quadradinhos (Bia comeu); 1/3 de 12 = 4 quadradinhos (Théo ganhou). 3) Saíram 3 + 4 = 7; restam 12 − 7 = 5 quadradinhos.",
+      "distratores_explicados": {
+        "1": "Você provavelmente achou quanto Bia comeu (1/4 de 12 = 3) e parou aí. A pergunta pede o que RESTA na barra: 5.",
+        "2": "Você provavelmente achou quanto Théo ganhou (1/3 de 12 = 4) e parou aí. Ainda falta juntar as duas partes e subtrair de 12.",
+        "3": "Esse é o total que SAIU da barra (3 + 4 = 7). Faltou o último passo: 12 − 7 = 5.",
+        "4": "Você provavelmente descontou só a parte da Bia (12 − 3 = 9) e esqueceu os 4 quadradinhos do Théo."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA03"
+    },
+    {
+      "id": "e-num-u03",
+      "trilha": "E",
+      "eixo": "numeros",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "O robô Zig criou um código secreto: cada letra vale sua posição no alfabeto de 26 letras (A=1, B=2, C=3, e assim por diante). Como fica o nome ZIG escrito nesse código?",
+      "alternativas": [
+        "25-8-6",
+        "26-9-7",
+        "27-10-8",
+        "24-9-7",
+        "26-9-8"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Monte uma tabelinha do alfabeto com os números: A=1, B=2, C=3... até Z. 2) Z é a última das 26 letras, então Z = 26. 3) Contando A, B, C, D, E, F, G, H, I, a letra I é a 9ª: I = 9; e G é a 7ª: G = 7. 4) ZIG = 26-9-7.",
+      "distratores_explicados": {
+        "0": "Você provavelmente começou a contar do zero (A=0), e todas as letras ficaram com um a menos. O código diz A=1.",
+        "2": "Você provavelmente contou uma casa a mais em cada letra (como se A valesse 2). Refaça com a tabelinha começando em A=1.",
+        "3": "Você provavelmente se perdeu ao contar até o Z e chegou em 24. O alfabeto tem 26 letras, então Z = 26.",
+        "4": "Quase! Só o G escorregou: G é a 7ª letra (vale 7); a 8ª é o H."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF06MA03"
+    },
+    {
+      "id": "e-num-u04",
+      "trilha": "E",
+      "eixo": "numeros",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "O Sr. Pontes quer separar os 36 alunos do 5º ano da Escola Estrela em grupos, todos com a mesma quantidade de alunos e sem sobrar ninguém. Ele quer grupos com mais de 4 e menos de 10 alunos. Quantos tamanhos de grupo diferentes ele pode escolher?",
+      "alternativas": [
+        "3",
+        "4",
+        "1",
+        "2",
+        "6"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Liste, em ordem, os divisores de 36 (tamanhos que dividem a turma sem sobra): 1, 2, 3, 4, 6, 9, 12, 18, 36. 2) Agora filtre com a condição: maior que 4 e menor que 10. 3) Da lista, só servem 6 e 9 (36 = 6 × 6 e 36 = 9 × 4). São 2 tamanhos possíveis.",
+      "distratores_explicados": {
+        "0": "Você provavelmente incluiu o grupo de 4 alunos, mas 'mais de 4' não inclui o próprio 4. Só valem 6 e 9.",
+        "1": "Você provavelmente contou tamanhos que não dividem 36 certinho, como 5, 7 ou 8. Teste: 36 ÷ 5 deixa resto 1 — alguém sobraria!",
+        "2": "Você achou o 6 e parou cedo. O 9 também funciona: 36 = 9 × 4. São 2 tamanhos.",
+        "4": "Você provavelmente contou divisores fora do intervalo pedido (como 2, 3, 4, 12...). A lista organizada evita esse escorregão."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF06MA05"
+    },
+    {
+      "id": "e-num-u05",
+      "trilha": "E",
+      "eixo": "numeros",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "Théo pensou em um número e desafiou a turma: 'Dobrei meu número, depois somei 8 e, no final, dividi tudo por 2. O resultado foi 20.' Em que número Théo pensou?",
+      "alternativas": [
+        "12",
+        "14",
+        "16",
+        "32",
+        "24"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Escreva a história em setas: número → dobrou → somou 8 → dividiu por 2 → 20. 2) Ande de trás pra frente desfazendo cada passo: 20 × 2 = 40 (desfaz a divisão). 3) 40 − 8 = 32 (desfaz a soma). 4) 32 ÷ 2 = 16 (desfaz o dobro). Conferindo pra frente: 16 × 2 = 32; 32 + 8 = 40; 40 ÷ 2 = 20. ✓",
+      "distratores_explicados": {
+        "0": "Você provavelmente fez 20 − 8 = 12 e parou, sem desfazer o dobro e a divisão. É preciso desfazer TODOS os passos, do último ao primeiro.",
+        "1": "Você provavelmente desfez fora de ordem: 20 + 8 = 28 e 28 ÷ 2 = 14. De trás pra frente, o ÚLTIMO passo (a divisão) é o primeiro a ser desfeito.",
+        "3": "Você parou um passo antes: 32 é o número logo depois de dobrado. Ainda falta desfazer o dobro: 32 ÷ 2 = 16.",
+        "4": "Você provavelmente aplicou as operações na mesma ordem, (20 × 2 + 8) ÷ 2 = 24, em vez de desfazê-las ao contrário."
+      },
+      "estrategia_alvo": "regressiva",
+      "habilidade_bncc": "EF05MA08"
+    },
+    {
+      "id": "e-num-u06",
+      "trilha": "E",
+      "eixo": "numeros",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "A senha do armário do robô Zig é um número entre 60 e 70. Dividida por 5, a senha deixa resto 2; dividida por 4, deixa resto 3. Qual é a senha?",
+      "alternativas": [
+        "62",
+        "63",
+        "65",
+        "67",
+        "68"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) A resposta certa já está nas alternativas — teste cada uma! 2) Primeira pista (resto 2 na divisão por 5): 62 = 12×5 + 2 ✓ e 67 = 13×5 + 2 ✓; 63, 65 e 68 falham. 3) Segunda pista (resto 3 na divisão por 4): 62 = 15×4 + 2 ✗; 67 = 16×4 + 3 ✓. 4) Só o 67 passa nas duas pistas: é a senha.",
+      "distratores_explicados": {
+        "0": "O 62 passa na pista do 5, mas 62 ÷ 4 = 15 com resto 2, e a pista pede resto 3. Teste sempre as DUAS pistas.",
+        "1": "Você provavelmente trocou os restos: 63 deixa resto 3 na divisão por 5 (e não resto 2, como pede a pista).",
+        "2": "O 65 é múltiplo de 5 (resto 0). Você provavelmente esqueceu que precisava sobrar 2.",
+        "4": "O 68 deixa resto 3 na divisão por 5 e resto 0 na divisão por 4 — você provavelmente misturou as duas pistas."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF06MA05"
+    },
+    {
+      "id": "e-geo-u01",
+      "trilha": "E",
+      "eixo": "geometria",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "Na malha quadriculada, Bia desenhou um retângulo de 7 quadradinhos de comprimento e 3 quadradinhos de altura. Cada quadradinho tem 1 cm de lado. Quantos centímetros mede o contorno (perímetro) do retângulo?",
+      "alternativas": [
+        "10",
+        "21",
+        "24",
+        "17",
+        "20"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe o retângulo e percorra o contorno com o dedo, lado por lado. 2) O contorno tem dois lados de 7 cm e dois lados de 3 cm. 3) 7 + 3 + 7 + 3 = 20 cm.",
+      "distratores_explicados": {
+        "0": "Você somou 7 + 3 = 10 uma vez só, mas o contorno dá a volta inteira: cada medida aparece duas vezes.",
+        "1": "Você calculou a ÁREA (7 × 3 = 21 quadradinhos). A pergunta é sobre o contorno, que se soma, não se multiplica.",
+        "2": "Você provavelmente dobrou o lado errado em algum ponto (7 + 7 + 7 + 3 = 24). Percorra o desenho: são dois 7 e dois 3.",
+        "3": "Você dobrou só um dos lados (7 + 7 + 3 = 17). Faltou o quarto lado, de 3 cm."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA19"
+    },
+    {
+      "id": "e-geo-u02",
+      "trilha": "E",
+      "eixo": "geometria",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "O relógio de ponteiros da Escola Estrela marca exatamente 3 horas. Qual é o ângulo formado entre o ponteiro das horas e o ponteiro dos minutos?",
+      "alternativas": [
+        "90°",
+        "30°",
+        "45°",
+        "60°",
+        "120°"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe o relógio: ponteiro dos minutos apontando para o 12 e ponteiro das horas para o 3. 2) A volta completa tem 360° dividida em 12 espaços iguais, então cada espaço vale 360 ÷ 12 = 30°. 3) Do 12 até o 3 são 3 espaços: 3 × 30° = 90°.",
+      "distratores_explicados": {
+        "1": "30° é o ângulo de UM espaço entre números vizinhos. Do 12 até o 3 são três espaços.",
+        "2": "Você provavelmente chutou a metade de 90°. Desenhe o relógio: das 12 ao 3 são 3 espaços de 30°.",
+        "3": "60° corresponde a 2 espaços (como às 2 horas). Às 3 horas são 3 espaços.",
+        "4": "120° seriam 4 espaços (como às 4 horas). Conte os espaços no desenho: são 3."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF06MA25"
+    },
+    {
+      "id": "e-geo-u03",
+      "trilha": "E",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "Théo pintou na malha quadriculada uma figura em forma de L: um retângulo deitado de 5 quadradinhos por 2 e, apoiado em cima da ponta esquerda dele, um quadrado de 2 quadradinhos por 2. Quantos quadradinhos Théo pintou ao todo?",
+      "alternativas": [
+        "10",
+        "12",
+        "14",
+        "16",
+        "20"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Desenhe a figura e corte-a em dois pedaços fáceis: o retângulo e o quadrado. 2) Retângulo: 5 × 2 = 10 quadradinhos. 3) Quadrado: 2 × 2 = 4 quadradinhos. 4) Total: 10 + 4 = 14.",
+      "distratores_explicados": {
+        "0": "Você contou só o retângulo de baixo (5 × 2 = 10) e esqueceu o quadrado apoiado em cima.",
+        "1": "Você provavelmente contou o quadrado como 2 quadradinhos, mas ele é 2 × 2 = 4. Total: 10 + 4 = 14.",
+        "3": "Você provavelmente somou um pedaço a mais em algum lugar. Divida o desenho em retângulo (10) e quadrado (4).",
+        "4": "Você calculou o retângulo grandão de 5 × 4 = 20, sem tirar a parte vazia do L. Só a figura pintada conta."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF06MA24"
+    },
+    {
+      "id": "e-geo-u04",
+      "trilha": "E",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "Nina dobrou uma folha de papel quadrada ao meio e depois ao meio outra vez, formando um quadradinho com quatro camadas de papel. Com o furador, ela fez um único furo no meio do quadradinho. Quantos furos Nina verá ao abrir a folha inteira?",
+      "alternativas": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "8"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Comece pequeno: sem nenhuma dobra, o furador faz 1 furo. 2) Com uma dobra, o papel tem 2 camadas, e o furador atravessa as duas: ao abrir, 2 furos. 3) Com duas dobras são 2 × 2 = 4 camadas — cada camada ganha um furo. Ao abrir, Nina vê 4 furos.",
+      "distratores_explicados": {
+        "0": "Você provavelmente esqueceu que o furador atravessa TODAS as camadas dobradas, não só a de cima.",
+        "1": "Isso valeria para UMA dobra (2 camadas). Nina dobrou duas vezes, então são 4 camadas.",
+        "2": "As camadas dobram a cada dobra: 1 → 2 → 4. Não vão de uma em uma, então não dá 3.",
+        "4": "8 furos apareceriam com TRÊS dobras (8 camadas). Com duas dobras são 4 camadas."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF05MA17"
+    },
+    {
+      "id": "e-geo-u05",
+      "trilha": "E",
+      "eixo": "geometria",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "Zig montou um cubo grande usando 3 × 3 × 3 = 27 cubinhos. Depois, Bia retirou o cubinho do centro de cada uma das 6 faces e também o cubinho escondido bem no centro do cubo grande. Quantos cubinhos restaram?",
+      "alternativas": [
+        "20",
+        "21",
+        "26",
+        "18",
+        "19"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe (ou imagine) o cubo por partes: cada face é um quadrado 3 × 3 e tem exatamente 1 cubinho central. 2) Bia tirou 6 cubinhos (um por face) + 1 (o do centro do cubo) = 7 cubinhos. 3) Restaram 27 − 7 = 20 cubinhos.",
+      "distratores_explicados": {
+        "1": "Você tirou os 6 das faces mas esqueceu o cubinho escondido no centro do cubo. São 7 no total.",
+        "2": "Você tirou só 1 cubinho. Cada uma das 6 faces perdeu o seu central, e ainda há o do centro: 27 − 7 = 20.",
+        "3": "Você descontou cubinhos demais — talvez tenha contado algum duas vezes. Os centros das faces são todos diferentes entre si: são 6 + 1 = 7 retirados.",
+        "4": "Você descontou um cubinho a mais. Conte de novo: 6 das faces + 1 do centro = 7; e 27 − 7 = 20."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA16"
+    },
+    {
+      "id": "e-geo-u06",
+      "trilha": "E",
+      "eixo": "geometria",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "Zig mostrou no seu visor, com algarismos de calculadora, o número 86. O Sr. Pontes girou o visor de cabeça para baixo (meia-volta). Que número passou a aparecer?",
+      "alternativas": [
+        "68",
+        "86",
+        "89",
+        "99",
+        "98"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe o 86 num papel e gire o desenho de cabeça para baixo. 2) No visor, o 8 de cabeça para baixo continua parecendo 8, e o 6 vira 9. 3) Atenção ao insight: ao girar, o algarismo que estava no FIM passa a aparecer PRIMEIRO. O visor mostra 98.",
+      "distratores_explicados": {
+        "0": "Você só trocou a ordem dos algarismos, sem girar cada um: de cabeça para baixo, o 6 vira 9.",
+        "1": "A meia-volta muda o que se lê: o 6 vira 9 e a ordem dos algarismos se inverte. Teste desenhando e girando o papel.",
+        "2": "Você girou cada algarismo (6 → 9), mas esqueceu que a ordem também se inverte: girando o cartão, o algarismo do fim passa para o começo, e lê-se 98.",
+        "3": "O 8 continua sendo 8 de cabeça para baixo — só o 6 se transforma em 9."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA17"
+    },
+    {
+      "id": "e-log-u01",
+      "trilha": "E",
+      "eixo": "logica",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "O Sr. Pontes olhou a pilha de cadernos e avisou: 'Nem todos os alunos fizeram o dever de casa.' O que dá para concluir COM CERTEZA?",
+      "alternativas": [
+        "Nenhum aluno fez o dever.",
+        "Pelo menos um aluno não fez o dever.",
+        "Todos os alunos fizeram o dever.",
+        "Exatamente um aluno não fez o dever.",
+        "A maioria dos alunos não fez o dever."
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Elimine o impossível: 'nem todos fizeram' significa que a frase 'todos fizeram' é falsa — risque essa alternativa. 2) Mas a frase não conta QUANTOS deixaram de fazer: pode ser 1, podem ser vários. Risque 'nenhum fez', 'exatamente um' e 'a maioria', que afirmam mais do que sabemos. 3) O que sobra é a única certeza: pelo menos um aluno não fez o dever.",
+      "distratores_explicados": {
+        "0": "Você provavelmente confundiu 'nem todos' com 'nenhum'. Vários alunos podem ter feito o dever — só não foram todos.",
+        "2": "É justamente o contrário: 'nem todos fizeram' derruba a frase 'todos fizeram'.",
+        "3": "'Pelo menos um' não é o mesmo que 'exatamente um': podem ser 2, 3 ou mais alunos sem dever.",
+        "4": "Não dá para saber se é a maioria: bastaria um único aluno sem dever para o Sr. Pontes dizer isso."
+      },
+      "estrategia_alvo": "eliminacao",
+      "habilidade_bncc": "EF06MA03"
+    },
+    {
+      "id": "e-log-u02",
+      "trilha": "E",
+      "eixo": "logica",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "Na balança de dois pratos da feira, 1 melancia equilibra exatamente 3 maçãs. Bia colocou 2 melancias em um dos pratos. Quantas maçãs ela deve colocar no outro prato para a balança ficar equilibrada?",
+      "alternativas": [
+        "3",
+        "4",
+        "5",
+        "9",
+        "6"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe a troca: cada melancia 'vale' 3 maçãs na balança. 2) Duas melancias valem 3 maçãs + 3 maçãs. 3) 2 × 3 = 6 maçãs equilibram as duas melancias.",
+      "distratores_explicados": {
+        "0": "3 maçãs equilibram UMA melancia. Bia colocou duas, então é preciso dobrar: 6.",
+        "1": "Você provavelmente somou 2 + 2. Cada melancia vale 3 maçãs, então são 3 + 3 = 6.",
+        "2": "Você provavelmente somou 2 melancias + 3 maçãs = 5, mas melancias e maçãs não se somam: cada melancia se TROCA por 3 maçãs.",
+        "3": "Você multiplicou 3 × 3 = 9, como se fossem 3 melancias. São apenas 2: 2 × 3 = 6."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA10"
+    },
+    {
+      "id": "e-log-u03",
+      "trilha": "E",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "Bia, Théo e Nina têm, cada um, um bicho de estimação diferente: um gato, um peixe e um cachorro. Bia tem alergia a pelo, por isso o bicho dela não tem pelo. Théo não tem o cachorro. Qual das frases abaixo é verdadeira?",
+      "alternativas": [
+        "Théo tem o peixe.",
+        "Bia tem o gato.",
+        "Nina tem o cachorro.",
+        "Nina tem o peixe.",
+        "Théo tem o cachorro."
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Monte uma tabelinha nomes × bichos e marque ✔ e ✘ com as pistas. 2) Gato e cachorro têm pelo; Bia é alérgica → Bia fica com o peixe ✔. 3) Théo não tem o cachorro, e o peixe já é da Bia → Théo tem o gato ✔. 4) Sobra o cachorro para a Nina ✔.",
+      "distratores_explicados": {
+        "0": "O peixe é da Bia: é o único bicho sem pelo, e ela é alérgica.",
+        "1": "Gato tem pelo, e Bia é alérgica a pelo — o gato não pode ser dela.",
+        "3": "O peixe fica com a Bia (alergia a pelo). Nina termina com o cachorro.",
+        "4": "A pista diz exatamente que Théo NÃO tem o cachorro. Você provavelmente leu depressa."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF06MA03"
+    },
+    {
+      "id": "e-log-u04",
+      "trilha": "E",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "Zig escondeu uma bolinha em uma de três caixas. Na caixa A está escrito: 'A bolinha está aqui'. Na caixa B: 'A bolinha não está aqui'. Na caixa C: 'A bolinha está na caixa A'. Apenas UMA das três frases é verdadeira. Onde está a bolinha?",
+      "alternativas": [
+        "Na caixa C",
+        "Na caixa A",
+        "Na caixa B",
+        "Em nenhuma das caixas",
+        "Não é possível descobrir"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Teste cada possibilidade, uma por vez. Se a bolinha estivesse na A: as frases de A, de B e de C seriam todas verdadeiras — 3 verdades, proibido. 2) Se estivesse na B: a frase de B ('não está aqui') seria falsa, e as de A e C também — nenhuma verdade, proibido. 3) Se estiver na C: A é falsa, B é verdadeira (a bolinha realmente não está na B) e C é falsa — exatamente UMA verdade. ✓ A bolinha está na caixa C.",
+      "distratores_explicados": {
+        "1": "Se estivesse na A, as três frases seriam verdadeiras ao mesmo tempo — e o enunciado permite só uma verdade.",
+        "2": "Se estivesse na B, nenhuma frase seria verdadeira — e o enunciado garante exatamente uma.",
+        "3": "A bolinha está em alguma caixa (Zig a escondeu em uma delas). Testando uma a uma, a caixa C funciona.",
+        "4": "Dá para descobrir, sim! Teste caixa por caixa contando quantas frases ficam verdadeiras: só a caixa C deixa exatamente uma."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF06MA03"
+    },
+    {
+      "id": "e-log-u05",
+      "trilha": "E",
+      "eixo": "logica",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "Na barraca de frutas, 1 abacaxi equilibra 2 mamões na balança, e 1 mamão equilibra 3 laranjas. Quantas laranjas são necessárias para equilibrar 2 abacaxis?",
+      "alternativas": [
+        "5",
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe as trocas em etapas, uma seta de cada vez. 2) 1 abacaxi = 2 mamões, e cada mamão = 3 laranjas, então 1 abacaxi = 2 × 3 = 6 laranjas. 3) Para 2 abacaxis: 2 × 6 = 12 laranjas.",
+      "distratores_explicados": {
+        "0": "Você provavelmente somou 2 + 3 = 5, mas as trocas se encadeiam multiplicando: cada um dos 2 mamões vira 3 laranjas.",
+        "1": "6 laranjas equilibram UM abacaxi. São dois abacaxis: 2 × 6 = 12.",
+        "2": "Você provavelmente fez 2 × 2 × 2. Refaça o desenho: 2 abacaxis → 4 mamões → 4 × 3 = 12 laranjas.",
+        "3": "Você provavelmente fez 2 × (2 + 3) = 10. As trocas não se somam: primeiro abacaxi vira mamão, depois mamão vira laranja, multiplicando."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA10"
+    },
+    {
+      "id": "e-log-u06",
+      "trilha": "E",
+      "eixo": "logica",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "Alguém derrubou o vaso de flores da sala de artes. Bia disse: 'Foi o Théo'. Théo disse: 'Foi a Nina'. Nina disse: 'O Théo está mentindo'. Zig disse: 'Não fui eu'. Sabendo que exatamente UMA dessas quatro frases é verdadeira, quem derrubou o vaso?",
+      "alternativas": [
+        "Bia",
+        "Théo",
+        "Nina",
+        "Zig",
+        "Não é possível saber"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Repare no insight: Théo e Nina dizem coisas OPOSTAS ('foi a Nina' × 'Théo mente'). Uma delas é verdadeira e a outra é falsa, sempre — aí já está a única verdade permitida. 2) Então as frases de Bia e de Zig são as duas falsas. 3) Zig mentiu ao dizer 'não fui eu' — logo, FOI o Zig. 4) Conferindo: Bia falsa (não foi Théo), Théo falso (não foi Nina), Nina verdadeira, Zig falso. Uma única verdade. ✓",
+      "distratores_explicados": {
+        "0": "Se tivesse sido a Bia, as frases de Nina e de Zig seriam verdadeiras — duas verdades, e só pode haver uma.",
+        "1": "Se tivesse sido o Théo, as frases de Bia, de Nina e de Zig seriam verdadeiras — três verdades, proibido.",
+        "2": "Se tivesse sido a Nina, as frases de Théo e de Zig seriam verdadeiras — duas verdades, proibido.",
+        "4": "Dá para saber! O truque é notar que Théo e Nina se contradizem: uma das duas frases gasta a única verdade, e o resto vira mentira."
+      },
+      "estrategia_alvo": "eliminacao",
+      "habilidade_bncc": "EF06MA03"
+    },
+    {
+      "id": "e-con-u01",
+      "trilha": "E",
+      "eixo": "contagem",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "Na cantina da Dona Fri há 3 sabores de suco (laranja, uva e caju) e 4 tipos de lanche. De quantas maneiras diferentes Théo pode escolher 1 suco e 1 lanche?",
+      "alternativas": [
+        "12",
+        "7",
+        "9",
+        "16",
+        "24"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Organize numa tabela: uma linha para cada suco, uma coluna para cada lanche. 2) Cada casinha da tabela é uma combinação diferente, e a tabela tem 3 linhas × 4 colunas. 3) 3 × 4 = 12 maneiras.",
+      "distratores_explicados": {
+        "1": "Você somou 3 + 4 = 7, mas cada suco combina com CADA lanche. A tabela mostra: são 3 × 4 casinhas.",
+        "2": "Você provavelmente fez 3 × 3. São 4 tipos de lanche, não 3.",
+        "3": "Você provavelmente fez 4 × 4. São 3 sabores de suco, não 4.",
+        "4": "Você multiplicou por 2 a mais em algum lugar. A conta é só 3 × 4 = 12."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF05MA09"
+    },
+    {
+      "id": "e-con-u02",
+      "trilha": "E",
+      "eixo": "contagem",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "As luzinhas do robô Zig acendem sempre nesta ordem, repetindo sem parar: vermelho, azul, verde, amarelo, roxo, vermelho, azul, verde... Qual é a cor da 23ª luzinha?",
+      "alternativas": [
+        "azul",
+        "verde",
+        "vermelho",
+        "amarelo",
+        "roxo"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Procure o padrão: o ciclo tem 5 cores e depois recomeça. 2) Divida a posição pelo tamanho do ciclo: 23 ÷ 5 = 4 ciclos completos (20 luzinhas) com resto 3. 3) O resto 3 diz que a 23ª luzinha é a 3ª cor do ciclo: verde.",
+      "distratores_explicados": {
+        "0": "Azul é a 2ª cor do ciclo — apareceria se o resto fosse 2 (como na 22ª luzinha). Aqui o resto é 3.",
+        "2": "Vermelho aparece quando o resto é 1 (a luzinha que abre um ciclo, como a 21ª). O resto de 23 ÷ 5 é 3.",
+        "3": "Amarelo é a 4ª cor, resto 4 (a 24ª luzinha). Refaça a divisão: 23 = 5 × 4 + 3.",
+        "4": "Roxo fecha o ciclo: aparece quando a divisão é exata (resto 0), como na 25ª luzinha."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF06MA05"
+    },
+    {
+      "id": "e-con-u03",
+      "trilha": "E",
+      "eixo": "contagem",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "No mapa da maquete, Nina só pode andar para a direita ou para cima pelas linhas da malha, saindo do canto de baixo à esquerda de um quadrado 2 × 2 até chegar ao canto de cima à direita. Quantos caminhos diferentes ela pode fazer?",
+      "alternativas": [
+        "4",
+        "5",
+        "6",
+        "8",
+        "12"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Comece pequeno: num quadrado 1 × 1 há só 2 caminhos (direita-cima ou cima-direita). 2) No mapa maior, escreva em cada esquina de quantas formas dá para chegar ali: some o número que vem da esquerda com o que vem de baixo. 3) Preenchendo esquina por esquina no quadrado 2 × 2, o canto final recebe 1-2-3... e termina em 6. São 6 caminhos.",
+      "distratores_explicados": {
+        "0": "Você provavelmente contou só os caminhos mais 'retos' e esqueceu 2. Use os numerinhos nas esquinas para não perder nenhum.",
+        "1": "Faltou um caminho! Ao listar sem uma ordem organizada é fácil pular um. Some esquina por esquina: dá 6.",
+        "3": "Você provavelmente contou algum caminho duas vezes. O método das esquinas (somar esquerda + baixo) evita repetição.",
+        "4": "Você provavelmente multiplicou em vez de somar esquina por esquina. Teste no quadrado 1 × 1: são 2 caminhos, não 4."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF05MA09"
+    },
+    {
+      "id": "e-con-u04",
+      "trilha": "E",
+      "eixo": "contagem",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "Bia desenhou um quadriculado de 3 × 3 quadradinhos. Quantos quadrados de TODOS os tamanhos podem ser vistos na figura? (Conte os quadradinhos 1×1, os quadrados 2×2 e o quadradão 3×3.)",
+      "alternativas": [
+        "9",
+        "10",
+        "13",
+        "14",
+        "15"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Conte em lista organizada, um tamanho de cada vez. 2) Quadrados 1×1: são os 9 quadradinhos. 3) Quadrados 2×2: deslizando uma janela 2×2 pela figura, ela cabe em 2 posições na horizontal × 2 na vertical = 4. 4) Quadrado 3×3: 1 (a figura inteira). Total: 9 + 4 + 1 = 14.",
+      "distratores_explicados": {
+        "0": "Você contou só os quadradinhos 1×1. Há também quadrados 2×2 e o quadradão inteiro.",
+        "1": "Você somou 9 + 1 e esqueceu os quadrados 2×2 — deslize a janela: são 4 deles.",
+        "2": "Você esqueceu o quadradão 3×3, a figura inteira também é um quadrado! 9 + 4 + 1 = 14.",
+        "4": "Você provavelmente contou algum quadrado 2×2 repetido. A lista por tamanho dá 9 + 4 + 1 = 14."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF05MA09"
+    },
+    {
+      "id": "e-con-u05",
+      "trilha": "E",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "Théo olhou o calendário da Escola Estrela: hoje é terça-feira, e a grande festa da escola será daqui a exatamente 100 dias. Em que dia da semana cairá a festa?",
+      "alternativas": [
+        "quarta-feira",
+        "terça-feira",
+        "sexta-feira",
+        "sábado",
+        "quinta-feira"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Procure o padrão: os dias da semana se repetem em ciclos de 7. 2) Divida: 100 ÷ 7 = 14 semanas completas, com resto 2. 3) As 14 semanas inteiras caem de novo numa terça; o resto 2 empurra 2 dias para a frente: terça → quarta → quinta. A festa será numa quinta-feira.",
+      "distratores_explicados": {
+        "0": "Você andou só 1 dia para a frente, mas o resto de 100 ÷ 7 é 2: terça → quarta → quinta.",
+        "1": "Cairia de novo na terça se 100 fosse múltiplo de 7, mas 7 × 14 = 98, sobra 2.",
+        "2": "Você provavelmente andou 3 dias, contando o próprio 'hoje' como o primeiro dia. 'Daqui a 100 dias' começa a contar amanhã.",
+        "3": "Confira a divisão: 100 = 7 × 14 + 2. O resto é 2, não 4 — a festa cai 2 dias depois da terça."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF06MA05"
+    },
+    {
+      "id": "e-con-u06",
+      "trilha": "E",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "Zig vai imprimir um cartão para cada número de dois algarismos em que OS DOIS algarismos são ímpares (como 15 e 79). Quantos cartões ele vai imprimir?",
+      "alternativas": [
+        "10",
+        "20",
+        "25",
+        "30",
+        "45"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Liste, em ordem, os algarismos ímpares: 1, 3, 5, 7, 9 — são 5 opções. 2) O primeiro algarismo tem 5 opções e, para CADA uma delas, o segundo também tem 5 (pode repetir: 11 e 33 valem!). 3) 5 × 5 = 25 cartões. Confira listando uma família: 11, 13, 15, 17, 19 — são 5 números começando com 1, e há 5 famílias assim.",
+      "distratores_explicados": {
+        "0": "Você somou 5 + 5 em vez de multiplicar. Só os que começam com 1 já são cinco: 11, 13, 15, 17, 19.",
+        "1": "Você fez 5 × 4, proibindo repetir algarismo. Mas 11, 33, 55... também têm os dois algarismos ímpares.",
+        "3": "Você provavelmente usou 6 opções em algum algarismo. Os ímpares de 1 a 9 são só cinco: 1, 3, 5, 7, 9.",
+        "4": "45 é metade dos 90 números de dois algarismos, mas não basta o primeiro algarismo ser ímpar: o segundo também precisa ser (23, por exemplo, não vale)."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF05MA09"
+    },
+    {
+      "id": "e-num-s01",
+      "trilha": "E",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Dona Fri preparou 58 brigadeiros e vai montar caixas com 8 brigadeiros cada uma. Quantas caixas COMPLETAS ela consegue montar?",
+      "alternativas": [
+        "7",
+        "2",
+        "6",
+        "8",
+        "9"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Teste com a tabuada do 8: 8 × 7 = 56, que ainda cabe em 58. ✓ 2) 8 × 8 = 64, que já passa de 58. ✗ 3) Então são 7 caixas completas (sobram 58 − 56 = 2 brigadeiros fora das caixas).",
+      "distratores_explicados": {
+        "1": "2 é o RESTO (os brigadeiros que sobram fora). A pergunta pede o número de caixas completas: 7.",
+        "2": "Você parou cedo: 8 × 6 = 48, e ainda sobravam 10 brigadeiros — dava para completar mais uma caixa.",
+        "3": "8 caixas precisariam de 8 × 8 = 64 brigadeiros, e Dona Fri só tem 58.",
+        "4": "9 caixas precisariam de 72 brigadeiros. Teste sempre multiplicando de volta: 8 × 7 = 56 é o máximo que cabe."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF05MA08"
+    },
+    {
+      "id": "e-num-s02",
+      "trilha": "E",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Na cantina da Dona Fri, a jarra de suco de laranja tem 900 mL. Nina bebeu 1/3 da jarra no lanche. Quantos mililitros de suco sobraram na jarra?",
+      "alternativas": [
+        "300",
+        "600",
+        "450",
+        "500",
+        "700"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Desenhe a jarra dividida em 3 partes iguais. 2) Cada parte tem 900 ÷ 3 = 300 mL, e Nina bebeu uma parte. 3) Sobraram 2 partes: 2 × 300 = 600 mL.",
+      "distratores_explicados": {
+        "0": "300 mL é o que Nina BEBEU (1/3 de 900). A pergunta é quanto sobrou: as outras duas partes.",
+        "2": "450 é a METADE da jarra, mas Nina bebeu um terço. Divida o desenho em 3 partes, não em 2.",
+        "3": "Você provavelmente arredondou de cabeça. Faça por partes: 900 ÷ 3 = 300; sobram 600.",
+        "4": "Você provavelmente tirou 200 mL. O terço de 900 é 300, então sobra 900 − 300 = 600."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA03"
+    },
+    {
+      "id": "e-num-s03",
+      "trilha": "E",
+      "eixo": "numeros",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "No código do robô Zig, cada letra vale sua posição no alfabeto (A=1, B=2, ... , Z=26), e o valor de uma palavra é a SOMA dos valores de suas letras. Quanto vale a palavra SOL?",
+      "alternativas": [
+        "43",
+        "44",
+        "45",
+        "48",
+        "46"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Faça a tabelinha do alfabeto e localize as três letras. 2) S é a 19ª letra (19), O é a 15ª (15), L é a 12ª (12). 3) Some: 19 + 15 + 12 = 46.",
+      "distratores_explicados": {
+        "0": "Você provavelmente contou começando em A=0: aí cada letra perde 1 e a soma dá 18 + 14 + 11 = 43. O código diz A=1.",
+        "1": "Você escorregou 2 pontinhos ao contar posições no alfabeto. Refaça com a tabelinha: S=19, O=15, L=12.",
+        "2": "Quase! Foi um errinho de 1 na soma final: 19 + 15 = 34 e 34 + 12 = 46.",
+        "3": "Você provavelmente contou alguma letra duas casas à frente (como O=17). Confira na tabelinha: O é a 15ª letra."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF06MA03"
+    },
+    {
+      "id": "e-num-s04",
+      "trilha": "E",
+      "eixo": "numeros",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Bia levou figurinhas para a escola. No recreio, deu metade delas para Nina; depois, Théo lhe deu 6 figurinhas novas. Bia terminou o dia com 21 figurinhas. Quantas figurinhas ela levou de casa?",
+      "alternativas": [
+        "15",
+        "27",
+        "36",
+        "30",
+        "42"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Escreva a história em setas: início → deu metade → ganhou 6 → 21. 2) Ande de trás pra frente: desfaça o 'ganhou 6' tirando 6: 21 − 6 = 15. 3) Desfaça o 'deu metade' dobrando: 15 × 2 = 30. Conferindo: 30 ÷ 2 = 15; 15 + 6 = 21. ✓",
+      "distratores_explicados": {
+        "0": "15 é o valor no MEIO da volta (depois de desfazer só o 'ganhou 6'). Ainda falta dobrar para desfazer a metade.",
+        "1": "Você fez 21 + 6, mas para desfazer 'ganhou 6' é preciso TIRAR 6 — e depois ainda dobrar.",
+        "2": "Você desfez na ordem errada: dobrou primeiro (42) e depois tirou 6. De trás pra frente, desfaz-se primeiro o último passo.",
+        "4": "Você dobrou o 21 e parou, esquecendo de desfazer o 'ganhou 6' antes de dobrar."
+      },
+      "estrategia_alvo": "regressiva",
+      "habilidade_bncc": "EF05MA08"
+    },
+    {
+      "id": "e-num-s05",
+      "trilha": "E",
+      "eixo": "numeros",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "O robô Zig pisca a luz azul a cada 6 segundos e a luz verde a cada 8 segundos. Neste exato momento, as duas piscaram juntas. Daqui a quantos segundos elas vão piscar juntas de novo?",
+      "alternativas": [
+        "14",
+        "16",
+        "18",
+        "48",
+        "24"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Liste os momentos de cada luz: azul → 6, 12, 18, 24, 30...; verde → 8, 16, 24, 32... 2) Procure o PRIMEIRO número que aparece nas duas listas. 3) É o 24: daqui a 24 segundos as duas piscam juntas de novo.",
+      "distratores_explicados": {
+        "0": "Você somou 6 + 8 = 14, mas 14 não está em nenhuma das listas: não é múltiplo nem de 6 nem de 8.",
+        "1": "16 aparece só na lista da verde (8, 16...). A azul não pisca aos 16 segundos.",
+        "2": "18 aparece só na lista da azul (6, 12, 18...). A verde não pisca aos 18 segundos.",
+        "3": "48 = 6 × 8 também funciona, mas não é a PRIMEIRA vez: as listas se encontram antes, no 24."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF06MA05"
+    },
+    {
+      "id": "e-num-s06",
+      "trilha": "E",
+      "eixo": "numeros",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "Dona Fri assou entre 30 e 50 cookies. Se ela os separar em pacotes de 4, sobra 1 cookie; se separar em pacotes de 5, também sobra 1. Quantos cookies ela assou?",
+      "alternativas": [
+        "31",
+        "36",
+        "41",
+        "44",
+        "46"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) A resposta está nas alternativas — teste cada uma contra as duas pistas! 2) Pista dos pacotes de 5 (sobra 1): 31 ✓, 36 ✓, 41 ✓, 46 ✓; o 44 já cai fora (sobra 4). 3) Pista dos pacotes de 4 (sobra 1): 31 = 7×4 + 3 ✗; 36 = 9×4 ✗; 41 = 10×4 + 1 ✓; 46 = 11×4 + 2 ✗. 4) Só o 41 passa nas duas pistas.",
+      "distratores_explicados": {
+        "0": "O 31 passa na pista do 5, mas em pacotes de 4 sobrariam 3 cookies (31 = 7×4 + 3), não 1.",
+        "1": "O 36 dividido em pacotes de 4 é exato (9 pacotes), não sobra nenhum cookie.",
+        "3": "O 44 falha nas duas pistas: em pacotes de 5 sobram 4, e em pacotes de 4 não sobra nada.",
+        "4": "O 46 passa na pista do 5, mas em pacotes de 4 sobram 2 cookies (46 = 11×4 + 2)."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF06MA05"
+    },
+    {
+      "id": "e-geo-s01",
+      "trilha": "E",
+      "eixo": "geometria",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Zig desenhou na malha um quadrado cujo contorno (perímetro) mede 36 cm. Quantos centímetros mede cada lado desse quadrado?",
+      "alternativas": [
+        "4",
+        "6",
+        "9",
+        "12",
+        "18"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) O quadrado tem 4 lados iguais — teste as alternativas! 2) Lado 9: o contorno seria 9 × 4 = 36 cm. ✓ 3) Cada lado mede 9 cm.",
+      "distratores_explicados": {
+        "0": "4 é o NÚMERO de lados do quadrado, não a medida de cada um.",
+        "1": "Você provavelmente pensou em 6 × 6 = 36, mas isso seria a área. O contorno soma os 4 lados: 6 × 4 = 24 ≠ 36.",
+        "3": "Você dividiu 36 por 3, mas o quadrado tem 4 lados: 12 × 4 = 48, passa de 36.",
+        "4": "Você dividiu 36 por 2. Teste de volta: 18 × 4 = 72, bem mais que 36."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF05MA19"
+    },
+    {
+      "id": "e-geo-s02",
+      "trilha": "E",
+      "eixo": "geometria",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Na maquete da Escola Estrela, Nina pintou um piso retangular formado por 6 fileiras com 7 quadradinhos cada uma. Depois, ela apagou a pintura de 5 quadradinhos. Quantos quadradinhos continuam pintados?",
+      "alternativas": [
+        "13",
+        "35",
+        "42",
+        "47",
+        "37"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe o piso: 6 fileiras de 7 quadradinhos. 2) Total pintado no começo: 6 × 7 = 42 quadradinhos. 3) Ela apagou 5: 42 − 5 = 37 quadradinhos pintados.",
+      "distratores_explicados": {
+        "0": "Você somou 6 + 7 em vez de multiplicar. Cada uma das 6 fileiras tem 7 quadradinhos: 6 × 7 = 42.",
+        "1": "Você tirou 7 em vez de 5 (42 − 7 = 35). Nina apagou 5 quadradinhos.",
+        "2": "42 é o total antes de apagar. Faltou o último passo: tirar os 5 apagados.",
+        "3": "Você SOMOU os 5 em vez de tirar. Quadradinhos apagados saem da conta: 42 − 5 = 37."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF06MA24"
+    },
+    {
+      "id": "e-geo-s03",
+      "trilha": "E",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "O sino da Escola Estrela toca quando o relógio de ponteiros marca 5 horas em ponto. Nesse momento, qual é o MENOR ângulo formado entre os dois ponteiros?",
+      "alternativas": [
+        "30°",
+        "60°",
+        "120°",
+        "150°",
+        "210°"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe o relógio: ponteiro dos minutos no 12, ponteiro das horas no 5. 2) Cada espaço entre números vizinhos vale 360° ÷ 12 = 30°. 3) Do 12 até o 5 são 5 espaços: 5 × 30° = 150°.",
+      "distratores_explicados": {
+        "0": "30° é só UM espaço entre números vizinhos. Do 12 ao 5 são cinco espaços.",
+        "1": "60° são 2 espaços. Conte no desenho: 12→1→2→3→4→5 são 5 espaços.",
+        "2": "Você contou 4 espaços, mas do 12 até o 5 são 5 (o espaço do 12 ao 1 também conta!).",
+        "4": "210° é o ângulo do OUTRO lado, dando a volta maior. A pergunta pede o menor: 360° − 210° = 150°."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF06MA27"
+    },
+    {
+      "id": "e-geo-s04",
+      "trilha": "E",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Théo tem uma tira comprida de papel. Ele faz 5 cortes retos, um ao lado do outro, cada corte atravessando a tira de um lado ao outro. Em quantos pedaços a tira fica dividida?",
+      "alternativas": [
+        "4",
+        "5",
+        "6",
+        "7",
+        "10"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Comece pequeno: com 1 corte, a tira vira 2 pedaços; com 2 cortes, 3 pedaços; com 3 cortes, 4 pedaços. 2) O padrão aparece: o número de pedaços é sempre o número de cortes MAIS 1. 3) Com 5 cortes: 5 + 1 = 6 pedaços.",
+      "distratores_explicados": {
+        "0": "Você contou um pedaço a menos. Teste no caso pequeno: 1 corte já faz 2 pedaços.",
+        "1": "Você igualou pedaços e cortes, mas cada corte ACRESCENTA um pedaço ao que já existia: 5 cortes → 6 pedaços.",
+        "3": "Você somou 2 em vez de 1. Desenhe os casos pequenos: pedaços = cortes + 1.",
+        "4": "Você dobrou o número de cortes, mas cada novo corte cria apenas UM pedaço a mais."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF05MA16"
+    },
+    {
+      "id": "e-geo-s05",
+      "trilha": "E",
+      "eixo": "geometria",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "O Sr. Pontes colou 8 cubinhos de madeira formando um cubo 2 × 2 × 2 e pintou de amarelo toda a parte de fora. Cada cubinho tem 6 faces. Quantas faces de cubinhos ficaram SEM pintura?",
+      "alternativas": [
+        "8",
+        "12",
+        "16",
+        "24",
+        "48"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe um cubinho no seu lugar: no cubo 2 × 2 × 2, todo cubinho fica num canto, mostrando exatamente 3 faces para fora. 2) Então cada cubinho tem 3 faces pintadas e 6 − 3 = 3 faces escondidas, sem tinta. 3) São 8 cubinhos × 3 faces = 24 faces sem pintura. (Conferindo por outro caminho: total de faces = 8 × 6 = 48; pintadas = 6 faces do cubo × 4 quadradinhos = 24; sem tinta = 48 − 24 = 24. ✓)",
+      "distratores_explicados": {
+        "0": "8 é o número de cubinhos. A pergunta pede faces sem tinta: cada cubinho esconde 3, dando 24.",
+        "1": "Você provavelmente contou 1 ou 2 faces escondidas por cubinho. Num canto, o cubinho esconde exatamente 3 faces.",
+        "2": "Você provavelmente fez 8 × 2. Cada cubinho fica num canto e mostra 3 faces — logo esconde as outras 3.",
+        "4": "48 é o TOTAL de faces (pintadas + escondidas). Metade delas ficou para fora com tinta."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA16"
+    },
+    {
+      "id": "e-geo-s06",
+      "trilha": "E",
+      "eixo": "geometria",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "Nina tinha uma cartolina retangular de 10 cm por 8 cm. Ela recortou e jogou fora um quadrado de 4 cm de lado que estava num dos CANTOS da cartolina. Qual é o perímetro da figura que sobrou?",
+      "alternativas": [
+        "28 cm",
+        "32 cm",
+        "36 cm",
+        "40 cm",
+        "44 cm"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Desenhe o retângulo e o recorte quadrado no canto. 2) Aqui está o insight: os dois pedaços de borda que sumiram (4 cm + 4 cm) foram substituídos por dois lados NOVOS do quadrado, também de 4 cm + 4 cm, que agora fazem parte do contorno. 3) Troca equilibrada: o perímetro não muda! Fica 10 + 8 + 10 + 8 = 36 cm.",
+      "distratores_explicados": {
+        "0": "Você descontou 8 cm achando que o contorno encolhe, mas os dois lados novos do recorte devolvem exatamente os 8 cm.",
+        "1": "Você descontou 4 cm, mas o contorno recortado ganha lados novos que compensam tudo o que saiu.",
+        "3": "Você somou 4 cm a mais. Siga o contorno com o dedo no desenho: cada pedaço que sai é trocado por um igual.",
+        "4": "Você somou os dois lados novos (8 cm) sem perceber que dois pedaços antigos do mesmo tamanho saíram do contorno."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA19"
+    },
+    {
+      "id": "e-log-s01",
+      "trilha": "E",
+      "eixo": "logica",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Na balança de dois pratos da cantina, Dona Fri viu que 2 abóboras iguais equilibram exatamente 6 cenouras iguais. Quantas cenouras equilibram 1 abóbora sozinha?",
+      "alternativas": [
+        "2",
+        "3",
+        "4",
+        "6",
+        "12"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Desenhe a balança: 2 abóboras de um lado, 6 cenouras do outro. 2) Tire METADE de cada prato ao mesmo tempo — o equilíbrio continua. 3) Sobra: 1 abóbora equilibra 6 ÷ 2 = 3 cenouras.",
+      "distratores_explicados": {
+        "0": "2 é o número de abóboras do enunciado. Cada abóbora vale 6 ÷ 2 = 3 cenouras.",
+        "2": "Você provavelmente tirou 2 cenouras em vez da metade. Metade de 6 é 3.",
+        "3": "6 cenouras equilibram as DUAS abóboras juntas. Uma sozinha vale metade: 3.",
+        "4": "Você multiplicou 2 × 6, mas com metade das abóboras é preciso METADE das cenouras, não o dobro."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA10"
+    },
+    {
+      "id": "e-log-s02",
+      "trilha": "E",
+      "eixo": "logica",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Nina garantiu: 'TODOS os meus lápis são coloridos.' Qual das descobertas abaixo provaria que Nina está enganada?",
+      "alternativas": [
+        "Encontrar um lápis colorido no estojo de Nina.",
+        "Encontrar no estojo de Nina um lápis que não é colorido.",
+        "Encontrar um lápis sem cor no estojo de Théo.",
+        "Descobrir que Nina tem só três lápis.",
+        "Encontrar dois lápis coloridos no estojo de Nina."
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Elimine o que NÃO contradiz a frase: achar lápis coloridos de Nina só CONFIRMA o que ela disse — risque essas opções. 2) O estojo de Théo e a quantidade de lápis não têm nada a ver com a frase dela — risque também. 3) Para derrubar um 'todos', basta UM exemplo contrário: um lápis de Nina que não seja colorido.",
+      "distratores_explicados": {
+        "0": "Um lápis colorido confirma a frase de Nina em vez de derrubá-la.",
+        "2": "A frase de Nina fala dos lápis DELA. O estojo de Théo não prova nada sobre isso.",
+        "3": "A frase vale para qualquer quantidade: com 3 lápis, todos ainda podem ser coloridos.",
+        "4": "Dois lápis coloridos também só confirmam a frase. O que derruba um 'todos' é um exemplo contrário."
+      },
+      "estrategia_alvo": "eliminacao",
+      "habilidade_bncc": "EF06MA03"
+    },
+    {
+      "id": "e-log-s03",
+      "trilha": "E",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Bia, Théo, Nina e Zig apostaram uma corrida no pátio. Théo chegou logo atrás de Bia, sem ninguém entre os dois. Nina não chegou nem em primeiro nem em último lugar. Zig chegou antes de Bia. Quem chegou em SEGUNDO lugar?",
+      "alternativas": [
+        "Bia",
+        "Nina",
+        "Théo",
+        "Zig",
+        "Não dá para saber"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Elimine posições impossíveis: Zig chega antes de Bia e Théo vem colado atrás dela, então Bia não pode ser a 1ª. 2) Se Bia fosse a 2ª, Théo seria o 3º e sobraria o último lugar para Nina — proibido pela pista. 3) Então Bia é 3ª e Théo é 4º. Como Nina não pode ser a 1ª, Nina é a 2ª e Zig é o 1º. Ordem final: Zig, Nina, Bia, Théo. ✓",
+      "distratores_explicados": {
+        "0": "Bia não pode ser a 2ª: Théo ficaria em 3º e Nina cairia no último lugar, o que a pista proíbe. Bia terminou em 3º.",
+        "2": "Théo chegou LOGO atrás de Bia; como Bia é a 3ª, Théo é o 4º.",
+        "3": "Zig chegou antes de Bia e a única vaga antes dela que sobra é a 1ª — Zig venceu a corrida.",
+        "4": "Dá para saber! Riscando as posições proibidas, sobra uma única ordem: Zig, Nina, Bia, Théo."
+      },
+      "estrategia_alvo": "eliminacao",
+      "habilidade_bncc": "EF06MA03"
+    },
+    {
+      "id": "e-log-s04",
+      "trilha": "E",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Os 25 alunos da turma passaram na cantina da Dona Fri, e cada um pediu pelo menos uma das duas coisas: 14 alunos pediram suco e 16 pediram pão de queijo. Quantos alunos pediram as DUAS coisas?",
+      "alternativas": [
+        "5",
+        "7",
+        "9",
+        "11",
+        "30"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe dois círculos que se cruzam: um do suco, outro do pão de queijo. 2) Somando 14 + 16 = 30, quem está no meio (pediu os dois) foi contado DUAS vezes. 3) Como a turma tem só 25 alunos, o excesso 30 − 25 = 5 é exatamente o pessoal contado em dobro: 5 alunos pediram os dois.",
+      "distratores_explicados": {
+        "1": "Você provavelmente errou a subtração final: 14 + 16 = 30 e 30 − 25 = 5.",
+        "2": "9 = 25 − 16 é quem NÃO pediu pão de queijo (só suco). A pergunta é quem pediu os dois.",
+        "3": "11 = 25 − 14 é quem NÃO pediu suco (só pão de queijo). A pergunta é quem pediu os dois.",
+        "4": "30 é a soma 14 + 16, que conta duas vezes quem pediu os dois. Compare com os 25 alunos para achar o miolo."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA07"
+    },
+    {
+      "id": "e-log-s05",
+      "trilha": "E",
+      "eixo": "logica",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "Na balança de dois pratos do laboratório, 3 cadernos iguais equilibram 1 estojo mais 1 caderno. Quantos cadernos equilibram o estojo sozinho?",
+      "alternativas": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Teste as alternativas na balança! Se o estojo valesse 3 cadernos, um prato teria 3 + 1 = 4 cadernos contra 3 do outro: desequilibra. ✗ 2) Se o estojo vale 2 cadernos: um prato fica com 2 + 1 = 3 e o outro com 3. Equilibrou! ✓ 3) Outro caminho para conferir: tire 1 caderno de CADA prato ao mesmo tempo; sobra estojo = 2 cadernos. ✓",
+      "distratores_explicados": {
+        "0": "Teste: estojo = 1 caderno daria 1 + 1 = 2 contra 3 cadernos. A balança penderia.",
+        "2": "3 é o total de UM prato inteiro. Para achar o estojo sozinho, tire 1 caderno dos dois lados: sobram 2.",
+        "3": "Você somou 3 + 1 = 4, mas o caderno do prato do estojo joga CONTRA o estojo, não a favor.",
+        "4": "Teste: estojo = 6 daria 6 + 1 = 7 contra 3. Muito desequilibrado!"
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF05MA10"
+    },
+    {
+      "id": "e-log-s06",
+      "trilha": "E",
+      "eixo": "logica",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "Bia, Théo, Nina e Zig escolheram, cada um, uma oficina diferente na Escola Estrela: xadrez, teatro, robótica ou judô. Pistas: nem Bia nem Nina escolheram robótica; nem Nina nem Zig escolheram xadrez; e Bia não escolheu judô nem xadrez. Qual oficina Nina escolheu?",
+      "alternativas": [
+        "xadrez",
+        "teatro",
+        "robótica",
+        "judô",
+        "Não é possível saber"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Monte uma tabela nomes × oficinas e marque ✘ com cada pista. 2) Olhe a coluna do xadrez: Nina ✘, Zig ✘ e Bia ✘ — só sobra Théo. Théo faz xadrez. ✓ 3) Coluna da robótica: Bia ✘, Nina ✘ e Théo já tem oficina — sobra Zig na robótica. ✓ 4) Bia não faz judô, então Bia fica com o teatro — e o judô sobra para Nina. ✓",
+      "distratores_explicados": {
+        "0": "O xadrez só pode ser do Théo: Bia, Nina e Zig têm ✘ nessa coluna.",
+        "1": "O teatro fica com a Bia, que não podia escolher robótica, judô nem xadrez.",
+        "2": "A primeira pista diz que Nina não escolheu robótica — essa ficou com o Zig.",
+        "4": "Dá para saber! Preenchendo a tabela coluna por coluna, sobra exatamente uma oficina para cada um."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF06MA03"
+    },
+    {
+      "id": "e-con-s01",
+      "trilha": "E",
+      "eixo": "contagem",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Bia vai montar seu uniforme para o festival da Escola Estrela: ela tem 4 camisetas e 2 bermudas, todas diferentes. De quantas maneiras ela pode combinar 1 camiseta com 1 bermuda?",
+      "alternativas": [
+        "8",
+        "2",
+        "6",
+        "12",
+        "16"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Faça uma lista organizada: com a bermuda 1, há 4 combinações (uma para cada camiseta). 2) Com a bermuda 2, mais 4 combinações. 3) 4 + 4 = 4 × 2 = 8 maneiras.",
+      "distratores_explicados": {
+        "1": "2 é o número de bermudas. Cada uma delas combina com as 4 camisetas: 4 × 2 = 8.",
+        "2": "Você somou 4 + 2, mas cada camiseta combina com CADA bermuda. Liste: são 4 × 2 = 8.",
+        "3": "Você provavelmente multiplicou 4 × 3. São 2 bermudas: 4 × 2 = 8.",
+        "4": "Você fez 4 × 4, como se fossem 4 bermudas. São só 2."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF05MA09"
+    },
+    {
+      "id": "e-con-s02",
+      "trilha": "E",
+      "eixo": "contagem",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Nina criou uma sequência somando sempre 3: 5, 8, 11, 14, ... Qual é o 10º número da sequência?",
+      "alternativas": [
+        "29",
+        "30",
+        "32",
+        "34",
+        "35"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Procure o padrão: cada número é o anterior mais 3. 2) Do 1º até o 10º número há 9 saltos de 3: 9 × 3 = 27. 3) 10º número = 5 + 27 = 32. Conferindo pela lista: 5, 8, 11, 14, 17, 20, 23, 26, 29, 32. ✓",
+      "distratores_explicados": {
+        "0": "29 é o 9º número — você parou um salto antes. Escreva a lista até o 10º: termina em 32.",
+        "1": "Você provavelmente fez 3 × 10 = 30 e esqueceu que a sequência começa no 5 (com 9 saltos, não 10).",
+        "3": "Você escorregou em um dos saltos. Refaça a lista com calma: 5, 8, 11, 14, 17, 20, 23, 26, 29, 32.",
+        "4": "Você deu 10 saltos (5 + 30), mas do 1º ao 10º número existem só 9 saltos."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF06MA03"
+    },
+    {
+      "id": "e-con-s03",
+      "trilha": "E",
+      "eixo": "contagem",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "No passeio da turma, da entrada do parque até o carrossel existem 3 trilhas; do carrossel até o lago, 2 pontes; e do lago até a saída, 2 escadarias. De quantas maneiras diferentes Zig pode ir da entrada até a saída?",
+      "alternativas": [
+        "12",
+        "7",
+        "8",
+        "10",
+        "24"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe o mapa em etapas: entrada → carrossel → lago → saída. 2) Para cada uma das 3 trilhas, há 2 pontes: 3 × 2 = 6 jeitos de chegar ao lago. 3) Para cada um desses 6 jeitos, há 2 escadarias: 6 × 2 = 12 caminhos.",
+      "distratores_explicados": {
+        "1": "Você somou 3 + 2 + 2 = 7, mas as escolhas se combinam multiplicando: cada trilha abre novos caminhos adiante.",
+        "2": "Você fez 2 × 2 × 2, esquecendo que são 3 trilhas na primeira etapa.",
+        "3": "Você provavelmente misturou soma e multiplicação. A conta certa é 3 × 2 × 2 = 12.",
+        "4": "Você multiplicou um 2 a mais (3 × 2 × 2 × 2). São três etapas apenas."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA09"
+    },
+    {
+      "id": "e-con-s04",
+      "trilha": "E",
+      "eixo": "contagem",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "O Sr. Pontes desenhou no quadro um triângulo grande e traçou 2 linhas retas do vértice de cima até a base, dividindo-o em 3 triangulinhos lado a lado. Quantos triângulos de TODOS os tamanhos há na figura?",
+      "alternativas": [
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Conte em lista organizada, por tamanho. 2) Triângulos de 1 pedaço: 3. 3) Triângulos de 2 pedaços vizinhos: 2 (esquerda+meio e meio+direita). 4) Triângulo de 3 pedaços: 1 (o grandão). Total: 3 + 2 + 1 = 6.",
+      "distratores_explicados": {
+        "0": "Você contou só os 3 triangulinhos pequenos. Pedaços vizinhos juntos também formam triângulos!",
+        "1": "Você contou os pequenos e o grandão, mas esqueceu os 2 triângulos médios (de dois pedaços vizinhos).",
+        "2": "Faltou um dos triângulos médios: tanto esquerda+meio quanto meio+direita formam triângulos.",
+        "4": "Você contou algum triângulo repetido. A lista por tamanho dá 3 + 2 + 1 = 6."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF05MA09"
+    },
+    {
+      "id": "e-con-s05",
+      "trilha": "E",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "Na festa de fim de ano da Escola Estrela, 8 colegas se despediram e cada um apertou a mão de cada um dos outros exatamente uma vez. Quantos apertos de mão aconteceram?",
+      "alternativas": [
+        "16",
+        "28",
+        "36",
+        "56",
+        "64"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Comece pequeno: 2 pessoas → 1 aperto; 3 pessoas → 3; 4 pessoas → 6. 2) O padrão: cada pessoa nova aperta a mão de todas as anteriores, então some 1 + 2 + 3 + ... 3) Até 8 pessoas: 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28. (Ou: 8 × 7 ÷ 2 = 28, dividindo por 2 porque cada aperto envolve duas pessoas.)",
+      "distratores_explicados": {
+        "0": "Você fez 8 × 2. Cada pessoa aperta a mão de 7 colegas, não de 2.",
+        "2": "Você provavelmente fez 9 × 8 ÷ 2, como se fossem 9 pessoas. São 8: 8 × 7 ÷ 2 = 28.",
+        "3": "Você fez 8 × 7 = 56 e esqueceu de dividir por 2: o aperto de Bia com Théo é o MESMO de Théo com Bia.",
+        "4": "Você fez 8 × 8, mas ninguém aperta a própria mão — e cada aperto só conta uma vez."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF05MA09"
+    },
+    {
+      "id": "e-con-s06",
+      "trilha": "E",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "Bia escreveu no caderno, sem parar e sem espaços, a palavra ESTRELA emendada várias vezes: E-S-T-R-E-L-A-E-S-T-R-E-L-A-... Qual é a 100ª letra que ela escreveu?",
+      "alternativas": [
+        "E",
+        "S",
+        "T",
+        "R",
+        "A"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Procure o padrão: o bloco ESTRELA tem 7 letras e se repete. 2) Divida a posição pelo tamanho do bloco: 100 ÷ 7 = 14 blocos completos (98 letras), com resto 2. 3) O resto 2 aponta para a 2ª letra do bloco: S.",
+      "distratores_explicados": {
+        "0": "E apareceria se o resto fosse 1 (como na 99ª letra). O resto de 100 ÷ 7 é 2.",
+        "2": "T é a 3ª letra do bloco — você provavelmente pulou uma casa contando a partir do zero.",
+        "3": "R é a 4ª letra do bloco, resto 4. Confira: 100 = 7 × 14 + 2.",
+        "4": "A fecha o bloco: aparece quando a divisão é exata (resto 0), como na 98ª letra."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF06MA05"
+    },
+    {
+      "id": "e-num-n01",
+      "trilha": "E",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "nivelamento",
+      "enunciado": "Théo repartiu igualmente suas 30 figurinhas entre 4 amigos, dando a cada um a maior quantidade possível. Quantas figurinhas sobraram para o próprio Théo?",
+      "alternativas": [
+        "0",
+        "1",
+        "2",
+        "4",
+        "7"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Desenhe 4 montinhos e distribua as figurinhas: com 7 em cada montinho, 4 × 7 = 28. 2) Para dar 8 a cada um seriam necessárias 32, e ele só tem 30. 3) Sobram 30 − 28 = 2 figurinhas com Théo.",
+      "distratores_explicados": {
+        "0": "A divisão não é exata: 30 não está na tabuada do 4. Sobram 2.",
+        "1": "Quase! Confira a multiplicação: 4 × 7 = 28, e 30 − 28 = 2.",
+        "3": "4 é o número de amigos, não o que sobra da divisão.",
+        "4": "7 é quanto CADA amigo recebeu (o quociente). A pergunta pede o que sobrou: o resto, 2."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA08"
+    },
+    {
+      "id": "e-geo-n01",
+      "trilha": "E",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "nivelamento",
+      "enunciado": "Na malha quadriculada, Bia pintou um retângulo com área de 24 quadradinhos. Um dos lados do retângulo mede 6 quadradinhos, e cada quadradinho tem 1 cm de lado. Qual é o perímetro desse retângulo?",
+      "alternativas": [
+        "10 cm",
+        "14 cm",
+        "24 cm",
+        "20 cm",
+        "28 cm"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe: se um lado tem 6 e a área é 24, o outro lado tem 24 ÷ 6 = 4 (porque 6 × 4 = 24). 2) O contorno tem dois lados de 6 cm e dois de 4 cm. 3) 6 + 4 + 6 + 4 = 20 cm.",
+      "distratores_explicados": {
+        "0": "Você somou 6 + 4 uma vez só, mas o contorno dá a volta completa: cada medida aparece duas vezes.",
+        "1": "Você esqueceu um dos lados (6 + 4 + 4 = 14). O retângulo tem 4 lados.",
+        "2": "24 é a ÁREA (os quadradinhos de dentro). O perímetro é o contorno: 20 cm.",
+        "4": "Você provavelmente usou 8 como segundo lado, mas 24 ÷ 6 = 4."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF05MA19"
+    },
+    {
+      "id": "e-log-n01",
+      "trilha": "E",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "nivelamento",
+      "enunciado": "Bia, Théo e Nina têm 9, 10 e 11 anos, cada um com uma idade diferente. Théo é o mais velho dos três, e Bia NÃO é a mais nova. Quantos anos tem Bia?",
+      "alternativas": [
+        "9",
+        "10",
+        "11",
+        "12",
+        "Não é possível saber"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Elimine com a primeira pista: Théo é o mais velho, então Théo tem 11 anos. 2) Sobram 9 e 10 para Bia e Nina; como Bia não é a mais nova, risque o 9 para ela. 3) Bia tem 10 anos (e Nina fica com 9).",
+      "distratores_explicados": {
+        "0": "Com 9 anos, Bia seria a mais nova — e a pista diz que ela não é.",
+        "2": "11 anos é a idade de Théo, que é o mais velho dos três.",
+        "3": "As idades disponíveis são apenas 9, 10 e 11.",
+        "4": "Dá para saber! As duas pistas juntas deixam uma única combinação possível."
+      },
+      "estrategia_alvo": "eliminacao",
+      "habilidade_bncc": "EF06MA03"
+    },
+    {
+      "id": "e-con-n01",
+      "trilha": "E",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "nivelamento",
+      "enunciado": "Na cantina, Dona Fri vende casquinhas com 2 bolas de sorvete de sabores DIFERENTES, escolhidos entre 4 sabores. A ordem das bolas na casquinha não importa. Quantas duplas de sabores diferentes existem?",
+      "alternativas": [
+        "4",
+        "6",
+        "8",
+        "12",
+        "16"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Chame os sabores de A, B, C e D e liste as duplas em ordem, para não repetir nem esquecer. 2) Começando com A: AB, AC, AD; começando com B (sem voltar ao A): BC, BD; começando com C: CD. 3) 3 + 2 + 1 = 6 duplas.",
+      "distratores_explicados": {
+        "0": "4 é o número de sabores. As DUPLAS são as combinações de dois deles: 6.",
+        "2": "Você provavelmente fez 4 × 2. Liste em ordem alfabética: AB, AC, AD, BC, BD, CD — são 6.",
+        "3": "Você fez 4 × 3 = 12, contando AB e BA como casquinhas diferentes. Como a ordem não importa, divida por 2: 6.",
+        "4": "Você fez 4 × 4, permitindo repetir o sabor — mas as duas bolas precisam ser de sabores diferentes."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF05MA09"
+    }
+  ]
+}
