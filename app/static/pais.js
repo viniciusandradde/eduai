@@ -360,7 +360,7 @@ async function criarPai(){
 function MSG_ANDREIA(){
   return `<div class="bv-emoji">💜</div><h2 class="bv-h">Para a Andreia</h2>
   <div class="bv-tx">
-   <p>Amor, este app nasceu de um sonho nosso: ver o <b>Vittor</b> (e nossos filhos) <b>amando aprender</b> — sem briga pra estudar, com aquele brilho no olho de quem está jogando.</p>
+   <p>Oi meu Anjo, este app nasceu de um sonho nosso: ver o <b>Vittor</b> (e nossos filhos) <b>amando aprender</b> — sem briga pra estudar, com aquele brilho no olho de quem está jogando.</p>
    <p><b>A origem.</b> Eu quis transformar o estudo em uma aventura, no estilo Duolingo: cada matéria vira uma jornada de missões curtas, com feedback na hora e muita comemoração a cada passo.</p>
    <p><b>A missão.</b> Criar o hábito de estudar todo dia e, acima de tudo, o <b>amor pela leitura</b> — porque ler é a chave de todas as outras matérias.</p>
    <p><b>Como o conteúdo é feito.</b> Missões alinhadas à BNCC (hoje 5º ano), com questões que dão feedback e explicação. A ideia é o conteúdo se adaptar à <b>idade</b> de cada filho.</p>
