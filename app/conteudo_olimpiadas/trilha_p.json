@@ -1,0 +1,1306 @@
+{
+  "trilha": "P",
+  "nome": "Trilha P — 3º/4º ano",
+  "questoes": [
+    {
+      "id": "p-num-u01",
+      "trilha": "P",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "A coelha Lila 🐰 tinha 35 cenouras. Ela comeu 8 e depois ganhou 5 da Vovó Bela. Quantas cenouras Lila tem agora?",
+      "alternativas": [
+        "22",
+        "27",
+        "40",
+        "32",
+        "43"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe a história em três quadrinhos: começa com 35, saem 8, entram 5. 2) 35 − 8 = 27. 3) 27 + 5 = 32 cenouras.",
+      "distratores_explicados": {
+        "0": "Você provavelmente subtraiu também as 5 cenouras ganhas (35 − 8 − 5). As 5 da Vovó Bela ENTRAM na conta: 27 + 5 = 32.",
+        "1": "Você provavelmente parou depois de tirar as 8 comidas. Ainda falta somar as 5 que Lila ganhou: 27 + 5 = 32.",
+        "2": "Você provavelmente só somou as 5 ganhas (35 + 5) e esqueceu de tirar as 8 que Lila comeu.",
+        "4": "Você provavelmente somou as 8 em vez de subtrair (35 + 8). Cenoura comida sai da conta: 35 − 8 + 5 = 32."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA06"
+    },
+    {
+      "id": "p-num-u02",
+      "trilha": "P",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "O macaco Caco 🐵 abriu o cofrinho e encontrou 1 moeda de R$ 1,00 e 3 moedas de 50 centavos. Quanto dinheiro Caco tem?",
+      "alternativas": [
+        "R$ 1,50",
+        "R$ 2,00",
+        "R$ 2,50",
+        "R$ 3,00",
+        "R$ 4,00"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Desenhe as moedas: uma de R$ 1,00 e três de 50 centavos. 2) Junte duas moedas de 50 centavos: elas formam R$ 1,00, e sobra uma de 50 centavos. 3) R$ 1,00 + R$ 1,00 + R$ 0,50 = R$ 2,50.",
+      "distratores_explicados": {
+        "0": "Você provavelmente contou só UMA moeda de 50 centavos (1,00 + 0,50). São três moedas de 50: mais R$ 1,00 inteiro e ainda sobra meia.",
+        "1": "Você provavelmente contou duas das três moedas de 50 centavos. Desenhe as quatro moedas e risque uma a uma ao somar.",
+        "3": "Você provavelmente contou quatro moedas de 50 centavos em vez de três. Confira no desenho: 1,00 + 0,50 + 0,50 + 0,50 = 2,50.",
+        "4": "Você provavelmente contou as 4 moedas como se cada uma valesse R$ 1,00. As de 50 centavos valem meio real cada."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF04MA25"
+    },
+    {
+      "id": "p-num-u03",
+      "trilha": "P",
+      "eixo": "numeros",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "O canguru Salto 🦘 pula sobre os números 4, 9, 14, 19, ... sempre seguindo a mesma regra. Em que número ele cai no 7º pulo?",
+      "alternativas": [
+        "29",
+        "34",
+        "24",
+        "35",
+        "39"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Procure o padrão: de 4 para 9 são +5; de 9 para 14, +5 de novo. A regra é somar 5. 2) Continue a lista: 4, 9, 14, 19, 24, 29, 34. 3) O 7º número da lista é 34.",
+      "distratores_explicados": {
+        "0": "Você provavelmente parou no 6º pulo. Conte os termos com o dedo: 34 é o 7º.",
+        "2": "Você provavelmente parou no 5º pulo. Continue somando 5: 24, 29, 34.",
+        "3": "Você provavelmente fez 5 × 7 = 35, mas a sequência começa no 4, não no 5: 4 + 6 pulos de 5 = 34.",
+        "4": "Você provavelmente foi um pulo além, até o 8º número. O 7º é 34."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF04MA11"
+    },
+    {
+      "id": "p-num-u04",
+      "trilha": "P",
+      "eixo": "numeros",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "A tartaruga Tuca 🐢 saiu para caminhar às 9h30 e caminhou por 1 hora e 45 minutos sem parar. A que horas ela terminou a caminhada?",
+      "alternativas": [
+        "10h15",
+        "10h30",
+        "11h00",
+        "11h45",
+        "11h15"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe uma linha do tempo começando em 9h30. 2) Ande 1 hora: chega em 10h30. 3) Ande mais 45 minutos: 10h30 + 30 min = 11h00, e ainda faltam 15 min → 11h15.",
+      "distratores_explicados": {
+        "0": "Você provavelmente somou só os 45 minutos e esqueceu a 1 hora. Na linha do tempo: 9h30 → 10h30 → 11h15.",
+        "1": "Você provavelmente somou só a 1 hora e esqueceu os 45 minutos. Ainda falta andar mais 45 min: 11h15.",
+        "2": "Você provavelmente juntou 30 + 45 = 75 minutos e usou só 1 hora, esquecendo os 15 minutos que sobram: 75 min = 1h15.",
+        "3": "Você provavelmente partiu de 10h00 em vez de 9h30. Comece a linha do tempo no horário certo: 9h30."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF04MA22"
+    },
+    {
+      "id": "p-num-u05",
+      "trilha": "P",
+      "eixo": "numeros",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "O macaco Caco 🐵 colheu algumas bananas. Deu metade delas para a coelha Lila, depois comeu 3 e ficou com 5 bananas. Quantas bananas Caco colheu?",
+      "alternativas": [
+        "16",
+        "4",
+        "8",
+        "10",
+        "19"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Ande de trás pra frente, desfazendo cada passo da história. 2) Antes de comer 3, ele tinha 5 + 3 = 8. 3) Dar metade deixou essas 8, então antes ele tinha o dobro: 8 × 2 = 16. 4) Conferindo pra frente: 16 → dá metade, fica 8 → come 3 → sobram 5. ✓",
+      "distratores_explicados": {
+        "1": "Você provavelmente dividiu por 2 na hora de desfazer o 'deu metade'. Ao andar de ré, quem deu metade tinha o DOBRO: 8 × 2 = 16.",
+        "2": "Você provavelmente parou depois de devolver as 3 bananas comidas. Ainda falta desfazer o 'deu metade': 8 × 2 = 16.",
+        "3": "Você provavelmente dobrou o 5 antes de devolver as 3 comidas. De trás pra frente, desfaça primeiro o último passo: 5 + 3 = 8, depois 8 × 2.",
+        "4": "Você provavelmente somou 3 de novo no final (16 + 3). Confira andando pra frente: com 16, a história termina certinha em 5."
+      },
+      "estrategia_alvo": "regressiva",
+      "habilidade_bncc": "EF03MA06"
+    },
+    {
+      "id": "p-num-u06",
+      "trilha": "P",
+      "eixo": "numeros",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "O canguru Salto 🦘 pagou um pote de mel de R$ 17 na fazenda da Vovó Bela, sem receber troco, usando apenas notas de R$ 5 e moedas de R$ 2. Qual é o MENOR número de notas e moedas que ele pode ter usado?",
+      "alternativas": [
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Teste combinações que somam 17. 2) Com 1 nota: 5 + 2+2+2+2+2+2 = 17, usando 7 peças. 3) Com 3 notas: 15 + 2 = 17, usando só 4 peças. 4) Menos que isso não dá: com 3 peças o máximo é 5+5+5 = 15. O menor é 4.",
+      "distratores_explicados": {
+        "0": "Você provavelmente contou só as 3 notas da melhor combinação e esqueceu a moeda de R$ 2. São 3 notas + 1 moeda = 4 peças.",
+        "2": "Você provavelmente tentou 2 notas + 3 moedas, mas isso dá 10 + 6 = R$ 16, e não fecha os R$ 17. Teste de novo com calma.",
+        "3": "Você provavelmente contou só as 6 moedas da combinação com 1 nota. E existe combinação bem menor: 3 notas + 1 moeda.",
+        "4": "Você achou a combinação 1 nota + 6 moedas, que funciona, mas não é a menor: 3 notas + 1 moeda usa só 4 peças."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF04MA25"
+    },
+    {
+      "id": "p-num-s01",
+      "trilha": "P",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Na fazenda da Vovó Bela foram colhidos 18 tomates de manhã e 26 tomates à tarde. Quantos tomates foram colhidos nesse dia?",
+      "alternativas": [
+        "8",
+        "34",
+        "44",
+        "43",
+        "45"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Desenhe as dezenas e unidades: 18 = 10 + 8 e 26 = 20 + 6. 2) Junte as dezenas: 10 + 20 = 30; junte as unidades: 8 + 6 = 14. 3) 30 + 14 = 44 tomates.",
+      "distratores_explicados": {
+        "0": "Você provavelmente subtraiu (26 − 18) em vez de somar. A pergunta junta a colheita da manhã com a da tarde.",
+        "1": "Você provavelmente esqueceu o 'vai um': 8 + 6 = 14, que é 1 dezena e mais 4. Por isso dá 44, não 34.",
+        "3": "Você provavelmente contou 1 a menos em algum passo. Refaça separando dezenas e unidades: 30 + 14 = 44.",
+        "4": "Você provavelmente contou 1 a mais em algum passo. Refaça separando dezenas e unidades: 30 + 14 = 44."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA06"
+    },
+    {
+      "id": "p-num-s02",
+      "trilha": "P",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Hoje é terça-feira. A festa na fazenda da Vovó Bela será daqui a 4 dias. Em que dia da semana será a festa?",
+      "alternativas": [
+        "quarta-feira",
+        "quinta-feira",
+        "sexta-feira",
+        "domingo",
+        "sábado"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Escreva a lista dos dias a partir de hoje. 2) Dê 4 pulos, um por dia: quarta (1), quinta (2), sexta (3), sábado (4). 3) A festa será no sábado.",
+      "distratores_explicados": {
+        "0": "Você provavelmente andou só 1 dia. 'Daqui a 4 dias' pede 4 pulos na lista dos dias: quarta, quinta, sexta, sábado.",
+        "1": "Você provavelmente andou só 2 dias. Escreva a listinha e conte 4 pulos completos a partir de terça.",
+        "2": "Você provavelmente contou a própria terça-feira como o primeiro dos 4 dias. O primeiro pulo já cai na quarta.",
+        "3": "Você provavelmente contou 1 dia a mais. Pare no 4º pulo: sábado."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF03MA22"
+    },
+    {
+      "id": "p-num-s03",
+      "trilha": "P",
+      "eixo": "numeros",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "A coelha Lila 🐰 comprou uma cenoura gigante por R$ 13 e um suco por R$ 4. Ela pagou com uma nota de R$ 20. Quanto recebeu de troco?",
+      "alternativas": [
+        "R$ 3",
+        "R$ 7",
+        "R$ 13",
+        "R$ 16",
+        "R$ 17"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe: de um lado a nota de 20, do outro as duas compras. 2) Gasto total: 13 + 4 = 17. 3) Troco: 20 − 17 = R$ 3.",
+      "distratores_explicados": {
+        "1": "Você provavelmente fez 20 − 13 e esqueceu o suco de R$ 4. Primeiro junte tudo o que Lila gastou: 17.",
+        "2": "Esse é o preço da cenoura, não o troco. Some as compras e tire de 20: 20 − 17 = 3.",
+        "3": "Você provavelmente fez 20 − 4 e esqueceu a cenoura de R$ 13. O gasto total é 17.",
+        "4": "Esse é o total gasto (13 + 4). A pergunta pede o troco: 20 − 17 = 3."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF04MA25"
+    },
+    {
+      "id": "p-num-s04",
+      "trilha": "P",
+      "eixo": "numeros",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "O canguru Salto 🦘 brinca numa trilha com casas numeradas: ele começa na casa 2 e pula de 3 em 3, pisando nas casas 2, 5, 8, e assim por diante. Em qual destas casas Salto vai pisar?",
+      "alternativas": [
+        "24",
+        "27",
+        "28",
+        "26",
+        "25"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Procure o padrão das casas pisadas: 2, 5, 8, 11, 14... 2) Toda casa pisada é 2 mais um tanto de pulos de 3. 3) 26 = 2 + 24, e 24 é exatamente 8 pulos de 3 → Salto pisa na casa 26.",
+      "distratores_explicados": {
+        "0": "Você provavelmente pensou nos múltiplos de 3 (24 = 3 × 8), mas Salto começou na casa 2, não na 3. As casas dele são 2 + pulos de 3.",
+        "1": "27 é múltiplo de 3, mas a trilha do Salto começa no 2. Tire 2 e veja se dá para dividir por 3: 27 − 2 = 25, e 25 não é pulo exato de 3.",
+        "2": "Você provavelmente contou como se ele começasse na casa 1 (1, 4, ..., 28). Ele começa na casa 2.",
+        "4": "Você provavelmente contou como se ele começasse na casa 4, pulando a primeira. Confira: 25 − 2 = 23, que não é pulo exato de 3."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF03MA10"
+    },
+    {
+      "id": "p-num-s05",
+      "trilha": "P",
+      "eixo": "numeros",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "A tartaruga Tuca 🐢 pensou em um número, dobrou esse número e depois tirou 5. O resultado foi 13. Em que número Tuca pensou?",
+      "alternativas": [
+        "4",
+        "9",
+        "8",
+        "18",
+        "26"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Ande de trás pra frente, desfazendo cada passo. 2) Desfaça o 'tirou 5': 13 + 5 = 18. 3) Desfaça o 'dobrou': 18 ÷ 2 = 9. 4) Conferindo pra frente: 9 × 2 = 18 e 18 − 5 = 13. ✓",
+      "distratores_explicados": {
+        "0": "Você provavelmente tirou 5 (em vez de devolver) e depois dividiu: (13 − 5) ÷ 2. Ao andar de ré, o que foi tirado é devolvido: 13 + 5 = 18.",
+        "2": "Você provavelmente fez 13 − 5 = 8. De trás pra frente é o contrário: devolva o 5 (13 + 5 = 18) e depois divida por 2.",
+        "3": "Você provavelmente parou no 18 e esqueceu de desfazer o 'dobrou': 18 ÷ 2 = 9.",
+        "4": "Você provavelmente dobrou o 13 em vez de dividir. Desfazer um 'dobrou' é dividir pela metade."
+      },
+      "estrategia_alvo": "regressiva",
+      "habilidade_bncc": "EF04MA15"
+    },
+    {
+      "id": "p-num-s06",
+      "trilha": "P",
+      "eixo": "numeros",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "A Vovó Bela tem uma fita de 90 cm e vai cortá-la inteirinha em pedaços de 15 cm. Quantos cortes ela precisa fazer?",
+      "alternativas": [
+        "4",
+        "7",
+        "5",
+        "6",
+        "15"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Comece pequeno: para 2 pedaços basta 1 corte; para 3 pedaços, 2 cortes. O número de cortes é sempre 1 a menos que o de pedaços. 2) Quantos pedaços saem? 90 ÷ 15 = 6 pedaços. 3) Cortes: 6 − 1 = 5.",
+      "distratores_explicados": {
+        "0": "Você provavelmente descontou um corte a mais. Teste com uma fita pequena: 6 pedaços pedem 5 cortes, não 4.",
+        "1": "Você provavelmente somou 1 aos pedaços em vez de tirar 1. O último pedaço sobra sozinho, sem precisar de corte novo.",
+        "3": "Esse é o número de PEDAÇOS. Cada corte separa um pedaço, mas o último já fica pronto: são 6 − 1 = 5 cortes.",
+        "4": "Esse é o tamanho de cada pedaço em centímetros, não o número de cortes."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF03MA19"
+    },
+    {
+      "id": "p-geo-u01",
+      "trilha": "P",
+      "eixo": "geometria",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "Na fazenda da Vovó Bela, o canteiro é um retângulo desenhado num chão quadriculado: 4 quadradinhos de comprimento e 2 de largura. O canguru Salto 🦘 dá 1 pulinho por lado de quadradinho e dá a volta completa no contorno do canteiro. Quantos pulinhos ele dá?",
+      "alternativas": [
+        "6",
+        "8",
+        "10",
+        "14",
+        "12"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe o retângulo de 4 por 2 no quadriculado. 2) Conte o contorno, lado por lado: 4 embaixo, 2 à direita, 4 em cima, 2 à esquerda. 3) 4 + 2 + 4 + 2 = 12 pulinhos.",
+      "distratores_explicados": {
+        "0": "Você provavelmente somou só um comprimento e uma largura (4 + 2). A volta completa passa pelos QUATRO lados.",
+        "1": "Você provavelmente multiplicou 4 × 2, que conta os quadradinhos de DENTRO do canteiro, não o contorno.",
+        "2": "Você provavelmente esqueceu uma das larguras (4 + 2 + 4). Marque cada lado no desenho enquanto conta.",
+        "3": "Você provavelmente contou 2 pulinhos a mais. Passe o dedo pelo contorno contando devagar: dá 12."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA26"
+    },
+    {
+      "id": "p-geo-u02",
+      "trilha": "P",
+      "eixo": "geometria",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "O tabuleiro da fazenda tem colunas com letras (A, B, C, D, E, da esquerda para a direita) e linhas com números (1, 2, 3, de baixo para cima). O macaco Caco 🐵 está na casa B2. Ele anda 2 casas para a direita e 1 casa para cima. Em que casa ele para?",
+      "alternativas": [
+        "B3",
+        "C3",
+        "D2",
+        "D3",
+        "E3"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe o tabuleiro e marque a casa B2. 2) Ande 2 casas para a direita: B → C → D. 3) Suba 1 casa: linha 2 → linha 3. Caco para na casa D3.",
+      "distratores_explicados": {
+        "0": "Você provavelmente só subiu e esqueceu de andar para a direita. As letras também mudam: B → C → D.",
+        "1": "Você provavelmente contou a casa de partida como o primeiro passo. O primeiro passo já leva de B para C, e o segundo para D.",
+        "2": "Você provavelmente andou para a direita mas esqueceu de subir a linha: de 2 para 3.",
+        "4": "Você provavelmente andou 3 casas para a direita em vez de 2. Confira no desenho: B → C → D."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA12"
+    },
+    {
+      "id": "p-geo-u03",
+      "trilha": "P",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "A coelha Lila 🐰 dobrou uma folha de papel ao meio e depois ao meio outra vez. Com um furador, fez 1 furo atravessando todas as camadas. Quantos furos a folha terá quando for aberta?",
+      "alternativas": [
+        "4",
+        "2",
+        "1",
+        "3",
+        "8"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Comece pequeno: sem dobra, o furador faz 1 furo. 2) Com 1 dobra o papel tem 2 camadas, então o furo atravessa 2 → 2 furos. 3) Com 2 dobras são 4 camadas → 4 furos.",
+      "distratores_explicados": {
+        "1": "Você provavelmente pensou em uma dobra só. Cada dobra DOBRA o número de camadas: 1 → 2 → 4.",
+        "2": "Você provavelmente esqueceu que o papel dobrado tem várias camadas e o furador atravessa todas.",
+        "3": "Você provavelmente somou 2 dobras + 1 furo. O certo é dobrar o número de furos a cada dobra: 1 → 2 → 4.",
+        "4": "8 furos seriam com TRÊS dobras (2 → 4 → 8). Aqui foram só duas."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF04MA19"
+    },
+    {
+      "id": "p-geo-u04",
+      "trilha": "P",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "A tartaruga Tuca 🐢 tem peças quadradas, todas do mesmo tamanho. Ela quer montar um quadrado grande com 3 peças em cada lado, todo preenchido, sem buracos. Quantas peças ela vai usar?",
+      "alternativas": [
+        "6",
+        "9",
+        "3",
+        "12",
+        "16"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Desenhe o quadrado grande: são 3 fileiras, cada uma com 3 peças. 2) Some fileira por fileira: 3 + 3 + 3. 3) São 9 peças (3 × 3).",
+      "distratores_explicados": {
+        "0": "Você provavelmente somou 3 + 3 (duas fileiras). O quadrado com 3 peças de lado tem TRÊS fileiras de 3.",
+        "2": "Você provavelmente contou só uma fileira. O quadrado inteiro precisa de 3 fileiras de 3 peças.",
+        "3": "Você provavelmente fez 3 × 4. O quadrado tem 3 fileiras de 3 peças: 3 × 3 = 9.",
+        "4": "16 seria um quadrado com 4 peças em cada lado (4 × 4). Aqui são 3 de lado."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA15"
+    },
+    {
+      "id": "p-geo-u05",
+      "trilha": "P",
+      "eixo": "geometria",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "O macaco Caco 🐵 montou uma pirâmide de cubinhos: a camada de baixo tem 3 fileiras de 3 cubinhos, a camada do meio tem 2 fileiras de 2 cubinhos e no topo há 1 cubinho sozinho. Quantos cubinhos ele usou?",
+      "alternativas": [
+        "9",
+        "13",
+        "14",
+        "12",
+        "15"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Desenhe camada por camada, de baixo para cima. 2) Camada de baixo: 3 × 3 = 9; camada do meio: 2 × 2 = 4; topo: 1. 3) 9 + 4 + 1 = 14 cubinhos.",
+      "distratores_explicados": {
+        "0": "Você provavelmente contou só a camada de baixo (3 × 3 = 9). Ainda faltam a do meio e o topo.",
+        "1": "Você provavelmente esqueceu o cubinho do topo: 9 + 4 = 13, mais 1 dá 14.",
+        "3": "Você provavelmente contou a camada do meio com 3 cubinhos. Ela tem 2 fileiras de 2: são 4 cubinhos.",
+        "4": "Você provavelmente contou 2 cubinhos no topo. Lá em cima há só 1."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA13"
+    },
+    {
+      "id": "p-geo-u06",
+      "trilha": "P",
+      "eixo": "geometria",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "O canteiro da Vovó Bela era um retângulo de 6 m por 4 m. Ela retirou um cantinho quadrado de 2 m por 2 m em um dos cantos, e o canteiro ficou com forma de L. Quantos metros de cerca são precisos para dar a volta completa no canteiro em L?",
+      "alternativas": [
+        "16",
+        "18",
+        "24",
+        "20",
+        "22"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe o retângulo: o contorno era 6 + 4 + 6 + 4 = 20 m. 2) No canto recortado, dois pedaços de 2 m saem do contorno, mas aparecem dois lados novos de 2 m virados para dentro. 3) O que saiu (2 + 2) é igual ao que entrou (2 + 2): a cerca continua medindo 20 m.",
+      "distratores_explicados": {
+        "0": "Você provavelmente descontou os 4 m do recorte e esqueceu que os dois lados novos do cantinho também precisam de cerca.",
+        "1": "Você provavelmente descontou 2 m. Desenhe o L e siga o contorno com o dedo: cada pedaço retirado é trocado por um novo do mesmo tamanho.",
+        "2": "Você provavelmente somou os dois lados novos sem tirar os pedaços que sumiram do contorno. A troca se equilibra: fica 20.",
+        "4": "Você provavelmente somou 2 m a mais. Percorra o L lado a lado no desenho: a soma dá exatamente 20."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF04MA20"
+    },
+    {
+      "id": "p-geo-s01",
+      "trilha": "P",
+      "eixo": "geometria",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "A coelha Lila 🐰 colou dois quadrados de papel iguais, unindo um lado inteiro de um com um lado inteiro do outro, sem sobrepor. Quantos lados tem a figura que se formou?",
+      "alternativas": [
+        "4",
+        "6",
+        "8",
+        "5",
+        "3"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe os dois quadrados grudados: forma-se um retângulo. 2) Os lados colados desaparecem dentro da figura, e os lados de cima se emendam num lado só (os de baixo também). 3) O retângulo tem 4 lados.",
+      "distratores_explicados": {
+        "1": "Você provavelmente tirou só os 2 lados colados (8 − 2). Repare que os lados de cima viram UM lado comprido, e os de baixo também.",
+        "2": "Você provavelmente somou 4 + 4 sem colar nada. Ao unir, lados desaparecem e outros se emendam.",
+        "3": "Você provavelmente contou um lado a mais. Passe o dedo pelo contorno do desenho: são 4 lados.",
+        "4": "Você provavelmente contou um lado a menos. A figura formada é um retângulo, com 4 lados."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA15"
+    },
+    {
+      "id": "p-geo-s02",
+      "trilha": "P",
+      "eixo": "geometria",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Na prateleira da Vovó Bela há 5 potes em fila, vistos de frente, nesta ordem da esquerda para a direita: mel, milho, feijão, arroz e fubá. Qual pote está logo à esquerda do pote de arroz?",
+      "alternativas": [
+        "milho",
+        "feijão",
+        "fubá",
+        "mel",
+        "arroz"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Desenhe a fila de potes na ordem dada: mel, milho, feijão, arroz, fubá. 2) Ache o arroz: é o 4º pote. 3) O vizinho logo à esquerda é o 3º pote: feijão.",
+      "distratores_explicados": {
+        "0": "Você provavelmente andou duas casas para a esquerda. 'Logo à esquerda' é o vizinho colado, uma casa só.",
+        "2": "Você provavelmente olhou para a direita do arroz. Cuidado para não trocar os lados: esquerda é o lado do mel.",
+        "3": "Esse é o primeiro pote da fila, não o vizinho do arroz. Desenhe a fila e marque o arroz primeiro.",
+        "4": "Esse é o próprio pote da pergunta. Procuramos o vizinho da esquerda dele: o feijão."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA12"
+    },
+    {
+      "id": "p-geo-s03",
+      "trilha": "P",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "O dado da fazenda tem faces de 1 a 6, e as faces opostas sempre somam 7. O macaco Caco 🐵 olha o dado sobre a mesa e consegue ver três faces: 1, 2 e 3. Qual é a soma das três faces que ele NÃO consegue ver?",
+      "alternativas": [
+        "6",
+        "21",
+        "12",
+        "14",
+        "15"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Use a regra do dado: faces opostas somam 7. 2) O oposto de 1 é 6, o de 2 é 5, o de 3 é 4 — essas são as faces escondidas. 3) 6 + 5 + 4 = 15. 4) Conferindo por outro caminho: todas as faces somam 21, e 21 − (1 + 2 + 3) = 15. ✓",
+      "distratores_explicados": {
+        "0": "Você provavelmente somou as faces que Caco VÊ (1 + 2 + 3). A pergunta pede as escondidas: 6 + 5 + 4.",
+        "1": "Você provavelmente somou TODAS as 6 faces do dado. Tire as três visíveis: 21 − 6 = 15.",
+        "2": "Você provavelmente trocou uma face: achou os opostos de 1 e 2 (6 e 5) e somou o 1 de novo em vez do 4.",
+        "3": "Você provavelmente usou 3 em vez do oposto dele. O oposto de 3 é 7 − 3 = 4."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA14"
+    },
+    {
+      "id": "p-geo-s04",
+      "trilha": "P",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "No quadriculado, a tartaruga Tuca 🐢 partiu de uma casinha e andou assim: 2 quadradinhos para cima, depois 3 para a direita, depois 2 para baixo. No final, a quantos quadradinhos de distância da casinha de partida ela ficou?",
+      "alternativas": [
+        "0",
+        "5",
+        "3",
+        "4",
+        "7"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Desenhe o caminho no quadriculado, passo a passo. 2) Os 2 quadradinhos para cima e os 2 para baixo se cancelam: ela volta para a mesma altura. 3) Sobra só o andar de 3 para a direita: ela fica a 3 quadradinhos da partida.",
+      "distratores_explicados": {
+        "0": "Você provavelmente pensou que subir e descer o mesmo tanto devolve Tuca ao início — mas ela também andou 3 para a direita.",
+        "1": "Você provavelmente somou os 2 para cima com os 3 para a direita. Os 2 para baixo desfazem a subida: só a direita conta.",
+        "3": "Você provavelmente contou um quadradinho a mais. No desenho, ela termina exatamente 3 quadradinhos à direita da partida.",
+        "4": "Você provavelmente somou TODOS os passos (2 + 3 + 2). Isso é o quanto ela andou, não a distância até o ponto de partida."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA12"
+    },
+    {
+      "id": "p-geo-s05",
+      "trilha": "P",
+      "eixo": "geometria",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "O canguru Salto 🦘 montou uma escadinha de cubinhos que, vista de frente, mostra uma torre de 3 cubinhos, ao lado uma torre de 2 e ao lado uma torre de 1. A construção tem DUAS fileiras iguais a essa, uma atrás da outra. Quantos cubinhos ele usou ao todo?",
+      "alternativas": [
+        "6",
+        "9",
+        "10",
+        "12",
+        "18"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe a fileira da frente: 3 + 2 + 1 = 6 cubinhos. 2) Atrás dela há outra fileira igualzinha, com mais 6 cubinhos, mesmo sem aparecer na frente. 3) 6 + 6 = 12 cubinhos.",
+      "distratores_explicados": {
+        "0": "Você provavelmente contou só a fileira da frente. A construção tem uma fileira igual escondida atrás.",
+        "1": "Você provavelmente contou atrás só a torre de 3. A fileira de trás é completa: 3 + 2 + 1.",
+        "2": "Você provavelmente esqueceu a torre de 2 da fileira de trás. Atrás há 3 + 2 + 1 = 6 cubinhos também.",
+        "4": "Você provavelmente usou 3 fileiras. São só 2: a da frente e a de trás, 6 + 6 = 12."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA13"
+    },
+    {
+      "id": "p-geo-s06",
+      "trilha": "P",
+      "eixo": "geometria",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "A tartaruga Tuca 🐢 dobrou um quadrado de papel ao meio e depois ao meio de novo, formando um quadradinho pequeno. Então cortou fora a pontinha do canto onde estão TODAS as dobras e abriu o papel. O que ela viu?",
+      "alternativas": [
+        "Um buraco no meio da folha",
+        "Quatro buracos, um em cada canto",
+        "Nenhum buraco",
+        "Dois buracos, um em cada metade",
+        "Um buraco em uma das bordas"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Comece pequeno: com UMA dobra, cortar a pontinha sobre a dobra abre um buraquinho no meio da borda dobrada. 2) Com duas dobras, o canto onde todas as dobras se encontram é exatamente o CENTRO da folha. 3) Ao abrir, aparece um único buraco bem no meio da folha.",
+      "distratores_explicados": {
+        "1": "Você provavelmente pensou no canto OPOSTO, onde ficam as quatro pontas soltas — cortando lá, sim, apareceriam 4 buracos nos cantos.",
+        "2": "Você provavelmente achou que o corte se fecha ao abrir. O pedaço retirado deixa um buraco de verdade no papel.",
+        "3": "Dois buracos apareceriam cortando um canto que tem dobra de um lado só. O canto de TODAS as dobras é o centro: 1 buraco.",
+        "4": "Um buraco na borda apareceria com uma dobra só. Com as duas dobras, o corte cai no centro da folha."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF04MA19"
+    },
+    {
+      "id": "p-log-u01",
+      "trilha": "P",
+      "eixo": "logica",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "Na corrida da fazenda, o canguru Salto 🦘 chegou antes da tartaruga Tuca 🐢. A coelha Lila 🐰 chegou depois de Tuca. Quem chegou por último?",
+      "alternativas": [
+        "Lila",
+        "Tuca",
+        "Salto",
+        "Salto e Lila empataram",
+        "Não dá para saber"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe a fila de chegada. 2) Salto antes de Tuca: Salto — Tuca. 3) Lila depois de Tuca: Salto — Tuca — Lila. A última é Lila.",
+      "distratores_explicados": {
+        "1": "Você provavelmente parou na segunda pista. Tuca ficou no MEIO: Salto na frente e Lila atrás dela.",
+        "2": "Você provavelmente trocou 'antes' e 'depois'. Salto chegou ANTES de Tuca, então ele foi o primeiro.",
+        "3": "Nenhuma pista fala em empate. Desenhando a fila, cada um tem seu lugar: Salto, Tuca, Lila.",
+        "4": "Dá para saber, sim! Desenhe a fila usando as duas pistas: Salto — Tuca — Lila."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA27"
+    },
+    {
+      "id": "p-log-u02",
+      "trilha": "P",
+      "eixo": "logica",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "Na balança da Vovó Bela, 1 melancia equilibra exatamente 3 maçãs. Quantas maçãs são precisas para equilibrar 2 melancias?",
+      "alternativas": [
+        "3",
+        "4",
+        "5",
+        "9",
+        "6"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe a balança: 🍉 de um lado, 🍎🍎🍎 do outro. 2) Cada melancia vale 3 maçãs. 3) Para 2 melancias: 3 + 3 = 6 maçãs.",
+      "distratores_explicados": {
+        "0": "Essas são as maçãs de UMA melancia. Agora são duas melancias: 3 + 3 = 6.",
+        "1": "Você provavelmente somou 3 + 1. Cada melancia inteira vale 3 maçãs: 3 + 3 = 6.",
+        "2": "Você provavelmente somou 2 melancias + 3 maçãs. Melancia não se soma com maçã: troque cada melancia por 3 maçãs.",
+        "3": "Você provavelmente multiplicou 3 × 3. São 2 melancias, cada uma valendo 3 maçãs: 2 × 3 = 6."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA07"
+    },
+    {
+      "id": "p-log-u03",
+      "trilha": "P",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "O pote de biscoitos da Vovó Bela sumiu, e um dos três amigos pegou. Caco 🐵 diz: 'Foi a Lila'. Lila 🐰 diz: 'Não fui eu'. Tuca 🐢 diz: 'Não fui eu'. Só UM dos três está mentindo. Quem pegou o pote?",
+      "alternativas": [
+        "Caco",
+        "Lila",
+        "Tuca",
+        "Salto",
+        "Não dá para descobrir"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Repare: Caco e Lila dizem coisas contrárias, então o único mentiroso é um deles dois. 2) Logo Tuca fala a verdade: não foi ela. 3) Se Caco fosse o mentiroso, todos estariam inocentes e ninguém teria pegado o pote — impossível. 4) Então quem mente é Lila: foi ela quem pegou.",
+      "distratores_explicados": {
+        "0": "Você provavelmente desconfiou de quem acusou. Mas se Caco mentisse, Lila e Tuca seriam inocentes e o pote não teria sumido com ninguém — impossível.",
+        "2": "Se fosse a Tuca, a frase dela seria mentira E a de Caco também ('Foi a Lila') — dois mentirosos, e o problema diz que é só um.",
+        "3": "Salto nem aparece nas pistas: o enunciado diz que foi um dos TRÊS amigos que falaram.",
+        "4": "Dá para descobrir! Teste cada um como culpado e conte quantos mentiriam: só com Lila dá exatamente 1 mentiroso."
+      },
+      "estrategia_alvo": "eliminacao",
+      "habilidade_bncc": "EF03MA27"
+    },
+    {
+      "id": "p-log-u04",
+      "trilha": "P",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "Salto 🦘, Lila 🐰 e Tuca 🐢 comeram uma fruta cada um: banana, maçã e pera, uma fruta diferente para cada. Salto não comeu banana. Lila comeu a pera. Qual fruta Salto comeu?",
+      "alternativas": [
+        "banana",
+        "pera",
+        "maçã",
+        "banana ou maçã",
+        "Não dá para saber"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Monte uma tabelinha de ✔ e ✘ com amigos e frutas. 2) Lila ✔ pera — então a pera não é de mais ninguém. 3) Para Salto: ✘ banana (pista) e ✘ pera (é da Lila). Sobra a maçã para Salto, e a banana fica com Tuca.",
+      "distratores_explicados": {
+        "0": "A pista diz justamente que Salto NÃO comeu banana. Marque um ✘ nessa casinha da tabela.",
+        "1": "A pera foi da Lila, e cada um comeu uma fruta diferente. Salto não pode repetir.",
+        "3": "Você provavelmente esqueceu de usar a primeira pista: ela corta a banana, e sobra SÓ a maçã.",
+        "4": "Dá para saber! Cruzando as duas pistas na tabelinha, só a maçã sobra para Salto."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF03MA27"
+    },
+    {
+      "id": "p-log-u05",
+      "trilha": "P",
+      "eixo": "logica",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "Na balança da fazenda: 1 abóbora equilibra 2 melões, e 1 melão equilibra 3 laranjas. Quantas laranjas são precisas para equilibrar 2 abóboras e mais 1 melão, tudo junto?",
+      "alternativas": [
+        "5",
+        "9",
+        "12",
+        "15",
+        "7"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe as trocas: cada abóbora vira 2 melões. 2) 2 abóboras = 4 melões; com o melão a mais, ficam 5 melões. 3) Troque cada melão por 3 laranjas: 5 × 3 = 15 laranjas.",
+      "distratores_explicados": {
+        "0": "Você achou os 5 melões e parou. Ainda falta trocar cada melão por 3 laranjas: 5 × 3 = 15.",
+        "1": "Você provavelmente trocou só 3 melões por laranjas. São 5 melões ao todo: 5 × 3 = 15.",
+        "2": "Você provavelmente esqueceu o melão avulso: só as 2 abóboras dão 4 melões = 12 laranjas, e faltam mais 3.",
+        "4": "Você provavelmente somou 4 + 3 em vez de trocar melões por laranjas. Cada um dos 5 melões vale 3 laranjas."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA07"
+    },
+    {
+      "id": "p-log-u06",
+      "trilha": "P",
+      "eixo": "logica",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "Quatro amigos apostaram corrida. O canguru Salto 🦘 chegou logo depois da coelha Lila 🐰. O macaco Caco 🐵 chegou antes de Lila. A tartaruga Tuca 🐢 não chegou por último. Quem chegou por último?",
+      "alternativas": [
+        "Tuca",
+        "Salto",
+        "Caco",
+        "Lila",
+        "Não dá para saber"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Elimine quem NÃO pode ser o último: Tuca (a pista já diz), Caco (chegou antes de Lila, e Salto veio depois dela) e Lila (Salto chegou logo depois dela). 2) Sobra um único suspeito: Salto. 3) Repare no truque: nem precisamos saber a posição exata de Tuca — o último é certamente Salto.",
+      "distratores_explicados": {
+        "0": "A pista diz exatamente o contrário: Tuca NÃO chegou por último.",
+        "2": "Caco chegou antes de Lila, e depois de Lila ainda veio Salto. Então Caco não pode ser o último.",
+        "3": "Salto chegou LOGO DEPOIS de Lila, então tem alguém atrás dela. Lila não é a última.",
+        "4": "Dá para saber! Mesmo sem montar a fila inteira, ao eliminar os outros três só sobra Salto para o último lugar."
+      },
+      "estrategia_alvo": "eliminacao",
+      "habilidade_bncc": "EF04MA27"
+    },
+    {
+      "id": "p-log-s01",
+      "trilha": "P",
+      "eixo": "logica",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "A tartaruga Tuca 🐢 é mais velha que a coelha Lila 🐰. O macaco Caco 🐵 é mais novo que Lila. Quem é o mais novo dos três?",
+      "alternativas": [
+        "Lila",
+        "Tuca",
+        "Caco",
+        "Tuca e Caco têm a mesma idade",
+        "Não dá para saber"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Desenhe uma escadinha de idades. 2) Tuca fica acima de Lila; Caco fica abaixo de Lila. 3) A escadinha mostra: Tuca, depois Lila, depois Caco — o mais novo é Caco.",
+      "distratores_explicados": {
+        "0": "Lila fica no MEIO da escadinha: mais nova que Tuca, mas mais velha que Caco.",
+        "1": "Você provavelmente leu ao contrário: Tuca é a mais VELHA dos três.",
+        "3": "Nenhuma pista fala em idades iguais. Tuca está no alto da escadinha e Caco embaixo.",
+        "4": "Dá para saber! As duas pistas montam a escadinha completa: Tuca > Lila > Caco."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA27"
+    },
+    {
+      "id": "p-log-s02",
+      "trilha": "P",
+      "eixo": "logica",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Na feira da fazenda, 1 mamão equilibra 2 bananas na balança. Quantas bananas são precisas para equilibrar 3 mamões?",
+      "alternativas": [
+        "6",
+        "5",
+        "3",
+        "2",
+        "8"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe: cada mamão vira 2 bananas na balança. 2) Para 3 mamões: 2 + 2 + 2. 3) São 6 bananas.",
+      "distratores_explicados": {
+        "1": "Você provavelmente somou 3 + 2. Cada mamão vale 2 bananas: troque um por um e some 2 + 2 + 2.",
+        "2": "Você provavelmente contou os mamões. A pergunta pede as BANANAS que os equilibram: 6.",
+        "3": "Essas são as bananas de UM mamão só. São 3 mamões: 6 bananas.",
+        "4": "Você provavelmente usou 4 mamões (4 × 2 = 8). São 3 mamões: 3 × 2 = 6."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA07"
+    },
+    {
+      "id": "p-log-s03",
+      "trilha": "P",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Lila 🐰, Tuca 🐢 e Caco 🐵 apostaram uma corrida, e um deles venceu. Lila disse: 'Não fui eu'. Tuca disse: 'Foi a Lila'. Caco disse: 'Não fui eu'. Exatamente UMA dessas frases é verdadeira. Quem venceu a corrida?",
+      "alternativas": [
+        "Lila",
+        "Tuca",
+        "Salto",
+        "Caco",
+        "Não dá para saber"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Teste cada um como vencedor e conte as frases verdadeiras. 2) Se Lila venceu: Tuca e Caco falam a verdade — 2 verdades, não vale. Se Tuca venceu: Lila e Caco falam a verdade — 2 verdades, não vale. 3) Se Caco venceu: só a frase de Lila é verdadeira — exatamente 1. ✓ O vencedor é Caco.",
+      "distratores_explicados": {
+        "0": "Se Lila tivesse vencido, as frases de Tuca E de Caco seriam verdadeiras — duas verdades, e o problema permite só uma.",
+        "1": "Se Tuca tivesse vencido, as frases de Lila E de Caco seriam verdadeiras — duas verdades, e o problema permite só uma.",
+        "2": "Salto não estava na corrida: o enunciado diz que um dos TRÊS venceu.",
+        "4": "Dá para saber! Testando os três casos, só 'Caco venceu' deixa exatamente uma frase verdadeira."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF04MA27"
+    },
+    {
+      "id": "p-log-s04",
+      "trilha": "P",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Salto 🦘, Lila 🐰, Tuca 🐢 e Caco 🐵 vestem camisetas de cores diferentes: amarela, verde, azul e vermelha. Salto veste a amarela e Tuca veste a azul. Lila não veste a verde. Qual é a cor da camiseta de Caco?",
+      "alternativas": [
+        "vermelha",
+        "azul",
+        "amarela",
+        "Não dá para saber",
+        "verde"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Monte a tabelinha e marque as certezas: Salto ✔ amarela, Tuca ✔ azul. 2) Para Lila sobram verde e vermelha; como ela não veste verde, Lila ✔ vermelha. 3) A única cor que sobra para Caco é a verde.",
+      "distratores_explicados": {
+        "0": "A vermelha fica com Lila: para ela só sobravam verde e vermelha, e a pista corta a verde.",
+        "1": "A azul é da Tuca, e cada um veste uma cor diferente.",
+        "2": "A amarela é do Salto, e as cores não se repetem.",
+        "3": "Dá para saber! Preenchendo a tabelinha, as pistas deixam uma única cor livre para Caco: a verde."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF03MA27"
+    },
+    {
+      "id": "p-log-s05",
+      "trilha": "P",
+      "eixo": "logica",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "Na balança da Vovó Bela, 1 pera e 1 maçã juntas equilibram 10 ameixas. Sozinha, a pera equilibra a maçã junto com 2 ameixas. Quantas ameixas equilibram só a pera?",
+      "alternativas": [
+        "4",
+        "6",
+        "5",
+        "8",
+        "2"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Teste as alternativas: se a pera vale 6 ameixas, a maçã vale 10 − 6 = 4. 2) Confira na outra pista: maçã + 2 ameixas = 4 + 2 = 6, igualzinho à pera. ✓ 3) Tudo bate: a pera equilibra 6 ameixas.",
+      "distratores_explicados": {
+        "0": "Esse é o peso da MAÇÃ (4 ameixas). A pera pesa 2 ameixas a mais: 6.",
+        "2": "Você provavelmente dividiu 10 no meio (5 e 5), mas as frutas não pesam igual: a pera pesa 2 ameixas a mais que a maçã.",
+        "3": "Você provavelmente fez 10 − 2. Teste: se a pera valesse 8, a maçã valeria 2, e 2 + 2 = 4 não empata com 8.",
+        "4": "Esse é só o quanto a pera pesa A MAIS que a maçã, não o peso da pera."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF04MA13"
+    },
+    {
+      "id": "p-log-s06",
+      "trilha": "P",
+      "eixo": "logica",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "Cinco personagens fazem fila para o bolo: Salto 🦘, Lila 🐰, Tuca 🐢, Caco 🐵 e a Vovó Bela. A Vovó Bela é a primeira. Caco está bem no meio da fila. Lila está logo atrás de Caco. Salto não é o último. Quem é o último da fila?",
+      "alternativas": [
+        "Tuca",
+        "Salto",
+        "Lila",
+        "Caco",
+        "Vovó Bela"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Marque as certezas: Vovó Bela na 1ª posição, Caco na 3ª (o meio de 5) e Lila na 4ª. 2) Sobram as posições 2ª e 5ª para Salto e Tuca. 3) Como Salto não é o último, ele fica na 2ª — e a última é Tuca.",
+      "distratores_explicados": {
+        "1": "A pista diz que Salto NÃO é o último. Restando só a 2ª e a 5ª posições, ele fica na 2ª.",
+        "2": "Lila está logo atrás de Caco, na 4ª posição — não na última.",
+        "3": "Caco está bem no meio da fila de 5, ou seja, na 3ª posição.",
+        "4": "A Vovó Bela é a PRIMEIRA da fila, não a última."
+      },
+      "estrategia_alvo": "eliminacao",
+      "habilidade_bncc": "EF04MA27"
+    },
+    {
+      "id": "p-con-u01",
+      "trilha": "P",
+      "eixo": "contagem",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "A tartaruga Tuca 🐢 vai à festa e quer usar 1 chapéu e 1 laço. Ela tem 2 chapéus e 3 laços, todos diferentes. De quantos jeitos diferentes ela pode se arrumar?",
+      "alternativas": [
+        "5",
+        "3",
+        "2",
+        "9",
+        "6"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Faça uma lista organizada: com o chapéu 1, ela pode usar o laço A, o B ou o C — 3 jeitos. 2) Com o chapéu 2, mais 3 jeitos. 3) 3 + 3 = 6 jeitos.",
+      "distratores_explicados": {
+        "0": "Você provavelmente somou 2 + 3. Cada chapéu combina com CADA laço: liste os pares e conte 6.",
+        "1": "Você provavelmente contou só os laços. Cada laço pode aparecer com 2 chapéus diferentes.",
+        "2": "Você provavelmente contou só os chapéus. Para cada chapéu ainda há 3 escolhas de laço.",
+        "3": "Você provavelmente fez 3 × 3, mas são 2 chapéus, não 3: 2 × 3 = 6."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF03MA08"
+    },
+    {
+      "id": "p-con-u02",
+      "trilha": "P",
+      "eixo": "contagem",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "Da toca da coelha Lila 🐰 até o lago existem 2 trilhas. Do lago até o pomar existem 4 trilhas. Quantos caminhos diferentes Lila pode fazer da toca até o pomar, passando pelo lago?",
+      "alternativas": [
+        "6",
+        "4",
+        "2",
+        "8",
+        "16"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe o mapinha: toca —(2 trilhas)— lago —(4 trilhas)— pomar. 2) Para CADA uma das 2 trilhas do começo, há 4 jeitos de continuar. 3) 4 + 4 = 8 caminhos.",
+      "distratores_explicados": {
+        "0": "Você provavelmente somou 2 + 4. Cada trilha do começo se combina com cada trilha do fim: 2 × 4 = 8.",
+        "1": "Você provavelmente contou só as trilhas do lago ao pomar. Cada uma delas pode vir depois de 2 começos diferentes.",
+        "2": "Você provavelmente contou só as trilhas da toca ao lago. O caminho continua até o pomar.",
+        "4": "Você provavelmente fez 4 × 4, mas do começo saem só 2 trilhas: 2 × 4 = 8."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA08"
+    },
+    {
+      "id": "p-con-u03",
+      "trilha": "P",
+      "eixo": "contagem",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "O macaco Caco 🐵 começou um cofrinho: no 1º dia guardou 1 moeda, no 2º dia guardou 2 moedas, no 3º dia guardou 3 moedas, e assim por diante. Quantas moedas ele terá guardado ao todo, do 1º ao 5º dia?",
+      "alternativas": [
+        "5",
+        "10",
+        "15",
+        "14",
+        "25"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Monte a listinha dos dias: 1, 2, 3, 4, 5. 2) Junte aos pares para somar fácil: (1 + 4) + (2 + 3) = 5 + 5 = 10, e ainda falta o 5 do último dia. 3) 10 + 5 = 15 moedas.",
+      "distratores_explicados": {
+        "0": "Essas são só as moedas do 5º dia. A pergunta pede o total de TODOS os dias: 1 + 2 + 3 + 4 + 5.",
+        "1": "Você provavelmente parou no 4º dia (1 + 2 + 3 + 4 = 10). Falta somar o 5º dia: 15.",
+        "3": "Você provavelmente errou a soma por 1. Junte aos pares: (1 + 4) + (2 + 3) + 5 = 15.",
+        "4": "Você provavelmente fez 5 × 5, mas os dias têm quantidades diferentes: a soma da lista dá 15."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF03MA06"
+    },
+    {
+      "id": "p-con-u04",
+      "trilha": "P",
+      "eixo": "contagem",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "O colar da coelha Lila 🐰 repete sempre o mesmo grupinho de 4 contas: ⭐🌙🌙☀️⭐🌙🌙☀️... Nas 18 primeiras contas do colar, quantas vezes aparece o ☀️?",
+      "alternativas": [
+        "3",
+        "4",
+        "5",
+        "6",
+        "9"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) O ciclo tem 4 contas, e o ☀️ aparece 1 vez em cada ciclo. 2) 18 ÷ 4 = 4 ciclos completos (16 contas), e sobram 2 contas: ⭐ e 🌙, sem sol. 3) O ☀️ aparece 4 vezes.",
+      "distratores_explicados": {
+        "0": "Você provavelmente contou só 3 voltas do ciclo. Em 18 contas cabem 4 ciclos completos de 4 contas.",
+        "2": "Você provavelmente achou que as 2 contas que sobram trazem um sol, mas elas são ⭐ e 🌙.",
+        "3": "Você provavelmente dividiu 18 por 3, mas o grupinho que se repete tem 4 contas.",
+        "4": "Você provavelmente pensou na metade de 18. O sol aparece só 1 vez a cada 4 contas."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF03MA10"
+    },
+    {
+      "id": "p-con-u05",
+      "trilha": "P",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "A janela da casa da Vovó Bela é quadriculada: 3 vidrinhos por 3 vidrinhos. Quantos quadrados de TODOS os tamanhos dá para ver na janela (contando os pequenos, os médios de 2 por 2 e o grandão)?",
+      "alternativas": [
+        "14",
+        "9",
+        "10",
+        "13",
+        "5"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Comece pequeno: numa janela 2 por 2 há 4 pequenos + 1 grande = 5 quadrados. 2) Na 3 por 3, conte por tamanho: pequenos = 9; médios de 2×2 = 4 (deslize o quadrado médio pelas posições); grandão = 1. 3) 9 + 4 + 1 = 14 quadrados.",
+      "distratores_explicados": {
+        "1": "Você provavelmente contou só os 9 vidrinhos pequenos. Há também quadrados médios de 2×2 e o grandão.",
+        "2": "Você provavelmente contou os pequenos e o grandão, mas esqueceu os 4 médios de 2×2.",
+        "3": "Você provavelmente achou só 3 médios. Deslize o quadrado 2×2 pela janela: ele cabe em 4 posições.",
+        "4": "Você provavelmente contou só os 4 médios e o grandão, esquecendo os 9 pequenos."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF03MA15"
+    },
+    {
+      "id": "p-con-u06",
+      "trilha": "P",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "Na festa da fazenda estavam 5 personagens: Salto 🦘, Lila 🐰, Tuca 🐢, Caco 🐵 e a Vovó Bela. Cada um deu exatamente 1 abraço em cada um dos outros. Quantos abraços aconteceram na festa?",
+      "alternativas": [
+        "5",
+        "20",
+        "10",
+        "25",
+        "4"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Comece pequeno: com 2 amigos há 1 abraço; com 3 amigos, 3 abraços; com 4 amigos, 6 abraços. 2) Veja o padrão: cada amigo novo abraça todos os que já estavam (1, depois +2, depois +3...). 3) Com 5 amigos: 6 + 4 = 10 abraços.",
+      "distratores_explicados": {
+        "0": "Você provavelmente contou 1 abraço por pessoa. Mas cada pessoa abraça 4 amigas, e cada abraço envolve duas pessoas ao mesmo tempo.",
+        "1": "Você provavelmente fez 5 × 4, contando cada abraço DUAS vezes (uma para cada pessoa). Divida pela metade: 10.",
+        "3": "Você provavelmente fez 5 × 5, incluindo cada um abraçando a si mesmo. Ninguém se abraça sozinho!",
+        "4": "Esses são os abraços de UMA pessoa só. Some os de todo mundo sem repetir: 4 + 3 + 2 + 1 = 10."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF04MA06"
+    },
+    {
+      "id": "p-con-s01",
+      "trilha": "P",
+      "eixo": "contagem",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "A coelha Lila 🐰 pintou esta fileira de figurinhas: 🐟🐟🐢🐟🐢🐟🐟🐢🐟. Quantos peixinhos há A MAIS do que tartarugas?",
+      "alternativas": [
+        "2",
+        "3",
+        "4",
+        "6",
+        "9"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Conte apontando uma a uma: peixinhos = 6, tartarugas = 3. 2) Forme pares de peixinho com tartaruga: 3 pares se formam. 3) Sobram 6 − 3 = 3 peixinhos a mais.",
+      "distratores_explicados": {
+        "0": "Você provavelmente contou 5 peixinhos. Aponte um a um com o dedo: são 6 peixinhos e 3 tartarugas.",
+        "2": "Você provavelmente contou um peixinho a mais. Risque cada figurinha já contada para não se perder.",
+        "3": "Esse é o TOTAL de peixinhos. A pergunta pede a diferença: 6 − 3 = 3.",
+        "4": "Você provavelmente somou tudo (6 + 3). A pergunta compara: quantos peixinhos SOBRAM depois de formar pares."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA06"
+    },
+    {
+      "id": "p-con-s02",
+      "trilha": "P",
+      "eixo": "contagem",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Na sorveteria da fazenda há 4 sabores (morango, chocolate, milho e coco) e 2 tipos de casquinha (simples e crocante). O macaco Caco 🐵 vai escolher 1 sabor e 1 casquinha. Quantas escolhas diferentes ele pode fazer?",
+      "alternativas": [
+        "6",
+        "4",
+        "2",
+        "16",
+        "8"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Monte uma tabela: 4 linhas (sabores) e 2 colunas (casquinhas). 2) Cada quadradinho da tabela é uma escolha diferente. 3) 4 × 2 = 8 escolhas.",
+      "distratores_explicados": {
+        "0": "Você provavelmente somou 4 + 2. Cada sabor combina com CADA casquinha: a tabela tem 4 × 2 = 8 quadradinhos.",
+        "1": "Você provavelmente contou só os sabores. Cada sabor ainda pode vir em 2 casquinhas.",
+        "2": "Você provavelmente contou só as casquinhas. Cada casquinha combina com 4 sabores.",
+        "3": "Você provavelmente fez 4 × 4, mas são só 2 tipos de casquinha: 4 × 2 = 8."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF04MA08"
+    },
+    {
+      "id": "p-con-s03",
+      "trilha": "P",
+      "eixo": "contagem",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "O treino do canguru Salto 🦘 repete um ciclo de 3 dias: pula, pula, descansa — e recomeça. O dia 1 foi de pulos. Em 20 dias de treino, quantos dias são de descanso?",
+      "alternativas": [
+        "5",
+        "7",
+        "10",
+        "6",
+        "14"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) O descanso cai de 3 em 3 dias: dias 3, 6, 9, ... 2) 20 ÷ 3 dá 6 ciclos completos (18 dias), com 1 descanso em cada: 6 descansos. 3) Os dias 19 e 20 recomeçam o ciclo com pulos — então ficam 6 dias de descanso.",
+      "distratores_explicados": {
+        "0": "Você provavelmente contou um ciclo a menos. Em 20 dias cabem 6 ciclos completos de 3 dias.",
+        "1": "Você provavelmente achou que o dia 20 é de descanso, mas os dias 19 e 20 são de pulos (o ciclo recomeçou no dia 19).",
+        "2": "Você provavelmente pensou na metade de 20. O descanso aparece só 1 vez a cada 3 dias.",
+        "4": "Esses são os dias de PULOS. A pergunta pede os dias de descanso: 20 − 14 = 6."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF04MA11"
+    },
+    {
+      "id": "p-con-s04",
+      "trilha": "P",
+      "eixo": "contagem",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "A tartaruga Tuca 🐢 escreveu todos os números de 10 até 30. Quantos desses números têm o algarismo 2?",
+      "alternativas": [
+        "9",
+        "10",
+        "11",
+        "12",
+        "21"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Liste em ordem para não esquecer nenhum: primeiro o 12; depois 20, 21, 22, 23, 24, 25, 26, 27, 28, 29. 2) Conte a lista: 1 + 10 = 11 números. 3) Cuidado: o 30 não tem algarismo 2.",
+      "distratores_explicados": {
+        "0": "Você provavelmente contou só de 21 a 29. Faltaram o 12 e o 20.",
+        "1": "Você provavelmente esqueceu o 12 — ele também tem o algarismo 2, na casa das unidades.",
+        "3": "Você provavelmente incluiu o 30, mas ele é feito de 3 e 0, sem nenhum 2.",
+        "4": "Você provavelmente contou TODOS os números de 10 a 30. A pergunta pede só os que têm o algarismo 2."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF03MA01"
+    },
+    {
+      "id": "p-con-s05",
+      "trilha": "P",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "No mapa da fazenda, as ruas formam quadradinhos. Para ir da casa até o galinheiro, o macaco Caco 🐵 precisa andar 2 quarteirões para a direita (D) e 2 para baixo (B), em qualquer ordem. Quantos caminhos diferentes ele pode fazer?",
+      "alternativas": [
+        "2",
+        "4",
+        "5",
+        "6",
+        "8"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Cada caminho é uma ordem das letras D, D, B, B. 2) Liste organizadamente, começando por D e depois por B: DDBB, DBDB, DBBD, BDDB, BDBD, BBDD. 3) São 6 caminhos.",
+      "distratores_explicados": {
+        "0": "Você provavelmente contou só os dois caminhos de contorno (tudo D depois tudo B, e o contrário). Há caminhos que alternam no meio.",
+        "1": "Você provavelmente perdeu 2 caminhos. Liste as ordens em sequência certinha para não pular nenhuma: são 6.",
+        "2": "Você provavelmente esqueceu 1 caminho. Siga uma ordem fixa na lista (primeiro os que começam com D) e confira: 6.",
+        "4": "Você provavelmente contou algum caminho duas vezes. Cada ordem das letras D, D, B, B só vale uma vez: são 6."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF04MA08"
+    },
+    {
+      "id": "p-con-s06",
+      "trilha": "P",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "No quintal da Vovó Bela há galinhas e porquinhos. A tartaruga Tuca 🐢 contou 5 cabeças e 14 pés ao todo. Quantos porquinhos há no quintal?",
+      "alternativas": [
+        "1",
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Teste as alternativas: com 2 porquinhos, sobram 3 galinhas para dar 5 cabeças. 2) Conte os pés: 2 × 4 + 3 × 2 = 8 + 6 = 14. ✓ 3) Confira outra opção para ter certeza: 3 porquinhos e 2 galinhas dariam 12 + 4 = 16 pés — passa de 14. A resposta é 2 porquinhos.",
+      "distratores_explicados": {
+        "0": "Teste: 1 porquinho e 4 galinhas dão 4 + 8 = 12 pés. Faltam 2 pés para os 14 contados.",
+        "1": "Esse é o número de GALINHAS. Teste: 3 porquinhos e 2 galinhas dariam 16 pés, e são 14.",
+        "2": "Teste: 4 porquinhos e 1 galinha dão 16 + 2 = 18 pés — passa muito dos 14.",
+        "3": "Esse é o total de CABEÇAS. Se os 5 fossem porquinhos, seriam 20 pés, bem mais que 14."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF04MA06"
+    },
+    {
+      "id": "p-num-n01",
+      "trilha": "P",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "nivelamento",
+      "enunciado": "O macaco Caco 🐵 tem 40 figurinhas e dá 15 para o canguru Salto 🦘. Com quantas figurinhas Caco fica?",
+      "alternativas": [
+        "30",
+        "25",
+        "35",
+        "15",
+        "55"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Desenhe as 40 figurinhas como 4 grupinhos de 10. 2) Tire 15: um grupinho inteiro de 10 e mais 5 de outro grupinho. 3) 40 − 10 = 30 e 30 − 5 = 25 figurinhas.",
+      "distratores_explicados": {
+        "0": "Você provavelmente tirou só 10. Ainda faltam mais 5: 30 − 5 = 25.",
+        "2": "Você provavelmente tirou só 5. O 15 é uma dezena E mais 5: 40 − 15 = 25.",
+        "3": "Essas são as figurinhas que Caco DEU. A pergunta pede as que ficaram com ele.",
+        "4": "Você provavelmente somou (40 + 15). Quem dá figurinhas fica com menos: 40 − 15 = 25."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA06"
+    },
+    {
+      "id": "p-geo-n01",
+      "trilha": "P",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "nivelamento",
+      "enunciado": "O quadro da coelha Lila 🐰 é um quadrado com lados de 5 cm. Ela vai colar uma fitinha colorida em toda a volta do quadro. Quantos centímetros de fitinha ela precisa?",
+      "alternativas": [
+        "5",
+        "10",
+        "15",
+        "25",
+        "20"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe o quadrado: um quadrado tem 4 lados iguais. 2) Cada lado mede 5 cm; a fitinha percorre os quatro: 5 + 5 + 5 + 5. 3) São 20 cm de fitinha.",
+      "distratores_explicados": {
+        "0": "Esse é o tamanho de UM lado só. A fitinha dá a volta pelos 4 lados.",
+        "1": "Você provavelmente somou só 2 lados. A volta completa passa pelos 4: 20 cm.",
+        "2": "Você provavelmente somou 3 lados e esqueceu um. Marque cada lado no desenho: 5 + 5 + 5 + 5 = 20.",
+        "3": "Você provavelmente fez 5 × 5, que contaria quadradinhos DENTRO do quadro. O contorno soma os 4 lados: 20."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF03MA26"
+    },
+    {
+      "id": "p-con-n01",
+      "trilha": "P",
+      "eixo": "contagem",
+      "valor_pontos": 4,
+      "uso": "nivelamento",
+      "enunciado": "A pulseira da tartaruga Tuca 🐢 repete sempre o grupinho 🔴🔵🔵 do começo ao fim. Nas 20 primeiras contas da pulseira, quantas contas são vermelhas?",
+      "alternativas": [
+        "6",
+        "10",
+        "7",
+        "8",
+        "13"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) O ciclo tem 3 contas, com 1 vermelha em cada ciclo. 2) 20 ÷ 3 dá 6 ciclos completos (18 contas) → 6 vermelhas; sobram as contas 19 e 20, que são 🔴 e 🔵. 3) 6 + 1 = 7 vermelhas.",
+      "distratores_explicados": {
+        "0": "Você provavelmente esqueceu o pedacinho que sobra: a conta 19 recomeça o ciclo e é vermelha.",
+        "1": "Você provavelmente pensou na metade de 20. Só 1 conta a cada 3 é vermelha.",
+        "3": "Você provavelmente contou 2 vermelhas no pedacinho final, mas das contas 19 e 20 só a 19 é vermelha.",
+        "4": "Você provavelmente contou as contas AZUIS (20 − 7 = 13). A pergunta pede as vermelhas."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF04MA11"
+    },
+    {
+      "id": "p-log-n01",
+      "trilha": "P",
+      "eixo": "logica",
+      "valor_pontos": 5,
+      "uso": "nivelamento",
+      "enunciado": "A Vovó Bela tem três potes com etiquetas 'açúcar', 'farinha' e 'fubá', mas TODAS as etiquetas estão no pote errado. Espiando, ela descobriu que o pote com etiqueta 'açúcar' tem farinha. O que há dentro do pote com etiqueta 'farinha'?",
+      "alternativas": [
+        "açúcar",
+        "farinha",
+        "farinha ou fubá",
+        "fubá",
+        "Não dá para saber"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) O pote 'farinha' não pode ter farinha (etiqueta errada) — e a farinha já está no pote 'açúcar'. 2) Se o pote 'farinha' tivesse açúcar, sobraria fubá para o pote 'fubá' — etiqueta certa, o que é proibido! 3) Eliminando o impossível: o pote 'farinha' tem fubá (e o pote 'fubá' tem o açúcar).",
+      "distratores_explicados": {
+        "0": "Se o açúcar estivesse aí, o pote 'fubá' ficaria com o fubá — uma etiqueta certa, e o problema diz que TODAS estão erradas.",
+        "1": "A etiqueta 'farinha' estaria certa, o que é proibido — e a farinha já foi encontrada no pote 'açúcar'.",
+        "2": "Você provavelmente esqueceu de usar a pista de que NENHUMA etiqueta está no lugar certo: ela elimina a farinha e decide tudo.",
+        "4": "Dá para saber! Eliminando o que é impossível, sobra uma única opção: fubá."
+      },
+      "estrategia_alvo": "eliminacao",
+      "habilidade_bncc": "EF04MA27"
+    }
+  ]
+}

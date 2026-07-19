@@ -7,7 +7,7 @@ Serve o hub do aluno, o painel dos pais/admin e a API. Auth por token de sessão
 """
 import os, json, re, unicodedata
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form
 from fastapi.responses import HTMLResponse, JSONResponse, FileResponse, Response
 from fastapi.staticfiles import StaticFiles
@@ -15,6 +15,7 @@ from pydantic import BaseModel
 
 import db
 import eduhelp
+import olimpiadas as oli
 
 BASE        = Path(__file__).parent
 STATIC      = BASE / 'static'
@@ -48,6 +49,7 @@ def _carregar_conteudo():
 CONTEUDO_FULL = _carregar_conteudo()
 TOTAL_MISSOES = sum(len([mi for mi in m.get('missoes', []) if not mi.get('link')])
                     for m in CONTEUDO_FULL)
+oli.carregar()      # valida o banco olímpico no boot — não sobe com conteúdo quebrado
 
 (STATIC / 'avatars').mkdir(parents=True, exist_ok=True)
 app.mount('/avatars', StaticFiles(directory=str(STATIC / 'avatars')), name='avatars')
@@ -157,6 +159,10 @@ def appjs():
 @app.get('/pais.js')
 def paisjs():
     return FileResponse(str(STATIC / 'pais.js'), media_type='application/javascript')
+
+@app.get('/oli.js')
+def olijs():
+    return FileResponse(str(STATIC / 'oli.js'), media_type='application/javascript')
 
 @app.get('/style.css')
 def css():
@@ -410,6 +416,270 @@ def api_eduhelp_sugestoes(senha: str = ''):
 def api_eduhelp(payload: EduHelpIn, senha: str = ''):
     _aluno_id(senha)
     return JSONResponse(eduhelp.responder(payload.pergunta, _eduhelp_cfg()))
+
+# ── Olimpíadas de Matemática (estilo Canguru) ─────────────────
+def _oli_perfil(aid):
+    p = db.oli_perfil_get(aid)
+    if not p or not p.get('trilha'):
+        raise HTTPException(409, "Faça o nivelamento primeiro")
+    return p
+
+def _oli_respostas_map(row):
+    """respostas_json → {qid: int|None} (branco explícito e ausente viram None)."""
+    out = {}
+    for qid, e in (row.get('respostas') or {}).items():
+        out[qid] = e.get('r') if isinstance(e, dict) else None
+    return out
+
+def _oli_estrategias_pub(ids=None):
+    return [e for e in oli.ESTRATEGIAS if ids is None or e['id'] in ids]
+
+def _oli_medalhas_pratica(aid, trilha):
+    """Concede medalhas de unidade/trilha completa após uma resposta certa."""
+    unidades = oli.montar_unidades(trilha, db.oli_progresso_list(aid, trilha))
+    completas = [u for u in unidades if u['total'] and u['feitas'] >= u['total']]
+    novas = []
+    if completas:
+        m = db.medalha_conceder(aid, 'oli_unidade1')
+        if m: novas.append(m)
+    if unidades and len(completas) == len(unidades):
+        m = db.medalha_conceder(aid, 'oli_trilha')
+        if m: novas.append(m)
+    return novas
+
+def _oli_sim_pub(row, agora=None):
+    """Estado do simulado aberto para o cliente (questões sanitizadas, sem correção)."""
+    sim = oli.SIMULADOS[row['simulado_id']]
+    return {"sim_id": row['id'], "simulado": row['simulado_id'], "trilha": row['trilha'],
+            "nome": sim.get('nome', row['simulado_id']),
+            "questoes": [oli.sanitizar_questao(oli.QUESTOES[q]) for q in sim['questoes']],
+            "respostas": row.get('respostas') or {}, "marcadas": row.get('marcadas') or [],
+            "restante_seg": db.oli_sim_restante(row, agora),
+            "duracao_seg": row['duracao_seg']}
+
+def _oli_autoenviar(aid, row):
+    """Tempo esgotado: envia com o que está salvo (auto=1) e devolve o relatório."""
+    sim = oli.SIMULADOS[row['simulado_id']]
+    respostas = _oli_respostas_map(row)
+    anteriores = [h['nota'] for h in db.oli_simulados_do_aluno(aid) if h['trilha'] == row['trilha']]
+    fim = datetime.fromisoformat(row['iniciado_ts']) + timedelta(seconds=row['duracao_seg'])
+    rel = oli.montar_relatorio(sim, respostas, row['iniciado_ts'], fim.isoformat(), anteriores)
+    db.oli_simulado_enviar(aid, row['id'], rel['nota'], json.dumps(rel), auto=1)
+    _oli_medalhas_simulado(aid, rel)
+    return {"sim_id": row['id'], "auto": True, "relatorio": rel}
+
+def _oli_medalhas_simulado(aid, rel):
+    novas = []
+    m = db.medalha_conceder(aid, 'oli_simulado1')
+    if m: novas.append(m)
+    if rel['nota'] >= 0.8 * rel['nota_max']:
+        m = db.medalha_conceder(aid, 'oli_nota_top')
+        if m: novas.append(m)
+    return novas
+
+@app.get('/api/oli/estado')
+def api_oli_estado(senha: str = ''):
+    aid = _aluno_id(senha)
+    perfil = db.oli_perfil_get(aid)
+    hist = db.oli_simulados_do_aluno(aid)
+    aberto = db.oli_simulado_aberto(aid)
+    out = {"perfil": perfil, "trilhas": oli.TRILHA_NOMES,
+           "estrategias": _oli_estrategias_pub(),
+           "simulados_hist": hist,
+           "simulado_aberto": ({"sim_id": aberto['id'], "simulado": aberto['simulado_id'],
+                                "restante_seg": db.oli_sim_restante(aberto)} if aberto else None)}
+    if perfil and perfil.get('trilha'):
+        t = perfil['trilha']
+        out["trilha_nome"] = oli.TRILHA_NOMES[t]
+        out["unidades"] = oli.montar_unidades(t, db.oli_progresso_list(aid, t))
+        out["simulados"] = [{"id": s['id'], "nome": s.get('nome', s['id']),
+                             "n_questoes": len(s['questoes']), "duracao_seg": s['duracao_seg'],
+                             "nota_max": oli.nota_maxima(s)}
+                            for s in oli.SIMULADOS.values() if s['trilha'] == t]
+    return JSONResponse(out)
+
+@app.get('/api/oli/nivelamento')
+def api_oli_nivelamento(senha: str = ''):
+    aid = _aluno_id(senha)
+    p = db.oli_perfil_get(aid)
+    if p and p.get('trilha'):
+        return JSONResponse(status_code=409, content={"ok": False, "ja_nivelado": True, "trilha": p['trilha']})
+    return {"questoes": [oli.sanitizar_questao(oli.QUESTOES[q])
+                         for q in oli.NIVELAMENTO['questoes']]}
+
+class OliNivelamentoIn(BaseModel):
+    respostas: dict = {}
+
+@app.post('/api/oli/nivelamento')
+def api_oli_nivelamento_post(payload: OliNivelamentoIn, senha: str = ''):
+    aid = _aluno_id(senha)
+    p = db.oli_perfil_get(aid)
+    if p and p.get('trilha'):
+        return JSONResponse(status_code=409, content={"ok": False, "ja_nivelado": True, "trilha": p['trilha']})
+    resultado = oli.corrigir_nivelamento(payload.respostas or {})
+    aluno = db.aluno_get(aid) or {}
+    sugerida = oli.sugerir_trilha(aluno.get('idade', 0), resultado['por_trilha'])
+    resultado['sugerida'] = sugerida
+    resultado['ts'] = datetime.now().isoformat()
+    db.oli_perfil_set_trilha(aid, sugerida, 'nivelamento',
+                             json.dumps({**resultado, "por_trilha": {k: list(v) for k, v in resultado['por_trilha'].items()}}))
+    novas = [m for m in [db.medalha_conceder(aid, 'oli_nivelado')] if m]
+    return {"ok": True, "acertos": resultado['acertos'], "total": resultado['total'],
+            "trilha": sugerida, "trilha_nome": oli.TRILHA_NOMES[sugerida], "novas_medalhas": novas}
+
+@app.get('/api/oli/unidade')
+def api_oli_unidade(eixo: str, senha: str = ''):
+    aid = _aluno_id(senha)
+    p = _oli_perfil(aid)
+    if eixo not in oli.EIXO_IDS:
+        raise HTTPException(404, "Eixo não encontrado")
+    qs = oli.questoes_da_unidade(p['trilha'], eixo)
+    prog = {r['questao_id']: r for r in db.oli_progresso_list(aid, p['trilha'])}
+    questoes = []
+    for q in qs:
+        pr = prog.get(q['id'])
+        questoes.append({**oli.sanitizar_questao(q),
+                         "feita": bool(pr), "acertou": bool(pr and pr['acertou'])})
+    eixo_meta = next(e for e in oli.EIXOS if e['id'] == eixo)
+    estrategias = sorted({q['estrategia_alvo'] for q in qs})
+    return {"eixo": eixo_meta, "trilha": p['trilha'],
+            "estrategias": _oli_estrategias_pub(estrategias), "questoes": questoes}
+
+class OliResponderIn(BaseModel):
+    questao: str
+    resposta: int
+
+@app.post('/api/oli/responder')
+def api_oli_responder(payload: OliResponderIn, senha: str = ''):
+    aid = _aluno_id(senha)
+    p = _oli_perfil(aid)
+    q = oli.QUESTOES.get(payload.questao)
+    if not q or q['uso'] != 'unidade' or q['trilha'] != p['trilha']:
+        raise HTTPException(404, "Questão não encontrada")
+    corr = oli.corrigir(payload.questao, payload.resposta)
+    if corr is None:
+        raise HTTPException(422, "Resposta inválida")
+    reg = db.oli_registrar_resposta(aid, q['id'], q['trilha'], q['eixo'],
+                                    corr['correto'], q['valor_pontos'])
+    novas = _oli_medalhas_pratica(aid, p['trilha']) if corr['correto'] else []
+    return {**corr, **reg, "novas_medalhas": novas}
+
+class OliSimuladoIn(BaseModel):
+    simulado: str = ''
+    sim_id: int = 0
+
+@app.post('/api/oli/simulado/iniciar')
+def api_oli_sim_iniciar(payload: OliSimuladoIn, senha: str = ''):
+    aid = _aluno_id(senha)
+    p = _oli_perfil(aid)
+    sim = oli.SIMULADOS.get(payload.simulado)
+    if not sim:
+        raise HTTPException(404, "Simulado não encontrado")
+    if sim['trilha'] != p['trilha']:
+        raise HTTPException(403, "Esse simulado é de outra trilha")
+    aberto = db.oli_simulado_aberto(aid)
+    if aberto and db.oli_sim_expirado(aberto):
+        _oli_autoenviar(aid, aberto)          # fecha o esquecido e segue
+        aberto = None
+    r = db.oli_simulado_iniciar(aid, sim['id'], sim['trilha'], sim['duracao_seg'])
+    if r.get('erro') == 'outro_aberto':
+        return JSONResponse(status_code=409, content={"ok": False, "erro": "Você já tem um simulado em andamento.",
+                                                      "simulado": r['aberto']['simulado_id']})
+    return _oli_sim_pub(r)
+
+@app.get('/api/oli/simulado/atual')
+def api_oli_sim_atual(senha: str = ''):
+    aid = _aluno_id(senha)
+    aberto = db.oli_simulado_aberto(aid)
+    if not aberto:
+        raise HTTPException(404, "Nenhum simulado em andamento")
+    if db.oli_sim_expirado(aberto):
+        return JSONResponse({"expirado": True, "resultado": _oli_autoenviar(aid, aberto)})
+    return _oli_sim_pub(aberto)
+
+class OliSalvarIn(BaseModel):
+    sim_id: int
+    questao: str = ''
+    resposta: object = None
+    branco: bool = False
+    limpar: bool = False
+    marcadas: list = None
+
+@app.post('/api/oli/simulado/salvar')
+def api_oli_sim_salvar(payload: OliSalvarIn, senha: str = ''):
+    aid = _aluno_id(senha)
+    resposta = payload.resposta
+    if resposta is not None:
+        try:
+            resposta = int(resposta)
+        except (TypeError, ValueError):
+            raise HTTPException(422, "Resposta inválida")
+        if not (0 <= resposta <= 4):
+            raise HTTPException(422, "Resposta inválida")
+    r = db.oli_simulado_salvar(aid, payload.sim_id, payload.questao or None, resposta,
+                               payload.branco, payload.limpar, payload.marcadas)
+    if r.get('erro') == 'nao_encontrado':
+        raise HTTPException(404, "Simulado não encontrado")
+    if r.get('erro') == 'ja_enviado':
+        return JSONResponse(status_code=409, content={"ok": False, "ja_enviado": True})
+    if r.get('expirado'):
+        row = db.oli_simulado_get(aid, payload.sim_id)
+        return JSONResponse({"expirado": True, "resultado": _oli_autoenviar(aid, row)})
+    return r
+
+@app.post('/api/oli/simulado/enviar')
+def api_oli_sim_enviar(payload: OliSimuladoIn, senha: str = ''):
+    aid = _aluno_id(senha)
+    row = db.oli_simulado_get(aid, payload.sim_id)
+    if not row:
+        raise HTTPException(404, "Simulado não encontrado")
+    if row['enviado']:
+        return {"ok": True, "ja_enviado": True, "relatorio": row['detalhe']}
+    sim = oli.SIMULADOS[row['simulado_id']]
+    anteriores = [h['nota'] for h in db.oli_simulados_do_aluno(aid) if h['trilha'] == row['trilha']]
+    rel = oli.montar_relatorio(sim, _oli_respostas_map(row), row['iniciado_ts'],
+                               datetime.now().isoformat(), anteriores)
+    env = db.oli_simulado_enviar(aid, row['id'], rel['nota'], json.dumps(rel))
+    novas = _oli_medalhas_simulado(aid, rel)
+    return {"ok": True, "relatorio": rel, "novas_medalhas": novas,
+            "xp_ganho": env.get('xp_ganho', 0), "moedas_ganhas": env.get('moedas_ganhas', 0),
+            "saltos_ganhos": env.get('saltos_ganhos', 0)}
+
+@app.get('/api/oli/simulado/relatorio')
+def api_oli_sim_relatorio(id: int, senha: str = ''):
+    aid = _aluno_id(senha)
+    row = db.oli_simulado_get(aid, id)
+    if not row or not row['enviado']:
+        raise HTTPException(404, "Relatório não encontrado")
+    return {"sim_id": row['id'], "simulado": row['simulado_id'], "trilha": row['trilha'],
+            "enviado_ts": row['enviado_ts'], "auto": bool(row['auto']), "relatorio": row['detalhe']}
+
+@app.get('/api/pais/oli')
+def api_pais_oli(senha: str = '', aluno: int = 0):
+    p, aid = _pai_aluno(senha, aluno)
+    perfil = db.oli_perfil_get(aid)
+    nivelamento = None
+    if perfil and perfil.get('nivelamento_json'):
+        try:
+            nivelamento = json.loads(perfil['nivelamento_json'])
+        except ValueError:
+            nivelamento = None
+    unidades = (oli.montar_unidades(perfil['trilha'], db.oli_progresso_list(aid, perfil['trilha']))
+                if perfil and perfil.get('trilha') else [])
+    return {"perfil": perfil, "trilhas": oli.TRILHA_NOMES, "nivelamento": nivelamento,
+            "unidades": unidades, "simulados": db.oli_simulados_do_aluno(aid)}
+
+class OliTrilhaIn(BaseModel):
+    aluno: int = 0
+    trilha: str = ''
+
+@app.post('/api/pais/oli/trilha')
+def api_pais_oli_trilha(payload: OliTrilhaIn, senha: str = ''):
+    p, aid = _pai_aluno(senha, payload.aluno)
+    if payload.trilha not in oli.TRILHAS:
+        raise HTTPException(422, "Trilha inválida")
+    perfil = db.oli_perfil_set_trilha(aid, payload.trilha, 'pais')
+    return {"ok": True, "perfil": perfil}
 
 # ── API do pai ────────────────────────────────────────────────
 def _catalogo():

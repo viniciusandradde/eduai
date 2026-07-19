@@ -1,0 +1,26 @@
+{
+  "questoes": [
+    "p-num-n01",
+    "p-con-n01",
+    "p-geo-n01",
+    "p-log-n01",
+    "e-num-n01",
+    "e-geo-n01",
+    "e-log-n01",
+    "e-con-n01",
+    "b-num-n01",
+    "b-geo-n01",
+    "b-log-n01",
+    "b-con-n01"
+  ],
+  "regras": {
+    "idade_base": {
+      "8": "P",
+      "9": "P",
+      "10": "E",
+      "11": "E",
+      "12": "B",
+      "13": "B"
+    }
+  }
+}

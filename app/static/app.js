@@ -64,6 +64,7 @@ function render(){
     else if (flow.view==='resultado'){ flowBar=flowNav(flow.missao.titulo, `voltar('missoes')`); body=resultadoHTML(); }
     else if (flow.view==='leitura'){ flowBar=flowNav('Leitura obrigatória', `voltar('missoes')`); body=leituraHTML(); }
     else if (flow.view==='concluido'){ body=concluidoHTML(); }
+    else if (flow.view && flow.view.indexOf('oli_')===0){ const o=oliRender(flow); flowBar=o.flowBar; body=o.body; }
   } else {
     header = headerHTML();
     nav = navHTML();
@@ -76,13 +77,15 @@ function render(){
   const lt = $('lt-resumo'); if (lt) lt.addEventListener('input', ()=>{ const n=lt.value.trim().length; const c=$('lt-cc'); if(c){c.textContent=n+'/50 letras '+(n>=50?'✓':''); c.className='charcount'+(n>=50?' ok':'');} });
   const fi = $('lt-foto'); if (fi) fi.addEventListener('change', e=>{ const f=e.target.files[0]; const d=$('lt-drop'); if(f&&d){ d.classList.add('has'); d.querySelector('.dl').textContent=f.name+' selecionada ✓'; d.querySelector('.ic').textContent='📸'; } });
   ehSyncFab();
+  if (typeof oliAfterRender==='function') oliAfterRender();
 }
 
 // ── Edu Help (chat de dúvidas, FAQ roteirizado) ───────
 let ehOpen=false, ehMsgs=[], ehLoaded=false, ehBusy=false, ehIdeaMode=false;
 const EH_IDEIA={id:'__ideia__', texto:'💡 Mandar uma ideia'};
 function ehHost(){ return $('eduhelp'); }
-function ehVisivel(){ return logged && !(flow && (flow.view==='exercicio' || flow.view==='leitura')); }
+function ehVisivel(){ return logged && !(flow && (flow.view==='exercicio' || flow.view==='leitura'
+  || flow.view==='oli_simulado' || flow.view==='oli_player' || flow.view==='oli_nivelamento')); }
 function ehSyncFab(){
   const host=ehHost(); if(!host) return;
   if(!ehVisivel()){ ehOpen=false; host.innerHTML=''; return; }
@@ -357,7 +360,14 @@ function materiasHTML(){
       <div class="stat"><span>${st.conc}/${st.tot} missões</span>${st.conc===st.tot&&st.tot?'<span class="done">✔ 100%</span>':`<span>${pc}%</span>`}</div>
     </button>`;
   });
-  h += `</div>${avaliacoesHTML()}<div class="foot">VSA EduAI • <a href="/pais">painel dos pais</a> • <a class="lk" onclick="abrirNovidades()">✨ novidades</a> • <a class="lk" onclick="sair()">sair</a></div></div>`;
+  h += `</div><div class="sec">Desafios</div>
+    <button class="oli-card" onclick="oliAbrir()">
+      <div class="oli-card-ic">🏆</div>
+      <div class="oli-card-b"><div class="oli-card-t">Olimpíadas de Matemática</div>
+        <div class="oli-card-s">treino estilo Canguru • trilhas P, E e B • simulado oficial 🦘</div></div>
+      <div class="go">›</div>
+    </button>
+    ${avaliacoesHTML()}<div class="foot">VSA EduAI • <a href="/pais">painel dos pais</a> • <a class="lk" onclick="abrirNovidades()">✨ novidades</a> • <a class="lk" onclick="sair()">sair</a></div></div>`;
   return h;
 }
 
