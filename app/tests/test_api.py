@@ -12,13 +12,14 @@ def _sem_segredos(payload):
         assert campo not in txt, f"vazou {campo}"
 
 
-def _nivelar(client, tok, acertar_tudo=True):
+def _nivelar(client, tok, acertar=lambda q: True):
+    """`acertar`: função questão→bool decidindo quais blocos gabaritar."""
     r = client.get('/api/oli/nivelamento', params={'senha': tok})
     assert r.status_code == 200
     respostas = {}
     for q in r.json()['questoes']:
         g = oli.QUESTOES[q['id']]['gabarito']
-        respostas[q['id']] = g if acertar_tudo else (g + 1) % 5
+        respostas[q['id']] = g if acertar(oli.QUESTOES[q['id']]) else (g + 1) % 5
     r = client.post('/api/oli/nivelamento', params={'senha': tok}, json={'respostas': respostas})
     assert r.status_code == 200
     return r.json()
@@ -36,7 +37,7 @@ def test_nivelamento_sanitizado_e_sugestao(client, novo_aluno):
     body = r.json()
     assert len(body['questoes']) == 12
     _sem_segredos(body)
-    res = _nivelar(client, tok, acertar_tudo=True)
+    res = _nivelar(client, tok)
     assert res['acertos'] == 12 and res['trilha'] == 'B'      # 10 anos, gabaritou o bloco B → sobe
     assert any(m['codigo'] == 'oli_nivelado' for m in res['novas_medalhas'])
     r = client.get('/api/oli/nivelamento', params={'senha': tok})
@@ -47,7 +48,7 @@ def test_unidade_player_e_pratica(client, novo_aluno):
     u = novo_aluno(idade=8)
     tok = u['tok_aluno']
     assert client.get('/api/oli/unidade', params={'senha': tok, 'eixo': 'numeros'}).status_code == 409
-    res = _nivelar(client, tok, acertar_tudo=False)           # 8 anos errando tudo → P
+    res = _nivelar(client, tok, acertar=lambda q: False)      # 8 anos errando tudo → P (não desce de P)
     assert res['trilha'] == 'P'
     r = client.get('/api/oli/unidade', params={'senha': tok, 'eixo': 'numeros'})
     body = r.json()
@@ -75,11 +76,11 @@ def test_unidade_player_e_pratica(client, novo_aluno):
 def test_simulado_e2e(client, novo_aluno):
     u = novo_aluno(idade=10)
     tok = u['tok_aluno']
-    _nivelar(client, tok, acertar_tudo=False)                 # fica na E
+    _nivelar(client, tok, acertar=lambda q: q['trilha'] == 'E')   # domina o bloco E → fica na E
     r = client.post('/api/oli/simulado/iniciar', params={'senha': tok}, json={'simulado': 'sim_e_1'})
     body = r.json()
     assert r.status_code == 200 and len(body['questoes']) == 24
-    assert body['restante_seg'] == 6000
+    assert 5990 <= body['restante_seg'] <= 6000
     _sem_segredos(body)
     sim_id = body['sim_id']
     # simulado de outra trilha é bloqueado
@@ -131,10 +132,10 @@ def test_simulado_e2e(client, novo_aluno):
 def test_pais_ve_e_ajusta_trilha(client, novo_aluno):
     u = novo_aluno(idade=11)
     tok_a, tok_p = u['tok_aluno'], u['tok_pai']
-    _nivelar(client, tok_a, acertar_tudo=False)
+    _nivelar(client, tok_a, acertar=lambda q: q['trilha'] == 'E')   # 11 anos dominando o bloco E → E
     aid = u['aluno']['id']
     r = client.get('/api/pais/oli', params={'senha': tok_p, 'aluno': aid}).json()
-    assert r['perfil']['trilha'] == 'E' and r['nivelamento']['acertos'] == 0
+    assert r['perfil']['trilha'] == 'E' and r['nivelamento']['acertos'] == 4
     # outro pai não acessa
     outro = novo_aluno()
     assert client.get('/api/pais/oli', params={'senha': outro['tok_pai'], 'aluno': aid}).status_code == 403

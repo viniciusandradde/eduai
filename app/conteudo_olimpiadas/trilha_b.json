@@ -1,0 +1,1456 @@
+{
+  "trilha": "B",
+  "nome": "Trilha B — 7º/8º ano",
+  "questoes": [
+    {
+      "id": "b-num-u01",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "No acampamento base da Expedição Vetor, o termômetro marcava −4 °C ao amanhecer. Até o meio-dia a temperatura subiu 9 °C e, ao anoitecer, caiu 7 °C. Qual era a temperatura ao anoitecer?",
+      "alternativas": [
+        "−2 °C",
+        "−6 °C",
+        "−20 °C",
+        "2 °C",
+        "5 °C"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe uma reta numérica e marque o ponto de partida: −4. 2) Subir 9 °C é andar 9 casas para a direita: −4 + 9 = 5. 3) Cair 7 °C é andar 7 casas para a esquerda: 5 − 7 = −2. A temperatura ao anoitecer era −2 °C.",
+      "distratores_explicados": {
+        "1": "Você provavelmente trocou os papéis das variações e fez −4 − 9 + 7 = −6. A temperatura primeiro SOBE 9 e depois CAI 7.",
+        "3": "A conta está quase certa, mas o sinal escapou no final: 5 − 7 = −2, dois graus ABAIXO de zero. Desenhe a reta para ver de que lado do zero você parou.",
+        "4": "Você parou no meio-dia: −4 + 9 = 5. Ainda falta a queda de 7 °C ao anoitecer: 5 − 7 = −2.",
+        "2": "Você provavelmente tratou a subida de 9 °C como se fosse queda e fez −4 − 9 − 7 = −20. Na reta numérica, subir é andar para a direita: −4 + 9 = 5."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF07MA04"
+    },
+    {
+      "id": "b-num-u02",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "A trilha do acampamento até o Mirante das Pedras tem 24 km. No primeiro dia, a Expedição Vetor percorreu 3/8 do caminho. Quantos quilômetros ainda faltam para chegar ao mirante?",
+      "alternativas": [
+        "8 km",
+        "9 km",
+        "12 km",
+        "16 km",
+        "15 km"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe a trilha como uma barra dividida em 8 pedaços iguais: cada pedaço vale 24 ÷ 8 = 3 km. 2) Pinte os 3 pedaços já percorridos: 3 × 3 = 9 km andados. 3) Ficam 5 pedaços em branco: 5 × 3 = 15 km faltando.",
+      "distratores_explicados": {
+        "0": "Você provavelmente leu 3/8 como 1/3 e fez 24 ÷ 3 = 8. Desenhe a barra com 8 pedaços: cada um vale 3 km, e faltam 5 pedaços.",
+        "1": "Esses 9 km são o que a expedição JÁ percorreu (3/8 de 24). A pergunta pede o que falta: 24 − 9 = 15 km.",
+        "2": "Você provavelmente supôs que andaram metade da trilha. Mas 3/8 é menos que a metade: andaram 9 km, então faltam 15.",
+        "3": "Você provavelmente calculou 2/3 de 24. A fração que falta é 5/8 (os 5 pedaços em branco da barra), e 5/8 de 24 = 15 km."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF07MA09"
+    },
+    {
+      "id": "b-num-u03",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "Sofia quer comprar uma barraca que custava R$ 200. Na feira de trocas do acampamento, a barraca ganhou 20% de desconto; na semana seguinte, o preço com desconto sofreu um aumento de 10%. Quanto custa a barraca agora?",
+      "alternativas": [
+        "R$ 160",
+        "R$ 176",
+        "R$ 180",
+        "R$ 200",
+        "R$ 220"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Desenhe o preço como uma barra de 10 blocos de R$ 20. 2) Desconto de 20% = tirar 2 blocos: 200 − 40 = R$ 160. 3) O aumento de 10% é calculado sobre os R$ 160: 10% de 160 = 16. 4) Preço final: 160 + 16 = R$ 176.",
+      "distratores_explicados": {
+        "0": "Você parou no desconto: R$ 160 era o preço na feira. Depois ainda houve um aumento de 10% sobre esses R$ 160.",
+        "2": "Você provavelmente fez −20% + 10% = −10% direto sobre os R$ 200. Não vale somar porcentagens de bases diferentes: o aumento de 10% é sobre R$ 160, não sobre R$ 200.",
+        "3": "Você provavelmente pensou que o aumento devolve o preço original. Mas 10% de R$ 160 é só R$ 16: o preço vai para R$ 176, ainda abaixo de R$ 200.",
+        "4": "Você provavelmente aplicou só o aumento de 10% sobre R$ 200 e esqueceu o desconto que veio antes. Siga a ordem: primeiro −20%, depois +10%."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF07MA02"
+    },
+    {
+      "id": "b-num-u04",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "O número de fotos que o drone Píxel 🚁 tirou na trilha está entre 70 e 80. Quando Sofia agrupa as fotos de 6 em 6, sobra 1; quando agrupa de 5 em 5, sobram 4. Quantas fotos o Píxel tirou?",
+      "alternativas": [
+        "71",
+        "73",
+        "74",
+        "76",
+        "79"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) A resposta certa já está nas alternativas — teste cada uma nas duas condições! 2) Teste do 6 (deve sobrar 1): 79 = 6 × 13 + 1 ✔. 3) Teste do 5 (devem sobrar 4): 79 = 5 × 15 + 4 ✔. 4) Só o 79 passa nos dois testes ao mesmo tempo.",
+      "distratores_explicados": {
+        "0": "Teste com calma: 71 = 6 × 11 + 5, ou seja, agrupando de 6 em 6 sobram 5 fotos, não 1.",
+        "1": "O 73 passa no primeiro teste (73 = 6 × 12 + 1), mas falha no segundo: 73 = 5 × 14 + 3, sobram 3, e o enunciado pede que sobrem 4.",
+        "2": "O 74 passa só no teste do 5 (74 = 5 × 14 + 4), mas 74 = 6 × 12 + 2: agrupando de 6 em 6 sobram 2, não 1.",
+        "3": "Você provavelmente trocou as condições entre si: 76 deixa resto 4 na divisão por 6 e resto 1 na divisão por 5 — exatamente o contrário do que o enunciado pede."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF07MA01"
+    },
+    {
+      "id": "b-num-u05",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "Para abrir o cadeado do baú de mapas, Rafa precisa descobrir o algarismo das unidades de 7^2026 (o número 7 multiplicado por ele mesmo 2026 vezes). Qual é esse algarismo?",
+      "alternativas": [
+        "1",
+        "3",
+        "6",
+        "7",
+        "9"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Procure o padrão nas potências pequenas: 7¹ = 7, 7² = 49, 7³ = 343, 7⁴ = 2401 — as unidades formam o ciclo 7, 9, 3, 1, que se repete de 4 em 4. 2) Divida o expoente pelo tamanho do ciclo: 2026 ÷ 4 = 506 com resto 2. 3) Resto 2 significa cair na 2ª posição do ciclo: o algarismo é 9.",
+      "distratores_explicados": {
+        "0": "Você provavelmente achou que 2026 é múltiplo de 4 e caiu no fim do ciclo. Mas 2026 = 4 × 506 + 2: o resto é 2, e a 2ª posição do ciclo 7, 9, 3, 1 é o 9.",
+        "1": "Quase! Você deve ter contado a 3ª posição do ciclo. O resto de 2026 ÷ 4 é 2, então a resposta é a 2ª posição: 9.",
+        "2": "Você provavelmente usou o algarismo das unidades do expoente 2026. O truque certo é olhar o ciclo das unidades das potências de 7 e o resto de 2026 ÷ 4.",
+        "3": "Essa é a 1ª posição do ciclo (aconteceria se o resto fosse 1). Como o resto de 2026 ÷ 4 é 2, a resposta é a 2ª posição do ciclo: 9."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF08MA01"
+    },
+    {
+      "id": "b-num-u06",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "Maya inventou uma senha em cadeia para o rádio da expedição: o primeiro número é 5 e, a partir daí, cada número é o dobro do anterior menos 3. Qual é o 8º número da cadeia?",
+      "alternativas": [
+        "131",
+        "253",
+        "256",
+        "259",
+        "515"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Comece pequeno e escreva os primeiros termos: 5, 7, 11, 19, 35... 2) Compare com as potências de 2: 5 = 2 + 3, 7 = 4 + 3, 11 = 8 + 3, 19 = 16 + 3 — cada termo é uma potência de 2 mais 3! 3) O 8º termo é 2⁸ + 3 = 256 + 3 = 259. 4) Conferindo termo a termo: 5, 7, 11, 19, 35, 67, 131, 259 ✔.",
+      "distratores_explicados": {
+        "0": "Esse é o 7º número da cadeia. Conte de novo na lista: 5, 7, 11, 19, 35, 67, 131, 259 — o 8º é 259.",
+        "1": "Você descobriu quase todo o padrão, mas fez 2⁸ − 3. Olhe os casos pequenos: 7 = 4 + 3 e 11 = 8 + 3, ou seja, o padrão é SOMAR 3.",
+        "2": "Esse é 2⁸ puro. Nos casos pequenos, cada termo é uma potência de 2 MAIS 3: o 8º termo é 256 + 3 = 259.",
+        "4": "Você foi um passo longe demais: 515 seria o 9º número (2 × 259 − 3). O enunciado pede o 8º."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF08MA10"
+    },
+    {
+      "id": "b-num-s01",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Na noite de jogos do acampamento, Rafa marcou +15 pontos na primeira rodada, −8 na segunda e −12 na terceira. Com quantos pontos ele terminou?",
+      "alternativas": [
+        "−5",
+        "−35",
+        "5",
+        "11",
+        "35"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe uma reta numérica começando no 0 e marque cada rodada como um salto: +15 para a direita, −8 e −12 para a esquerda. 2) 0 + 15 = 15; depois 15 − 8 = 7. 3) Por fim, 7 − 12 = −5. Rafa terminou com −5 pontos.",
+      "distratores_explicados": {
+        "1": "Você provavelmente tratou os +15 como perda e somou tudo com sinal negativo: −15 − 8 − 12 = −35. A primeira rodada foi um GANHO de 15.",
+        "2": "A distância está certa, mas o lado do zero não: 7 − 12 termina 5 casas à ESQUERDA do zero, em −5.",
+        "3": "Você provavelmente tratou o −8 como ganho e fez 15 + 8 − 12 = 11. Na reta, o −8 é um salto para a esquerda.",
+        "4": "Você provavelmente ignorou todos os sinais e somou 15 + 8 + 12 = 35. As duas últimas rodadas foram perdas."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF07MA03"
+    },
+    {
+      "id": "b-num-s02",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Dos 40 mapas guardados na barraca da Expedição Vetor, 35% mostram rios. Quantos mapas mostram rios?",
+      "alternativas": [
+        "4",
+        "12",
+        "35",
+        "16",
+        "14"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Comece com um caso pequeno e amigo: 10% de 40 = 4 mapas. 2) Então 30% = 3 × 4 = 12, e 5% é a metade de 10%: 2 mapas. 3) 35% = 30% + 5% = 12 + 2 = 14 mapas com rios.",
+      "distratores_explicados": {
+        "0": "Esses 4 mapas são só 10% do total. Use esse caso pequeno como degrau: 35% = 3 × 4 + 2 = 14.",
+        "1": "Você parou nos 30% (3 × 4 = 12). Ainda faltam os 5%, que valem 2 mapas: 12 + 2 = 14.",
+        "3": "Você provavelmente calculou 40% de 40. O enunciado pede 35%, que é 30% + 5% = 12 + 2 = 14.",
+        "2": "Você repetiu o número da porcentagem. 35% de 40 não é 35: é (35 ÷ 100) × 40 = 14."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF07MA02"
+    },
+    {
+      "id": "b-num-s03",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Sofia vai distribuir 100 barrinhas de cereal igualmente entre as 7 mochilas da expedição, colocando o máximo possível em cada uma. Quantas barrinhas vão sobrar?",
+      "alternativas": [
+        "1",
+        "2",
+        "5",
+        "9",
+        "14"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Liste os múltiplos de 7 perto de 100: 7 × 13 = 91, 7 × 14 = 98, 7 × 15 = 105. 2) O maior múltiplo que cabe em 100 é 98: cada mochila leva 14 barrinhas. 3) Sobram 100 − 98 = 2 barrinhas.",
+      "distratores_explicados": {
+        "0": "Você provavelmente errou a tabuada: 7 × 14 = 98 (e não 99). Sobram 100 − 98 = 2 barrinhas.",
+        "2": "Esses 5 são o que FALTA para completar mais uma rodada (105 − 100). A pergunta pede o que sobra: 100 − 98 = 2.",
+        "3": "Você provavelmente parou no múltiplo 7 × 13 = 91 e fez 100 − 91 = 9. Ainda dava para pôr mais uma barrinha em cada mochila: 7 × 14 = 98.",
+        "4": "Esse é o número de barrinhas em CADA mochila (o quociente). A pergunta pede o resto da divisão: 2."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF07MA01"
+    },
+    {
+      "id": "b-num-s04",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Na carga do drone Píxel 🚁, 1/3 dos pacotes são baterias. Das baterias, 3/4 estão carregadas. Que fração da carga total do drone são baterias carregadas?",
+      "alternativas": [
+        "1/12",
+        "1/3",
+        "4/7",
+        "1/4",
+        "3/4"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe a carga como um retângulo cortado em 3 colunas: 1 coluna são as baterias. 2) Corte agora o retângulo em 4 linhas: das 4 partes da coluna das baterias, 3 estão carregadas. 3) O retângulo ficou com 12 pedacinhos iguais, e as baterias carregadas ocupam 3 deles: 3/12 = 1/4 da carga total.",
+      "distratores_explicados": {
+        "0": "Você provavelmente multiplicou 1/3 por 1/4, usando a fração das baterias NÃO carregadas. As carregadas são 3/4 das baterias: 1/3 × 3/4 = 3/12 = 1/4.",
+        "1": "Essa é a fração de TODAS as baterias na carga. A pergunta quer só as carregadas: 3/4 dessa terça parte, ou seja, 1/4.",
+        "2": "Você provavelmente somou numeradores e denominadores (1+3 sobre 3+4). Fração de fração se resolve multiplicando: 1/3 × 3/4 = 1/4.",
+        "4": "Esses 3/4 são a fração de carregadas DENTRO do grupo das baterias. Em relação à carga toda, é 1/3 × 3/4 = 1/4."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF07MA12"
+    },
+    {
+      "id": "b-num-s05",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Depois de um aumento de 25%, o rolo de corda da loja de trilhas passou a custar R$ 45. Quanto custava o rolo antes do aumento?",
+      "alternativas": [
+        "R$ 20,00",
+        "R$ 33,75",
+        "R$ 36,00",
+        "R$ 40,00",
+        "R$ 56,25"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Ande de trás pra frente: o preço final é o antigo + 25% do antigo, ou seja, 125% do preço antigo. 2) Se 125% valem R$ 45, então cada 25% vale 45 ÷ 5 = R$ 9. 3) O preço antigo (100%) era 4 × 9 = R$ 36. Conferindo para a frente: 36 + 9 = 45 ✔.",
+      "distratores_explicados": {
+        "0": "Você provavelmente subtraiu 25 REAIS em vez de 25 POR CENTO. O aumento é uma fração do preço antigo, não uma quantia fixa.",
+        "1": "Você tirou 25% do preço FINAL (45 − 11,25). Mas os 25% incidem sobre o preço antigo: teste 33,75 + 25% dele = 42,19, que não dá 45.",
+        "3": "Teste a alternativa de volta no enunciado: R$ 40 com aumento de 25% iria a R$ 50, não a R$ 45. O valor que funciona é R$ 36.",
+        "4": "Você aplicou o aumento de novo em vez de desfazê-lo. Para voltar no tempo, desfaça a operação: 45 ÷ 1,25 = 36."
+      },
+      "estrategia_alvo": "regressiva",
+      "habilidade_bncc": "EF07MA02"
+    },
+    {
+      "id": "b-num-s06",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Na entrada do acampamento há dois sinalizadores luminosos: um pisca a cada 12 segundos e o outro a cada 18 segundos. Eles acabaram de piscar juntos. Daqui a quantos segundos vão piscar juntos de novo?",
+      "alternativas": [
+        "6",
+        "30",
+        "36",
+        "72",
+        "216"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Liste os múltiplos de cada um: 12, 24, 36, 48... e 18, 36, 54... 2) Compare as listas: o primeiro número que aparece nas duas é o 36. 3) Eles piscam juntos de novo em 36 segundos (o mínimo múltiplo comum de 12 e 18).",
+      "distratores_explicados": {
+        "0": "O 6 é o maior DIVISOR comum de 12 e 18, mas a pergunta pede um múltiplo comum (um tempo em que os dois ciclos se completam juntos).",
+        "1": "Você provavelmente somou 12 + 18. Faça as duas listas de múltiplos: aos 30 segundos nenhum dos dois pisca (30 não é múltiplo de 12 nem de 18).",
+        "3": "O 72 até aparece nas duas listas, mas não é o PRIMEIRO encontro: aos 36 segundos os dois já piscam juntos.",
+        "4": "Você multiplicou 12 × 18. O produto é um múltiplo comum, mas a lista mostra um bem menor: 36."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF07MA01"
+    },
+    {
+      "id": "b-num-s07",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "O painel do rádio da expedição só destrava com o algarismo das unidades de 2^100 + 3^100. Qual é esse algarismo?",
+      "alternativas": [
+        "1",
+        "5",
+        "6",
+        "7",
+        "9"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Procure o padrão de cada parcela: as unidades de 2ⁿ formam o ciclo 2, 4, 8, 6 e as de 3ⁿ formam o ciclo 3, 9, 7, 1 — ambos de tamanho 4. 2) 100 ÷ 4 = 25 com resto 0: resto 0 é cair na ÚLTIMA posição de cada ciclo. 3) Então 2^100 termina em 6 e 3^100 termina em 1. 4) A soma termina em 6 + 1 = 7.",
+      "distratores_explicados": {
+        "0": "Esse é só o algarismo final de 3^100. Falta somar o final de 2^100, que é 6: a soma termina em 7.",
+        "1": "Você provavelmente somou as bases 2 + 3. O caminho certo é achar o final de cada potência pelos ciclos (6 e 1) e somar: 7.",
+        "2": "Esse é só o algarismo final de 2^100. Falta somar o final de 3^100, que é 1: a soma termina em 7.",
+        "4": "Você provavelmente achou que 3^100 termina em 9 (2ª posição do ciclo). Como 100 é múltiplo de 4, ele cai na última posição: 3^100 termina em 1, e a soma termina em 6 + 1 = 7."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF08MA01"
+    },
+    {
+      "id": "b-num-s08",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "Para calibrar a balança do acampamento, o drone Píxel 🚁 precisa somar todos os números inteiros de 1 até 40. Qual é o resultado dessa soma?",
+      "alternativas": [
+        "400",
+        "410",
+        "780",
+        "800",
+        "820"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Procure um padrão juntando as pontas da lista: 1 + 40 = 41, 2 + 39 = 41, 3 + 38 = 41... 2) Cada par das pontas soma 41, e os 40 números formam 40 ÷ 2 = 20 pares. 3) Total: 20 × 41 = 820.",
+      "distratores_explicados": {
+        "0": "Você provavelmente fez 40 × 10. O truque das pontas dá pares que somam 41, e são 20 pares: 20 × 41 = 820.",
+        "1": "Você provavelmente montou só 10 pares (10 × 41 = 410). Com 40 números formam-se 20 pares: 20 × 41 = 820.",
+        "2": "Esse é o total de 1 até 39. O enunciado inclui o 40: 780 + 40 = 820.",
+        "3": "Você fez 40 × 20, mas cada par das pontas soma 41 (o 1 do começo entra na conta): 20 × 41 = 820."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF08MA10"
+    },
+    {
+      "id": "b-num-s09",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "O galão de água da Expedição Vetor foi usado por 3 dias. A cada dia, o grupo bebeu metade da água que havia no início do dia e, depois, mais 1 litro. No fim do 3º dia restavam exatamente 2 litros. Quantos litros havia no galão no início do 1º dia?",
+      "alternativas": [
+        "14",
+        "16",
+        "23",
+        "30",
+        "62"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Ande de trás pra frente desfazendo cada dia: sobraram 2 L; devolva o litro extra (2 + 1 = 3) e desfaça a metade bebida (3 × 2 = 6). O 3º dia começou com 6 L. 2) Repita: (6 + 1) × 2 = 14 L no início do 2º dia. 3) Mais uma vez: (14 + 1) × 2 = 30 L no início do 1º dia. 4) Conferindo para a frente: 30 → 15 − 1 = 14 → 7 − 1 = 6 → 3 − 1 = 2 ✔.",
+      "distratores_explicados": {
+        "0": "Você desfez só 2 dias e parou: 14 L é o início do 2º dia. Falta desfazer o 1º dia: (14 + 1) × 2 = 30.",
+        "1": "Você só dobrou 3 vezes (2 → 4 → 8 → 16) e esqueceu de devolver o litro extra bebido em cada dia antes de dobrar.",
+        "2": "Você desfez as operações na ordem errada (dobrou antes de devolver o litro). Andando de ré, desfaz-se primeiro o que aconteceu por último: primeiro +1, depois ×2.",
+        "4": "Você desfez um dia a mais: 62 seria o começo se a expedição tivesse bebido por 4 dias. São só 3 dias: 30 litros."
+      },
+      "estrategia_alvo": "regressiva",
+      "habilidade_bncc": "EF07MA18"
+    },
+    {
+      "id": "b-num-n01",
+      "trilha": "B",
+      "eixo": "numeros",
+      "valor_pontos": 3,
+      "uso": "nivelamento",
+      "enunciado": "No amanhecer da expedição, o termômetro do acampamento marcava −6 °C. À tarde, ele marcava 9 °C. Quantos graus a temperatura subiu entre essas duas medições?",
+      "alternativas": [
+        "−3",
+        "3",
+        "9",
+        "12",
+        "15"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe uma reta numérica e marque −6 e 9. 2) Do −6 até o 0 são 6 graus de subida; do 0 até o 9 são mais 9 graus. 3) Total da subida: 6 + 9 = 15 graus.",
+      "distratores_explicados": {
+        "0": "Você provavelmente fez 6 − 9 e ficou com o sinal trocado. Na reta numérica, de −6 até 9 sobe-se 15 graus.",
+        "1": "Você provavelmente fez 9 − 6 ignorando que a manhã estava ABAIXO de zero. De −6 até 0 já são 6 graus, e depois mais 9.",
+        "2": "Esses 9 °C são a temperatura da tarde, não a subida. A variação é a distância entre −6 e 9 na reta: 15 graus.",
+        "3": "Você provavelmente contou de −6 até 6 (dois saltos de 6). A tarde chegou a 9 °C: são 6 + 9 = 15 graus de subida."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF07MA04"
+    },
+    {
+      "id": "b-geo-u01",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "No mapa da Expedição Vetor, duas trilhas retas se cruzam formando quatro ângulos. Um desses ângulos mede 65°. Quanto mede o ângulo vizinho a ele (o que completa a trilha reta)?",
+      "alternativas": [
+        "115°",
+        "65°",
+        "25°",
+        "125°",
+        "295°"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe as duas trilhas se cruzando e marque o ângulo de 65°. 2) O ângulo vizinho fica do outro lado da mesma reta: juntos eles formam uma meia-volta, 180°. 3) 180° − 65° = 115°.",
+      "distratores_explicados": {
+        "1": "65° é o ângulo OPOSTO pelo vértice, que é igual ao original. O vizinho na mesma reta é o suplementar: 115°.",
+        "3": "Você provavelmente arredondou ou fez 190 − 65. A meia-volta tem exatamente 180°: 180 − 65 = 115.",
+        "4": "Você usou a volta completa (360°). Os dois ângulos vizinhos formam meia-volta: 180 − 65 = 115.",
+        "2": "Você provavelmente usou 90° como total (ângulos complementares). Dois ângulos que juntos formam uma reta somam 180°: 180 − 65 = 115."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF07MA23"
+    },
+    {
+      "id": "b-geo-u02",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "O canteiro de equipamentos do acampamento é um retângulo de 8 m por 5 m. Sofia vai cercar todo o contorno com uma corda. Quantos metros de corda ela precisa?",
+      "alternativas": [
+        "13 m",
+        "16 m",
+        "40 m",
+        "30 m",
+        "26 m"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe o retângulo e escreva as medidas nos quatro lados: 8, 5, 8 e 5. 2) A corda percorre o contorno inteiro: 8 + 5 + 8 + 5. 3) Total: 26 metros.",
+      "distratores_explicados": {
+        "0": "Você somou só dois lados (8 + 5). A corda dá a volta completa: são DOIS lados de 8 e DOIS de 5.",
+        "1": "Você provavelmente dobrou apenas o lado de 8 (8 + 8). Faltaram os dois lados de 5 m: 16 + 10 = 26.",
+        "3": "Você provavelmente fez 8 + 5 + 8 + 5 + ... com um lado a mais ou trocou uma medida. Confira no desenho: 8 + 5 + 8 + 5 = 26.",
+        "2": "Você calculou a ÁREA (8 × 5 = 40 m²). Para cercar o contorno usamos o perímetro: a soma dos lados, 26 m."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF07MA32"
+    },
+    {
+      "id": "b-geo-u03",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "A barraca de Maya, vista de frente, tem o formato de um triângulo isósceles: os dois lados inclinados são iguais. O ângulo do topo mede 40°. Quanto mede cada um dos dois ângulos da base?",
+      "alternativas": [
+        "35°",
+        "40°",
+        "55°",
+        "70°",
+        "140°"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe o triângulo e marque 40° no topo; como os lados inclinados são iguais, os dois ângulos da base são iguais entre si. 2) A soma dos três ângulos de um triângulo é 180°, então a base fica com 180° − 40° = 140°. 3) Dividindo igualmente entre os dois cantos: 140° ÷ 2 = 70° cada.",
+      "distratores_explicados": {
+        "0": "Você provavelmente dividiu o ângulo do topo por 2. O que se divide por 2 é o que SOBRA para a base: (180 − 40) ÷ 2 = 70.",
+        "1": "Você repetiu o ângulo do topo. Os ângulos iguais são os DOIS da base, e cada um vale (180 − 40) ÷ 2 = 70.",
+        "2": "Você provavelmente subtraiu 70 em vez de 40 (fez (180 − 70) ÷ 2). O topo mede 40°: (180 − 40) ÷ 2 = 70.",
+        "4": "Esses 140° são a soma dos DOIS ângulos da base juntos. Cada um deles mede a metade: 70°."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF07MA24"
+    },
+    {
+      "id": "b-geo-u04",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "Rafa desenhou a planificação de um dado: as faces 1, 2, 3 e 4 estão em fila, nessa ordem, e a face 5 está grudada acima da face 2, com a face 6 grudada abaixo da face 2. Quando o cubo for montado, qual face ficará oposta à face 1?",
+      "alternativas": [
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Elimine as faces que ficam ENCOSTADAS na face 1 ao dobrar: na fila, a 2 é vizinha direta — eliminada. 2) A fila fecha um anel ao redor do cubo: a 4 gruda de volta na 1 — eliminada; a 5 e a 6 viram tampa e fundo, tocando todas as faces do anel — eliminadas. 3) Sobrou só a face 3: numa fila de quatro faces, a oposta é a que está duas casas adiante. A oposta da 1 é a 3.",
+      "distratores_explicados": {
+        "0": "A face 2 é vizinha da 1 na fila: ao dobrar, elas ficam coladas por uma aresta, e faces coladas nunca são opostas.",
+        "2": "A fila 1-2-3-4 fecha um anel: a face 4 gruda de volta na face 1, virando vizinha dela — não oposta.",
+        "3": "A face 5 vira a tampa do cubo: ela encosta em todas as faces do anel, inclusive na 1. A oposta da 5 é a 6.",
+        "4": "A face 6 vira o fundo do cubo e também encosta na face 1. A oposta da 6 é a 5."
+      },
+      "estrategia_alvo": "eliminacao",
+      "habilidade_bncc": "EF08MA20"
+    },
+    {
+      "id": "b-geo-u05",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "O terreno do acampamento é um quadrado de lado 12 m. Para plantar flores, Sofia cortou fora, de cada um dos 4 cantos, um triângulo retângulo cujos dois lados menores medem 4 m. Qual é a área do terreno que sobrou?",
+      "alternativas": [
+        "112 m²",
+        "80 m²",
+        "64 m²",
+        "128 m²",
+        "136 m²"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe o quadrado e risque os 4 cantos cortados. 2) Área total do quadrado: 12 × 12 = 144 m². 3) Cada triângulo cortado tem área (4 × 4) ÷ 2 = 8 m²; os quatro somam 32 m². 4) Sobra 144 − 32 = 112 m².",
+      "distratores_explicados": {
+        "1": "Você provavelmente usou 4 × 4 = 16 como área de cada triângulo e esqueceu de dividir por 2. Cada corte vale 8 m²: 144 − 32 = 112.",
+        "3": "Você descontou só 2 triângulos (144 − 16). São 4 cantos cortados: 144 − 4 × 8 = 112.",
+        "4": "Você descontou só 1 triângulo (144 − 8). São 4 cantos cortados: 144 − 32 = 112.",
+        "2": "Você provavelmente imaginou que sobra um quadrado de lado 8 (12 − 4). Os cortes são só triângulos nos cantos: sobra um octógono de área 144 − 32 = 112."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF08MA19"
+    },
+    {
+      "id": "b-geo-u06",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "O relógio de ponteiros do refeitório marca exatamente 14h30. Qual é a medida do menor ângulo entre o ponteiro das horas e o ponteiro dos minutos nesse momento?",
+      "alternativas": [
+        "75°",
+        "90°",
+        "105°",
+        "120°",
+        "150°"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Desenhe o relógio: às 14h30 o ponteiro dos minutos aponta para o 6, ou seja, 180° medidos a partir do 12. 2) O ponteiro das horas NÃO está parado no 2: em meia hora ele andou metade do caminho entre o 2 e o 3, ficando em 2,5 × 30° = 75°. 3) O ângulo entre os ponteiros é 180° − 75° = 105°.",
+      "distratores_explicados": {
+        "0": "75° é a posição do ponteiro das HORAS medida a partir do 12, não o ângulo entre os ponteiros: falta comparar com os 180° do ponteiro dos minutos.",
+        "1": "Você provavelmente estimou um ângulo reto pela aparência. Faça a conta no desenho: 180° − 75° = 105°.",
+        "3": "Você deixou o ponteiro das horas parado no 2 (60°) e fez 180 − 60. Em meia hora ele avança 15°, indo para 75°: o ângulo é 105°.",
+        "4": "Você provavelmente colocou o ponteiro das horas no 1 (30°) e fez 180 − 30. Às 14h30 ele está entre o 2 e o 3: o ângulo é 105°."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF08MA15"
+    },
+    {
+      "id": "b-geo-s01",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Duas cordas esticadas do varal do acampamento se cruzam num ponto. Um dos ângulos formados mede 132°. Quanto mede o ângulo oposto pelo vértice a ele?",
+      "alternativas": [
+        "48°",
+        "66°",
+        "90°",
+        "132°",
+        "228°"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe as duas cordas se cruzando e marque o ângulo de 132°. 2) O ângulo oposto pelo vértice é o que fica 'de frente' para ele, formado pelas mesmas duas retas. 3) Ângulos opostos pelo vértice são sempre IGUAIS: 132°.",
+      "distratores_explicados": {
+        "0": "48° é o ângulo VIZINHO (180 − 132), que completa a reta. O oposto pelo vértice é igual ao original: 132°.",
+        "1": "Você provavelmente dividiu 132 por 2. Não há metade aqui: opostos pelo vértice são côngruos, ou seja, iguais.",
+        "2": "Você provavelmente supôs que cordas se cruzam sempre em ângulo reto. O desenho mostra que o oposto repete os mesmos 132°.",
+        "4": "Você fez 360 − 132. Essa seria a soma dos OUTROS ângulos; o oposto pelo vértice mede os mesmos 132°."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF07MA23"
+    },
+    {
+      "id": "b-geo-s02",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "O mapa-base da Expedição Vetor é uma folha retangular de 30 cm por 20 cm. Qual é a área dessa folha?",
+      "alternativas": [
+        "50 cm²",
+        "100 cm²",
+        "500 cm²",
+        "600 cm²",
+        "900 cm²"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Comece com um caso pequeno: um retângulo de 3 cm por 2 cm tem 3 × 2 = 6 quadradinhos de 1 cm². 2) O mapa é esse retângulo ampliado 10 vezes em cada direção: 30 × 20. 3) 3 × 2 = 6, e acrescentando os dois zeros: 600 cm².",
+      "distratores_explicados": {
+        "0": "Você somou os lados (30 + 20). Área é a contagem de quadradinhos de 1 cm², que vem da multiplicação: 30 × 20 = 600.",
+        "1": "Você calculou o PERÍMETRO (30 + 20 + 30 + 20). A área é 30 × 20 = 600 cm².",
+        "2": "Você provavelmente escorregou na multiplicação. Caso pequeno: 3 × 2 = 6; com os dois zeros, 600.",
+        "4": "Você provavelmente fez 30 × 30, repetindo o lado maior. Os lados são diferentes: 30 × 20 = 600."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF07MA32"
+    },
+    {
+      "id": "b-geo-s03",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Durante o voo de reconhecimento, o drone Píxel 🚁 girou 90° para a direita três vezes seguidas. Ao todo, quantos graus ele girou para a direita?",
+      "alternativas": [
+        "270°",
+        "90°",
+        "135°",
+        "180°",
+        "360°"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe uma setinha apontando para cima e gire-a 90° de cada vez: para a direita, para baixo, para a esquerda. 2) Cada giro vale 90°, e foram 3 giros: 90° + 90° + 90°. 3) Total: 270°.",
+      "distratores_explicados": {
+        "1": "90° é UM giro só. O Píxel girou três vezes: 3 × 90° = 270°.",
+        "2": "Você provavelmente usou 45° por giro (3 × 45 = 135). Cada giro do drone foi de 90°: 3 × 90 = 270.",
+        "3": "180° são apenas DOIS giros de 90°. Foram três: 270°.",
+        "4": "360° seria uma volta completa, ou seja, QUATRO giros de 90°. Com três giros ele para em 270°."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF08MA18"
+    },
+    {
+      "id": "b-geo-s04",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "No mapa, as duas margens do Rio Cascata são retas paralelas, e a ponte de madeira é um segmento reto que as atravessa. A ponte forma um ângulo de 55° com a margem sul. Quanto mede o ângulo OBTUSO que a ponte forma com a margem norte?",
+      "alternativas": [
+        "35°",
+        "55°",
+        "115°",
+        "145°",
+        "125°"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe as duas margens paralelas e a ponte atravessando as duas. 2) Como as margens são paralelas, a ponte forma com a margem norte o mesmo ângulo agudo de 55°. 3) O ângulo obtuso é o vizinho dele na margem: 180° − 55° = 125°.",
+      "distratores_explicados": {
+        "0": "Você calculou o complementar (90 − 55). O ângulo obtuso pedido é o suplementar do agudo: 180 − 55 = 125.",
+        "1": "55° é o ângulo AGUDO que se repete na outra margem (margens paralelas copiam o ângulo). A pergunta pede o ângulo OBTUSO: 180 − 55 = 125.",
+        "2": "Você provavelmente fez 180 − 65, trocando o ângulo da ponte. Ela forma 55° com a margem: 180 − 55 = 125.",
+        "3": "Você fez 180 − 35, usando o complementar no lugar do ângulo dado. Direto do desenho: 180 − 55 = 125."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF07MA23"
+    },
+    {
+      "id": "b-geo-s05",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Vista de cima, a área de camping tem formato de L: é um retângulo de 10 m por 6 m com um anexo quadrado de 4 m por 4 m grudado em um dos lados. Qual é a área total da região?",
+      "alternativas": [
+        "16 m²",
+        "60 m²",
+        "72 m²",
+        "76 m²",
+        "92 m²"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe o L e corte-o em duas peças conhecidas: o retângulo grande e o quadrado do anexo. 2) Retângulo: 10 × 6 = 60 m²; quadrado: 4 × 4 = 16 m². 3) Área total: 60 + 16 = 76 m².",
+      "distratores_explicados": {
+        "0": "16 m² é só a área do anexo quadrado. Falta somar o retângulo grande: 60 + 16 = 76.",
+        "1": "60 m² é só o retângulo grande. O L inclui também o anexo de 4 × 4 = 16 m²: total 76.",
+        "2": "Você provavelmente calculou o anexo como 4 × 3 = 12. Ele é um quadrado de 4 × 4 = 16: total 60 + 16 = 76.",
+        "4": "Você provavelmente calculou o anexo como 4 × 8 = 32, dobrando um dos lados. Ele mede 4 × 4 = 16: total 76."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF08MA19"
+    },
+    {
+      "id": "b-geo-s06",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Maya desenhou no diário de bordo um polígono cuja soma dos ângulos internos é 900°. Qual é esse polígono?",
+      "alternativas": [
+        "Pentágono",
+        "Hexágono",
+        "Heptágono",
+        "Octógono",
+        "Decágono"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Teste as alternativas com a regra dos triângulos: um polígono de n lados se divide em (n − 2) triângulos, e cada triângulo contribui com 180°. 2) Pentágono: 3 × 180 = 540°; hexágono: 4 × 180 = 720°; heptágono: 5 × 180 = 900° ✔. 3) O polígono com soma 900° é o heptágono (7 lados).",
+      "distratores_explicados": {
+        "0": "O pentágono se divide em 3 triângulos: 3 × 180 = 540°, ainda longe de 900°.",
+        "1": "O hexágono se divide em 4 triângulos: 4 × 180 = 720°. Teste o próximo: o heptágono dá 900°.",
+        "3": "O octógono se divide em 6 triângulos: 6 × 180 = 1080°, que passa de 900°.",
+        "4": "O decágono se divide em 8 triângulos: 8 × 180 = 1440°, bem mais que 900°."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF08MA15"
+    },
+    {
+      "id": "b-geo-s07",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "Maya empilhou 3 dados idênticos numa torre sobre a mesa do refeitório. Em cada dado, as faces opostas somam 7. A face de cima da torre mostra o número 1. Qual é a soma dos pontos das 5 faces horizontais que não podem ser vistas (as que se tocam entre os dados e a que está apoiada na mesa)?",
+      "alternativas": [
+        "13",
+        "14",
+        "15",
+        "20",
+        "21"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Desenhe a torre e marque as faces horizontais: o topo (visível, mostrando 1) e as 5 escondidas. 2) O dado de cima esconde só o seu fundo, que é o par do 1: 7 − 1 = 6. 3) Os dados do meio e de baixo escondem topo E fundo, e cada dupla dessas soma exatamente 7: são 7 + 7 = 14. 4) Total escondido: 6 + 14 = 20.",
+      "distratores_explicados": {
+        "0": "Você fez 7 + 6, esquecendo um dos dados: são DOIS dados com o par completo (7 + 7) mais o fundo do dado do topo (6).",
+        "1": "Você somou 7 + 7 e esqueceu o fundo do dado de cima, que mostra 7 − 1 = 6. Total: 20.",
+        "2": "Você usou o 1 no lugar do fundo do dado do topo (7 + 7 + 1). O 1 está visível; o escondido é o seu par: 6.",
+        "4": "Você fez 3 × 7, incluindo a face de cima da torre no par do dado do topo. Ela está visível e fica de fora: 6 + 7 + 7 = 20."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF08MA20"
+    },
+    {
+      "id": "b-geo-s08",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "O campo de treinos é um quadrado de lado 8, desenhado no mapa quadriculado. Rafa marcou o ponto médio do lado de cima e o ponto médio do lado direito, e ligou esses dois pontos ao canto inferior esquerdo do quadrado, formando um triângulo. Qual é a área desse triângulo?",
+      "alternativas": [
+        "24",
+        "32",
+        "40",
+        "48",
+        "56"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe o quadrado 8 × 8 (área 64) e o triângulo dentro dele. 2) Em vez de calcular o triângulo direto, recorte o que sobra: três triângulos retângulos nos cantos. 3) Canto superior esquerdo: (8 × 4) ÷ 2 = 16; canto inferior direito: (8 × 4) ÷ 2 = 16; cantinho superior direito: (4 × 4) ÷ 2 = 8. 4) Área do triângulo: 64 − 16 − 16 − 8 = 24.",
+      "distratores_explicados": {
+        "1": "Você provavelmente achou que o triângulo é metade do quadrado (64 ÷ 2). Recortando as sobras, ele ocupa só 24 dos 64 quadradinhos.",
+        "2": "40 é a SOMA das três sobras dos cantos (16 + 16 + 8), não a área do triângulo. O triângulo é o que resta: 64 − 40 = 24.",
+        "3": "Você descontou só um canto grande (64 − 16). Há três sobras: 16 + 16 + 8 = 40, e o triângulo fica com 24.",
+        "4": "Você descontou só o cantinho pequeno (64 − 8). Faltaram os dois cantos de 16: 64 − 40 = 24."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF08MA19"
+    },
+    {
+      "id": "b-geo-s09",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "O logotipo da Expedição Vetor é um polígono regular colado na porta do contêiner. Sofia percebeu que, ao girá-lo em torno do centro, o menor giro que faz o desenho coincidir com ele mesmo é de exatamente 40°. Quantos lados tem esse polígono?",
+      "alternativas": [
+        "8",
+        "9",
+        "10",
+        "12",
+        "40"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Procure o padrão dos giros: um polígono regular de n lados coincide consigo mesmo a cada giro de 360° ÷ n (é como pular de um vértice para o vizinho). 2) Se o menor giro é 40°, então 360° ÷ n = 40°. 3) n = 360 ÷ 40 = 9 lados.",
+      "distratores_explicados": {
+        "0": "Você provavelmente dividiu 360 por 45. O giro dado no enunciado é de 40°: 360 ÷ 40 = 9.",
+        "2": "Você provavelmente errou a divisão (usou 400 ÷ 40). A volta completa tem 360°: 360 ÷ 40 = 9.",
+        "3": "Você provavelmente usou o giro de 30° (que vale para o polígono de 12 lados). Aqui o giro é 40°: n = 9.",
+        "4": "Você repetiu o valor do ângulo. O número de lados vem da divisão da volta completa pelo giro: 360 ÷ 40 = 9."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF07MA21"
+    },
+    {
+      "id": "b-geo-n01",
+      "trilha": "B",
+      "eixo": "geometria",
+      "valor_pontos": 4,
+      "uso": "nivelamento",
+      "enunciado": "Três trilhas retas formam um triângulo no mapa da expedição. Dois dos ângulos desse triângulo medem 35° e 85°. Quanto mede o terceiro ângulo?",
+      "alternativas": [
+        "60°",
+        "95°",
+        "120°",
+        "145°",
+        "240°"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe o triângulo e escreva os dois ângulos conhecidos: 35° e 85°. 2) A soma dos três ângulos de qualquer triângulo é 180°: já temos 35 + 85 = 120°. 3) O terceiro ângulo mede 180 − 120 = 60°.",
+      "distratores_explicados": {
+        "1": "Você fez 180 − 85 e esqueceu de descontar também os 35°. Os DOIS ângulos conhecidos saem dos 180°: sobra 60°.",
+        "2": "120° é a soma dos dois ângulos dados (35 + 85), não o terceiro. Ele vale o que falta para 180°: 60°.",
+        "3": "Você fez 180 − 35 e esqueceu de descontar os 85°. A conta completa é 180 − 35 − 85 = 60.",
+        "4": "Você usou 360° como soma dos ângulos do triângulo. Em qualquer triângulo, a soma é 180°: o terceiro ângulo mede 60°."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF07MA24"
+    },
+    {
+      "id": "b-log-u01",
+      "trilha": "B",
+      "eixo": "logica",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "O drone Píxel 🚁 filmou a chegada dos três exploradores ao acampamento, um por vez. Sabe-se que: Sofia chegou antes de Rafa, e Maya não foi a primeira a chegar. Quem chegou primeiro?",
+      "alternativas": [
+        "Maya",
+        "Rafa",
+        "É impossível determinar",
+        "O drone Píxel",
+        "Sofia"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Risque quem as pistas proíbem de ser o primeiro: Maya não foi a primeira (pista 2) — riscada. 2) Rafa chegou DEPOIS de Sofia (pista 1), então também não pode ser o primeiro — riscado. 3) Sobrou apenas Sofia: ela chegou primeiro.",
+      "distratores_explicados": {
+        "0": "A segunda pista diz exatamente que Maya NÃO foi a primeira. Risque-a da primeira posição.",
+        "1": "A primeira pista diz que Sofia chegou antes de Rafa, então Rafa nunca pode ser o primeiro.",
+        "3": "O Píxel é o drone que estava filmando — ele não está na disputa entre os três exploradores.",
+        "2": "Dá para determinar, sim! Riscando Maya (pista 2) e Rafa (pista 1) da primeira posição, sobra uma única possibilidade: Sofia."
+      },
+      "estrategia_alvo": "eliminacao",
+      "habilidade_bncc": "EF07MA03"
+    },
+    {
+      "id": "b-log-u02",
+      "trilha": "B",
+      "eixo": "logica",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "Rafa quer montar um quadrado mágico 3 × 3 usando os números de 2 a 10, cada um exatamente uma vez, de modo que toda linha, toda coluna e as duas diagonais tenham a mesma soma. Qual será essa soma mágica?",
+      "alternativas": [
+        "18",
+        "15",
+        "12",
+        "27",
+        "54"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Comece pelo caso famoso: com os números de 1 a 9, o total é 45 e cada uma das 3 linhas soma 45 ÷ 3 = 15. 2) Use a mesma ideia aqui: 2 + 3 + ... + 10 = 54. 3) As 3 linhas repartem o total igualmente: 54 ÷ 3 = 18.",
+      "distratores_explicados": {
+        "1": "15 é a soma mágica do quadrado famoso de 1 a 9. Aqui os números vão de 2 a 10: o total sobe para 54, e a soma mágica vai a 18.",
+        "3": "Você dividiu o total 54 por 2, mas o quadrado tem 3 linhas que repartem o total: 54 ÷ 3 = 18.",
+        "4": "54 é a soma de TODOS os nove números juntos. Cada linha carrega apenas um terço disso: 18.",
+        "2": "Você provavelmente somou só os três menores números (2 + 4 + 6). A soma mágica vem do total de TODOS os números dividido pelas 3 linhas: 54 ÷ 3 = 18."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF07MA04"
+    },
+    {
+      "id": "b-log-u03",
+      "trilha": "B",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "Na fogueira, cada explorador fez uma afirmação. Maya: 'Rafa está mentindo.' Rafa: 'Sofia está mentindo.' Sofia: 'Maya e Rafa estão mentindo.' Quem está dizendo a verdade?",
+      "alternativas": [
+        "Apenas Maya",
+        "Apenas Rafa",
+        "Apenas Sofia",
+        "Maya e Sofia",
+        "Ninguém"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Teste a hipótese 'Maya fala a verdade': então Rafa mente, logo Sofia fala a verdade; mas Sofia diz que Maya mente — contradição! 2) Teste 'Maya mente': então Rafa fala a verdade, logo Sofia mente mesmo; e a frase de Sofia ('Maya e Rafa mentem') é de fato falsa, pois Rafa fala a verdade — tudo se encaixa. 3) Conclusão: apenas Rafa diz a verdade.",
+      "distratores_explicados": {
+        "0": "Se Maya falasse a verdade, Rafa mentiria e, portanto, Sofia falaria a verdade — mas Sofia afirma que Maya mente. Essa hipótese se destrói sozinha.",
+        "2": "Se Sofia falasse a verdade, Maya e Rafa mentiriam. Mas Maya mentindo significa que Rafa fala a verdade — contradição direta.",
+        "3": "Maya e Sofia se contradizem: Sofia afirma que Maya mente. As duas não podem falar a verdade ao mesmo tempo.",
+        "4": "Se ninguém falasse a verdade, a frase de Maya ('Rafa mente') seria falsa — ou seja, Rafa falaria a verdade. Contradição: alguém precisa estar falando a verdade."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF07MA03"
+    },
+    {
+      "id": "b-log-u04",
+      "trilha": "B",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "Na mochila de Maya há 8 meias pretas, 6 brancas e 4 cinzas, todas misturadas. Ainda está escuro na barraca e ela não enxerga as cores. Quantas meias precisa tirar, no mínimo, para GARANTIR duas meias da mesma cor?",
+      "alternativas": [
+        "2",
+        "3",
+        "4",
+        "5",
+        "11"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Teste a alternativa 3: o azar pode entregar uma meia de cada cor (preta, branca, cinza) — nenhum par ainda. Então 3 não garante. 2) Teste 4: mesmo no pior caso, as 3 primeiras já esgotaram as cores diferentes; a 4ª meia repete alguma cor com certeza. 3) Resposta: 4 meias.",
+      "distratores_explicados": {
+        "0": "Com 2 meias você PODE ter sorte e formar um par, mas o azar pode trazer duas cores diferentes. Garantia exige pensar no pior caso.",
+        "1": "Com 3 meias o pior caso é uma de cada cor (preta, branca, cinza) — ainda sem par. É a 4ª que fecha o par com certeza.",
+        "3": "5 meias garantem o par, mas não é o MÍNIMO: com 4 já é impossível escapar de repetir uma cor.",
+        "4": "11 seria a garantia de um par de uma COR ESPECÍFICA no pior dos casos, não de um par qualquer. Para duas da mesma cor, qualquer que seja, bastam 4."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF08MA22"
+    },
+    {
+      "id": "b-log-u05",
+      "trilha": "B",
+      "eixo": "logica",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "No encontro anual, 25 exploradores de várias equipes acamparam juntos. Cada pessoa nasceu em um dos 12 meses do ano. Qual é o maior número N para o qual podemos GARANTIR que pelo menos N exploradores fazem aniversário no mesmo mês?",
+      "alternativas": [
+        "2",
+        "3",
+        "4",
+        "12",
+        "13"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Comece pequeno: imagine distribuir os aniversários um a um pelos 12 meses tentando espalhá-los ao máximo. 2) Dá para colocar 2 em cada mês usando 24 pessoas, sem nenhum mês com 3. 3) A 25ª pessoa não tem escapatória: algum mês recebe o 3º aniversariante. Como 24 pessoas ainda permitiam só 2 por mês, o máximo garantido é N = 3.",
+      "distratores_explicados": {
+        "0": "2 é garantido, mas não é o MAIOR N garantido: mesmo espalhando ao máximo (2 por mês = 24), a 25ª pessoa força um mês com 3.",
+        "2": "Para garantir 4 num mesmo mês seriam necessárias 3 × 12 + 1 = 37 pessoas. Com 25, o azar pode parar em no máximo 3.",
+        "3": "12 é o número de meses, não de pessoas garantidas num mesmo mês. Pense nos meses como gaiolas e nas pessoas como pombos.",
+        "4": "Você aplicou o '+1' ao número de meses (12 + 1). O certo é: 25 = 2 × 12 + 1, então algum mês tem pelo menos 2 + 1 = 3 pessoas."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF08MA22"
+    },
+    {
+      "id": "b-log-u06",
+      "trilha": "B",
+      "eixo": "logica",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "No quadro branco do acampamento estão escritos os números de 1 a 10. A cada rodada, Rafa apaga dois números quaisquer e escreve no lugar a soma deles menos 1. Ele repete isso até sobrar um único número no quadro. Que número sobra?",
+      "alternativas": [
+        "44",
+        "45",
+        "46",
+        "54",
+        "55"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Comece pequeno: com 1, 2, 3 no quadro, junte 1 e 2 → escreve 2; junte 2 e 3 → escreve 4. O total inicial era 6, e cada rodada diminui o total em exatamente 1. 2) No problema real, a soma inicial é 1 + 2 + ... + 10 = 55. 3) Para ir de 10 números até 1, são 9 rodadas, e cada uma tira 1 do total: 55 − 9 = 46 — não importa a ordem das jogadas!",
+      "distratores_explicados": {
+        "0": "Você descontou 11 rodadas. De 10 números até sobrar 1 são exatamente 9 rodadas (cada uma reduz a quantidade em 1): 55 − 9 = 46.",
+        "1": "Você descontou 10 rodadas, mas de 10 números até 1 são só 9 rodadas: 55 − 9 = 46.",
+        "3": "Você descontou o −1 uma única vez. CADA uma das 9 rodadas diminui o total em 1: 55 − 9 = 46.",
+        "4": "55 é a soma inicial de 1 a 10. Cada rodada troca dois números pela soma menos 1, derrubando o total em 1 por 9 vezes: sobra 46."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF07MA01"
+    },
+    {
+      "id": "b-log-s01",
+      "trilha": "B",
+      "eixo": "logica",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Maya, Rafa e Sofia carregam, cada um, exatamente um destes equipamentos: a bússola, a lanterna ou a corda. Sabe-se que Rafa não está com a bússola e que Maya está com a lanterna. O que Rafa carrega?",
+      "alternativas": [
+        "A bússola",
+        "A lanterna",
+        "A corda",
+        "O mapa",
+        "É impossível saber"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Monte a tabelinha dos suspeitos e risque o que as pistas proíbem: Rafa ✘ bússola. 2) A lanterna já tem dona: Maya — então Rafa ✘ lanterna. 3) Dos três equipamentos, sobra um único para Rafa: a corda.",
+      "distratores_explicados": {
+        "0": "A primeira pista diz exatamente que Rafa NÃO está com a bússola (ela acaba ficando com Sofia).",
+        "1": "A lanterna é de Maya, e cada equipamento tem um único dono. Risque a lanterna da linha do Rafa.",
+        "3": "O mapa nem faz parte da lista: os equipamentos distribuídos são bússola, lanterna e corda.",
+        "4": "Dá para saber, sim: riscando a bússola (pista 1) e a lanterna (que é de Maya), sobra só a corda para Rafa."
+      },
+      "estrategia_alvo": "eliminacao",
+      "habilidade_bncc": "EF07MA03"
+    },
+    {
+      "id": "b-log-s02",
+      "trilha": "B",
+      "eixo": "logica",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "No quadrado mágico do diário de bordo, toda linha, toda coluna e as diagonais somam 15. A primeira linha é 8, 1, 6, e a primeira coluna é 8, 3 e uma casa borrada. Que número está na casa borrada?",
+      "alternativas": [
+        "4",
+        "3",
+        "2",
+        "5",
+        "7"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Monte a tabela e concentre-se na primeira coluna: 8 + 3 + ? = 15. 2) Some o que já existe: 8 + 3 = 11. 3) A casa borrada vale 15 − 11 = 4.",
+      "distratores_explicados": {
+        "1": "O 3 já está na própria coluna, e num quadrado mágico cada número aparece uma única vez. A casa borrada vale 15 − 11 = 4.",
+        "3": "Você provavelmente usou 16 como soma mágica. O enunciado diz que toda linha e coluna soma 15: 15 − 8 − 3 = 4.",
+        "4": "Você provavelmente subtraiu 8 de 15 e esqueceu o 3: a coluna já tem 8 E 3, então falta 15 − 11 = 4.",
+        "2": "Você provavelmente calculou 13 − 11 ou escorregou na subtração. A coluna precisa somar 15: 15 − 11 = 4."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF07MA04"
+    },
+    {
+      "id": "b-log-s03",
+      "trilha": "B",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Alguém comeu o último biscoito do estoque da expedição. Maya afirmou: 'Foi o Rafa.' Rafa afirmou: 'Foi a Sofia.' Sofia afirmou: 'Não fui eu.' Sabe-se que exatamente UMA das três pessoas mentiu. Quem comeu o biscoito?",
+      "alternativas": [
+        "Maya",
+        "Rafa",
+        "Sofia",
+        "O drone Píxel",
+        "É impossível determinar"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Teste cada suspeito e conte os mentirosos. Se foi Maya: a frase dela ('foi o Rafa') é mentira e a de Rafa também — dois mentirosos, proibido. 2) Se foi Sofia: Maya mente e Sofia mente ('não fui eu') — dois mentirosos, proibido. 3) Se foi Rafa: Maya diz a verdade, Rafa mente e Sofia diz a verdade — exatamente um mentiroso ✔. Foi o Rafa.",
+      "distratores_explicados": {
+        "0": "Se Maya tivesse comido, tanto a frase dela quanto a de Rafa seriam mentiras — mas o enunciado garante um único mentiroso.",
+        "2": "Se Sofia tivesse comido, Maya e a própria Sofia estariam mentindo: dois mentirosos, o que contraria o enunciado.",
+        "3": "O Píxel é um drone — não come biscoitos! As pistas apontam para os três exploradores, e o teste fecha com o Rafa.",
+        "4": "Dá para determinar: testando os três cenários, só 'foi o Rafa' produz exatamente uma mentira (a do próprio Rafa)."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF07MA03"
+    },
+    {
+      "id": "b-log-s04",
+      "trilha": "B",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "O cartão de memória do Píxel 🚁 tem fotos de 5 categorias diferentes (rios, picos, trilhas, fauna e flora), muitas de cada tipo. Sofia sorteia fotos sem olhar. Quantas fotos precisa sortear, no mínimo, para GARANTIR 3 fotos de uma mesma categoria?",
+      "alternativas": [
+        "6",
+        "10",
+        "11",
+        "15",
+        "16"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Pense no pior caso possível, começando pequeno: o azar entrega as fotos mais espalhadas que conseguir. 2) O pior caso é receber 2 de cada uma das 5 categorias: 2 × 5 = 10 fotos, e nenhuma categoria chegou a 3. 3) A 11ª foto não tem para onde fugir: alguma categoria completa 3. Resposta: 11.",
+      "distratores_explicados": {
+        "0": "Você usou 5 + 1, que garante apenas 2 fotos de uma mesma categoria. Para garantir 3, o pior caso tem 2 de cada: 10, e a 11ª decide.",
+        "1": "Com 10 fotos o azar ainda pode ter entregue exatamente 2 de cada categoria — nenhuma chegou a 3. Falta uma: 11.",
+        "3": "5 × 3 = 15 garante com folga, mas não é o mínimo: a 11ª foto já força a 3ª repetição de alguma categoria.",
+        "4": "Você aplicou o '+1' sobre 15. O pior caso sem trinca é 2 × 5 = 10 fotos; o mínimo que garante é 10 + 1 = 11."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF08MA22"
+    },
+    {
+      "id": "b-log-s05",
+      "trilha": "B",
+      "eixo": "logica",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "O número da trilha secreta está entre as alternativas abaixo. Sobre ele, os exploradores afirmaram — Maya: 'É múltiplo de 6.' Rafa: 'É maior que 12.' Sofia: 'É ímpar.' Píxel: 'Tem dois algarismos.' Sabe-se que exatamente DUAS dessas afirmações são verdadeiras. Qual é o número da trilha?",
+      "alternativas": [
+        "6",
+        "9",
+        "11",
+        "15",
+        "18"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Teste cada alternativa contando as afirmações verdadeiras. 6: múltiplo de 6 ✔, maior que 12 ✘, ímpar ✘, dois algarismos ✘ → 1 verdade. 2) 9: só 'ímpar' ✔ → 1 verdade. 15: maior que 12 ✔, ímpar ✔, dois algarismos ✔ → 3 verdades. 18: múltiplo de 6 ✔, maior que 12 ✔, dois algarismos ✔ → 3 verdades. 3) 11: maior que 12 ✘, múltiplo de 6 ✘, ímpar ✔, dois algarismos ✔ → exatamente 2 verdades ✔. O número é 11.",
+      "distratores_explicados": {
+        "0": "Para o 6, só a frase de Maya é verdadeira (1 verdade). O enunciado exige exatamente duas.",
+        "1": "Para o 9, só a frase de Sofia é verdadeira (1 verdade). O enunciado exige exatamente duas.",
+        "3": "Para o 15 valem as frases de Rafa, Sofia e Píxel: são 3 verdades, uma a mais do que o permitido.",
+        "4": "Para o 18 valem as frases de Maya, Rafa e Píxel: são 3 verdades, uma a mais do que o permitido."
+      },
+      "estrategia_alvo": "testar_alternativas",
+      "habilidade_bncc": "EF07MA01"
+    },
+    {
+      "id": "b-log-s06",
+      "trilha": "B",
+      "eixo": "logica",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "Sete lanternas do acampamento estão ACESAS. A cada rodada, Rafa escolhe exatamente duas lanternas e inverte o estado das duas (acesa apaga, apagada acende). Depois de várias rodadas, qual quantidade de lanternas acesas é IMPOSSÍVEL de se obter?",
+      "alternativas": [
+        "1",
+        "3",
+        "7",
+        "5",
+        "4"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Procure o que NÃO muda: em cada rodada, o número de acesas varia em −2 (apagou duas), 0 (uma acende, outra apaga) ou +2 (acendeu duas). 2) Variações de 0 ou ±2 nunca mudam a paridade: começando com 7 (ímpar), o total de acesas será SEMPRE ímpar. 3) 4 é par — impossível. (E 1, 3, 5, 7 são todos alcançáveis apagando pares de lanternas.)",
+      "distratores_explicados": {
+        "0": "1 é possível: apague duas lanternas por rodada três vezes seguidas (7 → 5 → 3 → 1).",
+        "1": "3 é possível: apague duas lanternas em cada uma de duas rodadas (7 → 5 → 3).",
+        "3": "5 é possível: basta uma rodada apagando duas lanternas (7 → 5).",
+        "2": "7 é o estado inicial — e continua possível: escolha duas lanternas acesas, apague-as e acenda-as de novo na rodada seguinte."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF08MA10"
+    },
+    {
+      "id": "b-log-n01",
+      "trilha": "B",
+      "eixo": "logica",
+      "valor_pontos": 4,
+      "uso": "nivelamento",
+      "enunciado": "As três mochilas da expedição — uma vermelha, uma azul e uma amarela — pesam 5 kg, 7 kg e 9 kg, em alguma ordem. A mochila vermelha não é a mais leve, e a azul pesa 9 kg. Quanto pesa a mochila vermelha?",
+      "alternativas": [
+        "7 kg",
+        "6 kg",
+        "5 kg",
+        "8 kg",
+        "9 kg"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Risque o que as pistas proíbem: a azul pesa 9 kg, então a vermelha não pesa 9. 2) A vermelha não é a mais leve, então também não pesa 5 kg. 3) Dos três pesos possíveis, sobra um único para a vermelha: 7 kg (e a amarela fica com 5 kg).",
+      "distratores_explicados": {
+        "1": "6 kg nem está entre os pesos possíveis: as mochilas pesam 5, 7 ou 9 kg.",
+        "3": "8 kg nem está entre os pesos possíveis: as mochilas pesam 5, 7 ou 9 kg.",
+        "4": "9 kg já é o peso da mochila azul, e cada mochila tem um peso diferente.",
+        "2": "5 kg é o peso da mais leve, e a pista diz que a vermelha NÃO é a mais leve — esse peso vai para a amarela."
+      },
+      "estrategia_alvo": "eliminacao",
+      "habilidade_bncc": "EF07MA03"
+    },
+    {
+      "id": "b-con-u01",
+      "trilha": "B",
+      "eixo": "contagem",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "Para o almoço na trilha, Sofia escolhe exatamente 1 sanduíche e 1 suco. Há 3 tipos de sanduíche e 4 sabores de suco na despensa da expedição. De quantas maneiras diferentes ela pode montar o lanche?",
+      "alternativas": [
+        "3",
+        "4",
+        "7",
+        "12",
+        "24"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Organize numa tabela: uma linha para cada sanduíche (3 linhas) e uma coluna para cada suco (4 colunas). 2) Cada casinha da tabela é um lanche diferente. 3) A tabela tem 3 × 4 = 12 casinhas: 12 maneiras.",
+      "distratores_explicados": {
+        "0": "3 é só o número de sanduíches. Cada sanduíche combina com 4 sucos: 3 × 4 = 12.",
+        "1": "4 é só o número de sucos. Cada suco combina com 3 sanduíches: 3 × 4 = 12.",
+        "2": "Você SOMOU 3 + 4, mas Sofia escolhe UM de cada grupo ao mesmo tempo. Escolhas combinadas se multiplicam: 3 × 4 = 12.",
+        "4": "Você provavelmente multiplicou por 2 sem necessidade (como se a ordem importasse). A tabela mostra exatamente 12 combinações."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF08MA03"
+    },
+    {
+      "id": "b-con-u02",
+      "trilha": "B",
+      "eixo": "contagem",
+      "valor_pontos": 3,
+      "uso": "unidade",
+      "enunciado": "As bandeirinhas que marcam a trilha seguem sempre este padrão que se repete: azul, verde, amarela, vermelha, azul, verde, amarela, vermelha, ... De que cor é a 30ª bandeirinha?",
+      "alternativas": [
+        "Azul",
+        "Verde",
+        "Amarela",
+        "Vermelha",
+        "Laranja"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) O ciclo tem 4 cores; divida a posição pelo tamanho do ciclo: 30 ÷ 4 = 7 ciclos completos com resto 2. 2) Os 7 ciclos terminam na bandeirinha 28; o resto 2 diz para andar mais 2 posições no ciclo: azul (29ª), verde (30ª). 3) A 30ª bandeirinha é verde.",
+      "distratores_explicados": {
+        "0": "Azul seria a posição de resto 1. Como 30 = 4 × 7 + 2, o resto é 2, e a 2ª cor do ciclo é a verde.",
+        "2": "Amarela é a 3ª cor do ciclo (resto 3). Você provavelmente contou uma casa a mais: o resto de 30 ÷ 4 é 2.",
+        "3": "Vermelha aparece quando a posição é múltiplo de 4 (resto 0), como a 28ª. A 30ª tem resto 2: verde.",
+        "4": "Laranja nem faz parte do padrão: as cores do ciclo são azul, verde, amarela e vermelha."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF08MA10"
+    },
+    {
+      "id": "b-con-u03",
+      "trilha": "B",
+      "eixo": "contagem",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "A senha do cadeado da barraca de suprimentos tem 3 algarismos DIFERENTES, todos escolhidos entre 1, 2, 3 e 4, e forma um número par. Quantas senhas diferentes são possíveis?",
+      "alternativas": [
+        "6",
+        "12",
+        "18",
+        "24",
+        "32"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Organize por casas, começando pela mais exigente: o último algarismo precisa ser par — 2 opções (2 ou 4). 2) O primeiro algarismo pode ser qualquer um dos 3 restantes; o do meio, qualquer um dos 2 que sobraram. 3) Multiplique: 2 × 3 × 2 = 12 senhas. (Confira listando as que terminam em 2: 132, 312, 142, 412, 342, 432 — são 6; com final 4 são outras 6.)",
+      "distratores_explicados": {
+        "0": "Você contou só as senhas que terminam em 2 (são 6). As que terminam em 4 também são pares: 6 + 6 = 12.",
+        "2": "Você provavelmente fez 3 × 3 × 2, esquecendo que o algarismo do meio não pode repetir os já usados: sobram só 2 opções para ele.",
+        "3": "24 é o total SEM a exigência de ser par (4 × 3 × 2). Metade das senhas termina em número ímpar e sai da lista: 12.",
+        "4": "Você permitiu repetir algarismos (4 × 4 × 2). A senha tem 3 algarismos DIFERENTES: 2 × 3 × 2 = 12."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF08MA03"
+    },
+    {
+      "id": "b-con-u04",
+      "trilha": "B",
+      "eixo": "contagem",
+      "valor_pontos": 4,
+      "uso": "unidade",
+      "enunciado": "O acampamento fica no canto de baixo-esquerda de um mapa quadriculado com 2 × 2 quarteirões, e o mirante fica no canto de cima-direita. Rafa só anda pelas linhas do quadriculado, sempre para a direita ou para cima. Quantos caminhos diferentes ele pode fazer?",
+      "alternativas": [
+        "2",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "gabarito": 3,
+      "solucao_passo_a_passo": "1) Comece pequeno: num quadriculado 1 × 1 há só 2 caminhos (direita-cima ou cima-direita). 2) Use a regra da soma nos cruzamentos: cada cruzamento recebe a soma dos caminhos do vizinho de baixo e do vizinho da esquerda. 3) Preenchendo o mapa 2 × 2 cantinho por cantinho: as bordas têm sempre 1 caminho, o centro fica com 2, e o mirante fecha com 3 + 3 = 6 caminhos.",
+      "distratores_explicados": {
+        "0": "2 é a resposta do quadriculado pequeno 1 × 1 (ou só os dois caminhos pelas bordas). No 2 × 2, os caminhos pelo meio também contam: 6.",
+        "1": "4 é o número de passos de cada caminho (2 para a direita e 2 para cima), não o número de caminhos diferentes.",
+        "2": "Você provavelmente esqueceu um caminho na lista. Use a regra da soma nos cruzamentos: o canto final recebe 3 + 3 = 6.",
+        "4": "Você provavelmente contou algum caminho duas vezes. A soma nos cruzamentos dá exatamente 6."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF08MA03"
+    },
+    {
+      "id": "b-con-u05",
+      "trilha": "B",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "No encerramento da temporada, os 8 exploradores humanos da base se despediram: cada um cumprimentou cada um dos outros com um único aperto de mão. Quantos apertos de mão aconteceram?",
+      "alternativas": [
+        "16",
+        "28",
+        "36",
+        "56",
+        "64"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) Comece pequeno: com 2 pessoas há 1 aperto; com 3 pessoas, 3; com 4 pessoas, 6 — cada pessoa nova cumprimenta todas as anteriores. 2) O padrão é somar 1 + 2 + 3 + ... até (pessoas − 1). 3) Com 8 pessoas: 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28 apertos.",
+      "distratores_explicados": {
+        "0": "Você fez 8 × 2. Cada pessoa cumprimenta 7 outras, e cada aperto une DUAS pessoas: (8 × 7) ÷ 2 = 28.",
+        "2": "Você somou 1 + 2 + ... + 8, mas a última parcela é 7: a 8ª pessoa cumprimenta as 7 anteriores, e ninguém aperta a própria mão.",
+        "3": "Você fez 8 × 7 = 56, contando cada aperto DUAS vezes (uma para cada mão envolvida). Divida por 2: 28.",
+        "4": "Você fez 8 × 8, incluindo apertos de cada pessoa consigo mesma e contando os pares em dobro. O certo: (8 × 7) ÷ 2 = 28."
+      },
+      "estrategia_alvo": "casos_pequenos",
+      "habilidade_bncc": "EF08MA03"
+    },
+    {
+      "id": "b-con-u06",
+      "trilha": "B",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "unidade",
+      "enunciado": "A luz de sinalização do Píxel 🚁 repete para sempre um ciclo de 10 segundos: fica vermelha nos segundos 1 a 3, verde nos segundos 4 e 5 e azul nos segundos 6 a 10. De que cor estará a luz no segundo número 2026?",
+      "alternativas": [
+        "Azul",
+        "Verde",
+        "Vermelha",
+        "Amarela",
+        "Apagada"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) O ciclo tem 10 segundos, e dividir por 10 é fácil: o resto de 2026 ÷ 10 é o último algarismo, 6. 2) Resto 6 significa cair no 6º segundo do ciclo. 3) Consulte o mapa do ciclo: segundos 1–3 vermelha, 4–5 verde, 6–10 azul. O 6º segundo é azul.",
+      "distratores_explicados": {
+        "1": "Você provavelmente contou o ciclo começando do zero e caiu no trecho errado. O resto 6 aponta para o 6º segundo: azul.",
+        "3": "Amarela nem aparece no ciclo: as cores são vermelha, verde e azul.",
+        "4": "A luz nunca fica apagada durante o ciclo: os 10 segundos estão todos coloridos (3 + 2 + 5 = 10).",
+        "2": "Vermelha vale para os segundos de resto 1, 2 ou 3. O resto de 2026 ÷ 10 é 6, que já pertence ao trecho azul."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF08MA10"
+    },
+    {
+      "id": "b-con-s01",
+      "trilha": "B",
+      "eixo": "contagem",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "Do acampamento até o Rio Cascata existem 2 trilhas diferentes, e do rio até o Pico Norte existem 5 pontes diferentes. De quantas maneiras Maya pode ir do acampamento ao Pico Norte passando pelo rio?",
+      "alternativas": [
+        "10",
+        "7",
+        "5",
+        "20",
+        "25"
+      ],
+      "gabarito": 0,
+      "solucao_passo_a_passo": "1) Desenhe um diagrama de árvore: do acampamento saem 2 ramos (as trilhas). 2) Da ponta de cada trilha saem 5 ramos (as pontes): o desenho abre 5 finais para CADA trilha. 3) Total de caminhos: 2 × 5 = 10.",
+      "distratores_explicados": {
+        "1": "Você SOMOU 2 + 5. O caminho usa uma trilha E uma ponte, então as escolhas se multiplicam: 2 × 5 = 10.",
+        "3": "Você dobrou o resultado, talvez contando ida e volta. A pergunta pede só a ida: 2 × 5 = 10.",
+        "4": "Você fez 5 × 5, mas são apenas 2 trilhas na primeira parte do caminho: 2 × 5 = 10.",
+        "2": "5 é só o número de pontes. Cada ponte pode ser alcançada por 2 trilhas diferentes: 2 × 5 = 10."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF08MA03"
+    },
+    {
+      "id": "b-con-s02",
+      "trilha": "B",
+      "eixo": "contagem",
+      "valor_pontos": 3,
+      "uso": "simulado",
+      "enunciado": "O drone escreve seu nome sem parar na tela de boas-vindas: P, I, X, E, L, P, I, X, E, L, P, ... Qual é a 52ª letra escrita?",
+      "alternativas": [
+        "P",
+        "I",
+        "X",
+        "E",
+        "L"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) O ciclo PIXEL tem 5 letras; divida a posição por 5: 52 ÷ 5 = 10 ciclos completos com resto 2. 2) Os 10 ciclos terminam na 50ª letra (um L); o resto 2 manda andar mais duas letras: P (51ª), I (52ª). 3) A 52ª letra é I.",
+      "distratores_explicados": {
+        "0": "P aparece nas posições de resto 1 (como a 51ª). Como 52 = 5 × 10 + 2, o resto é 2: a letra é I.",
+        "2": "X é a letra do resto 3. Você provavelmente contou a partir do zero; contando a partir do 1, o resto 2 dá I.",
+        "3": "E é a letra do resto 4. O resto de 52 ÷ 5 é 2, e a 2ª letra de PIXEL é I.",
+        "4": "L fecha cada ciclo, nas posições múltiplas de 5 (50ª, 55ª...). A 52ª tem resto 2: é I."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF08MA10"
+    },
+    {
+      "id": "b-con-s03",
+      "trilha": "B",
+      "eixo": "contagem",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Os postes da trilha do lago são pintados, nesta ordem: 2 postes azuis, depois 3 postes brancos, depois 2 azuis, 3 brancos, e assim por diante. Entre os 43 primeiros postes, quantos são brancos?",
+      "alternativas": [
+        "18",
+        "24",
+        "25",
+        "26",
+        "27"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) O ciclo tem 2 + 3 = 5 postes; 43 ÷ 5 = 8 ciclos completos e resto 3. 2) Os 8 ciclos completos (postes 1 a 40) trazem 8 × 3 = 24 brancos. 3) Os 3 postes restantes seguem o padrão do início do ciclo: 41º azul, 42º azul, 43º branco — mais 1 branco. Total: 24 + 1 = 25.",
+      "distratores_explicados": {
+        "0": "Você contou os postes AZUIS (8 × 2 + 2 = 18). A pergunta pede os brancos: 24 + 1 = 25.",
+        "1": "Você contou só os brancos dos 8 ciclos completos e esqueceu o poste 43, que é branco: 24 + 1 = 25.",
+        "3": "Você contou o poste 41 ou o 42 como branco, mas cada ciclo COMEÇA com os 2 azuis: só o 43º é branco no pedaço final.",
+        "4": "Você somou os 3 brancos de um ciclo inteiro no final (24 + 3), mas o pedaço final só tem 3 postes: azul, azul, branco."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF08MA10"
+    },
+    {
+      "id": "b-con-s04",
+      "trilha": "B",
+      "eixo": "contagem",
+      "valor_pontos": 4,
+      "uso": "simulado",
+      "enunciado": "Maya, Rafa, Sofia e o drone Píxel 🚁 vão se posicionar em fila, em 4 marcas no chão, para a foto oficial da expedição. Para não atrapalhar ninguém com suas hélices, o Píxel deve ficar em uma das duas pontas da fila. De quantas maneiras os quatro podem se organizar?",
+      "alternativas": [
+        "6",
+        "8",
+        "12",
+        "18",
+        "24"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Organize a contagem por etapas: primeiro o lugar do Píxel — 2 opções (ponta esquerda ou direita). 2) Depois, os outros 3 se arrumam nas 3 marcas restantes: 3 × 2 × 1 = 6 maneiras. 3) Multiplique as etapas: 2 × 6 = 12 maneiras.",
+      "distratores_explicados": {
+        "0": "Você contou só os arranjos dos outros três (3 × 2 × 1 = 6) e esqueceu que o Píxel tem DUAS pontas possíveis: 2 × 6 = 12.",
+        "1": "Você provavelmente fez 2 × 4, misturando as etapas. Depois de escolher a ponta do Píxel (2), os três exploradores se organizam de 6 formas: 12.",
+        "3": "Você provavelmente fez 3 × 3 × 2, deixando alguém repetir lugar. Cada um ocupa uma única marca: 2 × 3 × 2 × 1 = 12.",
+        "4": "24 é o total SEM a restrição das pontas (4 × 3 × 2 × 1). Com o Píxel preso às pontas, metade das filas sai da lista: 12."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF08MA03"
+    },
+    {
+      "id": "b-con-s05",
+      "trilha": "B",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "No mapa quadriculado da cidade-base há 3 × 3 quarteirões. Rafa está no canto de baixo-esquerda e o mercado fica no canto de cima-direita. Andando apenas para a direita ou para cima pelas linhas do quadriculado, de quantos caminhos diferentes Rafa pode ir ao mercado?",
+      "alternativas": [
+        "6",
+        "9",
+        "15",
+        "35",
+        "20"
+      ],
+      "gabarito": 4,
+      "solucao_passo_a_passo": "1) Desenhe o quadriculado e escreva, em cada cruzamento, quantos caminhos chegam até ele: nas bordas de baixo e da esquerda há sempre 1. 2) Nos demais cruzamentos, some o vizinho de baixo com o da esquerda (todo caminho chega por um deles). 3) Preenchendo linha por linha: 2, 3, 4 / 3, 6, 10 / 4, 10, 20. O canto final recebe 10 + 10 = 20 caminhos.",
+      "distratores_explicados": {
+        "0": "6 é a resposta do quadriculado 2 × 2. Aqui são 3 × 3 quarteirões: continuando a tabela de somas, chega-se a 20.",
+        "1": "Você multiplicou 3 × 3. Caminhos não se contam multiplicando os lados: use a soma nos cruzamentos, que fecha em 20.",
+        "2": "Você provavelmente pulou uma soma na tabela (15 aparece antes do fim). O último cruzamento recebe 10 + 10 = 20.",
+        "3": "35 seria o resultado com uma fileira a mais de quarteirões (3 × 4). No 3 × 3, o desenho fecha em 20."
+      },
+      "estrategia_alvo": "desenhar",
+      "habilidade_bncc": "EF08MA03"
+    },
+    {
+      "id": "b-con-s06",
+      "trilha": "B",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "simulado",
+      "enunciado": "Sofia numerou as barracas do grande encontro de 1 a 100. As barracas com número múltiplo de 3 receberam fita verde, e as com número múltiplo de 5 receberam fita roxa (uma barraca pode receber as duas fitas). Quantas barracas receberam pelo menos uma fita?",
+      "alternativas": [
+        "20",
+        "33",
+        "47",
+        "48",
+        "53"
+      ],
+      "gabarito": 2,
+      "solucao_passo_a_passo": "1) Liste por grupos: múltiplos de 3 até 100 → 33 barracas; múltiplos de 5 até 100 → 20 barracas. 2) Cuidado com a contagem dupla: os múltiplos de 15 (15, 30, 45, 60, 75, 90) aparecem nas DUAS listas — são 6 barracas. 3) Total com fita: 33 + 20 − 6 = 47.",
+      "distratores_explicados": {
+        "0": "20 é só o grupo das fitas roxas (múltiplos de 5). Faltou juntar os múltiplos de 3, descontando os repetidos: 33 + 20 − 6 = 47.",
+        "1": "33 é só o grupo das fitas verdes (múltiplos de 3). Faltou juntar os múltiplos de 5, descontando os repetidos: 47.",
+        "3": "Você descontou apenas 5 números repetidos, mas os múltiplos de 15 até 100 são 6: 15, 30, 45, 60, 75 e 90. Total: 47.",
+        "4": "Você somou 33 + 20 sem descontar as barracas que estão nas duas listas (os múltiplos de 15). Elas foram contadas em dobro: 53 − 6 = 47."
+      },
+      "estrategia_alvo": "tabela_lista",
+      "habilidade_bncc": "EF07MA01"
+    },
+    {
+      "id": "b-con-n01",
+      "trilha": "B",
+      "eixo": "contagem",
+      "valor_pontos": 5,
+      "uso": "nivelamento",
+      "enunciado": "Hoje é sábado, dia da chegada da Expedição Vetor à base. O resgate do material está marcado para exatamente 60 dias depois. Em que dia da semana cairá o resgate?",
+      "alternativas": [
+        "Terça-feira",
+        "Quarta-feira",
+        "Quinta-feira",
+        "Sexta-feira",
+        "Domingo"
+      ],
+      "gabarito": 1,
+      "solucao_passo_a_passo": "1) A semana é um ciclo de 7 dias: divida 60 por 7 → 60 = 7 × 8 + 4, resto 4. 2) As 8 semanas completas caem de novo no sábado (dia 56); o resto 4 manda avançar mais 4 dias. 3) Sábado + 4: domingo, segunda, terça, QUARTA. O resgate cai numa quarta-feira.",
+      "distratores_explicados": {
+        "0": "Você avançou só 3 dias após as semanas completas. O resto de 60 ÷ 7 é 4: sábado + 4 = quarta-feira.",
+        "2": "Você avançou 5 dias. Confira o resto: 60 − 56 = 4, e sábado + 4 dias é quarta-feira.",
+        "3": "Você provavelmente usou resto 6 (ou contou o próprio sábado como primeiro dia). 60 = 7 × 8 + 4: quarta-feira.",
+        "4": "Você provavelmente usou 7 × 8 = 56 e avançou só 1 dia, ou arredondou 60 para 63. O resto é 4: quarta-feira."
+      },
+      "estrategia_alvo": "padroes",
+      "habilidade_bncc": "EF07MA01"
+    }
+  ]
+}
