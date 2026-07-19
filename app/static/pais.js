@@ -365,6 +365,7 @@ function MSG_ANDREIA(){
    <p><b>A missão.</b> Criar o hábito de estudar todo dia e, acima de tudo, o <b>amor pela leitura</b> — porque ler é a chave de todas as outras matérias.</p>
    <p><b>Como o conteúdo é feito.</b> Missões alinhadas à BNCC (hoje 5º ano), com questões que dão feedback e explicação. A ideia é o conteúdo se adaptar à <b>idade</b> de cada filho.</p>
    <p><b>As recompensas.</b> XP e níveis, moedas, ofensiva (dias seguidos 🔥), baú diário 🎁, conquistas e avatares — até os <b>supremos secretos</b> (Pokémon, Sonic, Metroid) que liberam com esforço. E o Tux/Minecraft como prêmio de quem cumpre a jornada.</p>
+   <p><b>Novidade: Olimpíadas de Matemática 🦘</b> Uma trilha no estilo Canguru, com questões autorais, simulados cronometrados e micro-aulas de estratégia — para o raciocínio do Vittor ir além da escola. Você acompanha tudo por aqui.</p>
    <p><b>O coração de tudo: o resumo de leitura.</b> Nenhuma missão se conclui sem ler. A criança lê <i>qualquer</i> livro e escreve um resumo — no começo digitado, depois no papel com foto — e <b>você avalia com estrelas</b> e deixa um recadinho. É isso que constrói leitores de verdade.</p>
    <p>Agora você também é guardiã dessa jornada: <b>cadastre os filhos</b>, acompanhe o progresso, avalie as leituras e mande mensagens de incentivo. Bora criar essa memória linda com eles? 💜</p>
   </div>`;
@@ -375,7 +376,7 @@ function abrirBoasVindas(){
     : `<div class="bv-emoji">👋</div><h2 class="bv-h">Bem-vindo(a), ${esc(PAI.nome||'')}!</h2>
        <div class="bv-tx"><p>Aqui você cadastra seus filhos, acompanha a jornada de estudos deles, avalia as leituras e manda incentivos. 💜</p></div>`;
   const o=document.createElement('div'); o.className='bv-wrap';
-  o.innerHTML=`<div class="bv-back" onclick="fecharBoasVindas()"></div><div class="bv-card">${html}
+  o.innerHTML=`<div class="bv-back"></div><div class="bv-card">${html}
     <button class="btn" onclick="fecharBoasVindas()">Começar 💜</button></div>`;
   document.body.appendChild(o); window.__bv=o;
 }
